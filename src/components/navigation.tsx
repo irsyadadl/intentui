@@ -112,13 +112,8 @@ export function Navigation() {
                       latest
                     </Badge>
                   </MenuItem>
-                  <MenuItem href="https://github.com/irsyadadl/intentui/tree/2.x">
-                    2.x
-                  </MenuItem>
-                  <MenuItem
-                    href="https://github.com/irsyadadl/intentui/tree/1.x"
-                    className="group"
-                  >
+                  <MenuItem href="https://github.com/irsyadadl/intentui/tree/2.x">2.x</MenuItem>
+                  <MenuItem href="https://github.com/irsyadadl/intentui/tree/1.x" className="group">
                     1.x{' '}
                     <Badge intent="warning" className="ml-2" isCircle={false}>
                       deprecated

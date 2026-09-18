@@ -26,7 +26,9 @@
     "format": "oxlint --fix && oxfmt .",
     "start": "next start",
     "preview": "npm run build && next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -68,7 +70,12 @@
     "use-debounce": "^10.1.1"
   },
   "devDependencies": {
+    "@react-aria/test-utils": "^1.0.0-rc.1",
     "@tailwindcss/postcss": "^4.3.0",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
     "@types/culori": "^4.0.1",
     "@types/mdx": "^2.0.13",
     "@types/node": "^25.6.2",
@@ -78,6 +85,7 @@
     "babel-plugin-react-compiler": "^1.0.0",
     "baseline-browser-mapping": "^2.10.29",
     "encoding": "^0.1.13",
+    "jsdom": "^30.1.0",
     "oxfmt": "^0.55.0",
     "oxlint": "^1.64.0",
     "postcss": "^8.5.14",
@@ -85,7 +93,8 @@
     "rehype-slug": "^6.0.0",
     "tailwindcss": "^4.3.0",
     "tsx": "^4.21.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.1"
   },
   "overrides": {
     "shadcn": {
