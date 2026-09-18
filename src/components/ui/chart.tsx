@@ -568,7 +568,7 @@ const ChartLegendContent = ({
         ),
         className
       )}
-      selectedKeys={selectedLegend ? [selectedLegend] : undefined}
+      selectedKeys={selectedLegend ? [selectedLegend] : []}
       onSelectionChange={(v) => {
         const key = [...v][0]?.toString() ?? null
         onLegendSelect(key)
