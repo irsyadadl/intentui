@@ -1,16 +1,16 @@
-import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { Ads } from '@/components/docs/ads'
-import { DocRefs } from '@/components/docs/doc-refs'
-import { JsonLd } from '@/components/json-ld'
-import { mdxComponents } from '@/components/docs/mdx-components'
-import { OpenIn } from '@/components/docs/open-in'
-import { Pager } from '@/components/docs/pager'
-import { Toc } from '@/components/toc'
-import { app } from '@/config/app'
-import { ogImage } from '@/lib/og'
-import { source } from '@/lib/source'
-import { title } from '@/lib/utils'
+import type { Metadata } from "next"
+import { notFound } from "next/navigation"
+import { Ads } from "@/components/docs/ads"
+import { DocRefs } from "@/components/docs/doc-refs"
+import { JsonLd } from "@/components/json-ld"
+import { mdxComponents } from "@/components/docs/mdx-components"
+import { OpenIn } from "@/components/docs/open-in"
+import { Pager } from "@/components/docs/pager"
+import { Toc } from "@/components/toc"
+import { app } from "@/config/app"
+import { ogImage } from "@/lib/og"
+import { source } from "@/lib/source"
+import { title } from "@/lib/utils"
 
 export interface DocPageProps {
   params: Promise<{
@@ -19,7 +19,7 @@ export interface DocPageProps {
 }
 
 export const revalidate = false
-export const dynamic = 'force-static'
+export const dynamic = "force-static"
 export const dynamicParams = false
 
 export function generateStaticParams() {
@@ -36,7 +36,7 @@ export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
   const doc = page.data
 
   const ogSearchParams = new URLSearchParams()
-  ogSearchParams.set('title', page.data.title)
+  ogSearchParams.set("title", page.data.title)
 
   return {
     title: doc.title,
@@ -47,18 +47,18 @@ export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
     openGraph: {
       title: `${doc.title} / Intent UI`,
       description: doc.description,
-      type: 'article',
+      type: "article",
       url: `${app.url}${page.url}`,
       siteName: app.name,
-      locale: 'en_US',
+      locale: "en_US",
       images: [{ url: ogImage({ title: doc.title, description: doc.description }) }],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: `${doc.title} / Intent UI`,
       description: doc.description,
       images: [{ url: ogImage({ title: doc.title, description: doc.description }) }],
-      site: '@intentui',
+      site: "@intentui",
       creator: `@${app.author.username}`,
     },
     authors: [
@@ -72,11 +72,11 @@ export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
 
 function generateBreadcrumbs(slug: string[], pageTitle: string) {
   const items = [
-    { name: 'Home', url: app.url },
-    { name: 'Docs', url: `${app.url}/docs` },
+    { name: "Home", url: app.url },
+    { name: "Docs", url: `${app.url}/docs` },
   ]
 
-  let path = '/docs'
+  let path = "/docs"
   for (let i = 0; i < slug.length - 1; i++) {
     path += `/${slug[i]}`
     items.push({ name: title(slug[i]!), url: `${app.url}${path}` })
@@ -95,41 +95,41 @@ export default async function Page(props: DocPageProps) {
   }
   const doc = page.data
   const MDX = doc.body
-  const pageText = await doc.getText('raw')
+  const pageText = await doc.getText("raw")
 
   const breadcrumbs = generateBreadcrumbs(params.slug, doc.title)
 
   const jsonLd = {
-    '@context': 'https://schema.org',
-    '@graph': [
+    "@context": "https://schema.org",
+    "@graph": [
       {
-        '@type': 'TechArticle',
+        "@type": "TechArticle",
         headline: doc.title,
         description: doc.description,
         url: `${app.url}${page.url}`,
         author: {
-          '@type': 'Person',
+          "@type": "Person",
           name: app.author.name,
           url: app.author.url,
         },
         publisher: {
-          '@type': 'Organization',
+          "@type": "Organization",
           name: app.name,
           url: app.url,
           logo: {
-            '@type': 'ImageObject',
+            "@type": "ImageObject",
             url: `${app.url}/icon.svg`,
           },
         },
         mainEntityOfPage: {
-          '@type': 'WebPage',
-          '@id': `${app.url}${page.url}`,
+          "@type": "WebPage",
+          "@id": `${app.url}${page.url}`,
         },
       },
       {
-        '@type': 'BreadcrumbList',
+        "@type": "BreadcrumbList",
         itemListElement: breadcrumbs.map((item, index) => ({
-          '@type': 'ListItem',
+          "@type": "ListItem",
           position: index + 1,
           name: item.name,
           item: item.url,

@@ -1,6 +1,6 @@
-import { cn } from 'cn'
+import { cn } from "cn"
 
-export interface ContainerProps extends React.ComponentProps<'div'> {
+export interface ContainerProps extends React.ComponentProps<"div"> {
   constrained?: boolean
 }
 
@@ -8,8 +8,8 @@ export function Container({ className, constrained = false, ref, ...props }: Con
   return (
     <div
       className={cn(
-        'mx-auto w-full max-w-(--container-breakpoint) [--container-breakpoint:var(--breakpoint-xl)] [--container-padding:--spacing(4)]',
-        constrained ? 'sm:px-(--container-padding)' : 'px-(--container-padding)',
+        "mx-auto w-full max-w-(--container-breakpoint) [--container-breakpoint:var(--breakpoint-xl)] [--container-padding:--spacing(4)]",
+        constrained ? "sm:px-(--container-padding)" : "px-(--container-padding)",
         className
       )}
       {...props}

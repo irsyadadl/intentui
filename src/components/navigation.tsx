@@ -1,29 +1,29 @@
-'use client'
+"use client"
 
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import { usePathname } from 'next/navigation'
-import { useState } from 'react'
-import { BrandLogoLink } from '@/components/brand-logo-link'
-import { GithubLink } from '@/components/github-link'
-import { BrandXIcon } from '@/components/icons/brand-x-icon'
-import { PageContainer } from '@/components/page-container'
-import { ResponsiveNavigation } from '@/components/responsive-navigation'
-import { Badge } from '@/components/ui/badge'
-import { Button, buttonStyles } from '@/components/ui/button'
-import { Link } from '@/components/ui/link'
-import { Menu, MenuContent, MenuItem } from '@/components/ui/menu'
-import { app } from '@/config/app'
-import { useMediaQuery } from '@/hooks/use-media-query'
-import { CommandPalette } from './command-palette'
-import { BrandDiscordIcon } from './icons/brand-discord-icon'
-import { NavLink } from './nav-item'
-import { ThemeSwitcher } from './theme-switcher'
+import { ChevronDownIcon } from "@heroicons/react/20/solid"
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline"
+import { usePathname } from "next/navigation"
+import { useState } from "react"
+import { BrandLogoLink } from "@/components/brand-logo-link"
+import { GithubLink } from "@/components/github-link"
+import { BrandXIcon } from "@/components/icons/brand-x-icon"
+import { PageContainer } from "@/components/page-container"
+import { ResponsiveNavigation } from "@/components/responsive-navigation"
+import { Badge } from "@/components/ui/badge"
+import { Button, buttonStyles } from "@/components/ui/button"
+import { Link } from "@/components/ui/link"
+import { Menu, MenuContent, MenuItem } from "@/components/ui/menu"
+import { app } from "@/config/app"
+import { useMediaQuery } from "@/hooks/use-media-query"
+import { CommandPalette } from "./command-palette"
+import { BrandDiscordIcon } from "./icons/brand-discord-icon"
+import { NavLink } from "./nav-item"
+import { ThemeSwitcher } from "./theme-switcher"
 
 export function Navigation() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
-  const isDesktop = useMediaQuery('(min-width: 1024px)')
+  const isDesktop = useMediaQuery("(min-width: 1024px)")
   return (
     <>
       <CommandPalette setOpen={setOpen} openCmd={open} />
@@ -36,20 +36,20 @@ export function Navigation() {
               </div>
               <NavLink
                 isNextLink
-                isActive={pathname?.startsWith('/docs') && !pathname?.includes('/docs/components')}
+                isActive={pathname?.startsWith("/docs") && !pathname?.includes("/docs/components")}
                 href="/docs/getting-started/introduction"
               >
                 Docs
               </NavLink>
               <NavLink
                 isNextLink
-                isActive={pathname?.startsWith('/docs/components') || pathname === '/components'}
+                isActive={pathname?.startsWith("/docs/components") || pathname === "/components"}
                 href="/components"
               >
                 Components
               </NavLink>
 
-              <NavLink isNextLink isActive={pathname.startsWith('/blocks')} href="/blocks">
+              <NavLink isNextLink isActive={pathname.startsWith("/blocks")} href="/blocks">
                 Blocks
               </NavLink>
               <NavLink isNextLink href="/sponsor">
@@ -75,8 +75,8 @@ export function Navigation() {
               <Link
                 aria-label="Join Discord"
                 className={buttonStyles({
-                  intent: 'plain',
-                  size: 'sq-sm',
+                  intent: "plain",
+                  size: "sq-sm",
                   isCircle: true,
                 })}
                 target="_blank"
@@ -87,10 +87,10 @@ export function Navigation() {
               <Link
                 aria-label="Follow Update on X"
                 className={buttonStyles({
-                  intent: 'plain',
-                  size: 'sq-sm',
+                  intent: "plain",
+                  size: "sq-sm",
                   isCircle: true,
-                  className: '**:data-[slot=icon]:text-fg',
+                  className: "**:data-[slot=icon]:text-fg",
                 })}
                 target="_blank"
                 href="https://x.com/intent/follow?screen_name=intentui"
@@ -107,14 +107,14 @@ export function Navigation() {
                 </Button>
                 <MenuContent placement="bottom end">
                   <MenuItem href={`${app.url}/docs/getting-started/introduction`} className="group">
-                    3.x{' '}
+                    3.x{" "}
                     <Badge intent="primary" isCircle={false} className="ml-auto">
                       latest
                     </Badge>
                   </MenuItem>
                   <MenuItem href="https://github.com/irsyadadl/intentui/tree/2.x">2.x</MenuItem>
                   <MenuItem href="https://github.com/irsyadadl/intentui/tree/1.x" className="group">
-                    1.x{' '}
+                    1.x{" "}
                     <Badge intent="warning" className="ml-2" isCircle={false}>
                       deprecated
                     </Badge>

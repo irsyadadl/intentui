@@ -1,4 +1,4 @@
-import { Text, TextLink } from '@/components/ui/text'
+import { Text, TextLink } from "@/components/ui/text"
 
 export default function TextLinkDemo() {
   return (

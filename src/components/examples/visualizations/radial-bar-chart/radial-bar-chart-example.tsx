@@ -1,12 +1,12 @@
-'use client'
+"use client"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { RadialBarChart } from '@/components/ui/radial-bar-chart'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { RadialBarChart } from "@/components/ui/radial-bar-chart"
 
 const data = [
-  { device: 'Desktop', visitors: 1860 },
-  { device: 'Mobile', visitors: 1320 },
-  { device: 'Tablet', visitors: 540 },
+  { device: "Desktop", visitors: 1860 },
+  { device: "Mobile", visitors: 1320 },
+  { device: "Tablet", visitors: 540 },
 ]
 
 export default function RadialBarChartDemo() {
@@ -22,13 +22,13 @@ export default function RadialBarChartDemo() {
           data={data}
           dataKey="visitors"
           nameKey="device"
-          series={[{ dataKey: 'visitors', name: 'Visitors' }]}
+          series={[{ dataKey: "visitors", name: "Visitors" }]}
           config={{
-            Desktop: { label: 'Desktop' },
-            Mobile: { label: 'Mobile' },
-            Tablet: { label: 'Tablet' },
+            Desktop: { label: "Desktop" },
+            Mobile: { label: "Mobile" },
+            Tablet: { label: "Tablet" },
           }}
-          chartProps={{ innerRadius: '25%', outerRadius: '90%' }}
+          chartProps={{ innerRadius: "25%", outerRadius: "90%" }}
         />
       </CardContent>
     </Card>

@@ -1,80 +1,80 @@
-'use client'
+"use client"
 
-import { starterKits } from '@/app/(home)/partials/starter-kit'
-import { BrandIntentuiIcon } from '@/components/icons/brand-intentui-icon'
-import { PageContainer } from '@/components/page-container'
-import { Link } from '@/components/ui/link'
-import { Text, TextLink } from '@/components/ui/text'
-import { app } from '@/config/app'
+import { starterKits } from "@/app/(home)/partials/starter-kit"
+import { BrandIntentuiIcon } from "@/components/icons/brand-intentui-icon"
+import { PageContainer } from "@/components/page-container"
+import { Link } from "@/components/ui/link"
+import { Text, TextLink } from "@/components/ui/text"
+import { app } from "@/config/app"
 
 export const footerNavigation = {
   resources: [
-    { name: 'Home', href: '/' },
-    { name: 'Colors', href: '/colors' },
-    { name: 'Themes', href: 'https://design.intentui.com/themes' },
-    { name: 'All components', href: '/components' },
-    { name: 'Docs', href: '/docs' },
-    { name: 'Blocks', href: '/blocks' },
-    { name: 'Showcase', href: '/showcase' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Sponsor', href: '/sponsor' },
+    { name: "Home", href: "/" },
+    { name: "Colors", href: "/colors" },
+    { name: "Themes", href: "https://design.intentui.com/themes" },
+    { name: "All components", href: "/components" },
+    { name: "Docs", href: "/docs" },
+    { name: "Blocks", href: "/blocks" },
+    { name: "Showcase", href: "/showcase" },
+    { name: "Blog", href: "/blog" },
+    { name: "Sponsor", href: "/sponsor" },
   ],
 
   templates: [
     {
-      name: 'Screencast',
-      href: 'https://design.intentui.com/templates/screencast',
+      name: "Screencast",
+      href: "https://design.intentui.com/templates/screencast",
     },
     {
-      name: 'Deploy',
-      href: 'https://design.intentui.com/templates/deploy',
+      name: "Deploy",
+      href: "https://design.intentui.com/templates/deploy",
     },
     {
-      name: 'Axis',
-      href: 'https://design.intentui.com/templates/axis',
+      name: "Axis",
+      href: "https://design.intentui.com/templates/axis",
     },
     {
-      name: 'Cartel',
-      href: 'https://design.intentui.com/templates/commerce',
+      name: "Cartel",
+      href: "https://design.intentui.com/templates/commerce",
     },
     {
-      name: 'Provision',
-      href: 'https://design.intentui.com/templates/provision',
+      name: "Provision",
+      href: "https://design.intentui.com/templates/provision",
     },
     {
-      name: 'Personal',
-      href: 'https://design.intentui.com/templates/personal',
+      name: "Personal",
+      href: "https://design.intentui.com/templates/personal",
     },
     {
-      name: 'Clinic',
-      href: 'https://design.intentui.com/templates/clinic',
+      name: "Clinic",
+      href: "https://design.intentui.com/templates/clinic",
     },
     {
-      name: 'Spotlight',
-      href: 'https://design.intentui.com/templates/spotlight',
+      name: "Spotlight",
+      href: "https://design.intentui.com/templates/spotlight",
     },
     {
-      name: 'Scale',
-      href: 'https://design.intentui.com/templates/saas-landing-page-template?utm_source=intentui.com&utm_medium=referral&utm_campaign=footer&utm_content=scale',
+      name: "Scale",
+      href: "https://design.intentui.com/templates/saas-landing-page-template?utm_source=intentui.com&utm_medium=referral&utm_campaign=footer&utm_content=scale",
     },
     {
-      name: 'Commerce',
-      href: 'https://design.intentui.com/templates/commerce-design-template?utm_source=intentui.com&utm_medium=referral&utm_campaign=footer&utm_content=commerce',
+      name: "Commerce",
+      href: "https://design.intentui.com/templates/commerce-design-template?utm_source=intentui.com&utm_medium=referral&utm_campaign=footer&utm_content=commerce",
     },
     {
-      name: 'Explore more',
-      href: 'https://design.intentui.com/templates?utm_source=intentui.com&utm_medium=referral&utm_campaign=footer',
+      name: "Explore more",
+      href: "https://design.intentui.com/templates?utm_source=intentui.com&utm_medium=referral&utm_campaign=footer",
     },
   ],
   labs: [
-    { name: 'Github', href: app.links.github },
+    { name: "Github", href: app.links.github },
     {
-      name: 'X / Twitter',
-      href: 'https://x.com/intent/follow?screen_name=irsyad',
+      name: "X / Twitter",
+      href: "https://x.com/intent/follow?screen_name=irsyad",
     },
-    { name: 'Discord', href: app.links.discord },
-    { name: 'Design', href: 'https://design.intentui.com' },
-    { name: 'Templates', href: 'https://design.intentui.com/templates' },
+    { name: "Discord", href: app.links.discord },
+    { name: "Design", href: "https://design.intentui.com" },
+    { name: "Templates", href: "https://design.intentui.com/templates" },
   ],
 }
 
@@ -98,11 +98,11 @@ export function Footer() {
                 <Text>
                   Accessible React component library to copy, customize, and own your UI. This
                   project's crafted by <TextLink href={app.author.url}>{app.author.name}</TextLink>.
-                  Peep the Source Code on <TextLink href={app.repo.url}>GitHub</TextLink>. Hosted on{' '}
+                  Peep the Source Code on <TextLink href={app.repo.url}>GitHub</TextLink>. Hosted on{" "}
                   <TextLink href="https://vercel.com?ref=intentui.com" target="_blank">
                     Vercel
                   </TextLink>
-                  . The source code's got the{' '}
+                  . The source code's got the{" "}
                   <Link href={`${app.repo.url}/blob/main/LICENSE`}>MIT</Link> license.
                 </Text>
                 <Text>{`${new Date().getUTCFullYear()} · ${app.name} ™`}</Text>

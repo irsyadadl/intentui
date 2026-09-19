@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { Checkbox, CheckboxField } from '@/components/ui/checkbox'
-import { FieldError } from '@/components/ui/field'
-import { Form } from 'react-aria-components/Form'
-import { Button } from '@/components/ui/button'
+import { Checkbox, CheckboxField } from "@/components/ui/checkbox"
+import { FieldError } from "@/components/ui/field"
+import { Form } from "react-aria-components/Form"
+import { Button } from "@/components/ui/button"
 
 export default function CheckboxInvalidDemo() {
   return (

@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { Link } from '@/components/ui/link'
-import { Text } from '@/components/ui/text'
-import { buttonStyles } from '@/components/ui/button'
-import { Heading } from '@/components/ui/heading'
+import { Link } from "@/components/ui/link"
+import { Text } from "@/components/ui/text"
+import { buttonStyles } from "@/components/ui/button"
+import { Heading } from "@/components/ui/heading"
 
 export function Cta() {
   return (
@@ -15,13 +15,13 @@ export function Cta() {
       <div className="mt-6">
         <Link
           className={buttonStyles({
-            intent: 'primary',
-            size: 'lg',
-            className: 'bg-fg hover:bg-fg/90 text-bg',
+            intent: "primary",
+            size: "lg",
+            className: "bg-fg hover:bg-fg/90 text-bg",
           })}
           href="/sponsor"
         >
-          Get featured{' '}
+          Get featured{" "}
         </Link>
       </div>
     </section>

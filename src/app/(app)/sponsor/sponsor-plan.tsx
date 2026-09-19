@@ -1,10 +1,10 @@
-'use client'
+"use client"
 
-import { CheckIcon } from '@heroicons/react/20/solid'
-import { PageContainer } from '@/components/page-container'
-import { buttonStyles } from '@/components/ui/button'
-import { Strong } from '@/components/ui/text'
-import json from '@/json/sponsors.json'
+import { CheckIcon } from "@heroicons/react/20/solid"
+import { PageContainer } from "@/components/page-container"
+import { buttonStyles } from "@/components/ui/button"
+import { Strong } from "@/components/ui/text"
+import json from "@/json/sponsors.json"
 
 interface SponsorPlanPrice {
   amount: number
@@ -22,16 +22,16 @@ interface SponsorPlanItem {
     description: string
   }[]
   checkout_url: string
-  type: 'individual' | 'company'
+  type: "individual" | "company"
 }
 
 const plans = json as SponsorPlanItem[]
-const individualPlans = plans.filter((i) => i.type === 'individual')
-const companyPlans = plans.filter((i) => i.type !== 'individual')
+const individualPlans = plans.filter((i) => i.type === "individual")
+const companyPlans = plans.filter((i) => i.type !== "individual")
 const sponsorButton = buttonStyles({
-  intent: 'primary',
-  size: 'lg',
-  className: 'bg-fg hover:bg-fg/90 text-bg',
+  intent: "primary",
+  size: "lg",
+  className: "bg-fg hover:bg-fg/90 text-bg",
 })
 
 export function SponsorPlan() {
@@ -55,13 +55,13 @@ export function SponsorPlan() {
                   <div className="text-3xl tabular-nums tracking-tight">
                     ${plan.price.amount}
                     <span className="ml-1 font-normal text-base text-muted-fg">
-                      {plan.id === 'o-sponsor' ? 'one time' : '/ month'}
+                      {plan.id === "o-sponsor" ? "one time" : "/ month"}
                     </span>
                   </div>
                 </div>
 
                 <a href={plan.checkout_url} className={sponsorButton}>
-                  Become {plan.name === 'Ambassador' ? 'an' : 'a'} {plan.name.toLowerCase()}
+                  Become {plan.name === "Ambassador" ? "an" : "a"} {plan.name.toLowerCase()}
                 </a>
                 {plan.benefits.length ? (
                   <ul className="space-y-4 text-sm/6">
@@ -69,7 +69,7 @@ export function SponsorPlan() {
                       <li key={benefit.title} className="flex gap-x-3">
                         <CheckIcon className="h-lh w-4 shrink-0 text-primary-subtle-fg" />
                         <p className="text-pretty">
-                          <Strong>{benefit.title}</Strong>{' '}
+                          <Strong>{benefit.title}</Strong>{" "}
                           <span className="text-muted-fg">{benefit.description}</span>
                         </p>
                       </li>
@@ -102,7 +102,7 @@ export function SponsorPlan() {
                   <span className="ml-1 font-normal text-base text-muted-fg">/ month</span>
                 </div>
                 <a href={plan.checkout_url} className={sponsorButton}>
-                  Become {plan.name === 'Ambassador' ? 'an' : 'a'} {plan.name.toLowerCase()}
+                  Become {plan.name === "Ambassador" ? "an" : "a"} {plan.name.toLowerCase()}
                 </a>
                 {plan.benefits.length ? (
                   <ul className="space-y-4 text-sm/6">
@@ -110,7 +110,7 @@ export function SponsorPlan() {
                       <li key={benefit.title} className="flex gap-x-3">
                         <CheckIcon className="h-lh w-4 shrink-0 text-primary-subtle-fg" />
                         <p className="text-pretty">
-                          <Strong>{benefit.title}</Strong>{' '}
+                          <Strong>{benefit.title}</Strong>{" "}
                           <span className="text-muted-fg">{benefit.description}</span>
                         </p>
                       </li>
@@ -135,7 +135,7 @@ export function SponsorPlan() {
                   <li key={benefit.title} className="flex gap-x-3">
                     <CheckIcon className="h-lh w-4 shrink-0 text-primary-subtle-fg" />
                     <p className="text-pretty">
-                      <Strong>{benefit.title}</Strong>{' '}
+                      <Strong>{benefit.title}</Strong>{" "}
                       <span className="text-muted-fg">{benefit.description}</span>
                     </p>
                   </li>
@@ -147,7 +147,7 @@ export function SponsorPlan() {
         <div className="border-t">
           <PageContainer>
             <div className="border-x p-4 text-center text-sm/6">
-              Looking for a one-time sponsorship instead?{' '}
+              Looking for a one-time sponsorship instead?{" "}
               <a
                 href="mailto:partners@intentui.com?subject=One-time sponsorship inquiry"
                 target="_blank"
@@ -155,7 +155,7 @@ export function SponsorPlan() {
                 className="font-medium text-primary-subtle-fg underline decoration-primary-subtle-fg/50 hover:decoration-primary-subtle-fg"
               >
                 Get in touch
-              </a>{' '}
+              </a>{" "}
               and we&apos;ll work something out.
             </div>
           </PageContainer>

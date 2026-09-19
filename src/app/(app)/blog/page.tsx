@@ -1,37 +1,37 @@
-import Link from 'next/link'
-import { blog } from '#site/content'
-import { JsonLd } from '@/components/json-ld'
-import { PageContainer } from '@/components/page-container'
-import { Avatar } from '@/components/ui/avatar'
-import { app } from '@/config/app'
-import { formatDate } from '@/lib/date'
-import { createMetadata } from '@/lib/metadata'
-import { Header, HeaderInner, HeaderTitle } from '@/components/header'
-import { Text } from '@/components/ui/text'
+import Link from "next/link"
+import { blog } from "#site/content"
+import { JsonLd } from "@/components/json-ld"
+import { PageContainer } from "@/components/page-container"
+import { Avatar } from "@/components/ui/avatar"
+import { app } from "@/config/app"
+import { formatDate } from "@/lib/date"
+import { createMetadata } from "@/lib/metadata"
+import { Header, HeaderInner, HeaderTitle } from "@/components/header"
+import { Text } from "@/components/ui/text"
 
 export const metadata = createMetadata({
-  title: 'Blog',
+  title: "Blog",
   description:
-    'Articles about React, Next.js, UI design patterns, and building accessible web interfaces with Intent UI components.',
-  path: '/blog',
+    "Articles about React, Next.js, UI design patterns, and building accessible web interfaces with Intent UI components.",
+  path: "/blog",
   keywords: [
-    'blog',
-    'react tutorials',
-    'nextjs articles',
-    'ui design',
-    'web development',
-    'intent ui',
-    'intentui',
+    "blog",
+    "react tutorials",
+    "nextjs articles",
+    "ui design",
+    "web development",
+    "intent ui",
+    "intentui",
   ],
 })
 
 export default function Page() {
   const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: app.url },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${app.url}/blog` },
+      { "@type": "ListItem", position: 1, name: "Home", item: app.url },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${app.url}/blog` },
     ],
   }
 
@@ -55,13 +55,13 @@ export default function Page() {
                     key={item.title}
                   >
                     <Link
-                      href={`/blog/${item.info.path.replace('.mdx', '')}`}
+                      href={`/blog/${item.info.path.replace(".mdx", "")}`}
                       className="absolute inset-0 size-full"
                     />
                     <div className="flex-1">
                       <h3 className="mb-2 tracking-tight text-2xl">{item.title}</h3>
                       <Text>
-                        {item.description || 'No description available for this blog post.'}
+                        {item.description || "No description available for this blog post."}
                       </Text>
                     </div>
                     <div className="mt-4">

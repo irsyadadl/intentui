@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import {
   ArrowDownTrayIcon,
@@ -16,10 +16,10 @@ import {
   ScissorsIcon,
   ShareIcon,
   TrashIcon,
-} from '@heroicons/react/24/outline'
-import { Autocomplete, useFilter } from 'react-aria-components/Autocomplete'
-import { Menu as PrimitiveMenu } from 'react-aria-components/Menu'
-import { Button } from '@/components/ui/button'
+} from "@heroicons/react/24/outline"
+import { Autocomplete, useFilter } from "react-aria-components/Autocomplete"
+import { Menu as PrimitiveMenu } from "react-aria-components/Menu"
+import { Button } from "@/components/ui/button"
 import {
   Menu,
   MenuItem,
@@ -27,12 +27,12 @@ import {
   MenuSection,
   MenuSeparator,
   menuContentStyles,
-} from '@/components/ui/menu'
-import { PopoverContent as Popover } from '@/components/ui/popover'
-import { SearchField, SearchInput } from '@/components/ui/search-field'
+} from "@/components/ui/menu"
+import { PopoverContent as Popover } from "@/components/ui/popover"
+import { SearchField, SearchInput } from "@/components/ui/search-field"
 
 export default function WithAutocomplete() {
-  const { contains } = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: "base" })
 
   return (
     <Menu>

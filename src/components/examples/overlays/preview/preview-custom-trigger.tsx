@@ -1,12 +1,12 @@
-import { Preview, PreviewContent } from '@/components/ui/preview'
-import { Button } from '@/components/ui/button'
-import { Text } from '@/components/ui/text'
-import { Focusable } from 'react-aria-components'
+import { Preview, PreviewContent } from "@/components/ui/preview"
+import { Button } from "@/components/ui/button"
+import { Text } from "@/components/ui/text"
+import { Focusable } from "react-aria-components"
 
 export default function Basic() {
   return (
     <div>
-      Deployment is currently blocked by{' '}
+      Deployment is currently blocked by{" "}
       <Preview>
         <Focusable>
           <span role="link" className="underline">
@@ -28,8 +28,8 @@ export default function Basic() {
             </Button>
           </div>
         </PreviewContent>
-      </Preview>{' '}
-      and{' '}
+      </Preview>{" "}
+      and{" "}
       <Preview>
         <Focusable>
           <span role="link" className="underline">

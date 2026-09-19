@@ -1,25 +1,25 @@
-'use client'
+"use client"
 
-import { Label, type LabelProps } from 'react-aria-components/Label'
-import { ProgressBar, type ProgressBarProps } from 'react-aria-components/ProgressBar'
-import { twJoin, cn } from 'cn'
-import { cx } from '@/lib/primitive'
+import { Label, type LabelProps } from "react-aria-components/Label"
+import { ProgressBar, type ProgressBarProps } from "react-aria-components/ProgressBar"
+import { twJoin, cn } from "cn"
+import { cx } from "@/lib/primitive"
 
-export function Leaderboard({ className, ...props }: React.ComponentProps<'div'>) {
+export function Leaderboard({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn('flex flex-col gap-y-(--leaderboard-gutter,--spacing(4))', className)}
+      className={cn("flex flex-col gap-y-(--leaderboard-gutter,--spacing(4))", className)}
       {...props}
     />
   )
 }
 
-export function LeaderboardHeader({ className, ...props }: React.ComponentProps<'div'>) {
+export function LeaderboardHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="leaderboard-header"
       className={cn(
-        'grid auto-rows-min grid-rows-[auto_auto] items-start gap-1 px-(--gutter) has-data-[slot=card-action]:grid-cols-[1fr_auto]',
+        "grid auto-rows-min grid-rows-[auto_auto] items-start gap-1 px-(--gutter) has-data-[slot=card-action]:grid-cols-[1fr_auto]",
         className
       )}
       {...props}
@@ -27,31 +27,31 @@ export function LeaderboardHeader({ className, ...props }: React.ComponentProps<
   )
 }
 
-export function LeaderboardTitle({ className, ...props }: React.ComponentProps<'div'>) {
+export function LeaderboardTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="leaderboard-title"
-      className={cn('text-balance font-semibold text-base/6', className)}
+      className={cn("text-balance font-semibold text-base/6", className)}
       {...props}
     />
   )
 }
 
-export function LeaderboardAction({ className, ...props }: React.ComponentProps<'div'>) {
+export function LeaderboardAction({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="leaderboard-action"
-      className={cn('col-start-2 row-span-2 row-start-1 self-start justify-self-end', className)}
+      className={cn("col-start-2 row-span-2 row-start-1 self-start justify-self-end", className)}
       {...props}
     />
   )
 }
 
-export function LeaderboardContent({ className, ...props }: React.ComponentProps<'ul'>) {
+export function LeaderboardContent({ className, ...props }: React.ComponentProps<"ul">) {
   return (
     <ul
       data-slot="leaderboard-content"
-      className={cn('flex max-h-96 list-none flex-col gap-y-1', className)}
+      className={cn("flex max-h-96 list-none flex-col gap-y-1", className)}
       {...props}
     />
   )
@@ -74,7 +74,7 @@ export function LeaderboardItem({
         onClick={onAction}
         minValue={minValue}
         className={cx(
-          'relative cursor-default overflow-hidden rounded-md px-1.5 py-1 text-sm/6 outline-hidden focus-visible:ring focus-visible:ring-ring',
+          "relative cursor-default overflow-hidden rounded-md px-1.5 py-1 text-sm/6 outline-hidden focus-visible:ring focus-visible:ring-ring",
           "[&_svg:shrink-0 [&_svg:not([class*='size-'])]:size-4",
           className
         )}
@@ -83,12 +83,12 @@ export function LeaderboardItem({
         {(values) => (
           <>
             <span className="relative z-2 flex items-center justify-between font-medium">
-              {typeof children === 'function' ? children(values) : children}
+              {typeof children === "function" ? children(values) : children}
             </span>
             <span
               className={twJoin(
-                'absolute inset-y-0 start-0 z-1 rounded-e-md bg-secondary/60',
-                onAction ? 'cursor-default group-hover:bg-secondary' : ''
+                "absolute inset-y-0 start-0 z-1 rounded-e-md bg-secondary/60",
+                onAction ? "cursor-default group-hover:bg-secondary" : ""
               )}
               style={{ width: `${values.percentage}%` }}
             />
@@ -103,12 +103,12 @@ export function LeaderboardStart({ className, ...props }: LabelProps) {
   return (
     <Label
       data-slot="leaderboard-start"
-      className={cn('flex items-center gap-x-2', className)}
+      className={cn("flex items-center gap-x-2", className)}
       {...props}
     />
   )
 }
 
-export function LeaderboardEnd({ className, ...props }: React.ComponentProps<'div'>) {
-  return <div data-slot="leaderboard-start" className={cn('tabular-nums', className)} {...props} />
+export function LeaderboardEnd({ className, ...props }: React.ComponentProps<"div">) {
+  return <div data-slot="leaderboard-start" className={cn("tabular-nums", className)} {...props} />
 }

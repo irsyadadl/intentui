@@ -1,17 +1,17 @@
-'use client'
+"use client"
 
-import { cn } from 'cn'
-import { type ButtonProps, buttonStyles } from '@/components/ui/button'
-import { Link, type LinkProps } from '@/components/ui/link'
-import { Text } from '@/components/ui/text'
+import { cn } from "cn"
+import { type ButtonProps, buttonStyles } from "@/components/ui/button"
+import { Link, type LinkProps } from "@/components/ui/link"
+import { Text } from "@/components/ui/text"
 
-const Pagination = ({ className, ref, ...props }: React.ComponentProps<'nav'>) => (
+const Pagination = ({ className, ref, ...props }: React.ComponentProps<"nav">) => (
   <nav
     data-slot="pagination"
     aria-label="pagination"
     className={cn(
-      'mx-auto flex w-full items-center justify-center gap-(--pagination-gap) [--pagination-gap:--spacing(2)] [--section-radius:calc(var(--radius-lg)-1px)] **:data-[slot=control]:w-auto',
-      '**:data-[slot=pagination-item]:cursor-default',
+      "mx-auto flex w-full items-center justify-center gap-(--pagination-gap) [--pagination-gap:--spacing(2)] [--section-radius:calc(var(--radius-lg)-1px)] **:data-[slot=control]:w-auto",
+      "**:data-[slot=pagination-item]:cursor-default",
       className
     )}
     ref={ref}
@@ -19,26 +19,26 @@ const Pagination = ({ className, ref, ...props }: React.ComponentProps<'nav'>) =
   />
 )
 
-const PaginationSection = ({ className, ref, ...props }: React.ComponentProps<'ul'>) => (
+const PaginationSection = ({ className, ref, ...props }: React.ComponentProps<"ul">) => (
   <li data-slot="pagination-section">
-    <ul ref={ref} className={cn('flex h-full gap-1.5 text-sm/6', className)} {...props} />
+    <ul ref={ref} className={cn("flex h-full gap-1.5 text-sm/6", className)} {...props} />
   </li>
 )
 
-const PaginationList = ({ className, ref, ...props }: React.ComponentProps<'ul'>) => {
+const PaginationList = ({ className, ref, ...props }: React.ComponentProps<"ul">) => {
   return (
     <ul
       ref={ref}
       data-slot="pagination-list"
-      aria-label={props['aria-label'] || 'Pagination'}
-      className={cn('flex gap-1.25', className)}
+      aria-label={props["aria-label"] || "Pagination"}
+      className={cn("flex gap-1.25", className)}
       {...props}
     />
   )
 }
 
 interface PaginationItemProps
-  extends Omit<LinkProps, 'children'>, Pick<ButtonProps, 'isCircle' | 'size' | 'intent'> {
+  extends Omit<LinkProps, "children">, Pick<ButtonProps, "isCircle" | "size" | "intent"> {
   className?: string
   isCurrent?: boolean
   children?: string | number | React.ReactNode
@@ -46,7 +46,7 @@ interface PaginationItemProps
 
 const PaginationItem = ({
   className,
-  size = 'sm',
+  size = "sm",
   isCircle,
   isCurrent,
   ...props
@@ -56,12 +56,12 @@ const PaginationItem = ({
       <Link
         data-slot="pagination-item"
         href={isCurrent ? undefined : props.href}
-        aria-current={isCurrent ? 'page' : undefined}
+        aria-current={isCurrent ? "page" : undefined}
         className={buttonStyles({
           size: size,
           isCircle: isCircle,
-          intent: isCurrent ? 'outline' : 'plain',
-          className: cn('touch-target min-w-9 shrink-0', className),
+          intent: isCurrent ? "outline" : "plain",
+          className: cn("touch-target min-w-9 shrink-0", className),
         })}
         {...props}
       />
@@ -167,20 +167,20 @@ const PaginationLast = (props: PaginationItemProps) => {
   )
 }
 
-const PaginationSpacer = ({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) => {
-  return <div aria-hidden className={cn('flex-1', className)} {...props} />
+const PaginationSpacer = ({ className, ...props }: React.ComponentPropsWithoutRef<"div">) => {
+  return <div aria-hidden className={cn("flex-1", className)} {...props} />
 }
 
 const PaginationGap = ({
   className,
   children = <>&hellip;</>,
   ...props
-}: React.ComponentProps<'li'>) => {
+}: React.ComponentProps<"li">) => {
   return (
     <li
       data-slot="pagination-gap"
       className={cn(
-        'w-9 select-none text-center font-semibold text-fg text-sm/6 outline-hidden',
+        "w-9 select-none text-center font-semibold text-fg text-sm/6 outline-hidden",
         className
       )}
       {...props}
@@ -191,12 +191,12 @@ const PaginationGap = ({
   )
 }
 
-const PaginationLabel = ({ className, ...props }: React.ComponentPropsWithoutRef<'li'>) => {
+const PaginationLabel = ({ className, ...props }: React.ComponentPropsWithoutRef<"li">) => {
   return (
     <li
       data-slot="pagination-label"
       className={cn(
-        'min-w-4 self-center text-fg *:[strong]:font-medium *:[strong]:text-fg',
+        "min-w-4 self-center text-fg *:[strong]:font-medium *:[strong]:text-fg",
         className
       )}
       {...props}

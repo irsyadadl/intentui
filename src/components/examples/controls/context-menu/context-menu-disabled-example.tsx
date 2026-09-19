@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import {
   ContextMenu,
@@ -6,8 +6,8 @@ import {
   ContextMenuItem,
   ContextMenuLabel,
   ContextMenuSeparator,
-} from '@/components/ui/context-menu'
-import { Pressable } from 'react-aria-components'
+} from "@/components/ui/context-menu"
+import { Pressable } from "react-aria-components"
 
 export default function ContextMenuDisabledDemo() {
   return (

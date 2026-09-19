@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import {
   MenuContent,
@@ -10,22 +10,22 @@ import {
   MenuSeparator,
   MenuShortcut,
   MenuSubMenu,
-} from './menu'
-import { MenuTrigger, type MenuTriggerProps } from 'react-aria-components/Menu'
-import { type PopoverContentProps } from '@/components/ui/popover'
+} from "./menu"
+import { MenuTrigger, type MenuTriggerProps } from "react-aria-components/Menu"
+import { type PopoverContentProps } from "@/components/ui/popover"
 
-function ContextMenu(props: Omit<MenuTriggerProps, 'trigger'>) {
+function ContextMenu(props: Omit<MenuTriggerProps, "trigger">) {
   return <MenuTrigger trigger="contextMenu" {...props} />
 }
 
 function ContextMenuContent({
-  placement = 'bottom start',
+  placement = "bottom start",
   offset = 4,
   crossOffset = 0,
   children,
   ...props
-}: Omit<React.ComponentProps<typeof MenuContent<object>>, 'children'> &
-  Pick<PopoverContentProps, 'placement' | 'offset' | 'crossOffset'> & {
+}: Omit<React.ComponentProps<typeof MenuContent<object>>, "children"> &
+  Pick<PopoverContentProps, "placement" | "offset" | "crossOffset"> & {
     children?: React.ReactNode
   }) {
   return (

@@ -1,21 +1,21 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
-@import './code.css';
-@import './typeset.css';
-@import './shadcn.css';
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./code.css";
+@import "./typeset.css";
+@import "./shadcn.css";
 
 @plugin 'tailwindcss-react-aria-components';
 
 @theme inline {
   --font-sans:
-    var(--font-inter), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+    var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
   --font-mono:
-    var(--font-docs-mono), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas',
-    '"Liberation Mono"', '"Courier New"', 'monospace';
+    var(--font-docs-mono), "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas",
+    '"Liberation Mono"', '"Courier New"', "monospace";
 
-  --font-sans--font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-  --font-mono--font-feature-settings: 'ss02', 'zero';
+  --font-sans--font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  --font-mono--font-feature-settings: "ss02", "zero";
 
   --color-shiki-bg: var(--shiki-bg);
   --color-shiki-border: var(--input);
@@ -235,7 +235,7 @@
   --danger-subtle-fg: oklch(0.704 0.191 22.216);
 
   --border: oklch(0.342 0.017 285.786);
-  --page: theme('colors.zinc.700/50%');
+  --page: theme("colors.zinc.700/50%");
   --input: oklch(0.32 0.013 285.805);
   --ring: oklch(0.546 0.245 262.881);
 
@@ -270,7 +270,7 @@
 @utility touch-target {
   position: relative;
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     top: 50%;

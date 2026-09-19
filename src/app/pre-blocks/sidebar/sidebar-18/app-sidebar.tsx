@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import {
   ArchiveBoxIcon,
@@ -10,9 +10,9 @@ import {
   FolderIcon,
   PaintBrushIcon,
   Squares2X2Icon,
-} from '@heroicons/react/24/outline'
-import { BrandIntentuiIcon } from '@/components/icons/brand-intentui-icon'
-import { Link } from '@/components/ui/link'
+} from "@heroicons/react/24/outline"
+import { BrandIntentuiIcon } from "@/components/icons/brand-intentui-icon"
+import { Link } from "@/components/ui/link"
 import {
   Sidebar,
   SidebarContent,
@@ -22,7 +22,7 @@ import {
   SidebarTree,
   SidebarTreeContent,
   SidebarTreeItem,
-} from '@/components/ui/sidebar'
+} from "@/components/ui/sidebar"
 
 export default function AppSidebar() {
   return (
@@ -41,7 +41,7 @@ export default function AppSidebar() {
       <SidebarContent>
         <SidebarTree
           aria-label="Documentation"
-          defaultExpandedKeys={['components', 'collections', 'layouts']}
+          defaultExpandedKeys={["components", "collections", "layouts"]}
         >
           <SidebarTreeItem id="getting-started" textValue="Getting started">
             <SidebarTreeContent>

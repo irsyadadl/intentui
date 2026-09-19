@@ -166,16 +166,16 @@
     &:where(ul ul ul) {
       list-style-type: square;
     }
-    &:where(ol[type='a' i]) {
+    &:where(ol[type="a" i]) {
       list-style-type: lower-alpha;
     }
-    &:where(ol[type='i' i]) {
+    &:where(ol[type="i" i]) {
       list-style-type: lower-roman;
     }
-    &:where(ol[type='A' s]) {
+    &:where(ol[type="A" s]) {
       list-style-type: upper-alpha;
     }
-    &:where(ol[type='I' s]) {
+    &:where(ol[type="I" s]) {
       list-style-type: upper-roman;
     }
     &:where(ul, ol) {
@@ -202,7 +202,7 @@
       list-style-type: none;
       padding-inline-start: 0.25em;
     }
-    &:where(li.task-list-item > input[type='checkbox']) {
+    &:where(li.task-list-item > input[type="checkbox"]) {
       margin-inline-end: 0.5em;
       vertical-align: -0.1em;
       accent-color: var(--color-primary, currentColor);
@@ -312,7 +312,7 @@
     }
 
     /* Math. */
-    &:where(math[display='block']) {
+    &:where(math[display="block"]) {
       margin-block-start: var(--typeset-flow);
       margin-block-end: 0;
       overflow-x: auto;
@@ -392,10 +392,10 @@
     &:where(th:first-child, td:first-child) {
       padding-inline-start: 0;
     }
-    &:where(th[align='center'], td[align='center']) {
+    &:where(th[align="center"], td[align="center"]) {
       text-align: center;
     }
-    &:where(th[align='right'], td[align='right']) {
+    &:where(th[align="right"], td[align="right"]) {
       text-align: end;
     }
 

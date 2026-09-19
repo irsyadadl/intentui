@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
-import { Pressable } from 'react-aria-components/Pressable'
-import { twJoin, cn } from 'cn'
-import { Tooltip, TooltipContent } from './tooltip'
+import { useState } from "react"
+import { Pressable } from "react-aria-components/Pressable"
+import { twJoin, cn } from "cn"
+import { Tooltip, TooltipContent } from "./tooltip"
 
 interface TrackerBlockProps {
   key?: string | number
@@ -17,7 +17,7 @@ const Block = ({
   color,
   tooltip,
   disabledTooltip,
-  defaultBackgroundColor = 'bg-secondary',
+  defaultBackgroundColor = "bg-secondary",
 }: TrackerBlockProps) => {
   const [open, setOpen] = useState(false)
 
@@ -25,9 +25,9 @@ const Block = ({
     <div className="size-full overflow-hidden px-[0.5px] transition first:rounded-s-sm first:ps-0 last:rounded-e-sm last:pe-0 sm:px-px">
       <div
         className={twJoin(
-          'size-full rounded-[1px]',
+          "size-full rounded-[1px]",
           color || defaultBackgroundColor,
-          'hover:opacity-50'
+          "hover:opacity-50"
         )}
       />
     </div>
@@ -37,14 +37,14 @@ const Block = ({
         <div
           role="button"
           tabIndex={0}
-          aria-label={tooltip ?? 'Show status'}
+          aria-label={tooltip ?? "Show status"}
           className="size-full overflow-hidden px-[0.5px] transition first:rounded-s-sm first:ps-0 last:rounded-e-sm last:pe-0 sm:px-px"
         >
           <div
             className={twJoin(
-              'size-full rounded-[1px]',
+              "size-full rounded-[1px]",
               color || defaultBackgroundColor,
-              'hover:opacity-50'
+              "hover:opacity-50"
             )}
           />
         </div>
@@ -63,7 +63,7 @@ const Block = ({
 }
 
 interface TrackerProps
-  extends React.ComponentProps<'div'>, Pick<TrackerBlockProps, 'disabledTooltip'> {
+  extends React.ComponentProps<"div">, Pick<TrackerBlockProps, "disabledTooltip"> {
   data: TrackerBlockProps[]
   defaultBackgroundColor?: string
 }
@@ -76,7 +76,7 @@ const Tracker = ({
   ...props
 }: TrackerProps) => {
   return (
-    <div ref={ref} className={cn('group flex h-8 w-full items-center', className)} {...props}>
+    <div ref={ref} className={cn("group flex h-8 w-full items-center", className)} {...props}>
       {data.map((props, index) => (
         <Block disabledTooltip={disabledTooltip} key={props.key ?? index} {...props} />
       ))}

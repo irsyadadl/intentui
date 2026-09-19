@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
-import { ListLayout, Virtualizer } from 'react-aria-components/Virtualizer'
-import { GridList, GridListItem } from '@/components/ui/grid-list'
+import { ListLayout, Virtualizer } from "react-aria-components/Virtualizer"
+import { GridList, GridListItem } from "@/components/ui/grid-list"
 
 const items = Array.from({ length: 5000 }, (_, index) => ({
   id: index + 1,

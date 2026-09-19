@@ -1,7 +1,7 @@
-import { Aside } from '@/components/docs/aside'
-import { PageContainer } from '@/components/page-container'
-import { Footer } from '@/components/docs/footer'
-import { Navigation } from '@/components/navigation'
+import { Aside } from "@/components/docs/aside"
+import { PageContainer } from "@/components/page-container"
+import { Footer } from "@/components/docs/footer"
+import { Navigation } from "@/components/navigation"
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

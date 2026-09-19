@@ -1,16 +1,16 @@
-'use client'
+"use client"
 
-import { XMarkIcon } from '@heroicons/react/24/solid'
-import { Button as PrimitiveButton } from 'react-aria-components/Button'
-import { Dialog as PrimitiveDialog } from 'react-aria-components/Dialog'
-import { Heading, type HeadingProps } from 'react-aria-components/Heading'
-import type { TextProps } from 'react-aria-components/Text'
-import { cn } from 'cn'
-import { cx } from '@/lib/primitive'
-import { Button, type ButtonProps } from './button'
+import { XMarkIcon } from "@heroicons/react/24/solid"
+import { Button as PrimitiveButton } from "react-aria-components/Button"
+import { Dialog as PrimitiveDialog } from "react-aria-components/Dialog"
+import { Heading, type HeadingProps } from "react-aria-components/Heading"
+import type { TextProps } from "react-aria-components/Text"
+import { cn } from "cn"
+import { cx } from "@/lib/primitive"
+import { Button, type ButtonProps } from "./button"
 
 const Dialog = ({
-  role = 'dialog',
+  role = "dialog",
   className,
   ...props
 }: React.ComponentProps<typeof PrimitiveDialog>) => {
@@ -19,7 +19,7 @@ const Dialog = ({
       data-slot="dialog"
       role={role}
       className={cn(
-        'peer/dialog group/dialog relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-hidden outline-hidden [--gutter:--spacing(6)] sm:[--gutter:--spacing(8)]',
+        "peer/dialog group/dialog relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-hidden outline-hidden [--gutter:--spacing(6)] sm:[--gutter:--spacing(8)]",
         className
       )}
       {...props}
@@ -28,10 +28,10 @@ const Dialog = ({
 }
 
 const DialogTrigger = ({ className, ...props }: ButtonProps) => (
-  <PrimitiveButton className={cx('cursor-pointer', className)} {...props} />
+  <PrimitiveButton className={cx("cursor-pointer", className)} {...props} />
 )
 
-interface DialogHeaderProps extends Omit<React.ComponentProps<'div'>, 'title'> {
+interface DialogHeaderProps extends Omit<React.ComponentProps<"div">, "title"> {
   title?: string
   description?: string
 }
@@ -41,13 +41,13 @@ const DialogHeader = ({ className, ...props }: DialogHeaderProps) => {
     <div
       data-slot="dialog-header"
       className={cn(
-        'relative space-y-1 p-(--gutter) pb-[calc(var(--gutter)---spacing(3))]',
+        "relative space-y-1 p-(--gutter) pb-[calc(var(--gutter)---spacing(3))]",
         className
       )}
     >
       {props.title && <DialogTitle>{props.title}</DialogTitle>}
       {props.description && <DialogDescription>{props.description}</DialogDescription>}
-      {!props.title && typeof props.children === 'string' ? (
+      {!props.title && typeof props.children === "string" ? (
         <DialogTitle>{props.children}</DialogTitle>
       ) : (
         props.children
@@ -63,7 +63,7 @@ const DialogTitle = ({ className, ref, ...props }: DialogTitleProps) => (
   <Heading
     slot="title"
     ref={ref}
-    className={cn('text-balance font-semibold text-fg text-lg/6 sm:text-base/6', className)}
+    className={cn("text-balance font-semibold text-fg text-lg/6 sm:text-base/6", className)}
     {...props}
   />
 )
@@ -75,7 +75,7 @@ const DialogDescription = ({ className, ref, ...props }: DialogDescriptionProps)
   <p
     data-slot="description"
     className={cn(
-      'text-pretty text-base/6 text-muted-fg group-disabled:opacity-50 sm:text-sm/6',
+      "text-pretty text-base/6 text-muted-fg group-disabled:opacity-50 sm:text-sm/6",
       className
     )}
     ref={ref}
@@ -83,26 +83,26 @@ const DialogDescription = ({ className, ref, ...props }: DialogDescriptionProps)
   />
 )
 
-interface DialogBodyProps extends React.ComponentProps<'div'> {}
+interface DialogBodyProps extends React.ComponentProps<"div"> {}
 const DialogBody = ({ className, ...props }: DialogBodyProps) => (
   <div
     data-slot="dialog-body"
     className={cn(
-      'isolate flex min-h-0 flex-1 flex-col overflow-auto px-(--gutter) py-1',
-      '**:data-[slot=dialog-footer]:px-0 **:data-[slot=dialog-footer]:pt-0',
+      "isolate flex min-h-0 flex-1 flex-col overflow-auto px-(--gutter) py-1",
+      "**:data-[slot=dialog-footer]:px-0 **:data-[slot=dialog-footer]:pt-0",
       className
     )}
     {...props}
   />
 )
 
-interface DialogFooterProps extends React.ComponentProps<'div'> {}
+interface DialogFooterProps extends React.ComponentProps<"div"> {}
 const DialogFooter = ({ className, ...props }: DialogFooterProps) => {
   return (
     <div
       data-slot="dialog-footer"
       className={cn(
-        'isolate mt-auto flex flex-col-reverse justify-end gap-3 p-(--gutter) pt-[calc(var(--gutter)---spacing(2))] group-not-has-data-[slot=dialog-body]/dialog:pt-0 group-not-has-data-[slot=dialog-body]/popover:pt-0 sm:flex-row',
+        "isolate mt-auto flex flex-col-reverse justify-end gap-3 p-(--gutter) pt-[calc(var(--gutter)---spacing(2))] group-not-has-data-[slot=dialog-body]/dialog:pt-0 group-not-has-data-[slot=dialog-body]/popover:pt-0 sm:flex-row",
         className
       )}
       {...props}
@@ -110,11 +110,11 @@ const DialogFooter = ({ className, ...props }: DialogFooterProps) => {
   )
 }
 
-const DialogClose = ({ intent = 'plain', ref, ...props }: ButtonProps) => {
+const DialogClose = ({ intent = "plain", ref, ...props }: ButtonProps) => {
   return <Button slot="close" ref={ref} intent={intent} {...props} />
 }
 
-interface CloseButtonIndicatorProps extends Omit<ButtonProps, 'children'> {
+interface CloseButtonIndicatorProps extends Omit<ButtonProps, "children"> {
   className?: string
   isDismissable?: boolean | undefined
 }
@@ -124,7 +124,7 @@ const DialogCloseIcon = ({ className, ...props }: CloseButtonIndicatorProps) => 
     <PrimitiveButton
       slot="close"
       className={cx(
-        'close absolute end-1 top-1 z-50 grid size-8 place-content-center rounded-xl hover:bg-secondary focus:bg-secondary focus:outline-hidden focus-visible:ring-1 focus-visible:ring-primary sm:end-2 sm:top-2 sm:size-7 sm:rounded-md',
+        "close absolute end-1 top-1 z-50 grid size-8 place-content-center rounded-xl hover:bg-secondary focus:bg-secondary focus:outline-hidden focus-visible:ring-1 focus-visible:ring-primary sm:end-2 sm:top-2 sm:size-7 sm:rounded-md",
         className
       )}
     >

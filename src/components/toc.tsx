@@ -1,42 +1,42 @@
-'use client'
+"use client"
 
-import type { TableOfContents, TOCItemType } from 'fumadocs-core/toc'
-import { LayoutGroup, motion } from 'motion/react'
-import { Suspense, useEffect, useId, useMemo, useRef, useState } from 'react'
-import { tv } from 'tailwind-variants'
-import { cn } from 'cn'
+import type { TableOfContents, TOCItemType } from "fumadocs-core/toc"
+import { LayoutGroup, motion } from "motion/react"
+import { Suspense, useEffect, useId, useMemo, useRef, useState } from "react"
+import { tv } from "tailwind-variants"
+import { cn } from "cn"
 
 const tocStyles = tv({
   slots: {
-    root: 'not-typeset forced-color-adjust-none',
-    nav: 'scrollbar-none scroll-fade-y relative overflow-y-auto p-6',
+    root: "not-typeset forced-color-adjust-none",
+    nav: "scrollbar-none scroll-fade-y relative overflow-y-auto p-6",
   },
   variants: {
     context: {
       docs: {
-        root: 'w-72',
-        nav: 'h-[calc(100vh-22rem)]',
+        root: "w-72",
+        nav: "h-[calc(100vh-22rem)]",
       },
       blog: {
-        root: 'w-86 shrink-0',
-        nav: 'h-full w-86',
+        root: "w-86 shrink-0",
+        nav: "h-full w-86",
       },
     },
   },
   defaultVariants: {
-    context: 'docs',
+    context: "docs",
   },
 })
 
 interface TocProps {
   className?: string
-  context?: 'docs' | 'blog'
+  context?: "docs" | "blog"
   items: TableOfContents
 }
 
-export function Toc({ className, context = 'docs', items }: TocProps) {
+export function Toc({ className, context = "docs", items }: TocProps) {
   const navRef = useRef<HTMLElement>(null)
-  const ids = useMemo(() => items.map((item) => item.url.split('#')[1] as string), [items])
+  const ids = useMemo(() => items.map((item) => item.url.split("#")[1] as string), [items])
   const activeId = useActiveItem(ids)
   const activeIndex = activeId ? ids.indexOf(activeId) : -1
   const id = useId()
@@ -55,7 +55,7 @@ export function Toc({ className, context = 'docs', items }: TocProps) {
       nav.scrollTo({
         top:
           nav.scrollTop + anchorRect.top - navRect.top - (nav.clientHeight - anchorRect.height) / 2,
-        behavior: 'smooth',
+        behavior: "smooth",
       })
     }
   }, [activeId, activeIndex])
@@ -94,10 +94,10 @@ interface TocLinkProps {
 function TocLink({ item, activeId, minDepth }: TocLinkProps) {
   return (
     <li className="relative">
-      {item.url.split('#')[1] === activeId && (
+      {item.url.split("#")[1] === activeId && (
         <motion.span
           transition={{
-            type: 'spring',
+            type: "spring",
             stiffness: 450,
             damping: 35,
             mass: 0.8,
@@ -108,10 +108,10 @@ function TocLink({ item, activeId, minDepth }: TocLinkProps) {
       )}
       <a
         className={cn(
-          'block text-sm/6 tracking-tight no-underline outline-hidden duration-200 focus-visible:text-fg focus-visible:outline-hidden',
-          item.url.split('#')[1] === activeId
-            ? 'text-fg forced-colors:text-[Highlight]'
-            : 'text-muted-fg/90 forced-colors:text-[GrayText]'
+          "block text-sm/6 tracking-tight no-underline outline-hidden duration-200 focus-visible:text-fg focus-visible:outline-hidden",
+          item.url.split("#")[1] === activeId
+            ? "text-fg forced-colors:text-[Highlight]"
+            : "text-muted-fg/90 forced-colors:text-[GrayText]"
         )}
         style={{
           marginLeft: (item.depth - minDepth) * 16,
@@ -144,7 +144,7 @@ function useActiveItem(itemIds: string[]) {
           setActiveId(bestCandidate.target.id)
         }
       },
-      { rootMargin: '0% 0% -25% 0%', threshold: 0.1 }
+      { rootMargin: "0% 0% -25% 0%", threshold: 0.1 }
     )
 
     for (const id of itemIds) {
