@@ -1,4 +1,4 @@
-import { Keyboard } from '@/components/ui/keyboard'
+import { Keyboard } from "@/components/ui/keyboard"
 
 export default function KeyboardExample() {
   return (

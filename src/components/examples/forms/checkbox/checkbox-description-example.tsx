@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import { Checkbox, CheckboxField } from '@/components/ui/checkbox'
-import { Description } from '@/components/ui/field'
-import { Form } from 'react-aria-components/Form'
+import { Checkbox, CheckboxField } from "@/components/ui/checkbox"
+import { Description } from "@/components/ui/field"
+import { Form } from "react-aria-components/Form"
 
 export default function CheckboxDescriptionExample() {
   return (

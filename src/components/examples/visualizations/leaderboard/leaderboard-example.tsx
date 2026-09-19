@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import {
   Leaderboard,
@@ -6,27 +6,27 @@ import {
   LeaderboardEnd,
   LeaderboardItem,
   LeaderboardStart,
-} from '@/components/ui/leaderboard'
+} from "@/components/ui/leaderboard"
 
 const data = [
   {
-    name: 'Documentation',
+    name: "Documentation",
     value: 1200,
-    href: '/installation',
+    href: "/installation",
   },
-  { name: 'Components', value: 980, href: '/components' },
-  { name: 'Themes', value: 760, href: 'https://design.intentui.com/themes' },
-  { name: 'Colors', value: 430, href: '/colors' },
-  { name: 'Icons', value: 150, href: '/icons' },
+  { name: "Components", value: 980, href: "/components" },
+  { name: "Themes", value: 760, href: "https://design.intentui.com/themes" },
+  { name: "Colors", value: 430, href: "/colors" },
+  { name: "Icons", value: 150, href: "/icons" },
   {
-    name: 'Templates',
+    name: "Templates",
     value: 150,
-    href: 'https://irsyad.co',
+    href: "https://irsyad.co",
   },
   {
-    name: 'Plus',
+    name: "Plus",
     value: 150,
-    href: 'https://dub.sh/designiui',
+    href: "https://dub.sh/designiui",
   },
 ]
 

@@ -1,16 +1,16 @@
-import { describe, it, expect, vi } from 'vitest'
-import userEvent from '@testing-library/user-event'
-import { render, screen } from '../utils/render'
-import { ListBox } from '@/components/ui/list-box'
+import { describe, it, expect, vi } from "vitest"
+import userEvent from "@testing-library/user-event"
+import { render, screen } from "../utils/render"
+import { ListBox } from "@/components/ui/list-box"
 import {
   DropdownItem,
   DropdownLabel,
   DropdownDescription,
   DropdownSection,
-} from '@/components/ui/dropdown'
+} from "@/components/ui/dropdown"
 
-describe('Dropdown building blocks', () => {
-  it('preserves option labels/descriptions and section grouping', async () => {
+describe("Dropdown building blocks", () => {
+  it("preserves option labels/descriptions and section grouping", async () => {
     const onSelectionChange = vi.fn()
     render(
       <ListBox aria-label="Plans" selectionMode="single" onSelectionChange={onSelectionChange}>
@@ -22,10 +22,10 @@ describe('Dropdown building blocks', () => {
         </DropdownSection>
       </ListBox>
     )
-    const option = screen.getByRole('option', { name: /Pro/ })
-    expect(option).toHaveAccessibleDescription('For teams')
+    const option = screen.getByRole("option", { name: /Pro/ })
+    expect(option).toHaveAccessibleDescription("For teams")
     await userEvent.setup().click(option)
-    expect(option).toHaveAttribute('aria-selected', 'true')
-    expect(Array.from(onSelectionChange.mock.calls.at(-1)![0])).toEqual(['pro'])
+    expect(option).toHaveAttribute("aria-selected", "true")
+    expect(Array.from(onSelectionChange.mock.calls.at(-1)![0])).toEqual(["pro"])
   })
 })

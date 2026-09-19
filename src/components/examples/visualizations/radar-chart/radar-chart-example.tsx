@@ -1,15 +1,15 @@
-'use client'
+"use client"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { RadarChart } from '@/components/ui/radar-chart'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { RadarChart } from "@/components/ui/radar-chart"
 
 const data = [
-  { skill: 'Design', score: 92 },
-  { skill: 'Research', score: 78 },
-  { skill: 'Strategy', score: 86 },
-  { skill: 'Delivery', score: 72 },
-  { skill: 'Leadership', score: 81 },
-  { skill: 'Collaboration', score: 95 },
+  { skill: "Design", score: 92 },
+  { skill: "Research", score: 78 },
+  { skill: "Strategy", score: 86 },
+  { skill: "Delivery", score: 72 },
+  { skill: "Leadership", score: 81 },
+  { skill: "Collaboration", score: 95 },
 ]
 
 export default function RadarChartDemo() {
@@ -24,8 +24,8 @@ export default function RadarChartDemo() {
           containerHeight={300}
           data={data}
           dataKey="skill"
-          series={[{ dataKey: 'score', name: 'Score' }]}
-          config={{ score: { label: 'Score' } }}
+          series={[{ dataKey: "score", name: "Score" }]}
+          config={{ score: { label: "Score" } }}
           radiusAxisProps={{ domain: [0, 100] }}
         />
       </CardContent>

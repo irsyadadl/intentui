@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { Pressable } from 'react-aria-components'
+import { Pressable } from "react-aria-components"
 
 import {
   ContextMenu,
@@ -10,7 +10,7 @@ import {
   ContextMenuSeparator,
   ContextMenuShortcut,
   ContextMenuSub,
-} from '@/components/ui/context-menu'
+} from "@/components/ui/context-menu"
 
 export default function ContextMenuSubExample() {
   return (

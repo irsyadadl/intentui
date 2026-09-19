@@ -1,11 +1,11 @@
-'use client'
+"use client"
 
-import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
-import { useState } from 'react'
-import { BrandGithubIcon } from '@/components/icons/brand-github-icon'
-import { Button } from '@/components/ui/button'
-import { ButtonGroup } from '@/components/ui/button-group'
-import { Loader } from '@/components/ui/loader'
+import { CheckIcon, ChevronDownIcon } from "@heroicons/react/20/solid"
+import { useState } from "react"
+import { BrandGithubIcon } from "@/components/icons/brand-github-icon"
+import { Button } from "@/components/ui/button"
+import { ButtonGroup } from "@/components/ui/button-group"
+import { Loader } from "@/components/ui/loader"
 import {
   Menu,
   MenuContent,
@@ -13,15 +13,15 @@ import {
   MenuItem,
   MenuLabel,
   MenuSeparator,
-} from '@/components/ui/menu'
-import { app } from '@/config/app'
-import { useClipboard } from '@/hooks/use-clipboard'
-import { DuplicateIcon } from '@/components/icons/duplicate-icon'
-import { BrandGrokIcon } from '@/components/icons/brand-grok-icon'
-import { BrandChatgptIcon } from '@/components/icons/brand-chatgpt-icon'
-import { BrandPerflexityIcon } from '@/components/icons/brand-perflexity-icon'
-import { BrandClaudeIcon } from '@/components/icons/brand-claude-icon'
-import { IconMarkdown } from '@/components/icons/icon-markdown'
+} from "@/components/ui/menu"
+import { app } from "@/config/app"
+import { useClipboard } from "@/hooks/use-clipboard"
+import { DuplicateIcon } from "@/components/icons/duplicate-icon"
+import { BrandGrokIcon } from "@/components/icons/brand-grok-icon"
+import { BrandChatgptIcon } from "@/components/icons/brand-chatgpt-icon"
+import { BrandPerflexityIcon } from "@/components/icons/brand-perflexity-icon"
+import { BrandClaudeIcon } from "@/components/icons/brand-claude-icon"
+import { IconMarkdown } from "@/components/icons/icon-markdown"
 
 function getPromptUrl(baseURL: string, url: string) {
   return `${baseURL}?q=${encodeURIComponent(
@@ -49,7 +49,7 @@ export function OpenIn({ url, page }: { url: string; page: string }) {
     setPending(true)
 
     try {
-      const res = await fetch(llmUrl, { method: 'GET' })
+      const res = await fetch(llmUrl, { method: "GET" })
       const text = res.ok ? await res.text() : page
       await copy(text)
     } finally {
@@ -85,7 +85,7 @@ export function OpenIn({ url, page }: { url: string; page: string }) {
           </MenuItem>
           <MenuSeparator />
           <MenuItem
-            href={getPromptUrl('https://grok.com', fullUrl)}
+            href={getPromptUrl("https://grok.com", fullUrl)}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -94,7 +94,7 @@ export function OpenIn({ url, page }: { url: string; page: string }) {
             <MenuDescription>Ask Grok about this page.</MenuDescription>
           </MenuItem>
           <MenuItem
-            href={getPromptUrl('https://chatgpt.com', fullUrl)}
+            href={getPromptUrl("https://chatgpt.com", fullUrl)}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -108,7 +108,7 @@ export function OpenIn({ url, page }: { url: string; page: string }) {
             <MenuDescription>Explore this page with Perplexity.</MenuDescription>
           </MenuItem>
           <MenuItem
-            href={getPromptUrl('https://claude.ai/new', fullUrl)}
+            href={getPromptUrl("https://claude.ai/new", fullUrl)}
             target="_blank"
             rel="noopener noreferrer"
           >

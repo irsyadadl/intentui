@@ -1,11 +1,11 @@
-'use client'
+"use client"
 
-import { Collection } from 'react-aria-components/Collection'
-import { MenuLoadMoreItem } from 'react-aria-components/Menu'
-import { useAsyncList } from 'react-stately/useAsyncList'
-import { Button } from '@/components/ui/button'
-import { Menu, MenuContent, MenuItem } from '@/components/ui/menu'
-import { ProgressCircle } from '@/components/ui/progress-circle'
+import { Collection } from "react-aria-components/Collection"
+import { MenuLoadMoreItem } from "react-aria-components/Menu"
+import { useAsyncList } from "react-stately/useAsyncList"
+import { Button } from "@/components/ui/button"
+import { Menu, MenuContent, MenuItem } from "@/components/ui/menu"
+import { ProgressCircle } from "@/components/ui/progress-circle"
 
 interface Character {
   name: string
@@ -17,10 +17,10 @@ export default function MenuInfiniteScrollDemo() {
   const list = useAsyncList<Character>({
     async load({ signal, cursor }) {
       if (cursor) {
-        cursor = cursor.replace(/^http:\/\//i, 'https://')
+        cursor = cursor.replace(/^http:\/\//i, "https://")
       }
 
-      const res = await fetch(cursor || 'https://swapi.py4e.com/api/people', { signal })
+      const res = await fetch(cursor || "https://swapi.py4e.com/api/people", { signal })
       const json = await res.json()
 
       return {
@@ -49,7 +49,7 @@ export default function MenuInfiniteScrollDemo() {
         <MenuLoadMoreItem
           className="col-span-full py-3"
           onLoadMore={list.loadMore}
-          isLoading={list.loadingState === 'loadingMore'}
+          isLoading={list.loadingState === "loadingMore"}
         >
           <ProgressCircle className="mx-auto" isIndeterminate aria-label="Loading more..." />
         </MenuLoadMoreItem>

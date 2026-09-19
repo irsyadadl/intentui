@@ -1,6 +1,6 @@
-import '@testing-library/jest-dom/vitest'
-import { act, cleanup } from '@testing-library/react'
-import { afterEach, vi } from 'vitest'
+import "@testing-library/jest-dom/vitest"
+import { act, cleanup } from "@testing-library/react"
+import { afterEach, vi } from "vitest"
 
 // JSDOM has no layout/resize engine. Keep these shims limited to missing APIs;
 // React Aria components, state, focus handling and events are never mocked.
@@ -9,8 +9,8 @@ class ResizeObserverMock {
   unobserve() {}
   disconnect() {}
 }
-vi.stubGlobal('ResizeObserver', ResizeObserverMock)
-Object.defineProperty(window, 'matchMedia', {
+vi.stubGlobal("ResizeObserver", ResizeObserverMock)
+Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: (query: string): MediaQueryList => ({
     matches: false,

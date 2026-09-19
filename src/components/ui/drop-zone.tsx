@@ -1,16 +1,16 @@
-'use client'
+"use client"
 
-import { composeRenderProps } from 'react-aria-components/composeRenderProps'
-import { DropZone as DropPrimitiveZone, type DropZoneProps } from 'react-aria-components/DropZone'
-import { cn } from 'cn'
+import { composeRenderProps } from "react-aria-components/composeRenderProps"
+import { DropZone as DropPrimitiveZone, type DropZoneProps } from "react-aria-components/DropZone"
+import { cn } from "cn"
 
 export function DropZone({ className, ...props }: DropZoneProps) {
   return (
     <DropPrimitiveZone
       className={composeRenderProps(className, (className, { isDropTarget }) =>
         cn(
-          'group/drop-zone relative z-10 flex max-h-56 items-center justify-center overflow-hidden rounded-lg border border-dashed p-6',
-          isDropTarget && 'border-primary border-solid bg-primary/10 ring-3 ring-ring/20',
+          "group/drop-zone relative z-10 flex max-h-56 items-center justify-center overflow-hidden rounded-lg border border-dashed p-6",
+          isDropTarget && "border-primary border-solid bg-primary/10 ring-3 ring-ring/20",
           className
         )
       )}

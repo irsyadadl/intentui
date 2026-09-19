@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { useMemo } from 'react'
-import { AreaChart } from '@/components/ui/area-chart'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { useIsMobile } from '@/hooks/use-mobile'
+import { useMemo } from "react"
+import { AreaChart } from "@/components/ui/area-chart"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export default function AreaChartMonotoneDemo() {
   const isMobile = useIsMobile()
@@ -29,13 +29,13 @@ export default function AreaChartMonotoneDemo() {
           data={data}
           dataKey="day"
           areaProps={{
-            type: 'natural',
+            type: "natural",
           }}
           fillType="solid"
           xAxisProps={{ interval: 0 }}
           config={{
-            visits: { label: 'Visits' },
-            signups: { label: 'Sign-ups' },
+            visits: { label: "Visits" },
+            signups: { label: "Sign-ups" },
           }}
         />
       </CardContent>

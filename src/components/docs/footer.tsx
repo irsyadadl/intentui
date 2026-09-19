@@ -1,10 +1,10 @@
-'use client'
-import { starterKits } from '@/app/(home)/partials/starter-kit'
-import { BrandIntentuiIcon } from '@/components/icons/brand-intentui-icon'
-import { Link } from '@/components/ui/link'
-import { Text } from '@/components/ui/text'
-import { app } from '@/config/app'
-import { footerNavigation } from '@/components/footer'
+"use client"
+import { starterKits } from "@/app/(home)/partials/starter-kit"
+import { BrandIntentuiIcon } from "@/components/icons/brand-intentui-icon"
+import { Link } from "@/components/ui/link"
+import { Text } from "@/components/ui/text"
+import { app } from "@/config/app"
+import { footerNavigation } from "@/components/footer"
 
 export function Footer() {
   return (

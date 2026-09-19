@@ -1,17 +1,17 @@
-'use client'
+"use client"
 
-import { useMemo } from 'react'
-import { Cell, Pie } from 'recharts'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { PieChart } from '@/components/ui/pie-chart'
+import { useMemo } from "react"
+import { Cell, Pie } from "recharts"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { PieChart } from "@/components/ui/pie-chart"
 
 export default function PieChartDonutCustomLabelDemo() {
   const data = useMemo(
     () => [
-      { name: 'Rent', amount: 1200 },
-      { name: 'Groceries', amount: 450 },
-      { name: 'Utilities', amount: 200 },
-      { name: 'Entertainment', amount: 150 },
+      { name: "Rent", amount: 1200 },
+      { name: "Groceries", amount: 450 },
+      { name: "Utilities", amount: 200 },
+      { name: "Entertainment", amount: 150 },
     ],
     []
   )
@@ -32,10 +32,10 @@ export default function PieChartDonutCustomLabelDemo() {
           nameKey="name"
           variant="donut"
           config={{
-            Rent: { label: 'Rent' },
-            Groceries: { label: 'Groceries' },
-            Utilities: { label: 'Utilities' },
-            Entertainment: { label: 'Entertainment' },
+            Rent: { label: "Rent" },
+            Groceries: { label: "Groceries" },
+            Utilities: { label: "Utilities" },
+            Entertainment: { label: "Entertainment" },
           }}
         >
           <Pie

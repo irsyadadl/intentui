@@ -1,10 +1,10 @@
-'use client'
+"use client"
 
-import { MinusIcon } from '@heroicons/react/20/solid'
-import { OTPInput, OTPInputContext } from 'input-otp'
-import { use } from 'react'
-import { cn } from 'cn'
-import { fieldStyles, Label } from '@/components/ui/field'
+import { MinusIcon } from "@heroicons/react/20/solid"
+import { OTPInput, OTPInputContext } from "input-otp"
+import { use } from "react"
+import { cn } from "cn"
+import { fieldStyles, Label } from "@/components/ui/field"
 
 export function InputOTP({
   containerClassName,
@@ -15,7 +15,7 @@ export function InputOTP({
       <OTPInput
         data-slot="input-otp"
         containerClassName={cn(
-          fieldStyles({ className: 'has-[:disabled]:opacity-50' }),
+          fieldStyles({ className: "has-[:disabled]:opacity-50" }),
           containerClassName
         )}
         {...props}
@@ -24,19 +24,19 @@ export function InputOTP({
   )
 }
 
-export function InputOTPControl({ className, ...props }: React.ComponentProps<'span'>) {
+export function InputOTPControl({ className, ...props }: React.ComponentProps<"span">) {
   return (
     <span
       data-slot="control"
-      className={cn('flex items-center gap-2 has-disabled:opacity-50', className)}
+      className={cn("flex items-center gap-2 has-disabled:opacity-50", className)}
       {...props}
     />
   )
 }
 
-export function InputOTPGroup({ className, ...props }: React.ComponentProps<'div'>) {
+export function InputOTPGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div data-slot="input-otp-group" className={cn('flex items-center', className)} {...props} />
+    <div data-slot="input-otp-group" className={cn("flex items-center", className)} {...props} />
   )
 }
 
@@ -44,7 +44,7 @@ export function InputOTPSlot({
   index,
   className,
   ...props
-}: React.ComponentProps<'div'> & {
+}: React.ComponentProps<"div"> & {
   index: number
 }) {
   const inputOTPContext = use(OTPInputContext)
@@ -55,7 +55,7 @@ export function InputOTPSlot({
       data-slot="input-otp-slot"
       data-active={isActive}
       className={cn(
-        'relative flex size-9 items-center justify-center border-input border-y border-r shadow-xs outline-none transition-all [--input-otp-radius:calc(var(--radius-lg)-1px)] first:rounded-s-(--input-otp-radius) first:border-l last:rounded-e-(--input-otp-radius) aria-invalid:border-danger data-[active=true]:z-10 data-[active=true]:border-ring data-[active=true]:bg-primary-subtle/10 data-[active=true]:ring-3 data-[active=true]:ring-ring/20 data-[active=true]:aria-invalid:border-danger-subtle-fg/70 data-[active=true]:aria-invalid:ring-danger-subtle-fg/20 sm:text-sm/6 dark:data-[active=true]:aria-invalid:ring-danger-subtle-fg/70',
+        "relative flex size-9 items-center justify-center border-input border-y border-r shadow-xs outline-none transition-all [--input-otp-radius:calc(var(--radius-lg)-1px)] first:rounded-s-(--input-otp-radius) first:border-l last:rounded-e-(--input-otp-radius) aria-invalid:border-danger data-[active=true]:z-10 data-[active=true]:border-ring data-[active=true]:bg-primary-subtle/10 data-[active=true]:ring-3 data-[active=true]:ring-ring/20 data-[active=true]:aria-invalid:border-danger-subtle-fg/70 data-[active=true]:aria-invalid:ring-danger-subtle-fg/20 sm:text-sm/6 dark:data-[active=true]:aria-invalid:ring-danger-subtle-fg/70",
         className
       )}
       {...props}
@@ -70,7 +70,7 @@ export function InputOTPSlot({
   )
 }
 
-export function InputOTPSeparator({ ...props }: React.ComponentProps<'div'>) {
+export function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
   return (
     <div data-slot="input-otp-separator" {...props}>
       <MinusIcon className="size-4" />

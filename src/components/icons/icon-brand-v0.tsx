@@ -1,9 +1,9 @@
-import { cn } from 'cn'
+import { cn } from "cn"
 
 export function IconBrandV0({ className, ...props }: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
-      className={cn('size-4', className)}
+      className={cn("size-4", className)}
       {...props}
       data-slot="icon"
       height={16}

@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
-import { type ComponentProps, type ReactNode, useMemo } from 'react'
-import { PolarAngleAxis, RadialBar, RadialBarChart as RadialBarChartPrimitive } from 'recharts'
+import { type ComponentProps, type ReactNode, useMemo } from "react"
+import { PolarAngleAxis, RadialBar, RadialBarChart as RadialBarChartPrimitive } from "recharts"
 import {
   type BaseChartProps,
   Chart,
@@ -13,15 +13,15 @@ import {
   constructCategoryColors,
   DEFAULT_COLORS,
   getColorValue,
-} from './chart'
+} from "./chart"
 
 export interface RadialBarChartSeries {
   dataKey: string
   name?: string
-  radialBarProps?: Omit<ComponentProps<typeof RadialBar>, 'dataKey' | 'name'>
+  radialBarProps?: Omit<ComponentProps<typeof RadialBar>, "dataKey" | "name">
 }
 
-export interface RadialBarChartProps extends Omit<ComponentProps<'div'>, 'children'> {
+export interface RadialBarChartProps extends Omit<ComponentProps<"div">, "children"> {
   config: ChartConfig
   data: Record<string, any>[]
   dataKey: string
@@ -29,12 +29,12 @@ export interface RadialBarChartProps extends Omit<ComponentProps<'div'>, 'childr
   series: RadialBarChartSeries[]
   colors?: readonly string[]
   containerHeight?: number
-  legend?: BaseChartProps['legend']
-  legendProps?: BaseChartProps['legendProps']
-  tooltip?: boolean | ComponentProps<typeof ChartTooltip>['content']
-  tooltipProps?: Omit<ComponentProps<typeof ChartTooltip>, 'content'>
+  legend?: BaseChartProps["legend"]
+  legendProps?: BaseChartProps["legendProps"]
+  tooltip?: boolean | ComponentProps<typeof ChartTooltip>["content"]
+  tooltipProps?: Omit<ComponentProps<typeof ChartTooltip>, "content">
   angleAxisProps?: ComponentProps<typeof PolarAngleAxis>
-  chartProps?: Omit<ComponentProps<typeof RadialBarChartPrimitive>, 'data'>
+  chartProps?: Omit<ComponentProps<typeof RadialBarChartPrimitive>, "data">
   children?: ReactNode
 }
 
@@ -60,18 +60,18 @@ export function RadialBarChart({
     () => constructCategoryColors(seriesKeys, colors),
     [seriesKeys, colors]
   )
-  const usesDataColors = series.length === 1 && typeof series[0]?.radialBarProps?.fill !== 'string'
+  const usesDataColors = series.length === 1 && typeof series[0]?.radialBarProps?.fill !== "string"
   const chartData = useMemo(() => {
     if (!usesDataColors) {
       return data
     }
 
     return data.map((item, index) => {
-      if (typeof item.fill === 'string') {
+      if (typeof item.fill === "string") {
         return item
       }
 
-      const category = nameKey && typeof item[nameKey] === 'string' ? item[nameKey] : undefined
+      const category = nameKey && typeof item[nameKey] === "string" ? item[nameKey] : undefined
 
       return {
         ...item,
@@ -83,7 +83,7 @@ export function RadialBarChart({
   }, [colors, config, data, nameKey, usesDataColors])
   const legendPayload = series.map((item, index) => ({
     color:
-      typeof item.radialBarProps?.fill === 'string'
+      typeof item.radialBarProps?.fill === "string"
         ? item.radialBarProps.fill
         : getColorValue(
             config[item.dataKey]?.color ??
@@ -91,7 +91,7 @@ export function RadialBarChart({
               colors[index % colors.length]
           ),
     dataKey: item.dataKey,
-    type: 'circle' as const,
+    type: "circle" as const,
     value: item.name ?? item.dataKey,
   }))
 
@@ -114,7 +114,7 @@ export function RadialBarChart({
             <ChartTooltip
               cursor={false}
               content={
-                typeof tooltip === 'boolean' ? (
+                typeof tooltip === "boolean" ? (
                   <ChartTooltipContent hideLabel accessibilityLayer />
                 ) : (
                   tooltip
@@ -126,7 +126,7 @@ export function RadialBarChart({
           {legend ? (
             <ChartLegend
               content={
-                typeof legend === 'boolean'
+                typeof legend === "boolean"
                   ? (contentProps) => (
                       <ChartLegendContent
                         align={contentProps.align}

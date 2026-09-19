@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { useMemo } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { LineChart } from '@/components/ui/line-chart'
-import { useIsMobile } from '@/hooks/use-mobile'
+import { useMemo } from "react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { LineChart } from "@/components/ui/line-chart"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export default function LineChartDemo() {
   const isMobile = useIsMobile()
@@ -33,9 +33,9 @@ export default function LineChartDemo() {
           dataKey="day"
           xAxisProps={{ interval: 0 }}
           config={{
-            likes: { label: 'Likes' },
-            comments: { label: 'Comments' },
-            shares: { label: 'Shares' },
+            likes: { label: "Likes" },
+            comments: { label: "Comments" },
+            shares: { label: "Shares" },
           }}
         />
       </CardContent>

@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
-import { ListLayout, Virtualizer } from 'react-aria-components/Virtualizer'
-import { ListBox, ListBoxItem } from '@/components/ui/list-box'
+import { ListLayout, Virtualizer } from "react-aria-components/Virtualizer"
+import { ListBox, ListBoxItem } from "@/components/ui/list-box"
 
 const items = Array.from({ length: 5000 }, (_, index) => ({
   id: index + 1,

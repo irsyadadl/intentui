@@ -1,25 +1,25 @@
-'use client'
+"use client"
 
-import { CheckIcon } from '@heroicons/react/20/solid'
-import { composeRenderProps } from 'react-aria-components/composeRenderProps'
+import { CheckIcon } from "@heroicons/react/20/solid"
+import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import type {
   ListBoxItemProps,
   ListBoxProps,
   ListBoxSectionProps,
-} from 'react-aria-components/ListBox'
+} from "react-aria-components/ListBox"
 import {
   ListBox as ListBoxPrimitive,
   ListBoxItem as ListBoxItemPrimitive,
-} from 'react-aria-components/ListBox'
-import { twJoin, cn } from 'cn'
-import { cx } from '@/lib/primitive'
+} from "react-aria-components/ListBox"
+import { twJoin, cn } from "cn"
+import { cx } from "@/lib/primitive"
 import {
   DropdownDescription,
   dropdownItemStyles,
   DropdownLabel,
   DropdownSection,
   type DropdownSectionProps,
-} from './dropdown'
+} from "./dropdown"
 
 const ListBox = <T extends object>({ className, ...props }: ListBoxProps<T>) => (
   <ListBoxPrimitive
@@ -33,7 +33,7 @@ const ListBox = <T extends object>({ className, ...props }: ListBoxProps<T>) => 
 )
 
 const ListBoxItem = <T extends object>({ children, className, ...props }: ListBoxItemProps<T>) => {
-  const textValue = typeof children === 'string' ? children : undefined
+  const textValue = typeof children === "string" ? children : undefined
   return (
     <ListBoxItemPrimitive
       textValue={textValue}
@@ -41,10 +41,10 @@ const ListBoxItem = <T extends object>({ children, className, ...props }: ListBo
         dropdownItemStyles({
           ...renderProps,
           className: twJoin(
-            'group not-has-[[slot=description]]:items-start',
-            'has-data-[slot=drag-icon]:*:[[slot=label]]:col-start-3',
-            'has-data-[slot=drag-icon]:*:[svg]:col-start-2',
-            'href' in props ? 'cursor-pointer' : 'cursor-default',
+            "group not-has-[[slot=description]]:items-start",
+            "has-data-[slot=drag-icon]:*:[[slot=label]]:col-start-3",
+            "has-data-[slot=drag-icon]:*:[svg]:col-start-2",
+            "href" in props ? "cursor-pointer" : "cursor-default",
             className
           ),
         })
@@ -97,9 +97,9 @@ const ListBoxItem = <T extends object>({ children, className, ...props }: ListBo
                 data-slot="check-indicator"
               />
             )}
-            {typeof children === 'function' ? (
+            {typeof children === "function" ? (
               children(renderProps)
-            ) : typeof children === 'string' ? (
+            ) : typeof children === "string" ? (
               <DropdownLabel>{children}</DropdownLabel>
             ) : (
               children
@@ -114,7 +114,7 @@ const ListBoxItem = <T extends object>({ children, className, ...props }: ListBo
 const ListBoxSection = <T extends object>({ className, ...props }: DropdownSectionProps<T>) => {
   return (
     <DropdownSection
-      className={cn('gap-y-1 *:data-[slot=list-box-item]:last:-mb-1.5', className)}
+      className={cn("gap-y-1 *:data-[slot=list-box-item]:last:-mb-1.5", className)}
       {...props}
     />
   )

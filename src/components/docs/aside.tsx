@@ -1,19 +1,19 @@
-'use client'
+"use client"
 
-import { ArrowUpRightIcon } from '@heroicons/react/20/solid'
-import { usePathname } from 'next/navigation'
-import { useEffect, useRef } from 'react'
-import type { LinkProps } from 'react-aria-components/Link'
-import { Link } from 'react-aria-components/Link'
-import { cn } from 'cn'
-import { ColorsIcon } from '@/components/icons/colors-icon'
-import { Package3DIcon } from '@/components/icons/package-3d-icon'
-import { PackageIcon } from '@/components/icons/package-icon'
-import { WindowIcon } from '@/components/icons/window-icon'
-import { WindowVisitIcon } from '@/components/icons/window-visit-icon'
-import { Badge } from '@/components/ui/badge'
-import menus from '@/components-search.json'
-import type { Component } from '@/types/search'
+import { ArrowUpRightIcon } from "@heroicons/react/20/solid"
+import { usePathname } from "next/navigation"
+import { useEffect, useRef } from "react"
+import type { LinkProps } from "react-aria-components/Link"
+import { Link } from "react-aria-components/Link"
+import { cn } from "cn"
+import { ColorsIcon } from "@/components/icons/colors-icon"
+import { Package3DIcon } from "@/components/icons/package-3d-icon"
+import { PackageIcon } from "@/components/icons/package-icon"
+import { WindowIcon } from "@/components/icons/window-icon"
+import { WindowVisitIcon } from "@/components/icons/window-visit-icon"
+import { Badge } from "@/components/ui/badge"
+import menus from "@/components-search.json"
+import type { Component } from "@/types/search"
 
 export type SidebarItem = {
   section: string
@@ -25,7 +25,7 @@ export const gs = menus[1] as SidebarItem
 export const dm = menus[2] as SidebarItem
 export const components = menus[3] as Component
 
-export const orderGs = ['Introduction', 'Installation', 'Client Side Routing', 'MCP']
+export const orderGs = ["Introduction", "Installation", "Client Side Routing", "MCP"]
 export const sortedGsChildren =
   gs?.children
     ?.filter((item) => orderGs.includes(item.title))
@@ -128,11 +128,11 @@ export function Aside() {
                         className="-mr-2 ml-auto"
                         isCircle={false}
                         intent={
-                          item.status === 'new'
-                            ? 'success'
-                            : item.status === 'beta' || item.status === 'alpha'
-                              ? 'warning'
-                              : 'primary'
+                          item.status === "new"
+                            ? "success"
+                            : item.status === "beta" || item.status === "alpha"
+                              ? "warning"
+                              : "primary"
                         }
                       >
                         {item.status}
@@ -160,7 +160,7 @@ function AsideLink({ href, ...props }: AsideLinkProps) {
   const ref = useRef<HTMLAnchorElement>(null)
   useEffect(() => {
     if (isActive && ref.current) {
-      const scrollContainer = ref.current.closest<HTMLElement>('[data-docs-sidebar-scroll]')
+      const scrollContainer = ref.current.closest<HTMLElement>("[data-docs-sidebar-scroll]")
       if (!scrollContainer) return
 
       const linkRect = ref.current.getBoundingClientRect()
@@ -178,7 +178,7 @@ function AsideLink({ href, ...props }: AsideLinkProps) {
           scrollContainer.scrollTop +
           (linkRect.top + linkRect.bottom) / 2 -
           (visibleTop + visibleBottom) / 2,
-        behavior: 'instant',
+        behavior: "instant",
       })
     }
   }, [isActive])
@@ -196,20 +196,20 @@ function AsideLink({ href, ...props }: AsideLinkProps) {
         href={href}
         ref={ref}
         className={cn(
-          'group relative mb-0.5 flex items-center gap-x-2 rounded-lg px-2 py-1 text-base text-fg/70 sm:text-sm/6',
-          'hover:text-fg focus:text-fg focus:outline-hidden',
-          '*:[svg]:size-4.5 *:[svg]:text-muted-fg hover:*:[svg]:text-fg',
-          isActive && 'font-medium text-fg'
+          "group relative mb-0.5 flex items-center gap-x-2 rounded-lg px-2 py-1 text-base text-fg/70 sm:text-sm/6",
+          "hover:text-fg focus:text-fg focus:outline-hidden",
+          "*:[svg]:size-4.5 *:[svg]:text-muted-fg hover:*:[svg]:text-fg",
+          isActive && "font-medium text-fg"
         )}
       >
         <>
           {props.children}
 
-          {props.target === '_blank' && (
+          {props.target === "_blank" && (
             <ArrowUpRightIcon
               style={{
-                width: '16px',
-                height: '16px',
+                width: "16px",
+                height: "16px",
               }}
               className="-mr-1 ml-auto hidden text-muted-fg group-hover:block"
             />
@@ -220,11 +220,11 @@ function AsideLink({ href, ...props }: AsideLinkProps) {
   )
 }
 
-function AsideHeader({ className, ...props }: React.ComponentProps<'div'>) {
+function AsideHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        'relative mb-2 block px-6 font-mono text-[11px] text-muted-fg uppercase',
+        "relative mb-2 block px-6 font-mono text-[11px] text-muted-fg uppercase",
         className
       )}
       {...props}

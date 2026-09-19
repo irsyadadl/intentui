@@ -1,11 +1,11 @@
-'use client'
+"use client"
 
-import { Time } from '@internationalized/date'
-import { useState } from 'react'
-import { DateInput } from '@/components/ui/date-field'
-import { Label } from '@/components/ui/field'
-import { Switch, SwitchField } from '@/components/ui/switch'
-import { TimeField } from '@/components/ui/time-field'
+import { Time } from "@internationalized/date"
+import { useState } from "react"
+import { DateInput } from "@/components/ui/date-field"
+import { Label } from "@/components/ui/field"
+import { Switch, SwitchField } from "@/components/ui/switch"
+import { TimeField } from "@/components/ui/time-field"
 
 export default function TimeFieldHcDemo() {
   const [hc, setHc] = useState<12 | 24>(24)

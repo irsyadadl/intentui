@@ -1,7 +1,7 @@
-'use client'
-import showcases from './showcases.json'
-import Image from 'next/image'
-import { useRef } from 'react'
+"use client"
+import showcases from "./showcases.json"
+import Image from "next/image"
+import { useRef } from "react"
 
 function getFillers(total: number, columns: number) {
   return (columns - (total % columns)) % columns
@@ -38,7 +38,7 @@ interface ShowcaseCardProps {
 
 export function ShowcaseCard({
   url,
-  target = '_blank',
+  target = "_blank",
   name,
   slug,
   description,

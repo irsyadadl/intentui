@@ -1,4 +1,4 @@
-import { Badge } from '@/components/ui/badge'
+import { Badge } from "@/components/ui/badge"
 
 export function ApiParameters({ children }: { children: React.ReactNode }) {
   return (
@@ -37,8 +37,8 @@ export function ApiParameter({ name, type, required, defaultValue, children }: A
         <code className="bg-transparent p-0 font-medium">{name}</code>
         <code className="bg-transparent p-0 text-primary-subtle-fg">{type}</code>
         {required !== undefined ? (
-          <Badge intent={required ? 'danger' : 'secondary'}>
-            {required ? 'required' : 'optional'}
+          <Badge intent={required ? "danger" : "secondary"}>
+            {required ? "required" : "optional"}
           </Badge>
         ) : null}
       </div>

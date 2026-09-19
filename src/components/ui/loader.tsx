@@ -1,11 +1,11 @@
-'use client'
+"use client"
 
-import { ProgressBar } from 'react-aria-components/ProgressBar'
-import { cn } from 'cn'
+import { ProgressBar } from "react-aria-components/ProgressBar"
+import { cn } from "cn"
 
 const Ring = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => (
   <svg
-    className={cn('size-4', className)}
+    className={cn("size-4", className)}
     {...props}
     xmlns="http://www.w3.org/2000/svg"
     width={16}
@@ -28,7 +28,7 @@ const Ring = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => (
 )
 
 const Spin = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => (
-  <svg className={cn('size-4', className)} viewBox="0 0 2400 2400" {...props}>
+  <svg className={cn("size-4", className)} viewBox="0 0 2400 2400" {...props}>
     <g strokeWidth="200" strokeLinecap="round" fill="none">
       <line x1="1200" y1="600" x2="1200" y2="100" />
       <line opacity="0.5" x1="1200" y1="2300" x2="1200" y2="1800" />
@@ -62,18 +62,18 @@ const LOADERS = {
   spin: Spin,
 }
 
-const DEFAULT_SPINNER = 'spin'
+const DEFAULT_SPINNER = "spin"
 
 export interface LoaderProps extends Omit<
-  React.ComponentPropsWithoutRef<'svg'>,
-  'display' | 'opacity' | 'intent'
+  React.ComponentPropsWithoutRef<"svg">,
+  "display" | "opacity" | "intent"
 > {
   variant?: keyof typeof LOADERS
   percentage?: number
   isIndeterminate?: boolean
   formatOptions?: Intl.NumberFormatOptions
   ref?: React.RefObject<SVGSVGElement>
-  'data-slot'?: string
+  "data-slot"?: string
 }
 
 export function Loader({ isIndeterminate = true, ref, ...props }: LoaderProps) {
@@ -82,17 +82,17 @@ export function Loader({ isIndeterminate = true, ref, ...props }: LoaderProps) {
 
   return (
     <ProgressBar
-      data-slot={props['data-slot'] ?? 'loader'}
-      aria-label={props['aria-label'] ?? 'Pending...'}
+      data-slot={props["data-slot"] ?? "loader"}
+      aria-label={props["aria-label"] ?? "Pending..."}
       formatOptions={props.formatOptions}
       isIndeterminate={isIndeterminate}
     >
       <LoaderPrimitive
         role="presentation"
         className={cn(
-          'size-4',
-          ['ring'].includes(variant) && 'animate-spin',
-          variant === 'spin' && 'stroke-current',
+          "size-4",
+          ["ring"].includes(variant) && "animate-spin",
+          variant === "spin" && "stroke-current",
           className
         )}
         ref={ref}

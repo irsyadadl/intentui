@@ -1,7 +1,7 @@
-import { cn } from 'cn'
+import { cn } from "cn"
 
-interface HeadingProps extends React.ComponentPropsWithoutRef<'h2'> {
-  as: 'h2' | 'h3' | 'h4'
+interface HeadingProps extends React.ComponentPropsWithoutRef<"h2"> {
+  as: "h2" | "h3" | "h4"
 }
 
 export function Heading({ as: Component, className, id, ...props }: HeadingProps) {

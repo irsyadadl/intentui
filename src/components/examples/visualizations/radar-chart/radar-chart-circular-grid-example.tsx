@@ -1,14 +1,14 @@
-'use client'
+"use client"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { RadarChart } from '@/components/ui/radar-chart'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { RadarChart } from "@/components/ui/radar-chart"
 
 const data = [
-  { category: 'Performance', score: 87 },
-  { category: 'Accessibility', score: 94 },
-  { category: 'SEO', score: 79 },
-  { category: 'Best practices', score: 91 },
-  { category: 'Security', score: 84 },
+  { category: "Performance", score: 87 },
+  { category: "Accessibility", score: 94 },
+  { category: "SEO", score: 79 },
+  { category: "Best practices", score: 91 },
+  { category: "Security", score: 84 },
 ]
 
 export default function RadarChartCircularGridDemo() {
@@ -23,9 +23,9 @@ export default function RadarChartCircularGridDemo() {
           containerHeight={300}
           data={data}
           dataKey="category"
-          series={[{ dataKey: 'score', name: 'Audit score' }]}
-          config={{ score: { label: 'Audit score' } }}
-          polarGridProps={{ gridType: 'circle' }}
+          series={[{ dataKey: "score", name: "Audit score" }]}
+          config={{ score: { label: "Audit score" } }}
+          polarGridProps={{ gridType: "circle" }}
           radiusAxisProps={{ domain: [0, 100], tick: true, tickCount: 6 }}
         />
       </CardContent>

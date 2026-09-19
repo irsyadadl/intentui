@@ -1,25 +1,25 @@
 @property --scroll-fade-t {
-  syntax: '<length-percentage>';
+  syntax: "<length-percentage>";
   inherits: false;
   initial-value: 0px;
 }
 @property --scroll-fade-b {
-  syntax: '<length-percentage>';
+  syntax: "<length-percentage>";
   inherits: false;
   initial-value: 0px;
 }
 @property --scroll-fade-s {
-  syntax: '<length-percentage>';
+  syntax: "<length-percentage>";
   inherits: false;
   initial-value: 0px;
 }
 @property --scroll-fade-e {
-  syntax: '<length-percentage>';
+  syntax: "<length-percentage>";
   inherits: false;
   initial-value: 0px;
 }
 @property --scroll-fade-mask {
-  syntax: '*';
+  syntax: "*";
   inherits: false;
 }
 
@@ -166,7 +166,7 @@
     #000 calc(100% - var(--scroll-fade-e, 0px)),
     transparent 100%
   );
-  &:where([dir='rtl'], [dir='rtl'] *) {
+  &:where([dir="rtl"], [dir="rtl"] *) {
     --scroll-fade-inline: linear-gradient(
       to left,
       transparent 0,
@@ -330,7 +330,7 @@
     #000 var(--scroll-fade-s, 0px),
     #000 100%
   );
-  &:where([dir='rtl'], [dir='rtl'] *) {
+  &:where([dir="rtl"], [dir="rtl"] *) {
     --scroll-fade-mask: linear-gradient(
       to left,
       transparent 0,
@@ -368,7 +368,7 @@
     #000 calc(100% - var(--scroll-fade-e, 0px)),
     transparent 100%
   );
-  &:where([dir='rtl'], [dir='rtl'] *) {
+  &:where([dir="rtl"], [dir="rtl"] *) {
     --scroll-fade-mask: linear-gradient(
       to left,
       #000 0,
