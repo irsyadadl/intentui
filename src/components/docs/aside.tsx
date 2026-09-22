@@ -14,6 +14,7 @@ import { WindowVisitIcon } from "@/components/icons/window-visit-icon"
 import { Badge } from "@/components/ui/badge"
 import menus from "@/components-search.json"
 import type { Component } from "@/types/search"
+import { componentOrder } from "./aside-order"
 
 export type SidebarItem = {
   section: string
@@ -24,6 +25,17 @@ export const prologue = menus[0] as SidebarItem
 export const gs = menus[1] as SidebarItem
 export const dm = menus[2] as SidebarItem
 export const components = menus[3] as Component
+
+const sortedComponents = components.children.map((section) => {
+  const order = componentOrder[section.subsection] ?? []
+  const positions = new Map(order.map((slug, index) => [slug, index]))
+  const rank = (slug: string) => positions.get(slug.split("/").pop() ?? "") ?? order.length
+
+  return {
+    ...section,
+    children: [...section.children].sort((a, b) => rank(a.slug) - rank(b.slug)),
+  }
+})
 
 export const orderGs = ["Introduction", "Installation", "Client Side Routing", "MCP"]
 export const sortedGsChildren =
@@ -116,7 +128,7 @@ export function Aside() {
           </ul>
         </div>
         <div className="flex flex-col gap-y-(--gap)">
-          {components?.children?.map((item) => (
+          {sortedComponents.map((item) => (
             <div key={item.subsection}>
               <AsideHeader>{item?.subsection}</AsideHeader>
               <ul data-slot="section">

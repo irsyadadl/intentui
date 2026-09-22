@@ -60,11 +60,7 @@ export function ColorItem({ color }: { color: keyof typeof colors }) {
 
   return (
     <div
-      className={twJoin(
-        "py-6 xl:px-6",
-        "border-page border-b last:border-b-0 lg:border-r lg:nth-last-2:border-b-0 lg:last:border-r-0",
-        "pb-6 xl:even:pl-6 xl:even:lg:border-r-0"
-      )}
+      className="py-6 xl:px-6 border-page border-b last:border-b-0 lg:border-r lg:nth-last-2:border-b-0 lg:last:border-r-0 pb-6 xl:even:pl-6 xl:even:lg:border-r-0"
     >
       <div className="mb-4 flex items-center justify-between">
         <div className="font-mono text-sm uppercase">{color}</div>

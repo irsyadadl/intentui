@@ -312,7 +312,7 @@ const TableColumn = ({ isResizable = false, className, ...props }: TableColumnPr
         <Group
           role="presentation"
           tabIndex={-1}
-          className={twJoin(["inline-flex items-center gap-2 **:[svg]:shrink-0"])}
+          className="inline-flex items-center gap-2 **:[svg]:shrink-0"
         >
           {typeof props.children === "function" ? props.children(values) : props.children}
           {values.allowsSorting && (
