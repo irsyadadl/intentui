@@ -45,11 +45,7 @@ const BreadcrumbsItem = ({
       {({ isCurrent }) => (
         <>
           <Link
-            className={twJoin(
-              "has-data-[slot=icon]:inline-flex has-data-[slot=icon]:items-center has-data-[slot=icon]:gap-x-2",
-              "*:data-[slot=icon]:size-5 sm:*:data-[slot=icon]:size-4",
-              "*:data-[slot=icon]:text-muted-fg hover:*:data-[slot=icon]:text-fg"
-            )}
+            className="has-data-[slot=icon]:inline-flex has-data-[slot=icon]:items-center has-data-[slot=icon]:gap-x-2 *:data-[slot=icon]:size-5 sm:*:data-[slot=icon]:size-4 *:data-[slot=icon]:text-muted-fg hover:*:data-[slot=icon]:text-fg"
             {...props}
           />
           {!isCurrent && separator !== false && <Separator separator={separatorValue} />}
