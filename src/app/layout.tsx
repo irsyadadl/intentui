@@ -1,6 +1,5 @@
 import { AppBootstrap } from "@/components/app-bootstrap"
 import { Analytics } from "@/components/analytics"
-import { Discount } from "@/components/discount"
 import { JsonLd } from "@/components/json-ld"
 import { app, META_THEME_COLORS } from "@/config/app"
 import "@/styles/app.css"
@@ -154,7 +153,6 @@ export default async function RootLayout({ children }: Readonly<Props>) {
         <Providers lang={lang}>
           <AppBootstrap />
           <Toast />
-          <Discount />
           <main>{children}</main>
         </Providers>
         <Analytics />
