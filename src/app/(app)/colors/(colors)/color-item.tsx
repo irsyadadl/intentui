@@ -5,7 +5,6 @@ import { useEffect, useState } from "react"
 import type { Selection } from "react-aria-components/GridList"
 import { ListBox, ListBoxItem } from "react-aria-components/ListBox"
 import { toast } from "sonner"
-import { twJoin } from "cn"
 import { Button } from "@/components/ui/button"
 import { Menu, MenuContent, MenuItem, MenuLabel } from "@/components/ui/menu"
 import { useClipboard } from "@/hooks/use-clipboard"
@@ -59,9 +58,7 @@ export function ColorItem({ color }: { color: keyof typeof colors }) {
   }, [copiedShade])
 
   return (
-    <div
-      className="py-6 xl:px-6 border-page border-b last:border-b-0 lg:border-r lg:nth-last-2:border-b-0 lg:last:border-r-0 pb-6 xl:even:pl-6 xl:even:lg:border-r-0"
-    >
+    <div className="py-6 xl:px-6 border-page border-b last:border-b-0 lg:border-r lg:nth-last-2:border-b-0 lg:last:border-r-0 pb-6 xl:even:pl-6 xl:even:lg:border-r-0">
       <div className="mb-4 flex items-center justify-between">
         <div className="font-mono text-sm uppercase">{color}</div>
         <div>

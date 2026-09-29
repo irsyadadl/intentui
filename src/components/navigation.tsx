@@ -52,14 +52,11 @@ export function Navigation() {
               <NavLink isNextLink isActive={pathname.startsWith("/blocks")} href="/blocks">
                 Blocks
               </NavLink>
-              <NavLink isNextLink href="/sponsor">
-                Sponsor
+              <NavLink target="_blank" href="https://design.intentui.com/themes">
+                Themes
               </NavLink>
               <NavLink isNextLink href="/showcase">
                 Showcase
-              </NavLink>
-              <NavLink target="_blank" href="https://design.intentui.com/themes">
-                Themes
               </NavLink>
             </div>
             <div className="flex items-center gap-x-1.5">

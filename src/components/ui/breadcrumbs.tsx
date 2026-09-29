@@ -5,7 +5,7 @@ import { createContext, use } from "react"
 import type { BreadcrumbProps, BreadcrumbsProps } from "react-aria-components/Breadcrumbs"
 import { Breadcrumb, Breadcrumbs as BreadcrumbsPrimitive } from "react-aria-components/Breadcrumbs"
 import type { LinkProps } from "react-aria-components/Link"
-import { twJoin, cn } from "cn"
+import { cn } from "cn"
 import { cx } from "@/lib/primitive"
 import { Link } from "./link"
 
