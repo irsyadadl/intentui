@@ -38,7 +38,12 @@ export const SnippetTab = ({ className, ...props }: React.ComponentProps<typeof 
 
 export const SnippetTabPanels = TabPanels
 
-export function SnippetTabPanel({ className, children, ...props }: TabPanelProps) {
+export function SnippetTabPanel({
+  className,
+  children,
+  onCopy,
+  ...props
+}: TabPanelProps & { onCopy?: (text: string) => void }) {
   const { copy, copied } = useClipboard()
   return (
     <TabPanel className={cx("mt-0 px-4 py-2 text-sm dark:bg-secondary/70", className)} {...props}>
@@ -53,8 +58,9 @@ export function SnippetTabPanel({ className, children, ...props }: TabPanelProps
                 className="-me-2"
                 size="sq-sm"
                 intent="plain"
-                onPress={() => {
-                  copy(children as string)
+                onPress={async () => {
+                  const text = children as string
+                  if (await copy(text)) onCopy?.(text)
                 }}
               >
                 {copied ? (

@@ -1,6 +1,7 @@
 "use client"
 
 import { CheckIcon, ChevronDownIcon } from "@heroicons/react/20/solid"
+import { event } from "onedollarstats"
 import { useState } from "react"
 import { BrandGithubIcon } from "@/components/icons/brand-github-icon"
 import { Button } from "@/components/ui/button"
@@ -51,7 +52,11 @@ export function OpenIn({ url, page }: { url: string; page: string }) {
     try {
       const res = await fetch(llmUrl, { method: "GET" })
       const text = res.ok ? await res.text() : page
-      await copy(text)
+      const didCopy = await copy(text)
+      if (didCopy) {
+        const pageName = url.split("/").filter(Boolean).pop() || "docs"
+        void event(`copy page ${pageName}`, url).catch(() => {})
+      }
     } finally {
       setPending(false)
     }

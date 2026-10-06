@@ -66,7 +66,9 @@ export function PullRegistry({ readMore, processedSourceCode, blockExample }: Pu
     if (!didCopy) return
 
     if (key === "code") {
-      void event("copy to clipboard", { component: blockExample })
+      void event(`copy code ${blockExample}`, window.location.pathname, {
+        component: blockExample,
+      }).catch(() => {})
     }
 
     setCopy((prev) => ({ ...prev, [key]: true }))
