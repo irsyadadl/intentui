@@ -53,7 +53,7 @@ export function Components() {
         className="group flex items-center justify-center border-page border-t text-xl"
       >
         <PageContainer className="w-full">
-          <div className="w-full border-page border-x p-6 text-center group-hover:bg-muted">
+          <div className="w-full border-page relative border-x p-6 text-center group-hover:bg-muted">
             View all
           </div>
         </PageContainer>
