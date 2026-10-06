@@ -43,19 +43,34 @@ export const sortedGsChildren =
     ?.filter((item) => orderGs.includes(item.title))
     .sort((a, b) => orderGs.indexOf(a.title) - orderGs.indexOf(b.title)) ?? []
 
-export function Aside() {
+export function Aside({
+  className,
+  onNavigate,
+  children,
+}: {
+  className?: string
+  onNavigate?: () => void
+  children?: React.ReactNode
+}) {
   return (
-    <div className="sticky h-screen w-full [--gap:--spacing(6)] sm:top-[53px] sm:h-[calc(100dvh-53px)] sm:w-64 sm:[--gap:--spacing(8)]">
+    <div
+      className={cn(
+        "sticky h-screen w-full [--gap:--spacing(6)] sm:top-[53px] sm:h-[calc(100dvh-53px)] sm:w-64 sm:[--gap:--spacing(8)]",
+        className
+      )}
+    >
       <div
         data-docs-sidebar-scroll
         className="flex **:data-[slot=section]:px-4 flex-col gap-y-(--gap) h-full py-10 scrollbar-thin scroll-fade-y overflow-y-auto"
       >
         <ul className="px-4 space-y-2 sm:*:text-sm/6">
-          <AsideLink href="/components">
+          {children}
+          <AsideLink onPress={onNavigate} href="/components">
             <PackageIcon />
             Components
           </AsideLink>
           <AsideLink
+            onPress={onNavigate}
             target="_blank"
             href="https://design.intentui.com/blocks?utm_source=intentui.com&utm_medium=referral&utm_campaign=sidebar"
           >
@@ -63,6 +78,7 @@ export function Aside() {
             Blocks
           </AsideLink>
           <AsideLink
+            onPress={onNavigate}
             target="_blank"
             href="https://design.intentui.com/patterns?utm_source=intentui.com&utm_medium=referral&utm_campaign=sidebar"
           >
@@ -70,6 +86,7 @@ export function Aside() {
             Patterns
           </AsideLink>
           <AsideLink
+            onPress={onNavigate}
             target="_blank"
             href="https://design.intentui.com/templates?utm_source=intentui.com&utm_medium=referral&utm_campaign=sidebar"
           >
@@ -77,6 +94,7 @@ export function Aside() {
             Templates
           </AsideLink>
           <AsideLink
+            onPress={onNavigate}
             target="_blank"
             href="https://design.intentui.com/starter-kits?utm_source=intentui.com&utm_medium=referral&utm_campaign=sidebar"
           >
@@ -84,6 +102,7 @@ export function Aside() {
             Starter kits
           </AsideLink>
           <AsideLink
+            onPress={onNavigate}
             target="_blank"
             href="https://design.intentui.com/themes?utm_source=intentui.com&utm_medium=referral&utm_campaign=sidebar"
           >
@@ -95,7 +114,7 @@ export function Aside() {
           <AsideHeader>{prologue?.section}</AsideHeader>
           <ul data-slot="section">
             {prologue?.children?.map((item) => (
-              <AsideLink key={item.slug} href={item.slug}>
+              <AsideLink onPress={onNavigate} key={item.slug} href={item.slug}>
                 {item.title}
               </AsideLink>
             ))}
@@ -106,13 +125,15 @@ export function Aside() {
           <AsideHeader>{gs?.section}</AsideHeader>
           <ul data-slot="section">
             {sortedGsChildren.map((item) => (
-              <AsideLink key={item.slug} href={item.slug}>
+              <AsideLink onPress={onNavigate} key={item.slug} href={item.slug}>
                 {item.title}
               </AsideLink>
             ))}
 
-            <AsideLink href="/docs/getting-started/ai">Working with AI</AsideLink>
-            <AsideLink target="_blank" href="/llms.txt">
+            <AsideLink onPress={onNavigate} href="/docs/getting-started/ai">
+              Working with AI
+            </AsideLink>
+            <AsideLink onPress={onNavigate} target="_blank" href="/llms.txt">
               llms.txt
             </AsideLink>
           </ul>
@@ -121,7 +142,7 @@ export function Aside() {
           <AsideHeader>{dm?.section}</AsideHeader>
           <ul data-slot="section">
             {dm?.children?.map((item) => (
-              <AsideLink key={item.slug} href={item.slug}>
+              <AsideLink onPress={onNavigate} key={item.slug} href={item.slug}>
                 {item.title}
               </AsideLink>
             ))}
@@ -133,7 +154,7 @@ export function Aside() {
               <AsideHeader>{item?.subsection}</AsideHeader>
               <ul data-slot="section">
                 {item?.children?.map((item) => (
-                  <AsideLink key={item.slug} href={item.slug}>
+                  <AsideLink onPress={onNavigate} key={item.slug} href={item.slug}>
                     {item.title}
                     {item.status && (
                       <Badge
@@ -166,7 +187,7 @@ interface AsideLinkProps extends LinkProps {
   href: string
 }
 
-function AsideLink({ href, ...props }: AsideLinkProps) {
+export function AsideLink({ href, ...props }: AsideLinkProps) {
   const pathname = usePathname()
   const isActive = pathname === href
   const ref = useRef<HTMLAnchorElement>(null)
@@ -223,7 +244,7 @@ function AsideLink({ href, ...props }: AsideLinkProps) {
                 width: "16px",
                 height: "16px",
               }}
-              className="-mr-1 ml-auto hidden text-muted-fg group-hover:block"
+              className="-mr-1 ml-auto block text-muted-fg lg:hidden lg:group-hover:block"
             />
           )}
         </>
