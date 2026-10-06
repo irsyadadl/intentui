@@ -1,31 +1,28 @@
-import { ArrowUpRightIcon } from "@heroicons/react/16/solid"
-import { BookOpenIcon, CubeIcon, Squares2X2Icon, SwatchIcon } from "@heroicons/react/24/outline"
-import NextLink from "next/link"
-import { usePathname } from "next/navigation"
-import { useEffect, useRef, useState } from "react"
-import { Autocomplete, useFilter } from "react-aria-components/Autocomplete"
-import { Header } from "react-aria-components/Header"
-import { Link } from "react-aria-components/Link"
+"use client"
+
 import {
-  Menu,
-  MenuItem,
-  type MenuItemProps,
-  MenuSection,
-  MenuTrigger,
-  Popover,
-  type PopoverProps,
-} from "react-aria-components/Menu"
+  BookOpenIcon,
+  CubeIcon,
+  HeartIcon,
+  HomeIcon,
+  Squares2X2Icon,
+  SwatchIcon,
+} from "@heroicons/react/24/outline"
+import { usePathname } from "next/navigation"
+import { motion, useScroll, useTransform } from "motion/react"
+import { useEffect, useState } from "react"
+import { Link } from "react-aria-components/Link"
 import { twJoin, cn } from "cn"
-import { components, dm, gs, prologue, sortedGsChildren } from "@/components/docs/aside"
+import { Aside, AsideLink } from "@/components/docs/aside"
 import { BrandDiscordIcon } from "@/components/icons/brand-discord-icon"
 import { BrandGithubIcon } from "@/components/icons/brand-github-icon"
 import { BrandXIcon } from "@/components/icons/brand-x-icon"
 import { ThemeSwitcher } from "@/components/theme-switcher"
 import { Button, buttonStyles } from "@/components/ui/button"
-import { SearchField, SearchInput } from "@/components/ui/search-field"
 import { Separator } from "@/components/ui/separator"
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { app } from "@/config/app"
-import { cx } from "@/lib/primitive"
+import { Logo } from "@/components/logo"
 
 export const menus = [
   {
@@ -35,25 +32,26 @@ export const menus = [
   },
   { href: "/components", label: "Components", icon: CubeIcon },
   { href: "/blocks", label: "Blocks", icon: Squares2X2Icon },
+  { href: "/sponsor", label: "Sponsor", icon: HeartIcon },
+  { href: "/showcase", label: "Showcase", icon: Squares2X2Icon },
+  { href: "/colors", label: "Colors", icon: SwatchIcon },
   { href: "https://design.intentui.com/themes", label: "Themes", on: true },
   {
     href: "https://design.intentui.com/?utm_source=intentui.com&utm_medium=referral&utm_campaign=navprobutton",
     label: "Design.",
     on: true,
+    icon: Logo,
   },
-  { href: "/sponsor", label: "Sponsor", icon: Squares2X2Icon },
-  { href: "/showcase", label: "Showcase", icon: Squares2X2Icon },
-  { href: "/colors", label: "Colors", icon: SwatchIcon },
 ]
 
 interface ResponsiveNavigationProps {
   className?: string
-  popover?: Pick<PopoverProps, "className">
 }
-export function ResponsiveNavigation({ className, popover }: ResponsiveNavigationProps) {
-  const { contains } = useFilter({ sensitivity: "base" })
 
+export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
   const [open, setOpen] = useState(false)
+  const { scrollY } = useScroll()
+  const scrollDecorationOpacity = useTransform(scrollY, [0, 16], [0, 1])
   const pathname = usePathname()
 
   useEffect(() => {
@@ -67,14 +65,14 @@ export function ResponsiveNavigation({ className, popover }: ResponsiveNavigatio
         className
       )}
     >
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 border-page border-b shadow-sm"
+        style={{ opacity: scrollDecorationOpacity }}
+      />
       <div className="flex items-center gap-x-2">
-        <MenuTrigger>
-          <Button
-            size="sq-sm"
-            onPress={() => setOpen((p) => !p)}
-            intent="plain"
-            className="pressed:bg-transparent outline-hidden"
-          >
+        <Sheet isOpen={open} onOpenChange={setOpen}>
+          <Button size="sq-sm" intent="plain" className="pressed:bg-transparent outline-hidden">
             <span className="relative flex h-8 w-(--width) items-center justify-center [--width:--spacing(4.5)]">
               <span className="relative size-(--width)">
                 <span
@@ -93,102 +91,44 @@ export function ResponsiveNavigation({ className, popover }: ResponsiveNavigatio
               <span className="sr-only">Toggle Menu</span>
             </span>
           </Button>
-          <Popover
-            placement="bottom"
-            offset={10}
-            onOpenChange={setOpen}
-            isOpen={open}
-            className={cx(
-              "placement-bottom:entering:slide-in-from-top-1 bg-clip-padding -mt-1 w-full overflow-y-auto bg-linear-to-b from-bg to-bg/90 px-2 outline-hidden backdrop-blur-xl entering:ease-out [--gap:--spacing(6)]",
-              "entering:fade-in exiting:fade-out entering:animate-in exiting:animate-out",
-              "slide-out-to-top-1 slide-in-from-top-1",
-              pathname === "/" && "from-blue-50 dark:from-bg",
-              popover?.className
-            )}
-            containerPadding={0}
+          <SheetContent
+            side="left"
+            isFloat={false}
+            aria-label="Navigation"
+            className="w-[min(22rem,90vw)] sm:max-w-88 **:data-[slot=dialog]:h-full **:data-[slot=dialog]:max-h-full [--visual-viewport-vertical-padding:0px]"
           >
-            <Autocomplete filter={contains}>
-              <div
-                className={twJoin(
-                  "sticky top-0 h-16 bg-linear-to-b -mt-px via-bg pt-2",
-                  pathname === "/" ? "from-blue-50 dark:from-bg" : "from-bg"
-                )}
-              >
-                <SearchField autoFocus aria-label="Search...">
-                  <SearchInput
-                    className="bg-bg focus:border-input focus:ring-0 focus:enabled:hover:border-input"
-                    placeholder="Search&hellip;"
-                  />
-                </SearchField>
-              </div>
-              <Menu className="outline-hidden -mt-3">
-                <MenuSection>
-                  <NavHeading>Pages</NavHeading>
-                  <NavLink href="/">Home</NavLink>
-                  {menus.map((menu) => (
-                    <NavLink
-                      target={menu.on ? "_blank" : undefined}
-                      key={menu.href}
-                      href={menu.href}
-                    >
-                      {menu.label}
-                      {menu.on && <ArrowUpRightIcon className="size-4" />}
-                    </NavLink>
-                  ))}
-                </MenuSection>
-                <MenuSection>
-                  <NavHeading>{prologue?.section}</NavHeading>
-                  {prologue?.children?.map((item) => (
-                    <NavLink key={item.slug} href={item.slug}>
-                      {item.title}
-                    </NavLink>
-                  ))}
-                </MenuSection>
-                <MenuSection>
-                  <NavHeading>{gs?.section}</NavHeading>
-                  {sortedGsChildren.map((item) => (
-                    <NavLink
-                      textValue={`${gs?.section} ${item.title} ${item.slug.replaceAll("-", "")} ${item.slug}`}
-                      key={item.slug}
-                      href={item.slug}
-                    >
-                      {item.title}
-                    </NavLink>
-                  ))}
-                </MenuSection>
-                <MenuSection>
-                  <NavHeading>{dm?.section}</NavHeading>
-                  {dm?.children?.map((item) => (
-                    <NavLink
-                      textValue={`${dm?.section} ${item.title} ${item.slug.replaceAll("-", "")} ${item.slug}`}
-                      key={item.slug}
-                      href={item.slug}
-                    >
-                      {item.title}
-                    </NavLink>
-                  ))}
-                </MenuSection>
-                {components?.children?.map((item) => (
-                  <MenuSection
-                    aria-label={item?.subsection}
-                    className="flex flex-col gap-y-1"
-                    key={item.subsection}
+            <SheetHeader>
+              <SheetTitle className="flex items-center gap-x-3">
+                <Logo />{" "}
+                <span>
+                  Intent <span className="text-muted-fg">UI</span>
+                </span>
+              </SheetTitle>
+            </SheetHeader>
+            <Aside
+              onNavigate={() => setOpen(false)}
+              className="relative min-h-0 flex-1 h-auto sm:top-auto sm:h-auto sm:w-full [&>[data-docs-sidebar-scroll]]:py-6"
+            >
+              <AsideLink href="/" onPress={() => setOpen(false)}>
+                <HomeIcon />
+                Home
+              </AsideLink>
+              {menus
+                .filter((menu) => !["Components", "Blocks", "Themes"].includes(menu.label))
+                .map((menu) => (
+                  <AsideLink
+                    key={menu.href}
+                    href={menu.href}
+                    target={menu.on ? "_blank" : undefined}
+                    onPress={() => setOpen(false)}
                   >
-                    {item?.children?.map((child) => (
-                      <NavLink
-                        textValue={`${item?.subsection} ${child.title} ${child.slug.replaceAll("-", "")} ${child.slug}`}
-                        key={child.slug}
-                        href={child.slug}
-                      >
-                        {child.title}
-                      </NavLink>
-                    ))}
-                  </MenuSection>
+                    {menu.icon && <menu.icon />}
+                    {menu.label}
+                  </AsideLink>
                 ))}
-              </Menu>
-            </Autocomplete>
-          </Popover>
-        </MenuTrigger>
+            </Aside>
+          </SheetContent>
+        </Sheet>
         <Separator orientation="vertical" className="mr-1 h-4" />
         <Link href="/" className="font-semibold text-base text-fg">
           Intent <span className="text-muted-fg">UI</span>
@@ -222,50 +162,4 @@ export function ResponsiveNavigation({ className, popover }: ResponsiveNavigatio
       </div>
     </nav>
   )
-}
-
-interface NavLinkProps extends MenuItemProps {
-  isActive?: boolean
-  href: string
-}
-
-function NavLink({ href, ...props }: NavLinkProps) {
-  const pathname = usePathname()
-  const isActive = pathname === href
-  const ref = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    if (isActive && ref.current) {
-      ref.current.scrollIntoView({
-        behavior: "instant",
-        block: "center",
-      })
-    }
-  }, [isActive])
-
-  return (
-    <MenuItem
-      {...props}
-      href={href}
-      ref={ref}
-      render={(domProps) =>
-        "href" in domProps ? <NextLink {...domProps} /> : <div {...domProps} />
-      }
-      className={cn(
-        "mb-0.5 flex items-center justify-between rounded-lg px-2 py-2.5 font-medium text-xl/6",
-        "focus:outline-hidden",
-        "hover:bg-fg/10 hover:text-secondary-fg",
-        "focus:bg-fg/10 focus:text-secondary-fg",
-        "pressed:bg-fg/10 pressed:text-secondary-fg",
-        isActive && [
-          "font-medium",
-          "text-blue-600 hover:bg-blue-100 hover:text-blue-600",
-          "dark:text-blue-400 dark:hover:bg-blue-400/10 dark:hover:text-blue-400",
-        ]
-      )}
-    />
-  )
-}
-
-function NavHeading({ children }: { children: React.ReactNode }) {
-  return <Header className="mt-6 mb-2 px-2 font-medium text-muted-fg text-sm/6">{children}</Header>
 }
