@@ -58,6 +58,9 @@ export function Navigation() {
               <NavLink isNextLink href="/showcase">
                 Showcase
               </NavLink>
+              <NavLink isNextLink href="/sponsor">
+                Sponsor
+              </NavLink>
             </div>
             <div className="flex items-center gap-x-1.5">
               <Button

@@ -36,10 +36,10 @@ export default function Page() {
       <JsonLd data={jsonLd} />
       <Header>
         <HeaderInner>
-          <HeaderTitle>Support Intent UI</HeaderTitle>
+          <HeaderTitle>Keep Intent UI moving forward</HeaderTitle>
           <HeaderDescription>
-            Your sponsorship helps fund new components, better examples, improved documentation, and
-            the long-term work needed to keep the project growing.
+            Your support helps fund new components, better examples, stronger documentation, and the
+            ongoing work behind Intent UI.
           </HeaderDescription>
         </HeaderInner>
       </Header>

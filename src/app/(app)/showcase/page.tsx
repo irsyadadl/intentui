@@ -39,9 +39,10 @@ export default async function Page() {
       <JsonLd data={jsonLd} />
       <Header className="border-page border-b">
         <HeaderInner>
-          <HeaderTitle>Intent UI in the Wild</HeaderTitle>
+          <HeaderTitle>See what’s built with Intent UI</HeaderTitle>
           <HeaderDescription>
-            Real websites, apps, and products built with Intent UI.
+            See how developers are using Intent UI to build real products, websites, and
+            applications.
           </HeaderDescription>
         </HeaderInner>
       </Header>

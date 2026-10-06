@@ -1,5 +1,17 @@
 [
   {
+    "name": "Dialog",
+    "component": "dialog.tsx",
+    "url": "/dialog",
+    "type": "component",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 1,
+    "deletions": 1,
+    "date": "2026-10-06"
+  },
+  {
     "name": "Breadcrumbs",
     "component": "breadcrumbs.tsx",
     "url": "/breadcrumbs",
