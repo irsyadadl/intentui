@@ -29,9 +29,10 @@ const plans = json as SponsorPlanItem[]
 const individualPlans = plans.filter((i) => i.type === "individual")
 const companyPlans = plans.filter((i) => i.type !== "individual")
 const sponsorButton = buttonStyles({
+  isCircle: true,
   intent: "primary",
   size: "lg",
-  className: "bg-fg hover:bg-fg/90 text-bg",
+  // className: "bg-fg hover:bg-fg/90 text-bg",
 })
 
 export function SponsorPlan() {

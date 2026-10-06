@@ -25,6 +25,7 @@ export function DesignIntentui() {
               <Link
                 className={buttonStyles({
                   size: "lg",
+                  isCircle: true,
                 })}
                 href="https://design.intentui.com/blocks?utm_source=intentui.com&utm_medium=referral&utm_campaign=cta"
               >
@@ -33,6 +34,7 @@ export function DesignIntentui() {
               <Link
                 className={buttonStyles({
                   size: "lg",
+                  isCircle: true,
                   intent: "secondary",
                 })}
                 href="https://design.intentui.com/templates?utm_source=intentui.com&utm_medium=referral&utm_campaign=cta"
