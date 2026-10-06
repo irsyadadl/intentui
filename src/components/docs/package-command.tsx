@@ -1,5 +1,6 @@
 "use client"
 
+import { event } from "onedollarstats"
 import { useEffect, useMemo, useState } from "react"
 import {
   Snippet,
@@ -120,6 +121,29 @@ export default function PackageCommand({ command, mode = "auto" }: PackageComman
     setStoredPackageManager(pm)
   }
 
+  const handleCopy = (copiedCommand: string) => {
+    const match = copiedCommand.match(/\bshadcn(?:@\S+)?\s+(add|init)\s+(.+)$/)
+    if (!match) return
+
+    const action = match[1] === "add" ? "install" : "init"
+    const packageManager = copiedCommand.startsWith("bunx ")
+      ? "bun"
+      : copiedCommand.startsWith("pnpm ")
+        ? "pnpm"
+        : copiedCommand.startsWith("yarn ")
+          ? "yarn"
+          : "npm"
+    const components = new Set(
+      Array.from(match[2].matchAll(/(?:^|\s)@intentui\/([\w/-]+)(?=\s|$)/g), (m) => m[1])
+    )
+
+    for (const component of components) {
+      void event(`${action} ${component}`, window.location.pathname, {
+        package_manager: packageManager,
+      }).catch(() => {})
+    }
+  }
+
   return (
     <Snippet
       className="mt-6 not-typeset"
@@ -135,7 +159,7 @@ export default function PackageCommand({ command, mode = "auto" }: PackageComman
       </SnippetTabsList>
       <SnippetTabPanels items={items}>
         {(cmd) => (
-          <SnippetTabPanel className="dark:bg-shiki-bg" id={cmd.id}>
+          <SnippetTabPanel className="dark:bg-shiki-bg" id={cmd.id} onCopy={handleCopy}>
             {cmd.command}
           </SnippetTabPanel>
         )}
