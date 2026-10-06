@@ -61,24 +61,12 @@ export function SponsorPlan() {
                 </div>
 
                 <a href={plan.checkout_url} className={sponsorButton}>
-                  Become {plan.name === "Ambassador" ? "an" : "a"} {plan.name.toLowerCase()}
+                  {plan.id === "o-sponsor"
+                    ? "Become a sponsor"
+                    : `Become ${plan.name === "Ambassador" ? "an" : "a"} ${plan.name.toLowerCase()}`}
                 </a>
-                {plan.benefits.length ? (
-                  <ul className="space-y-4 text-sm/6">
-                    {plan.benefits.map((benefit) => (
-                      <li key={benefit.title} className="flex gap-x-3">
-                        <CheckIcon className="h-lh w-4 shrink-0 text-primary-subtle-fg" />
-                        <p className="text-pretty">
-                          <Strong>{benefit.title}</Strong>{" "}
-                          <span className="text-muted-fg">{benefit.description}</span>
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
               </div>
             ))}
-            <i aria-hidden className="bg-bg" />
           </div>
         </PageContainer>
       </div>
@@ -131,15 +119,17 @@ export function SponsorPlan() {
                 Get in touch
               </a>
               <ul className="space-y-4 text-sm/6">
-                {plans[5].benefits.map((benefit) => (
-                  <li key={benefit.title} className="flex gap-x-3">
-                    <CheckIcon className="h-lh w-4 shrink-0 text-primary-subtle-fg" />
-                    <p className="text-pretty">
-                      <Strong>{benefit.title}</Strong>{" "}
-                      <span className="text-muted-fg">{benefit.description}</span>
-                    </p>
-                  </li>
-                ))}
+                {plans
+                  .find((plan) => plan.id === "partner")
+                  ?.benefits.map((benefit) => (
+                    <li key={benefit.title} className="flex gap-x-3">
+                      <CheckIcon className="h-lh w-4 shrink-0 text-primary-subtle-fg" />
+                      <p className="text-pretty">
+                        <Strong>{benefit.title}</Strong>{" "}
+                        <span className="text-muted-fg">{benefit.description}</span>
+                      </p>
+                    </li>
+                  ))}
               </ul>
             </div>
           </div>

@@ -36,6 +36,24 @@
     "type": "individual"
   },
   {
+    "id": "patron",
+    "name": "Patron",
+    "price": {
+      "amount": 75,
+      "currency": "USD",
+      "interval": "month"
+    },
+    "description": "Monthly support to keep Intent UI growing, with a personal license for Design.",
+    "benefits": [
+      {
+        "title": "Profile link",
+        "description": "Add your profile link or social media link."
+      }
+    ],
+    "checkout_url": "https://buy.polar.sh/polar_cl_w8JUFWEDgRNrzGi2SVwDkE31yc9BFK8Y0Tn9j38nper",
+    "type": "individual"
+  },
+  {
     "id": "o-sponsor",
     "name": "One time sponsor",
     "price": {
