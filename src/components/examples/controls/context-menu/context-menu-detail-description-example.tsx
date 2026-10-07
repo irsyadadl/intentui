@@ -1,8 +1,8 @@
 "use client"
 
 import {
+  ContextMenuTrigger,
   ContextMenu,
-  ContextMenuContent,
   ContextMenuDescription,
   ContextMenuItem,
   ContextMenuLabel,
@@ -11,7 +11,7 @@ import { Pressable } from "react-aria-components"
 
 export default function ContextMenuDetailDescriptionDemo() {
   return (
-    <ContextMenu>
+    <ContextMenuTrigger>
       <Pressable>
         <div
           role="button"
@@ -21,15 +21,15 @@ export default function ContextMenuDetailDescriptionDemo() {
           <span className="hidden pointer-coarse:inline-block">Long press here</span>
         </div>
       </Pressable>
-      <ContextMenuContent>
+      <ContextMenu>
         {roles.map((item) => (
           <ContextMenuItem key={item.id} textValue={item.name}>
             <ContextMenuLabel>{item.name}</ContextMenuLabel>
             <ContextMenuDescription>{item.description}</ContextMenuDescription>
           </ContextMenuItem>
         ))}
-      </ContextMenuContent>
-    </ContextMenu>
+      </ContextMenu>
+    </ContextMenuTrigger>
   )
 }
 

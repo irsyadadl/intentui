@@ -11,19 +11,19 @@ import {
   Popover,
   PopoverBody,
   PopoverClose,
-  PopoverContent,
   PopoverDescription,
   PopoverFooter,
   PopoverHeader,
   PopoverTitle,
+  PopoverTrigger,
 } from "@/components/ui/popover"
 import { TextField } from "@/components/ui/text-field"
 
 export default function PopoverCustomClose() {
   return (
-    <Popover>
+    <PopoverTrigger>
       <Button>Login</Button>
-      <PopoverContent className="w-full min-w-96">
+      <Popover className="w-full min-w-96">
         <Dialog>
           <PopoverHeader>
             <PopoverTitle>Login</PopoverTitle>
@@ -46,7 +46,7 @@ export default function PopoverCustomClose() {
                     <Checkbox>Remember me</Checkbox>
                   </CheckboxField>
                   <Link
-                    className="text-base/6 text-primary-subtle-fg hover:underline sm:text-sm/6"
+                    className="text-base/6 text-primary-subtle-foreground hover:underline sm:text-sm/6"
                     href="#"
                   >
                     Forgot password?
@@ -60,7 +60,7 @@ export default function PopoverCustomClose() {
             </PopoverFooter>
           </Form>
         </Dialog>
-      </PopoverContent>
-    </Popover>
+      </Popover>
+    </PopoverTrigger>
   )
 }

@@ -15,8 +15,9 @@ export default function ToggleGroupControlledDemo() {
         <ToggleGroupItem id="underline">Underline</ToggleGroupItem>
       </ToggleGroup>
       {[...selected].length > 0 && (
-        <p className="text-muted-fg">
-          Selected: <strong className="font-semibold text-fg">{[...selected].join(", ")}</strong>
+        <p className="text-muted-foreground">
+          Selected:{" "}
+          <strong className="font-semibold text-foreground">{[...selected].join(", ")}</strong>
         </p>
       )}
     </div>

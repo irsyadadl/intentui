@@ -221,7 +221,7 @@ export function AsideLink({ href, ...props }: AsideLinkProps) {
       {isActive && (
         <span
           aria-hidden
-          className="absolute top-1/2 -left-4 hidden h-6 w-0.5 -translate-y-1/2 rounded-full bg-primary md:block dark:bg-primary-subtle-fg"
+          className="absolute top-1/2 -left-4 hidden h-6 w-0.5 -translate-y-1/2 rounded-full bg-primary md:block dark:bg-primary-subtle-foreground"
         />
       )}
       <Link
@@ -229,10 +229,10 @@ export function AsideLink({ href, ...props }: AsideLinkProps) {
         href={href}
         ref={ref}
         className={cn(
-          "group relative mb-0.5 flex items-center gap-x-2 rounded-lg px-2 py-1 text-base text-fg/70 sm:text-sm/6",
-          "hover:text-fg focus:text-fg focus:outline-hidden",
-          "*:[svg]:size-4.5 *:[svg]:text-muted-fg hover:*:[svg]:text-fg",
-          isActive && "font-medium text-fg"
+          "group relative mb-0.5 flex items-center gap-x-2 rounded-lg px-2 py-1 text-base text-foreground/70 sm:text-sm/6",
+          "hover:text-foreground focus:text-foreground focus:outline-hidden",
+          "*:[svg]:size-4.5 *:[svg]:text-muted-foreground hover:*:[svg]:text-foreground",
+          isActive && "font-medium text-foreground"
         )}
       >
         <>
@@ -244,7 +244,7 @@ export function AsideLink({ href, ...props }: AsideLinkProps) {
                 width: "16px",
                 height: "16px",
               }}
-              className="-mr-1 ml-auto block text-muted-fg lg:hidden lg:group-hover:block"
+              className="-mr-1 ml-auto block text-muted-foreground lg:hidden lg:group-hover:block"
             />
           )}
         </>
@@ -257,7 +257,7 @@ function AsideHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "relative mb-2 block px-6 font-mono text-[11px] text-muted-fg uppercase",
+        "relative mb-2 block px-6 font-mono text-[11px] text-muted-foreground uppercase",
         className
       )}
       {...props}

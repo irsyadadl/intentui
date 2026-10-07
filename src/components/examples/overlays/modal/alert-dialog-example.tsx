@@ -3,18 +3,18 @@ import { Button } from "@/components/ui/button"
 import {
   Modal,
   ModalClose,
-  ModalContent,
   ModalDescription,
   ModalFooter,
   ModalHeader,
   ModalTitle,
+  ModalTrigger,
 } from "@/components/ui/modal"
 
 export default function AlertDialogDemo() {
   return (
-    <Modal>
+    <ModalTrigger>
       <Button intent="danger">Revoke Access</Button>
-      <ModalContent role="alertdialog">
+      <Modal role="alertdialog">
         <ModalHeader>
           <ModalTitle>Revoke User Access?</ModalTitle>
           <ModalDescription>
@@ -26,7 +26,7 @@ export default function AlertDialogDemo() {
           <ModalClose>Cancel</ModalClose>
           <Button intent="danger">Revoke Access</Button>
         </ModalFooter>
-      </ModalContent>
-    </Modal>
+      </Modal>
+    </ModalTrigger>
   )
 }

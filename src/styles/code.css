@@ -55,7 +55,7 @@ html.dark .shiki span {
 }
 
 [data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
-  @apply text-xs text-muted-fg/40;
+  @apply text-xs text-muted-foreground/40;
   counter-increment: line;
   content: counter(line);
   display: inline-block;
@@ -81,11 +81,11 @@ html.dark .shiki span {
 }
 
 html .shiki span.highlighted-word {
-  @apply rounded-sm bg-secondary! py-0.5 px-1.5 text-sm/6 text-secondary-fg! border;
+  @apply rounded-sm bg-secondary! py-0.5 px-1.5 text-sm/6 text-secondary-foreground! border;
 }
 
 [data-rehype-pretty-code-title] {
-  @apply text-fg mt-2 px-4 pt-6 text-sm font-medium;
+  @apply text-foreground mt-2 px-4 pt-6 text-sm font-medium;
 }
 
 [data-rehype-pretty-code-title] + pre {
@@ -102,7 +102,7 @@ html .shiki span.highlighted-word {
   @apply font-medium tracking-tight;
 }
 [data-rehype-pretty-code-title] {
-  @apply text-muted-fg p-2 text-sm font-medium;
+  @apply text-muted-foreground p-2 text-sm font-medium;
 }
 
 [data-rehype-pretty-code-figure] code {
@@ -114,7 +114,7 @@ span[data-rehype-pretty-code-figure] > code {
 }
 
 span[data-rehype-pretty-code-figure] > code > span {
-  @apply bg-secondary text-secondary-fg inline-block rounded text-xs font-normal drop-shadow-none;
+  @apply bg-secondary text-secondary-foreground inline-block rounded text-xs font-normal drop-shadow-none;
   padding: 0.2rem 0.3rem !important;
 }
 
@@ -154,7 +154,7 @@ span[data-rehype-pretty-code-figure] > code > span {
 .prose
   :where(h1, h2, h3, h4, h5, h6):not(:where([class~="not-typeset"], [class~="not-typeset"] *))
   > a {
-  @apply text-fg no-underline hover:no-underline;
+  @apply text-foreground no-underline hover:no-underline;
 }
 
 .prose-headings\:scroll-mt-24:is(
@@ -162,7 +162,7 @@ span[data-rehype-pretty-code-figure] > code > span {
 ) {
   @apply tracking-tight;
   text-decoration: none !important;
-  color: var(--fg) !important;
+  color: var(--foreground) !important;
 }
 
 .prose :where(h2):not(:where([class~="not-typeset"], [class~="not-typeset"] *)) {

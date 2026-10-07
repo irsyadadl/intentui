@@ -1,5 +1,7 @@
 "use client"
 
+import { Button } from "react-aria-components/Button"
+
 import {
   ArrowLeftOnRectangleIcon,
   Cog6ToothIcon,
@@ -12,28 +14,27 @@ import {
 import { useTheme } from "@/components/theme-provider"
 import { Avatar } from "@/components/ui/avatar"
 import {
-  Menu,
-  MenuContent,
   MenuHeader,
   MenuItem,
   MenuLabel,
   MenuSection,
   MenuSeparator,
   MenuSubMenu,
+  Menu,
   MenuTrigger,
 } from "@/components/ui/menu"
 
 export default function MenuWithIconDemo() {
   const { resolvedTheme, setTheme } = useTheme()
   return (
-    <Menu>
-      <MenuTrigger aria-label="Open Menu">
+    <MenuTrigger>
+      <Button aria-label="Open Menu">
         <Avatar alt="kurt cobain" size="lg" src="https://intentui.com/images/avatar/cobain.jpg" />
-      </MenuTrigger>
-      <MenuContent popover={{ placement: "bottom" }} className="min-w-48">
+      </Button>
+      <Menu popover={{ placement: "bottom" }} className="min-w-48">
         <MenuHeader separator>
           <span className="block">Kurt Cobain</span>
-          <span className="font-normal text-muted-fg">@cobain</span>
+          <span className="font-normal text-muted-foreground">@cobain</span>
         </MenuHeader>
 
         <MenuSection>
@@ -62,7 +63,7 @@ export default function MenuWithIconDemo() {
             )}
             <MenuLabel>Switch theme</MenuLabel>
           </MenuItem>
-          <MenuContent>
+          <Menu>
             <MenuItem onAction={() => setTheme("system")}>
               <ComputerDesktopIcon className="size-6" aria-hidden="true" /> System
             </MenuItem>
@@ -72,7 +73,7 @@ export default function MenuWithIconDemo() {
             <MenuItem onAction={() => setTheme("light")}>
               <SunIcon className="size-6" aria-hidden="true" /> Light
             </MenuItem>
-          </MenuContent>
+          </Menu>
         </MenuSubMenu>
         <MenuSeparator />
         <MenuItem href="#contact-s">
@@ -83,7 +84,7 @@ export default function MenuWithIconDemo() {
           <ArrowLeftOnRectangleIcon className="size-6" aria-hidden="true" />
           <MenuLabel>Log out</MenuLabel>
         </MenuItem>
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   )
 }

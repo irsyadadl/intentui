@@ -7,7 +7,7 @@ import {
   useFilter,
 } from "react-aria-components/Autocomplete"
 import { CardAction, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Menu, MenuContent, MenuItem, MenuSeparator } from "@/components/ui/menu"
+import { MenuItem, MenuSeparator, Menu, MenuTrigger } from "@/components/ui/menu"
 import { SearchField, SearchInput } from "@/components/ui/search-field"
 import {
   Table,
@@ -64,17 +64,17 @@ export default function TableDemo() {
                 <TableCell>{item.joined}</TableCell>
                 <TableCell>
                   <div className="flex justify-end">
-                    <Menu>
+                    <MenuTrigger>
                       <Button intent="plain" size="sq-sm" className="sm:w-6">
                         <EllipsisVerticalIcon />
                       </Button>
-                      <MenuContent aria-label="Actions" placement="left top">
+                      <Menu aria-label="Actions" placement="left top">
                         <MenuItem>View</MenuItem>
                         <MenuItem>Edit</MenuItem>
                         <MenuSeparator />
                         <MenuItem intent="danger">Delete</MenuItem>
-                      </MenuContent>
-                    </Menu>
+                      </Menu>
+                    </MenuTrigger>
                   </div>
                 </TableCell>
               </TableRow>
@@ -180,7 +180,7 @@ function AutocompleteHighlight({ children }: { children: string }) {
     return (
       <>
         {children.slice(0, index)}
-        <mark className="bg-primary text-primary-fg">
+        <mark className="bg-primary text-primary-foreground">
           {children.slice(index, index + state.inputValue.length)}
         </mark>
         {children.slice(index + state.inputValue.length)}

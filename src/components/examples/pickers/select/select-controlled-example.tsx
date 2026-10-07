@@ -28,7 +28,7 @@ export default function SelectControlledDemo() {
           )}
         </SelectContent>
       </Select>
-      <Description className="mt-2 block text-muted-fg [&>strong]:text-fg">
+      <Description className="mt-2 block text-muted-foreground [&>strong]:text-foreground">
         You have selected: <strong>{movie}</strong>
       </Description>
     </>

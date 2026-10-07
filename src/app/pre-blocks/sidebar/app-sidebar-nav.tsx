@@ -9,16 +9,16 @@ import {
 import { Avatar } from "@/components/ui/avatar"
 import { Breadcrumbs, BreadcrumbsItem } from "@/components/ui/breadcrumbs"
 import {
-  Menu,
-  MenuContent,
   MenuHeader,
   MenuItem,
   MenuLabel,
   MenuSection,
   MenuSeparator,
+  Menu,
   MenuTrigger,
 } from "@/components/ui/menu"
 import { SidebarNav, SidebarTrigger } from "@/components/ui/sidebar"
+import { Button } from "react-aria-components/Button"
 
 export default function AppSidebarNav() {
   return (
@@ -37,15 +37,15 @@ export default function AppSidebarNav() {
 
 function UserMenu() {
   return (
-    <Menu>
-      <MenuTrigger className="ml-auto md:hidden" aria-label="Open Menu">
+    <MenuTrigger>
+      <Button className="ml-auto md:hidden" aria-label="Open Menu">
         <Avatar isSquare alt="kurt cobain" src="https://intentui.com/images/avatar/cobain.jpg" />
-      </MenuTrigger>
-      <MenuContent popover={{ placement: "bottom end" }} className="min-w-64">
+      </Button>
+      <Menu popover={{ placement: "bottom end" }} className="min-w-64">
         <MenuSection>
           <MenuHeader separator>
             <span className="block">Kurt Cobain</span>
-            <span className="font-normal text-muted-fg">@cobain</span>
+            <span className="font-normal text-muted-foreground">@cobain</span>
           </MenuHeader>
         </MenuSection>
         <MenuItem href="#dashboard">
@@ -70,7 +70,7 @@ function UserMenu() {
           <ArrowRightOnRectangleIcon />
           <MenuLabel>Log out</MenuLabel>
         </MenuItem>
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   )
 }

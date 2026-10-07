@@ -32,30 +32,30 @@ const sponsorButton = buttonStyles({
   isCircle: true,
   intent: "primary",
   size: "lg",
-  // className: "bg-fg hover:bg-fg/90 text-bg",
+  // className: "bg-foreground hover:bg-foreground/90 text-bg",
 })
 
 export function SponsorPlan() {
   return (
-    <div className="-mb-px [--border:var(--color-muted-fg)]/18 [--gutter:--spacing(6)]">
+    <div className="-mb-px [--border:var(--color-muted-foreground)]/18 [--gutter:--spacing(6)]">
       <div className="border-y border-page bg-muted">
         <div className="border-b border-page">
           <PageContainer>
-            <div className="border-x border-muted-fg/30 bg-bg p-(--gutter)">
-              <h3 className="font-semibold text-2xl text-fg tracking-tight">Individual</h3>
+            <div className="border-x border-muted-foreground/30 bg-background p-(--gutter)">
+              <h3 className="font-semibold text-2xl text-foreground tracking-tight">Individual</h3>
             </div>
           </PageContainer>
         </div>
         <PageContainer>
           <div className="grid grid-cols-1 divide-y border-x border-page divide-page sm:grid-cols-4 sm:divide-x sm:divide-y-0">
             {individualPlans.map((plan) => (
-              <div key={plan.id} className="flex flex-col bg-bg p-(--gutter) gap-y-6">
+              <div key={plan.id} className="flex flex-col bg-background p-(--gutter) gap-y-6">
                 <div>
                   <div className="text-base/6 mb-4">{plan.name}</div>
 
                   <div className="text-3xl tabular-nums tracking-tight">
                     ${plan.price.amount}
-                    <span className="ml-1 font-normal text-base text-muted-fg">
+                    <span className="ml-1 font-normal text-base text-muted-foreground">
                       {plan.id === "o-sponsor" ? "one time" : "/ month"}
                     </span>
                   </div>
@@ -74,8 +74,10 @@ export function SponsorPlan() {
 
       <div className="bg-muted">
         <PageContainer>
-          <div className="border-x border-muted-fg/30 bg-bg p-(--gutter)">
-            <h3 className="mt-6 sm:mt-12 font-semibold text-2xl text-fg tracking-tight">Company</h3>
+          <div className="border-x border-muted-foreground/30 bg-background p-(--gutter)">
+            <h3 className="mt-6 sm:mt-12 font-semibold text-2xl text-foreground tracking-tight">
+              Company
+            </h3>
           </div>
         </PageContainer>
       </div>
@@ -84,11 +86,11 @@ export function SponsorPlan() {
         <PageContainer>
           <div className="grid grid-cols-1 divide-y border-x sm:grid-cols-4 sm:divide-x sm:divide-y-0">
             {companyPlans.map((plan) => (
-              <div key={plan.id} className="flex flex-col bg-bg p-(--gutter) gap-y-6">
+              <div key={plan.id} className="flex flex-col bg-background p-(--gutter) gap-y-6">
                 <div className="text-base/6">{plan.name}</div>
                 <div className="-mt-2 text-3xl tabular-nums tracking-tight">
                   ${plan.price.amount}
-                  <span className="ml-1 font-normal text-base text-muted-fg">/ month</span>
+                  <span className="ml-1 font-normal text-base text-muted-foreground">/ month</span>
                 </div>
                 <a href={plan.checkout_url} className={sponsorButton}>
                   Become {plan.name === "Ambassador" ? "an" : "a"} {plan.name.toLowerCase()}
@@ -97,10 +99,10 @@ export function SponsorPlan() {
                   <ul className="space-y-4 text-sm/6">
                     {plan.benefits.map((benefit) => (
                       <li key={benefit.title} className="flex gap-x-3">
-                        <CheckIcon className="h-lh w-4 shrink-0 text-primary-subtle-fg" />
+                        <CheckIcon className="h-lh w-4 shrink-0 text-primary-subtle-foreground" />
                         <p className="text-pretty">
                           <Strong>{benefit.title}</Strong>{" "}
-                          <span className="text-muted-fg">{benefit.description}</span>
+                          <span className="text-muted-foreground">{benefit.description}</span>
                         </p>
                       </li>
                     ))}
@@ -108,7 +110,7 @@ export function SponsorPlan() {
                 ) : null}
               </div>
             ))}
-            <div className="flex flex-col bg-bg p-(--gutter) gap-y-6">
+            <div className="flex flex-col bg-background p-(--gutter) gap-y-6">
               <div className="text-base/6">Custom</div>
               <div className="text-3xl tabular-nums tracking-tight -mt-2">---</div>
 
@@ -124,10 +126,10 @@ export function SponsorPlan() {
                   .find((plan) => plan.id === "partner")
                   ?.benefits.map((benefit) => (
                     <li key={benefit.title} className="flex gap-x-3">
-                      <CheckIcon className="h-lh w-4 shrink-0 text-primary-subtle-fg" />
+                      <CheckIcon className="h-lh w-4 shrink-0 text-primary-subtle-foreground" />
                       <p className="text-pretty">
                         <Strong>{benefit.title}</Strong>{" "}
-                        <span className="text-muted-fg">{benefit.description}</span>
+                        <span className="text-muted-foreground">{benefit.description}</span>
                       </p>
                     </li>
                   ))}
@@ -143,7 +145,7 @@ export function SponsorPlan() {
                 href="mailto:partners@intentui.com?subject=One-time sponsorship inquiry"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-medium text-primary-subtle-fg underline decoration-primary-subtle-fg/50 hover:decoration-primary-subtle-fg"
+                className="font-medium text-primary-subtle-foreground underline decoration-primary-subtle-foreground/50 hover:decoration-primary-subtle-foreground"
               >
                 Get in touch
               </a>{" "}

@@ -20,7 +20,7 @@ export default function GridListSectionDemo() {
           <GridListHeader>
             <div>
               <div>{server.name}</div>
-              <span className="font-normal text-muted-fg">{server.ipaddress}</span>
+              <span className="font-normal text-muted-foreground">{server.ipaddress}</span>
             </div>
           </GridListHeader>
 
@@ -30,26 +30,26 @@ export default function GridListSectionDemo() {
                 <GridListStart className="sm:items-center">
                   <div className="flex flex-col gap-x-2 sm:flex-row sm:items-center">
                     <GridListLabel>{item.name}</GridListLabel>
-                    <span className="hidden text-muted-fg sm:inline">/</span>
+                    <span className="hidden text-muted-foreground sm:inline">/</span>
                     <GridListDescription>{item.domain}</GridListDescription>
                   </div>
                 </GridListStart>
                 <GridListSpacer />
                 <span className="flex items-center gap-x-2 *:block *:size-1.5 *:rounded-full">
                   {item.status === "online" ? (
-                    <i className="bg-primary-subtle-fg" />
+                    <i className="bg-primary-subtle-foreground" />
                   ) : item.status === "deploying" ? (
-                    <i className="bg-info-subtle-fg" />
+                    <i className="bg-info-subtle-foreground" />
                   ) : item.status === "maintenance" ? (
-                    <i className="bg-warning-subtle-fg" />
+                    <i className="bg-warning-subtle-foreground" />
                   ) : item.status === "error" ? (
-                    <i className="bg-danger-subtle-fg" />
+                    <i className="bg-danger-subtle-foreground" />
                   ) : item.status === "paused" ? (
-                    <i className="bg-secondary-fg" />
+                    <i className="bg-secondary-foreground" />
                   ) : item.status === "degraded" ? (
-                    <i className="bg-warning-subtle-fg" />
+                    <i className="bg-warning-subtle-foreground" />
                   ) : (
-                    <i className="bg-secondary-fg" />
+                    <i className="bg-secondary-foreground" />
                   )}
                   {item.status}
                 </span>

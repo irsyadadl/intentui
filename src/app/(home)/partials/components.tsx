@@ -29,12 +29,12 @@ export function Components() {
                   className="mb-12 flex break-inside-avoid flex-col gap-y-2"
                   key={item.subsection}
                 >
-                  <h3 className="font-semibold text-fg text-sm">{item?.subsection}</h3>
+                  <h3 className="font-semibold text-foreground text-sm">{item?.subsection}</h3>
                   <ul>
                     {item?.children?.map((item) => (
                       <li key={item.slug}>
                         <Link
-                          className="block py-2 text-muted-fg text-sm hover:text-fg focus:text-fg"
+                          className="block py-2 text-muted-foreground text-sm hover:text-foreground focus:text-foreground"
                           href={item.slug}
                         >
                           {item.title}

@@ -26,7 +26,7 @@ export default function SliderControlledDemo() {
         <Slider value={saturation} onChange={(v) => setSaturation(v as number[])}>
           <div className="flex items-center justify-between">
             <Label>Saturation</Label>
-            <SliderOutput className="text-muted-fg text-sm tabular-nums data-[orientation=vertical]:mx-auto data-[orientation=horizontal]:ml-auto">
+            <SliderOutput className="text-muted-foreground text-sm tabular-nums data-[orientation=vertical]:mx-auto data-[orientation=horizontal]:ml-auto">
               {({ state }) => state.values.map((_, i) => state.getThumbValueLabel(i)).join(" – ")}
             </SliderOutput>
           </div>

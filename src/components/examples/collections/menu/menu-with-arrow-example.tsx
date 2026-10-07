@@ -1,5 +1,7 @@
 "use client"
 
+import { Button } from "react-aria-components/Button"
+
 import { PlusIcon } from "@heroicons/react/20/solid"
 import {
   ArrowLeftStartOnRectangleIcon,
@@ -9,28 +11,27 @@ import {
 } from "@heroicons/react/24/outline"
 import { Avatar } from "@/components/ui/avatar"
 import {
-  Menu,
-  MenuContent,
   MenuHeader,
   MenuItem,
   MenuLabel,
   MenuSection,
   MenuSeparator,
   MenuShortcut,
+  Menu,
   MenuTrigger,
 } from "@/components/ui/menu"
 
 export default function MenuWithArrowDemo() {
   return (
-    <Menu>
-      <MenuTrigger aria-label="Open Menu">
+    <MenuTrigger>
+      <Button aria-label="Open Menu">
         <Avatar src="https://intentui.com/images/avatar/cobain.jpg" />
-      </MenuTrigger>
-      <MenuContent popover={{ arrow: true, placement: "top" }} className="min-w-54">
+      </Button>
+      <Menu popover={{ arrow: true, placement: "top" }} className="min-w-54">
         <MenuSection>
           <MenuHeader separator>
             <span className="block">Irsyad A. Panjaitan</span>
-            <span className="font-normal text-muted-fg">@irsyadadl</span>
+            <span className="font-normal text-muted-foreground">@irsyadadl</span>
           </MenuHeader>
         </MenuSection>
         <MenuItem>
@@ -56,7 +57,7 @@ export default function MenuWithArrowDemo() {
           <ArrowLeftStartOnRectangleIcon className="size-6" aria-hidden="true" />
           <MenuLabel>Log out</MenuLabel>
         </MenuItem>
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   )
 }

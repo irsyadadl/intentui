@@ -6,19 +6,19 @@ import {
   Modal,
   ModalBody,
   ModalClose,
-  ModalContent,
   ModalDescription,
   ModalFooter,
   ModalHeader,
   ModalTitle,
+  ModalTrigger,
 } from "@/components/ui/modal"
 import { TextField } from "@/components/ui/text-field"
 
 export default function ModalDemo() {
   return (
-    <Modal>
+    <ModalTrigger>
       <Button intent="outline">Rename</Button>
-      <ModalContent>
+      <Modal>
         {({ close }) => (
           <>
             <ModalHeader>
@@ -40,7 +40,7 @@ export default function ModalDemo() {
             </ModalFooter>
           </>
         )}
-      </ModalContent>
-    </Modal>
+      </Modal>
+    </ModalTrigger>
   )
 }

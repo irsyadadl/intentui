@@ -3,8 +3,8 @@
 import { Pressable } from "react-aria-components"
 
 import {
+  ContextMenuTrigger,
   ContextMenu,
-  ContextMenuContent,
   ContextMenuItem,
   ContextMenuSection,
   ContextMenuSeparator,
@@ -14,7 +14,7 @@ import {
 
 export default function ContextMenuSubExample() {
   return (
-    <ContextMenu>
+    <ContextMenuTrigger>
       <Pressable>
         <div
           role="button"
@@ -24,7 +24,7 @@ export default function ContextMenuSubExample() {
           <span className="hidden pointer-coarse:inline-block">Long press here</span>
         </div>
       </Pressable>
-      <ContextMenuContent>
+      <ContextMenu>
         <ContextMenuItem>
           Copy
           <ContextMenuShortcut>⌘C</ContextMenuShortcut>
@@ -35,7 +35,7 @@ export default function ContextMenuSubExample() {
         </ContextMenuItem>
         <ContextMenuSub>
           <ContextMenuItem>More Tools</ContextMenuItem>
-          <ContextMenuContent>
+          <ContextMenu>
             <ContextMenuSection>
               <ContextMenuItem>Save Page...</ContextMenuItem>
               <ContextMenuItem>Create Shortcut...</ContextMenuItem>
@@ -49,9 +49,9 @@ export default function ContextMenuSubExample() {
             <ContextMenuSection>
               <ContextMenuItem>Delete</ContextMenuItem>
             </ContextMenuSection>
-          </ContextMenuContent>
+          </ContextMenu>
         </ContextMenuSub>
-      </ContextMenuContent>
-    </ContextMenu>
+      </ContextMenu>
+    </ContextMenuTrigger>
   )
 }

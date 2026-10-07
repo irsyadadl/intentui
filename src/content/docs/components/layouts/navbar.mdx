@@ -36,17 +36,7 @@ Use this approach if you prefer to install and wire up the component yourself in
 ```
 import { IconChevronsY } from "@heroicons/react"
 import { Button } from "@/components/ui/button"
-  import { Menu,
-  MenuShortcut,
-  MenuContent,
-  MenuHeader,
-  MenuItem,
-  MenuSection,
-  MenuSeparator,
-  MenuLabel,
-  MenuDescription,
-  MenuTrigger,
-  MenuSubMenu } from "@/components/ui/menu"
+import { Menu, MenuShortcut, MenuHeader, MenuItem, MenuSection, MenuSeparator, MenuLabel, MenuDescription, MenuSubMenu, MenuTrigger } from "@/components/ui/menu"
 import {
   Navbar,
   NavbarGap,
@@ -72,15 +62,15 @@ import {
       <NavbarSpacer />
       <NavbarGap />
       <NavbarSeparator />
-      <Menu>
+      <MenuTrigger>
         <NavbarItem>
           Account
           <IconChevronsY className="col-start-3" />
         </NavbarItem>
-        <MenuContent>
+        <Menu>
           <MenuItem />
-        </MenuContent>
-      </Menu>
+        </Menu>
+      </MenuTrigger>
     </NavbarSection>
   </Navbar>
 
@@ -89,15 +79,15 @@ import {
     <NavbarTrigger />
     <NavbarSpacer />
     <Button />
-    <Menu>
+    <MenuTrigger>
       <NavbarItem>
         Account
         <IconChevronsY className="col-start-3" />
       </NavbarItem>
-      <MenuContent>
+      <Menu>
         <MenuItem />
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   </NavbarMobile>
 
   {/* Required when setting the navbar intent to 'inset' */}
@@ -191,19 +181,19 @@ If there’s no icon, use `col-start-2`.
   <NavbarItem href="#">
     Home
   </NavbarItem>
-  <Menu>
+  <MenuTrigger>
     <NavbarItem>
       Categories
       <ChevronDownIcon className="col-start-2" />
     </NavbarItem>
-    <MenuContent className="min-w-(--trigger-width) sm:min-w-56" items={categories}>
+    <Menu className="min-w-(--trigger-width) sm:min-w-56" items={categories}>
       {(item) => (
         <MenuItem id={item.id} textValue={item.label} href={item.url}>
           {item.label}
         </MenuItem>
       )}
-    </MenuContent>
-  </Menu>
+    </Menu>
+  </MenuTrigger>
 </NavbarSection>
 ```
 

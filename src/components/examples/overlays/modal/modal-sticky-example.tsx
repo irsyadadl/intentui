@@ -5,18 +5,18 @@ import {
   Modal,
   ModalBody,
   ModalClose,
-  ModalContent,
   ModalDescription,
   ModalFooter,
   ModalHeader,
   ModalTitle,
+  ModalTrigger,
 } from "@/components/ui/modal"
 
 export default function ModalStickyDemo() {
   return (
-    <Modal>
+    <ModalTrigger>
       <Button>Read</Button>
-      <ModalContent size="2xl">
+      <Modal size="2xl">
         <ModalHeader>
           <ModalTitle>Terms of Use</ModalTitle>
           <ModalDescription>
@@ -24,7 +24,7 @@ export default function ModalStickyDemo() {
           </ModalDescription>
         </ModalHeader>
         <ModalBody>
-          <div className="prose prose-zinc dark:prose-invert prose-h3:text-sm/6 prose-h4:text-sm/6 prose-p:text-muted-fg">
+          <div className="prose prose-zinc dark:prose-invert prose-h3:text-sm/6 prose-h4:text-sm/6 prose-p:text-muted-foreground">
             <p>
               By accessing or using our services, you agree to be bound by these terms. If you do
               not agree to these terms, please refrain from using our services.
@@ -98,7 +98,7 @@ export default function ModalStickyDemo() {
           <ModalClose>Close</ModalClose>
           <Button>Accept</Button>
         </ModalFooter>
-      </ModalContent>
-    </Modal>
+      </Modal>
+    </ModalTrigger>
   )
 }

@@ -22,7 +22,7 @@ export default function CheckboxGroupControlledExample() {
         </CheckboxField>
       </CheckboxGroup>
 
-      <Description className="mt-2 flex h-10 flex-col gap-y-1 [&>strong]:font-medium [&>strong]:text-fg">
+      <Description className="mt-2 flex h-10 flex-col gap-y-1 [&>strong]:font-medium [&>strong]:text-foreground">
         {values.length > 0 ? (
           <>
             Selected values <strong className="font-medium">{values.join(", ")}</strong>

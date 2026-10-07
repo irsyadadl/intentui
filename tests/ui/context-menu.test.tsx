@@ -1,21 +1,22 @@
+import { Button } from "@/components/ui/button"
 import { describe, it, expect, vi } from "vitest"
 import userEvent from "@testing-library/user-event"
 import { render, screen } from "../utils/render"
 import { fireEvent } from "../utils/render"
-import { ContextMenu, ContextMenuContent, ContextMenuItem } from "@/components/ui/context-menu"
-import { MenuTrigger } from "@/components/ui/menu"
+import { ContextMenuTrigger, ContextMenu, ContextMenuItem } from "@/components/ui/context-menu"
+import {} from "@/components/ui/menu"
 
-describe("ContextMenu", () => {
+describe("ContextMenuTrigger", () => {
   it("opens on right click and dispatches the chosen action", async () => {
     const user = userEvent.setup(),
       onAction = vi.fn()
     render(
-      <ContextMenu>
-        <MenuTrigger>File</MenuTrigger>
-        <ContextMenuContent onAction={onAction}>
+      <ContextMenuTrigger>
+        <Button>File</Button>
+        <ContextMenu onAction={onAction}>
           <ContextMenuItem id="rename">Rename</ContextMenuItem>
-        </ContextMenuContent>
-      </ContextMenu>
+        </ContextMenu>
+      </ContextMenuTrigger>
     )
     fireEvent.contextMenu(screen.getByRole("button", { name: "File" }), {
       button: 2,

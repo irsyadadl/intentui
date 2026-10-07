@@ -3,7 +3,7 @@ import { Navigation } from "@/components/navigation"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative flex min-h-svh flex-col bg-bg">
+    <div className="relative flex min-h-svh flex-col bg-background">
       <Navigation />
       <main className="flex-1">{children}</main>
       <Footer />

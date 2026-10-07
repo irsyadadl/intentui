@@ -82,7 +82,7 @@ export function RadarChart({
           <PolarGrid {...polarGridProps} />
           <PolarAngleAxis
             dataKey={dataKey}
-            tick={{ fill: "var(--color-muted-fg)", fontSize: isMobile ? 10 : 12 }}
+            tick={{ fill: "var(--color-muted-foreground)", fontSize: isMobile ? 10 : 12 }}
             {...angleAxisProps}
           />
           <PolarRadiusAxis tick={false} axisLine={false} {...radiusAxisProps} />

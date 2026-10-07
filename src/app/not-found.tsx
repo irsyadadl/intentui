@@ -13,7 +13,7 @@ export const metadata = createMetadata({
 export default function NotFound() {
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
-      <Heading className="text-muted-fg" level={1}>
+      <Heading className="text-muted-foreground" level={1}>
         404
       </Heading>
       <Heading level={2} className="mt-6">

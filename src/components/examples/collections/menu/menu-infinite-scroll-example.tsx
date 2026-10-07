@@ -4,7 +4,7 @@ import { Collection } from "react-aria-components/Collection"
 import { MenuLoadMoreItem } from "react-aria-components/Menu"
 import { useAsyncList } from "react-stately/useAsyncList"
 import { Button } from "@/components/ui/button"
-import { Menu, MenuContent, MenuItem } from "@/components/ui/menu"
+import { MenuItem, Menu, MenuTrigger } from "@/components/ui/menu"
 import { ProgressCircle } from "@/components/ui/progress-circle"
 
 interface Character {
@@ -31,15 +31,15 @@ export default function MenuInfiniteScrollDemo() {
   })
 
   return (
-    <Menu>
-      <Button intent="secondary">Browse characters</Button>
-      <MenuContent aria-label="Star Wars characters" className="max-h-72 min-w-64">
+    <MenuTrigger>
+      <Button intent="outline">Browse characters</Button>
+      <Menu aria-label="Star Wars characters" className="max-h-72 min-w-64">
         <Collection items={list.items}>
           {(item) => (
             <MenuItem id={item.name} textValue={item.name}>
               <span className="flex flex-col">
                 <span>{item.name}</span>
-                <span className="text-muted-fg text-xs">
+                <span className="text-muted-foreground text-xs">
                   {item.height} cm · Born {item.birth_year}
                 </span>
               </span>
@@ -53,7 +53,7 @@ export default function MenuInfiniteScrollDemo() {
         >
           <ProgressCircle className="mx-auto" isIndeterminate aria-label="Loading more..." />
         </MenuLoadMoreItem>
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   )
 }

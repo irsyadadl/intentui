@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
   SheetClose,
-  SheetContent,
+  Sheet,
   SheetDescription,
   SheetFooter,
   SheetHeader,
@@ -33,7 +33,7 @@ export default function SheetPositionDemo() {
           </Button>
         ))}
       </div>
-      <SheetContent isOpen={isOpen} onOpenChange={setIsOpen} side={sheetSide}>
+      <Sheet isOpen={isOpen} onOpenChange={setIsOpen} side={sheetSide}>
         <SheetHeader>
           <SheetTitle>{title(sheetSide)}</SheetTitle>
           <SheetDescription>The sheet will go from {sheetSide} side.</SheetDescription>
@@ -41,7 +41,7 @@ export default function SheetPositionDemo() {
         <SheetFooter>
           <SheetClose>Close</SheetClose>
         </SheetFooter>
-      </SheetContent>
+      </Sheet>
     </>
   )
 }

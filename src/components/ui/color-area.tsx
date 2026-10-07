@@ -13,7 +13,7 @@ export function ColorArea({ className, ...props }: ColorAreaProps) {
       {...props}
       data-slot="color-area"
       className={cx(
-        "size-56 shrink-0 rounded-md bg-muted disabled:bg-muted-fg forced-colors:bg-[GrayText]",
+        "size-56 shrink-0 rounded-md bg-muted disabled:bg-muted-foreground forced-colors:bg-[GrayText]",
         className
       )}
       style={({ defaultStyle, isDisabled }) => ({

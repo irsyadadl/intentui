@@ -56,14 +56,14 @@ export function Radio({ className, children, ...props }: RadioButtonProps) {
             <span
               data-slot="indicator"
               className={cn([
-                "relative col-start-1 row-start-1 mt-0.75 sm:mt-1 inset-ring inset-ring-input isolate flex size-4.5 shrink-0 items-center justify-center rounded-full bg-(--control-bg,transparent) text-bg transition before:absolute before:inset-auto before:size-2 before:shrink-0 before:rounded-full before:content-[''] hover:before:bg-muted-fg/20 sm:size-4 sm:before:size-1.7",
+                "relative col-start-1 row-start-1 mt-0.75 sm:mt-1 inset-ring inset-ring-input isolate flex size-4.5 shrink-0 items-center justify-center rounded-full bg-(--control-bg,transparent) text-bg transition before:absolute before:inset-auto before:size-2 before:shrink-0 before:rounded-full before:content-[''] hover:before:bg-muted-foreground/20 sm:size-4 sm:before:size-1.7",
                 "in-disabled:bg-muted",
                 isSelected && [
-                  "inset-ring-(--radio-ring,var(--color-ring)) bg-(--radio-bg,var(--color-primary)) text-(--radio-fg,var(--color-primary-fg)) before:bg-bg hover:before:bg-muted/90",
-                  "group-invalid:inset-ring-danger-subtle-fg/70 group-invalid:bg-danger group-invalid:text-danger-fg",
+                  "inset-ring-(--radio-ring,var(--color-ring)) bg-(--radio-bg,var(--color-primary)) text-(--radio-foreground,var(--color-primary-foreground)) before:bg-background hover:before:bg-muted/90",
+                  "group-invalid:inset-ring-danger-subtle-foreground/70 group-invalid:bg-danger group-invalid:text-danger-foreground",
                 ],
                 isInvalid &&
-                  "inset-ring-danger-subtle-fg/70 bg-danger-subtle/5 text-danger-fg ring-danger-subtle-fg/20",
+                  "inset-ring-danger-subtle-foreground/70 bg-danger-subtle/5 text-danger-foreground ring-danger-subtle-foreground/20",
               ])}
             />
             <Label data-slot="control-label" elementType="span">

@@ -13,12 +13,11 @@ import { Avatar } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Input, InputGroup } from "@/components/ui/input"
 import {
-  Menu,
-  MenuContent,
   MenuHeader,
   MenuItem,
   MenuSection,
   MenuSeparator,
+  Menu,
   MenuTrigger,
 } from "@/components/ui/menu"
 import { SearchField } from "@/components/ui/search-field"
@@ -39,15 +38,15 @@ export default function AppSidebarNav() {
         <Button size="sq-sm" className="size-10" intent="plain"></Button>
       </div>
       <div>
-        <Menu>
-          <MenuTrigger aria-label="Open Menu">
+        <MenuTrigger>
+          <Button aria-label="Open Menu">
             <Avatar alt="cobain" src="https://intentui.com/images/avatar/cobain.jpg" />
-          </MenuTrigger>
-          <MenuContent placement="bottom" className="sm:min-w-56">
+          </Button>
+          <Menu placement="bottom" className="sm:min-w-56">
             <MenuSection>
               <MenuHeader separator>
                 <span className="block">Kurt Cobain</span>
-                <span className="font-normal text-muted-fg">@cobain</span>
+                <span className="font-normal text-muted-foreground">@cobain</span>
               </MenuHeader>
             </MenuSection>
 
@@ -74,8 +73,8 @@ export default function AppSidebarNav() {
               <ArrowLeftEndOnRectangleIcon />
               Log out
             </MenuItem>
-          </MenuContent>
-        </Menu>
+          </Menu>
+        </MenuTrigger>
       </div>
     </SidebarNav>
   )

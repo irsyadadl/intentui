@@ -9,7 +9,7 @@ export function ColorPalette() {
   return (
     <Container
       constrained
-      className="border-page bg-bg px-0 shadow-fg/10 sm:border-x sm:px-0 lg:px-0"
+      className="border-page bg-background px-0 shadow-foreground/10 sm:border-x sm:px-0 lg:px-0"
     >
       <ColorGenerator />
       <div className="grid grid-cols-1 lg:grid-cols-2">

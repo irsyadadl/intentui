@@ -31,7 +31,7 @@ export function Controller({ searchParams }: SearchParamsProps) {
   return (
     <div className="relative">
       <div className="relative z-20 flex flex-col items-center justify-between gap-4 sm:flex-row">
-        <span className="font-mono text-muted-fg lg:text-sm flex items-center gap-x-2">
+        <span className="font-mono text-muted-foreground lg:text-sm flex items-center gap-x-2">
           <CommandLineIcon className="size-4" />
           npm i @intentui/icons
         </span>

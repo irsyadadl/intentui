@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, use } from "react"
+import { createContext, use, useSyncExternalStore } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import { SelectionIndicator } from "react-aria-components/SelectionIndicator"
 import { useSlottedContext } from "react-aria-components/slots"
@@ -12,12 +12,12 @@ import type {
   TabsProps as TabsPrimitiveProps,
 } from "react-aria-components/Tabs"
 import {
-  Tab as TabPrimitive,
+  TabPanels as PrimitiveTabPanels,
   TabList as TabListPrimitive,
   TabPanel as TabPanelPrimitive,
-  TabPanels as PrimitiveTabPanels,
-  Tabs as TabsPrimitive,
+  Tab as TabPrimitive,
   TabsContext,
+  Tabs as TabsPrimitive,
 } from "react-aria-components/Tabs"
 import { cn } from "cn"
 import { cx } from "@/lib/primitive"
@@ -102,7 +102,17 @@ export function TabScrollArea({ className, ...props }: React.ComponentProps<"div
 interface TabProps extends TabPrimitiveProps {
   ref?: React.RefObject<HTMLDivElement>
 }
-const Tab = ({ className, ref, ...props }: TabProps) => {
+
+function subscribeToHydration() {
+  return () => {}
+}
+
+function Tab({ className, ref, ...props }: TabProps) {
+  const isHydrated = useSyncExternalStore(
+    subscribeToHydration,
+    () => true,
+    () => false
+  )
   const { orientation } = useSlottedContext(TabsContext)!
   const { selectionIndicator } = useTabListContext()
   return (
@@ -117,8 +127,8 @@ const Tab = ({ className, ref, ...props }: TabProps) => {
           : "w-full justify-start [--tab-gutter-x:--spacing(4)] [--tab-gutter-y:--spacing(1.5)]",
         "relative flex cursor-default items-center whitespace-nowrap font-medium text-sm/6 outline-hidden transition [-webkit-tap-highlight-color:transparent]",
         "px-(--tab-gutter-x) py-(--tab-gutter-y)",
-        "*:[svg]:-ms-0.5 *:[svg]:me-2 *:[svg]:size-4 *:[svg]:shrink-0 *:[svg]:self-center *:[svg]:text-muted-fg selected:*:[svg]:text-primary-subtle-fg",
-        "selected:text-primary-subtle-fg text-muted-fg hover:bg-secondary selected:hover:bg-primary-subtle hover:text-fg selected:hover:text-primary-subtle-fg focus:ring-0",
+        "*:[svg]:-ms-0.5 *:[svg]:me-2 *:[svg]:size-4 *:[svg]:shrink-0 *:[svg]:self-center *:[svg]:text-muted-foreground selected:*:[svg]:text-primary-subtle-foreground",
+        "selected:text-primary-subtle-foreground text-muted-foreground hover:bg-secondary selected:hover:bg-primary-subtle hover:text-foreground selected:hover:text-primary-subtle-foreground focus:ring-0",
         "disabled:opacity-50",
         "href" in props ? "cursor-pointer" : "cursor-default",
         className
@@ -127,11 +137,11 @@ const Tab = ({ className, ref, ...props }: TabProps) => {
       {composeRenderProps(props.children, (children) => (
         <>
           {children}
-          {selectionIndicator && (
+          {selectionIndicator && isHydrated && (
             <SelectionIndicator
               data-slot="selected-indicator"
               className={cn(
-                "absolute bg-primary-subtle-fg duration-200 will-change-transform",
+                "absolute bg-primary-subtle-foreground duration-200 will-change-transform",
                 orientation === "horizontal"
                   ? "inset-e-(--tab-gutter-x) start-(--tab-gutter-x) -bottom-[calc(var(--tab-gutter-y)+1px)] h-0.5 motion-safe:transition-[translate,width]"
                   : "-inset-s-[calc(var(--tab-gutter-x)-var(--tab-list-gutter)+1px)] top-(--tab-gutter-y) bottom-(--tab-gutter-y) w-0.5 motion-safe:transition-[translate,height]"
@@ -158,7 +168,7 @@ const TabPanel = ({ className, ref, ...props }: TabPanelProps) => {
       {...props}
       ref={ref}
       data-slot="tab-panel"
-      className={cx("flex-1 text-fg text-sm/6 focus-visible:outline-hidden", className)}
+      className={cx("flex-1 text-foreground text-sm/6 focus-visible:outline-hidden", className)}
     />
   )
 }

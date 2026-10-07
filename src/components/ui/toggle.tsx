@@ -7,7 +7,7 @@ import { tv, type VariantProps } from "tailwind-variants"
 
 export const toggleStyles = tv({
   base: [
-    "[--toggle-icon-active:var(--secondary-fg)] [--toggle-icon:color-mix(in_oklab,var(--secondary-fg)_50%,var(--secondary))]",
+    "[--toggle-icon-active:var(--secondary-foreground)] [--toggle-icon:color-mix(in_oklab,var(--secondary-foreground)_50%,var(--secondary))]",
     "relative isolate inline-flex items-center justify-center border font-medium",
     "focus-visible:outline focus-visible:outline-offset-2 focus-visible:ring-2 focus-visible:ring-offset-3 focus-visible:ring-offset-bg",
     "*:[svg]:-mx-0.5 *:[svg]:my-0.5 *:[svg]:shrink-0 *:[svg]:self-center *:[svg]:text-(--toggle-icon) sm:*:[svg]:my-1",
@@ -20,10 +20,10 @@ export const toggleStyles = tv({
   variants: {
     intent: {
       outline: [
-        "bg-transparent selected:bg-secondary outline-secondary-fg ring-secondary-fg/25 hover:bg-secondary",
+        "bg-transparent selected:bg-secondary outline-secondary-foreground ring-secondary-foreground/25 hover:bg-secondary",
       ],
       plain: [
-        "border-transparent bg-transparent selected:bg-secondary outline-secondary-fg ring-secondary-fg/25 hover:bg-secondary",
+        "border-transparent bg-transparent selected:bg-secondary outline-secondary-foreground ring-secondary-foreground/25 hover:bg-secondary",
       ],
     },
     size: {

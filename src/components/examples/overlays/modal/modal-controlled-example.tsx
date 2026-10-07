@@ -4,7 +4,7 @@ import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import {
-  ModalContent,
+  Modal,
   ModalDescription,
   ModalFooter,
   ModalHeader,
@@ -18,7 +18,7 @@ export default function ModalControlledDemo() {
       <Button onPress={() => setOpen(true)} intent="primary">
         Subscribe
       </Button>
-      <ModalContent isOpen={open} onOpenChange={setOpen}>
+      <Modal isOpen={open} onOpenChange={setOpen}>
         <ModalHeader>
           <ModalTitle>Subscribe to Our Newsletter</ModalTitle>
           <ModalDescription>Get the latest news and updates right to your inbox.</ModalDescription>
@@ -26,7 +26,7 @@ export default function ModalControlledDemo() {
         <ModalFooter>
           <Button onPress={() => setOpen(false)}>Sign Up</Button>
         </ModalFooter>
-      </ModalContent>
+      </Modal>
     </>
   )
 }

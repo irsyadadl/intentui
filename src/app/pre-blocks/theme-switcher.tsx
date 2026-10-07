@@ -23,7 +23,7 @@ export function ThemeSwitcher({
       isCircle={isCircle}
       intent={intent}
       size="sq-sm"
-      className={cx("**:data-[slot=icon]:text-fg", className)}
+      className={cx("**:data-[slot=icon]:text-foreground", className)}
       aria-label="Switch theme"
       onPress={toggleTheme}
       {...props}

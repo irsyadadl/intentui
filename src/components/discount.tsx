@@ -39,13 +39,13 @@ export function Discount() {
     const timeout = window.setTimeout(() => {
       toast.custom(
         (toastId) => (
-          <Note intent="default" className="bg-bg">
+          <Note intent="default" className="bg-background">
             <CardHeader>
               <CardTitle>🔥 Get 20% off Intent UI Design</CardTitle>
-              <CardDescription className="*:[strong]:text-fg">
-                Use code <Code className="text-fg">TVGCGSAU</Code> to get <Strong>20% off</Strong>.
-                Includes instant access to all <Strong>templates</Strong>, <Strong>blocks</Strong>,
-                and <Strong>patterns</Strong>.
+              <CardDescription className="*:[strong]:text-foreground">
+                Use code <Code className="text-foreground">TVGCGSAU</Code> to get{" "}
+                <Strong>20% off</Strong>. Includes instant access to all <Strong>templates</Strong>,{" "}
+                <Strong>blocks</Strong>, and <Strong>patterns</Strong>.
               </CardDescription>
             </CardHeader>
             <div className="mt-3 flex items-center justify-end gap-x-2">

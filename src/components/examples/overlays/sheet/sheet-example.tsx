@@ -8,19 +8,19 @@ import {
   Sheet,
   SheetBody,
   SheetClose,
-  SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
+  SheetTrigger,
 } from "@/components/ui/sheet"
 import { TextField } from "@/components/ui/text-field"
 
 export default function SheetDemo() {
   return (
-    <Sheet>
+    <SheetTrigger>
       <Button intent="outline">Edit Settings</Button>
-      <SheetContent>
+      <Sheet>
         {({ close }) => (
           <>
             <SheetHeader>
@@ -49,7 +49,7 @@ export default function SheetDemo() {
             </SheetFooter>
           </>
         )}
-      </SheetContent>
-    </Sheet>
+      </Sheet>
+    </SheetTrigger>
   )
 }

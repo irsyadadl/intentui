@@ -5,7 +5,7 @@ import { MagnifyingGlassIcon, ShoppingBagIcon } from "@heroicons/react/24/outlin
 import { Avatar } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Link } from "@/components/ui/link"
-import { Menu, MenuContent, MenuItem } from "@/components/ui/menu"
+import { MenuItem, Menu, MenuTrigger } from "@/components/ui/menu"
 import {
   Navbar,
   NavbarGap,
@@ -52,7 +52,7 @@ export default function AppNavbar(props: NavbarProps) {
               src="https://design.intentui.com/logo?color=155DFC"
             />
             <span>
-              Intent <span className="text-muted-fg">UI</span>
+              Intent <span className="text-muted-foreground">UI</span>
             </span>
           </Link>
         </NavbarStart>
@@ -64,19 +64,19 @@ export default function AppNavbar(props: NavbarProps) {
           <NavbarItem href="#">Shop</NavbarItem>
           <NavbarItem href="#">Offers</NavbarItem>
           <NavbarItem href="#">Orders</NavbarItem>
-          <Menu>
+          <MenuTrigger>
             <NavbarItem>
               Categories
               <ChevronDownIcon className="col-start-3" />
             </NavbarItem>
-            <MenuContent className="min-w-(--trigger-width) sm:min-w-56" items={categories}>
+            <Menu className="min-w-(--trigger-width) sm:min-w-56" items={categories}>
               {(item) => (
                 <MenuItem id={item.id} textValue={item.label} href={item.url}>
                   {item.label}
                 </MenuItem>
               )}
-            </MenuContent>
-          </Menu>
+            </Menu>
+          </MenuTrigger>
         </NavbarSection>
         <NavbarSpacer />
         <NavbarSection className="max-md:hidden">

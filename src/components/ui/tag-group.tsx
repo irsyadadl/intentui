@@ -36,9 +36,9 @@ export function Tag({ children, className, ...props }: TagProps) {
         "inline-flex items-center gap-x-1.5 py-0.5 font-medium text-xs/5 forced-colors:outline",
         "*:[svg]:size-3 *:[svg]:shrink-0",
         "cursor-default rounded-full px-2",
-        "selected:inset-ring-ring/70 selected:bg-primary-subtle selected:text-primary-subtle-fg",
+        "selected:inset-ring-ring/70 selected:bg-primary-subtle selected:text-primary-subtle-foreground",
         "disabled:opacity-50 disabled:forced-colors:text-[GrayText]",
-        props.href && "cursor-pointer hover:inset-ring-muted-fg",
+        props.href && "cursor-pointer hover:inset-ring-muted-foreground",
         className
       )}
       {...props}

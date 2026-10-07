@@ -10,8 +10,8 @@ import {
 } from "@heroicons/react/24/outline"
 
 import {
+  ContextMenuTrigger,
   ContextMenu,
-  ContextMenuContent,
   ContextMenuItem,
   ContextMenuLabel,
   ContextMenuSeparator,
@@ -21,7 +21,7 @@ import { Pressable } from "react-aria-components"
 
 export default function ContextMenuWithIconDemo() {
   return (
-    <ContextMenu>
+    <ContextMenuTrigger>
       <Pressable>
         <div
           role="button"
@@ -31,7 +31,7 @@ export default function ContextMenuWithIconDemo() {
           <span className="hidden pointer-coarse:inline-block">Long press here</span>
         </div>
       </Pressable>
-      <ContextMenuContent className="min-w-52">
+      <ContextMenu className="min-w-52">
         <ContextMenuItem>
           <FolderOpenIcon />
           <ContextMenuLabel>Open Folder</ContextMenuLabel>
@@ -65,7 +65,7 @@ export default function ContextMenuWithIconDemo() {
           <ArchiveBoxIcon />
           <ContextMenuLabel>Bin</ContextMenuLabel>
         </ContextMenuItem>
-      </ContextMenuContent>
-    </ContextMenu>
+      </ContextMenu>
+    </ContextMenuTrigger>
   )
 }

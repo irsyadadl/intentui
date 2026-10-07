@@ -52,7 +52,7 @@ export function SliderThumb({ className, ...props }: ComponentProps<typeof Primi
   return (
     <PrimitiveSliderThumb
       className={cx(
-        "top-[50%] left-[50%] size-5 rounded-full bg-white outline-hidden ring ring-muted-fg/30 transition-[width,height] dark:ring-white",
+        "top-[50%] left-[50%] size-5 rounded-full bg-white outline-hidden ring ring-muted-foreground/30 transition-[width,height] dark:ring-white",
         className
       )}
       {...props}

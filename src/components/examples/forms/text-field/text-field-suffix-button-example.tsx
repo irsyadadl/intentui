@@ -8,7 +8,7 @@ import { Input, InputGroup } from "@/components/ui/input"
 import {
   ModalBody,
   ModalClose,
-  ModalContent,
+  Modal,
   ModalDescription,
   ModalFooter,
   ModalHeader,
@@ -21,7 +21,7 @@ export default function TextFieldSuffixButtonDemo() {
   const close = () => setOpen(false)
   return (
     <>
-      <ModalContent isOpen={open} onOpenChange={close}>
+      <Modal isOpen={open} onOpenChange={close}>
         <ModalHeader>
           <ModalTitle>New User</ModalTitle>
           <ModalDescription>Create a new user account</ModalDescription>
@@ -40,7 +40,7 @@ export default function TextFieldSuffixButtonDemo() {
           <ModalClose intent="outline">Cancel</ModalClose>
           <Button onPress={close}>Continue</Button>
         </ModalFooter>
-      </ModalContent>
+      </Modal>
       <TextField>
         <Label>Username</Label>
         <InputGroup>

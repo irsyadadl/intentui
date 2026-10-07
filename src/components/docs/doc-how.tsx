@@ -75,7 +75,9 @@ export const DocHow = ({
           <ToggleButton
             className={twJoin(
               "p-2 font-medium text-sm/6 outline-hidden focus-visible:text-blue-500 dark:focus-visible:text-blue-300",
-              currentTab === "tab_preview" ? "text-fg focus:text-fg" : "text-muted-fg hover:text-fg"
+              currentTab === "tab_preview"
+                ? "text-foreground focus:text-foreground"
+                : "text-muted-foreground hover:text-foreground"
             )}
             onPress={() => setCurrentTab("tab_preview")}
           >
@@ -83,8 +85,10 @@ export const DocHow = ({
           </ToggleButton>
           <ToggleButton
             className={twJoin(
-              "p-2 font-medium text-sm/6 outline-hidden focus:text-fg",
-              currentTab === "tab_code" ? "text-fg focus:text-fg" : "text-muted-fg hover:text-fg"
+              "p-2 font-medium text-sm/6 outline-hidden focus:text-foreground",
+              currentTab === "tab_code"
+                ? "text-foreground focus:text-foreground"
+                : "text-muted-foreground hover:text-foreground"
             )}
             onPress={() => setCurrentTab("tab_code")}
           >
@@ -113,7 +117,7 @@ export const DocHow = ({
             <div className={isCenter ? "flex items-center justify-center" : ""}>
               <Suspense
                 fallback={
-                  <div className="flex items-center justify-center py-6 text-muted-fg text-sm">
+                  <div className="flex items-center justify-center py-6 text-muted-foreground text-sm">
                     <Loader variant="spin" />
                     <span className="sr-only">Loading...</span>
                   </div>

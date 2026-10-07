@@ -56,7 +56,7 @@ export function ReleaseNotes() {
                     {notes.map((note, i) => (
                       <li key={i}>
                         <div className="flex gap-x-2.5">
-                          <CheckIcon className="h-lh w-4 shrink-0 text-success-subtle-fg" />
+                          <CheckIcon className="h-lh w-4 shrink-0 text-success-subtle-foreground" />
                           <div className="space-y-1">
                             {note.url ? (
                               <div className="inline-flex gap-x-2">
@@ -64,12 +64,18 @@ export function ReleaseNotes() {
                                   {note.name}
                                 </TextLink>
                                 <span className="space-x-2 group-hover:no-underline">
-                                  <span className="text-success-subtle-fg">+{note.additions}</span>
-                                  <span className="text-danger-subtle-fg">-{note.deletions}</span>
+                                  <span className="text-success-subtle-foreground">
+                                    +{note.additions}
+                                  </span>
+                                  <span className="text-danger-subtle-foreground">
+                                    -{note.deletions}
+                                  </span>
                                 </span>
                               </div>
                             ) : (
-                              <span className="inline-block text-fg sm:text-sm/6">{note.name}</span>
+                              <span className="inline-block text-foreground sm:text-sm/6">
+                                {note.name}
+                              </span>
                             )}
                             {note.description && <Text>{note.description}</Text>}
                           </div>

@@ -10,7 +10,7 @@ export default function ScrollAreaVerticalDemo() {
             <i
               key={i}
               aria-hidden
-              className="h-2 rounded-[2.5px] bg-accent-fg/20"
+              className="h-2 rounded-[2.5px] bg-accent-foreground/20"
               style={{ width }}
             />
           )

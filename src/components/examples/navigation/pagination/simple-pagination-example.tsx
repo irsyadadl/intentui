@@ -19,7 +19,7 @@ export default function SimplePaginationDemo() {
         <PaginationPrevious href="#" />
         <PaginationSection className="rounded-(--section-radius) border px-3 *:min-w-4">
           <PaginationLabel>3</PaginationLabel>
-          <PaginationLabel className="text-muted-fg">/</PaginationLabel>
+          <PaginationLabel className="text-muted-foreground">/</PaginationLabel>
           <PaginationLabel>10</PaginationLabel>
         </PaginationSection>
         <PaginationNext href="#" />

@@ -49,8 +49,8 @@ export function CopyButton({
       aria-label="Copy to clipboard"
       onPress={props.onPress || onPressHandler}
       className={cx(
-        "relative h-8 w-14 overflow-hidden p-1.5 font-medium pressed:text-fg text-muted-fg text-sm/6 hover:text-fg",
-        isCopied && "text-fg",
+        "relative h-8 w-14 overflow-hidden p-1.5 font-medium pressed:text-foreground text-muted-foreground text-sm/6 hover:text-foreground",
+        isCopied && "text-foreground",
         className
       )}
       {...props}

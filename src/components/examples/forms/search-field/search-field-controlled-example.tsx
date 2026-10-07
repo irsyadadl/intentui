@@ -18,7 +18,7 @@ export default function SearchFieldControlledDemo() {
       >
         <SearchInput />
       </SearchField>
-      <Description className="mt-2 block [&>strong]:text-fg">
+      <Description className="mt-2 block [&>strong]:text-foreground">
         You have typed: <strong>{value ?? "-"}</strong>
       </Description>
     </>

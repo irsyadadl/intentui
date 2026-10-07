@@ -61,8 +61,8 @@ export function CodeBlock({ source }: Props) {
                     cn(
                       "flex min-w-0 cursor-default items-center gap-x-1 truncate py-2 text-sm/6 *:data-[slot=icon]:hidden sm:*:data-[slot=icon]:block",
                       values.isSelected || values.isFocused || values.isFocusVisible
-                        ? "text-fg"
-                        : "text-muted-fg hover:text-fg"
+                        ? "text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
                     )
                   }
                   key={key}

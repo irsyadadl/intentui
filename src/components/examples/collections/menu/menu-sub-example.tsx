@@ -2,19 +2,19 @@
 
 import { Button } from "@/components/ui/button"
 import {
-  Menu,
-  MenuContent,
   MenuItem,
   MenuLabel,
   MenuSeparator,
   MenuSubMenu,
+  Menu,
+  MenuTrigger,
 } from "@/components/ui/menu"
 
 export default function MenuSubDemo() {
   return (
-    <Menu>
+    <MenuTrigger>
       <Button intent="outline">Open</Button>
-      <MenuContent popover={{ placement: "bottom" }}>
+      <Menu popover={{ placement: "bottom" }}>
         <MenuItem>
           <MenuLabel>Dashboard</MenuLabel>
         </MenuItem>
@@ -26,7 +26,7 @@ export default function MenuSubDemo() {
           <MenuItem>
             <MenuLabel>Settings</MenuLabel>
           </MenuItem>
-          <MenuContent>
+          <Menu>
             <MenuItem>
               <MenuLabel>General</MenuLabel>
             </MenuItem>
@@ -38,7 +38,7 @@ export default function MenuSubDemo() {
               <MenuItem>
                 <MenuLabel>Privacy</MenuLabel>
               </MenuItem>
-              <MenuContent>
+              <Menu>
                 <MenuItem>
                   <MenuLabel>Data Sharing</MenuLabel>
                 </MenuItem>
@@ -50,7 +50,7 @@ export default function MenuSubDemo() {
                   <MenuItem>
                     <MenuLabel>Advanced</MenuLabel>
                   </MenuItem>
-                  <MenuContent>
+                  <Menu>
                     <MenuItem>
                       <MenuLabel>Encryption</MenuLabel>
                     </MenuItem>
@@ -60,16 +60,16 @@ export default function MenuSubDemo() {
                     <MenuItem>
                       <MenuLabel>API Keys</MenuLabel>
                     </MenuItem>
-                  </MenuContent>
+                  </Menu>
                 </MenuSubMenu>
-              </MenuContent>
+              </Menu>
             </MenuSubMenu>
-          </MenuContent>
+          </Menu>
         </MenuSubMenu>
         <MenuItem>
           <MenuLabel>Help</MenuLabel>
         </MenuItem>
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   )
 }

@@ -1,20 +1,20 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Menu, MenuContent, MenuItem, MenuLabel } from "@/components/ui/menu"
+import { MenuItem, MenuLabel, Menu, MenuTrigger } from "@/components/ui/menu"
 
 export default function MenuDynamicDemo() {
   return (
-    <Menu>
+    <MenuTrigger>
       <Button intent="outline">Open</Button>
-      <MenuContent popover={{ placement: "bottom" }} items={categories}>
+      <Menu popover={{ placement: "bottom" }} items={categories}>
         {(item) => (
           <MenuItem id={item.slug}>
             <MenuLabel>{item.name}</MenuLabel>
           </MenuItem>
         )}
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   )
 }
 

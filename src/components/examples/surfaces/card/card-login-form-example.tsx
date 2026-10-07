@@ -31,7 +31,7 @@ export default function CardLoginFormDemo() {
               <Checkbox>Remember me</Checkbox>
             </CheckboxField>
             <Link
-              className="text-base/6 text-primary-subtle-fg hover:underline sm:text-sm/6"
+              className="text-base/6 text-primary-subtle-foreground hover:underline sm:text-sm/6"
               href="#"
             >
               Forgot password?

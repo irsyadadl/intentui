@@ -80,7 +80,7 @@ export const footerNavigation = {
 
 export function Footer() {
   return (
-    <footer className="border-page border-t bg-bg text-fg dark:bg-muted/50">
+    <footer className="border-page border-t bg-background text-foreground dark:bg-muted/50">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -88,10 +88,10 @@ export function Footer() {
         <div className="border-page pt-16 pb-6 sm:border-x lg:px-6">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-[20rem_auto] lg:gap-10 xl:grid-cols-[26rem_auto] xl:gap-24">
             <div>
-              <Link href="/" className="flex items-center font-semibold text-fg text-lg">
+              <Link href="/" className="flex items-center font-semibold text-foreground text-lg">
                 <BrandIntentuiIcon className="size-5" />
                 <span className="ml-2">
-                  Intent <span className="text-muted-fg">UI</span>
+                  Intent <span className="text-muted-foreground">UI</span>
                 </span>
               </Link>
               <div className="mt-3 space-y-3">
@@ -110,11 +110,14 @@ export function Footer() {
             </div>
             <div className="grid grid-cols-2 gap-y-10 lg:grid-cols-4 lg:gap-10 xl:gap-6 xl:gap-y-6">
               <div>
-                <div className="font-medium text-base text-fg">Resources</div>
+                <div className="font-medium text-base text-foreground">Resources</div>
                 <ul className="mt-3 space-y-3 text-sm/6">
                   {footerNavigation.resources.map((item) => (
                     <li key={item.name}>
-                      <Link href={item.href} className="font-normal text-fg/60 hover:text-fg">
+                      <Link
+                        href={item.href}
+                        className="font-normal text-foreground/60 hover:text-foreground"
+                      >
                         {item.name}
                       </Link>
                     </li>
@@ -122,13 +125,13 @@ export function Footer() {
                 </ul>
               </div>
               <div>
-                <div className="font-medium text-base text-fg">Templates</div>
+                <div className="font-medium text-base text-foreground">Templates</div>
                 <ul className="mt-3 space-y-3 text-sm/6">
                   {footerNavigation.templates.map((item) => (
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="font-normal text-fg/60 hover:text-fg"
+                        className="font-normal text-foreground/60 hover:text-foreground"
                         target="_blank"
                       >
                         {item.name}
@@ -138,13 +141,13 @@ export function Footer() {
                 </ul>
               </div>
               <div>
-                <div className="font-medium text-base text-fg">Labs</div>
+                <div className="font-medium text-base text-foreground">Labs</div>
                 <ul className="mt-3 space-y-3 text-sm/6">
                   {footerNavigation.labs.map((item) => (
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="font-normal text-fg/60 hover:text-fg"
+                        className="font-normal text-foreground/60 hover:text-foreground"
                         target="_blank"
                       >
                         {item.name}
@@ -154,13 +157,13 @@ export function Footer() {
                 </ul>
               </div>
               <div>
-                <div className="font-medium text-base text-fg">Starter Kits</div>
+                <div className="font-medium text-base text-foreground">Starter Kits</div>
                 <ul className="mt-3 space-y-3 text-sm/6">
                   {starterKits.map((kit) => (
                     <li key={kit.name}>
                       <Link
                         href={kit.url}
-                        className="font-normal text-fg/60 hover:text-fg"
+                        className="font-normal text-foreground/60 hover:text-foreground"
                         target="_blank"
                         rel="noreferrer"
                       >

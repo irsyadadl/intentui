@@ -21,21 +21,21 @@ import { Autocomplete, useFilter } from "react-aria-components/Autocomplete"
 import { Menu as PrimitiveMenu } from "react-aria-components/Menu"
 import { Button } from "@/components/ui/button"
 import {
-  Menu,
   MenuItem,
   MenuLabel,
   MenuSection,
   MenuSeparator,
-  menuContentStyles,
+  menuStyles,
+  MenuTrigger,
 } from "@/components/ui/menu"
-import { PopoverContent as Popover } from "@/components/ui/popover"
+import { Popover } from "@/components/ui/popover"
 import { SearchField, SearchInput } from "@/components/ui/search-field"
 
 export default function WithAutocomplete() {
   const { contains } = useFilter({ sensitivity: "base" })
 
   return (
-    <Menu>
+    <MenuTrigger>
       <Button intent="secondary">Actions</Button>
       <Popover className="*:data-[slot=popover-inner]:overflow-hidden" placement="bottom">
         <Autocomplete filter={contains}>
@@ -51,11 +51,11 @@ export default function WithAutocomplete() {
           </SearchField>
           <PrimitiveMenu
             renderEmptyState={() => (
-              <div className="col-span-full grid min-h-20 place-content-center text-muted-fg">
+              <div className="col-span-full grid min-h-20 place-content-center text-muted-foreground">
                 <span>No result</span>
               </div>
             )}
-            className={menuContentStyles()}
+            className={menuStyles()}
           >
             <MenuSection aria-label="File">
               <MenuItem textValue="file new document create">
@@ -137,6 +137,6 @@ export default function WithAutocomplete() {
           </PrimitiveMenu>
         </Autocomplete>
       </Popover>
-    </Menu>
+    </MenuTrigger>
   )
 }

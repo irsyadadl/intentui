@@ -32,7 +32,7 @@ export function CopyButton({
   return (
     <Button
       className={cn(
-        "relative h-8 w-14 overflow-hidden p-1.5 font-medium pressed:text-fg text-muted-fg text-sm/6 hover:text-fg",
+        "relative h-8 w-14 overflow-hidden p-1.5 font-medium pressed:text-foreground text-muted-foreground text-sm/6 hover:text-foreground",
         className
       )}
       onPress={onCopy}
@@ -40,7 +40,7 @@ export function CopyButton({
       <span
         className={twJoin(
           "absolute inset-0 flex items-center justify-center transition duration-300",
-          isCopied ? "-translate-y-1.5 text-fg opacity-0" : "translate-y-0 opacity-100"
+          isCopied ? "-translate-y-1.5 text-foreground opacity-0" : "translate-y-0 opacity-100"
         )}
       >
         {label}
@@ -48,7 +48,7 @@ export function CopyButton({
       <span
         className={twJoin(
           "absolute inset-0 flex items-center justify-center transition duration-300",
-          isCopied ? "translate-y-0 text-fg opacity-100" : "translate-y-1.5 opacity-0"
+          isCopied ? "translate-y-0 text-foreground opacity-100" : "translate-y-1.5 opacity-0"
         )}
       >
         {copiedLabel}
@@ -95,7 +95,7 @@ export function PullRegistry({ readMore, processedSourceCode, blockExample }: Pu
       />
       {readMore && (
         <Link
-          className="p-2 font-medium pressed:text-fg text-muted-fg text-sm/6 hover:text-fg"
+          className="p-2 font-medium pressed:text-foreground text-muted-foreground text-sm/6 hover:text-foreground"
           href={readMore}
           target="_blank"
         >
@@ -103,7 +103,7 @@ export function PullRegistry({ readMore, processedSourceCode, blockExample }: Pu
         </Link>
       )}
       {/*<Link*/}
-      {/*  className="hidden p-2 pressed:text-fg text-muted-fg text-sm/6 hover:text-fg"*/}
+      {/*  className="hidden p-2 pressed:text-foreground text-muted-foreground text-sm/6 hover:text-foreground"*/}
       {/*  href={openInV0Url(blockExample)}*/}
       {/*  target="_blank"*/}
       {/*>*/}

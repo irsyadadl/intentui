@@ -1,10 +1,6 @@
 "use client"
 
-import {
-  type DialogProps,
-  DialogTrigger as DialogTriggerPrimitive,
-  type DialogTriggerProps,
-} from "react-aria-components/Dialog"
+import { type DialogProps, DialogTrigger } from "react-aria-components/Dialog"
 
 import {
   Modal as ModalPrimitive,
@@ -21,12 +17,9 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "./dialog"
 
-const Modal = (props: DialogTriggerProps) => {
-  return <DialogTriggerPrimitive {...props} />
-}
+const ModalTrigger = DialogTrigger
 
 const sizes = {
   "2xs": "sm:max-w-2xs",
@@ -42,7 +35,7 @@ const sizes = {
   fullscreen: "",
 }
 
-interface ModalContentProps
+interface ModalProps
   extends
     Omit<ModalOverlayProps, "children">,
     Pick<DialogProps, "aria-label" | "aria-labelledby" | "role" | "children"> {
@@ -51,7 +44,7 @@ interface ModalContentProps
   overlay?: Pick<ModalOverlayProps, "className">
 }
 
-const ModalContent = ({
+const Modal = ({
   className,
   isDismissable: isDismissableInternal,
   children,
@@ -60,7 +53,7 @@ const ModalContent = ({
   role = "dialog",
   closeButton = true,
   ...props
-}: ModalContentProps) => {
+}: ModalProps) => {
   const isDismissable = isDismissableInternal ?? role !== "alertdialog"
   return (
     <ModalOverlay
@@ -68,7 +61,7 @@ const ModalContent = ({
       isDismissable={isDismissable}
       className={cx(
         "fixed start-0 top-0 z-50 h-(--visual-viewport-height,100vh) w-screen",
-        "bg-bg/15 backdrop-blur-[1px] motion-reduce:backdrop-blur-none",
+        "bg-background/15 backdrop-blur-[1px] motion-reduce:backdrop-blur-none",
         "grid grid-rows-[1fr_auto] justify-items-center sm:grid-rows-[1fr_auto_3fr]",
         "entering:fade-in entering:animate-in entering:duration-300 entering:ease-out",
         "exiting:fade-out exiting:animate-out exiting:ease-in",
@@ -85,8 +78,8 @@ const ModalContent = ({
           size === "fullscreen"
             ? "**:data-[slot=dialog-body]:min-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding)-var(--dialog-header-height)-var(--dialog-footer-height))] sm:[--visual-viewport-vertical-padding:16px]"
             : "sm:[--visual-viewport-vertical-padding:32px]",
-          "relative overflow-hidden bg-overlay text-overlay-fg",
-          "inset-shadow-xs rounded-t-2xl ring ring-muted-fg/25 drop-shadow-xl sm:rounded-2xl dark:ring-border",
+          "relative overflow-hidden bg-overlay text-overlay-foreground",
+          "inset-shadow-xs rounded-t-2xl ring ring-muted-foreground/25 drop-shadow-xl sm:rounded-2xl dark:ring-border",
           sizes[size],
           "entering:slide-in-from-bottom sm:entering:zoom-in-95 sm:entering:slide-in-from-bottom-0 entering:animate-in entering:duration-300 entering:ease-out",
           "exiting:slide-out-to-bottom sm:exiting:zoom-out-95 sm:exiting:slide-out-to-bottom-0 exiting:animate-out exiting:ease-in",
@@ -106,7 +99,6 @@ const ModalContent = ({
   )
 }
 
-const ModalTrigger = DialogTrigger
 const ModalHeader = DialogHeader
 const ModalTitle = DialogTitle
 const ModalDescription = DialogDescription
@@ -115,13 +107,12 @@ const ModalBody = DialogBody
 const ModalClose = DialogClose
 
 export {
-  Modal,
+  ModalTrigger,
   ModalBody,
   ModalClose,
-  ModalContent,
+  Modal,
   ModalDescription,
   ModalFooter,
   ModalHeader,
   ModalTitle,
-  ModalTrigger,
 }

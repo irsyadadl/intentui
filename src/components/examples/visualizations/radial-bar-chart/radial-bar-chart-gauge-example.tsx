@@ -39,7 +39,7 @@ export default function RadialBarChartGaugeDemo() {
             y="72%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="fill-fg font-semibold text-2xl"
+            className="fill-foreground font-semibold text-2xl"
           >
             76%
           </text>

@@ -2,17 +2,13 @@
 
 import { Cog6ToothIcon } from "@heroicons/react/24/outline"
 import { Button } from "@/components/ui/button"
-import { Menu, MenuContent, MenuDescription, MenuItem, MenuLabel } from "@/components/ui/menu"
+import { MenuDescription, MenuItem, MenuLabel, Menu, MenuTrigger } from "@/components/ui/menu"
 
 export default function MenuItemDescriptionDemo() {
   return (
-    <Menu>
+    <MenuTrigger>
       <Button intent="outline">Open</Button>
-      <MenuContent
-        className="sm:min-w-60 sm:max-w-min"
-        popover={{ placement: "bottom" }}
-        items={roles}
-      >
+      <Menu className="sm:min-w-60 sm:max-w-min" popover={{ placement: "bottom" }} items={roles}>
         {(item) => (
           <MenuItem id={item.id} textValue={item.name}>
             <Cog6ToothIcon />
@@ -20,8 +16,8 @@ export default function MenuItemDescriptionDemo() {
             <MenuDescription>{item.description}</MenuDescription>
           </MenuItem>
         )}
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   )
 }
 

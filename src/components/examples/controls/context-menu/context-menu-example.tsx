@@ -1,8 +1,8 @@
 "use client"
 
 import {
+  ContextMenuTrigger,
   ContextMenu,
-  ContextMenuContent,
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuShortcut,
@@ -11,7 +11,7 @@ import { Pressable } from "react-aria-components"
 
 export default function ContextMenuDemo() {
   return (
-    <ContextMenu>
+    <ContextMenuTrigger>
       <Pressable>
         <div
           role="button"
@@ -21,7 +21,7 @@ export default function ContextMenuDemo() {
           <span className="hidden pointer-coarse:inline-block">Long press here</span>
         </div>
       </Pressable>
-      <ContextMenuContent className="min-w-56">
+      <ContextMenu className="min-w-56">
         <ContextMenuItem>Back</ContextMenuItem>
         <ContextMenuItem isDisabled>Forward</ContextMenuItem>
         <ContextMenuItem>Reload</ContextMenuItem>
@@ -36,7 +36,7 @@ export default function ContextMenuDemo() {
         <ContextMenuItem>View source</ContextMenuItem>
         <ContextMenuItem>Inspect Accessibility</ContextMenuItem>
         <ContextMenuItem>Inspect</ContextMenuItem>
-      </ContextMenuContent>
-    </ContextMenu>
+      </ContextMenu>
+    </ContextMenuTrigger>
   )
 }

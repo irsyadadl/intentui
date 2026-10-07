@@ -1,28 +1,23 @@
+import { Button } from "@/components/ui/button"
 import { describe, it, expect } from "vitest"
 import userEvent from "@testing-library/user-event"
 import { render, screen } from "../utils/render"
 import { User } from "@react-aria/test-utils"
 import { waitFor } from "../utils/render"
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverTitle,
-  PopoverClose,
-} from "@/components/ui/popover"
+import { Popover, PopoverTrigger, PopoverTitle, PopoverClose } from "@/components/ui/popover"
 import { Dialog } from "@/components/ui/dialog"
 const ariaUser = new User({ interactionType: "mouse" })
 function Example() {
   return (
-    <Popover>
-      <PopoverTrigger>Open settings</PopoverTrigger>
-      <PopoverContent>
+    <PopoverTrigger>
+      <Button>Open settings</Button>
+      <Popover>
         <Dialog>
           <PopoverTitle>Settings</PopoverTitle>
           <PopoverClose>Done</PopoverClose>
         </Dialog>
-      </PopoverContent>
-    </Popover>
+      </Popover>
+    </PopoverTrigger>
   )
 }
 describe("Popover", () => {

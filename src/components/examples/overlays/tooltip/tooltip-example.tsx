@@ -8,7 +8,7 @@ export default function TooltipDemo() {
       <Button intent="outline">Duplicate</Button>
       <TooltipContent>
         <strong className="font-semibold">Duplicate project</strong>
-        <p className="mt-1 max-w-2xs text-pretty text-muted-fg text-sm">
+        <p className="mt-1 max-w-2xs text-pretty text-muted-foreground text-sm">
           This will create a copy of the current project including all files and settings.
         </p>
       </TooltipContent>

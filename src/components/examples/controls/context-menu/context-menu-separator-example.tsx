@@ -1,8 +1,8 @@
 "use client"
 
 import {
+  ContextMenuTrigger,
   ContextMenu,
-  ContextMenuContent,
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuShortcut,
@@ -11,7 +11,7 @@ import { Pressable } from "react-aria-components"
 
 export default function ContextMenuSeparatorDemo() {
   return (
-    <ContextMenu>
+    <ContextMenuTrigger>
       <Pressable>
         <div
           role="button"
@@ -21,7 +21,7 @@ export default function ContextMenuSeparatorDemo() {
           <span className="hidden pointer-coarse:inline-block">Long press here</span>
         </div>
       </Pressable>
-      <ContextMenuContent className="min-w-60">
+      <ContextMenu className="min-w-60">
         <ContextMenuItem>Go to Definition</ContextMenuItem>
         <ContextMenuItem>Go to Type Definition</ContextMenuItem>
         <ContextMenuItem>Go to Source Definition</ContextMenuItem>
@@ -52,7 +52,7 @@ export default function ContextMenuSeparatorDemo() {
           Refactor...
           <ContextMenuShortcut>⌘⇧R</ContextMenuShortcut>
         </ContextMenuItem>
-      </ContextMenuContent>
-    </ContextMenu>
+      </ContextMenu>
+    </ContextMenuTrigger>
   )
 }

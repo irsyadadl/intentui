@@ -25,7 +25,7 @@ export default function TagGroupControlledDemo() {
         <TagList items={fruitList}>{(item) => <Tag>{item.name}</Tag>}</TagList>
       </TagGroup>
 
-      <Description className="mt-2 block text-muted-fg [&>strong]:text-fg">
+      <Description className="mt-2 block text-muted-foreground [&>strong]:text-foreground">
         You have selected: <strong>{Array.from(selected).join(", ")}</strong>
       </Description>
     </div>

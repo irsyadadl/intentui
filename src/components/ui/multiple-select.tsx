@@ -8,7 +8,7 @@ import { cx } from "@/lib/primitive"
 import { Button } from "./button"
 import { fieldStyles } from "./field"
 import { ListBoxItem } from "./list-box"
-import { PopoverContent } from "./popover"
+import { Popover } from "./popover"
 import { SearchField, SearchInput } from "./search-field"
 import { Tag, TagGroup, TagList } from "./tag-group"
 
@@ -94,7 +94,7 @@ function MultipleSelect<T extends OptionBase>({
                   <TagList
                     items={selectedItems.filter((i) => i != null)}
                     renderEmptyState={() => (
-                      <i className="ps-2 text-muted-fg text-sm">{placeholder}</i>
+                      <i className="ps-2 text-muted-foreground text-sm">{placeholder}</i>
                     )}
                   >
                     {(item) => <Tag className="rounded-md">{item.name}</Tag>}
@@ -121,7 +121,7 @@ function MultipleSelect<T extends OptionBase>({
               </svg>
             </Button>
           </div>
-          <PopoverContent
+          <Popover
             triggerRef={triggerRef}
             placement="bottom"
             className="flex w-full min-w-(--trigger-width) flex-col overflow-hidden *:data-[slot=popover-inner]:flex *:data-[slot=popover-inner]:flex-col *:data-[slot=popover-inner]:overflow-hidden"
@@ -145,7 +145,7 @@ function MultipleSelect<T extends OptionBase>({
                 {list.children}
               </ListBox>
             </Autocomplete>
-          </PopoverContent>
+          </Popover>
         </>
       )}
       {after}

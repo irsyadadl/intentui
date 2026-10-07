@@ -34,7 +34,9 @@ export default function TagFieldControlledDemo() {
           The input value is managed externally, allowing you to validate, sanitize, or sync it with
           other parts of your app, such as forms, counters, or APIs.
         </CardDescription>
-        <CardAction className="text-muted-fg text-sm tabular-nums">{text.length}/10</CardAction>
+        <CardAction className="text-muted-foreground text-sm tabular-nums">
+          {text.length}/10
+        </CardAction>
       </CardHeader>
       <CardContent>
         <TagField

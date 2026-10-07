@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/field"
 import {
   SheetBody,
-  SheetContent,
+  Sheet,
   SheetDescription,
   SheetFooter,
   SheetHeader,
@@ -20,7 +20,7 @@ export default function SheetControlledDemo() {
   return (
     <>
       <Button onPress={() => setIsOpen(true)}>Feedback</Button>
-      <SheetContent isOpen={isOpen} onOpenChange={setIsOpen}>
+      <Sheet isOpen={isOpen} onOpenChange={setIsOpen}>
         <SheetHeader>
           <SheetTitle>Submit Feedback</SheetTitle>
           <SheetDescription>
@@ -41,7 +41,7 @@ export default function SheetControlledDemo() {
             Submit Feedback
           </Button>
         </SheetFooter>
-      </SheetContent>
+      </Sheet>
     </>
   )
 }

@@ -25,17 +25,18 @@ Use this approach if you prefer to install and wire up the component yourself in
 
 ## Anatomy
 ```
-import { Menu, MenuContent, MenuItem, MenuTrigger } from '@/components/ui/menu'
+import { Menu, MenuItem, MenuTrigger } from '@/components/ui/menu'
+import { Button } from '@/components/ui/button'
 ```
 ```
-<Menu>
-  <MenuTrigger>Open</MenuTrigger>
-  <MenuContent popover={{ placement: 'bottom' }}>
+<MenuTrigger>
+  <Button>Open</Button>
+  <Menu popover={{ placement: 'bottom' }}>
     <MenuItem>Inbox</MenuItem>
     <MenuItem>Sent</MenuItem>
     <MenuItem>New Message</MenuItem>
-  </MenuContent>
-</Menu>
+  </Menu>
+</MenuTrigger>
 ```
 
 ## Examples
@@ -84,16 +85,16 @@ Organize menu items into grouped sections with level selection.
 <How toUse="collections/menu/menu-section-level-selection" />
 
 ### Arrow
-Incorporate an arrow into the menu using the `arrow` from `popover` in the `MenuContent` component.
+Incorporate an arrow into the menu using the `arrow` from `popover` in the `Menu` component.
 <How toUse="collections/menu/menu-with-arrow-example" />
 
 ### Disabled
 Disable specific menu items.
 <How toUse="collections/menu/menu-disabled-example" />
 
-Also, you can disable items directly in `MenuContent` by using the `disabledKeys` prop.
+Also, you can disable items directly in `Menu` by using the `disabledKeys` prop.
 ```tsx
-<MenuContent disabledKeys={['gsu']} />
+<Menu disabledKeys={['gsu']} />
 ```
 
 ### Menu label
@@ -110,33 +111,24 @@ Trigger a modal from a menu item. Refer to the [modal demo](/docs/components/ove
 
 ## Component API
 
-### Menu
-
-<ApiParameters>
-  <ApiDescription>
-    **Menu** extends the React Aria Components [**`<MenuTrigger>`**](https://react-aria.adobe.com/Menu#api) component.
-  </ApiDescription>
-</ApiParameters>
-
 ### MenuTrigger
 
 <ApiParameters>
   <ApiDescription>
-    **MenuTrigger** extends the React Aria Components [**`<Button>`**](https://react-aria.adobe.com/Button#api) component.
+    **MenuTrigger** extends the React Aria Components [**`<MenuTrigger>`**](https://react-aria.adobe.com/Menu#api) component.
   </ApiDescription>
-  <ApiParameter name="className" type='string' />
 </ApiParameters>
 
-### MenuContent
+### Menu
 
 <ApiParameters>
   <ApiDescription>
-    **MenuContent** extends the React Aria Components [**`<Menu>`**](https://react-aria.adobe.com/Menu#api) component.
+    **Menu** extends the React Aria Components [**`<Menu>`**](https://react-aria.adobe.com/Menu#api) component.
   </ApiDescription>
   <ApiParameter name="className" type='string' />
   <ApiParameter
     name="popover"
-    type='Pick< PopoverContentProps, | "arrow" | "className" | "placement" | "offset" | "crossOffset" | "arrowBoundaryOffset" | "triggerRef" | "isOpen" | "onOpenChange" | "shouldFlip" >'
+    type='Pick< PopoverProps, | "arrow" | "className" | "placement" | "offset" | "crossOffset" | "arrowBoundaryOffset" | "triggerRef" | "isOpen" | "onOpenChange" | "shouldFlip" >'
   />
 </ApiParameters>
 

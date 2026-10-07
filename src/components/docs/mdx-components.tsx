@@ -48,17 +48,20 @@ export const mdxComponents = {
     <thead className="border-border border-b-2" {...props} />
   ),
   th: (props: React.ComponentProps<"th">) => (
-    <th className="px-6 py-2.5 text-left font-medium text-fg text-sm/6 first:px-0" {...props} />
+    <th
+      className="px-6 py-2.5 text-left font-medium text-foreground text-sm/6 first:px-0"
+      {...props}
+    />
   ),
   td: (props: React.ComponentProps<"td">) => (
     <td
-      className="border-border/70 border-t px-6 py-2.5 text-muted-fg text-sm first:px-0 *:[code]:font-medium *:[code]:text-fg"
+      className="border-border/70 border-t px-6 py-2.5 text-muted-foreground text-sm first:px-0 *:[code]:font-medium *:[code]:text-foreground"
       {...props}
     />
   ),
   NewTab: (props: React.ComponentProps<typeof Link>) => (
     <Link
-      className="not-typeset xd2432 text-primary-subtle-fg outline-hidden hover:underline focus-visible:ring-1"
+      className="not-typeset xd2432 text-primary-subtle-foreground outline-hidden hover:underline focus-visible:ring-1"
       target="_blank"
       {...props}
     >
@@ -92,7 +95,7 @@ export const mdxComponents = {
   //       className={cn(
   //         isHeadingAnchor
   //           ? 'text-inherit no-underline outline-hidden hover:no-underline focus-visible:ring-1'
-  //           : 'not-typeset xd2432 text-primary-subtle-fg outline-hidden hover:underline focus-visible:ring-1',
+  //           : 'not-typeset xd2432 text-primary-subtle-foreground outline-hidden hover:underline focus-visible:ring-1',
   //         className
   //       )}
   //     />

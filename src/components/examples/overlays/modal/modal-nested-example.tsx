@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/field"
 import {
   ModalBody,
   ModalClose,
-  ModalContent,
+  Modal,
   ModalDescription,
   ModalFooter,
   ModalHeader,
@@ -26,7 +26,7 @@ export default function ModalNestedDemo() {
     <>
       <Button onPress={() => setIsRegistrationModalOpen(true)}>Register</Button>
 
-      <ModalContent
+      <Modal
         isOpen={isRegistrationModalOpen}
         onOpenChange={() => setIsRegistrationModalOpen(false)}
         aria-label="Confirm Registration"
@@ -45,9 +45,9 @@ export default function ModalNestedDemo() {
             Confirm
           </Button>
         </ModalFooter>
-      </ModalContent>
+      </Modal>
 
-      <ModalContent
+      <Modal
         isOpen={isProfileSetupModalOpen}
         onOpenChange={(isOpen) => {
           if (!isOpen && isTyping) {
@@ -85,7 +85,7 @@ export default function ModalNestedDemo() {
             <Button type="submit">Complete Setup</Button>
           </ModalFooter>
         </Form>
-      </ModalContent>
+      </Modal>
     </>
   )
 }

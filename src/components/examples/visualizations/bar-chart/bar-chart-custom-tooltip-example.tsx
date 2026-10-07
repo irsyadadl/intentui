@@ -23,12 +23,12 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
   if (!active || !payload?.length) return null
 
   return (
-    <div className="inset-ring inset-ring-fg/20 rounded-2xl bg-bg/10 p-3 text-xs backdrop-blur-2xl">
-      <div className="mb-2 font-medium text-muted-fg">{label}</div>
+    <div className="inset-ring inset-ring-foreground/20 rounded-2xl bg-background/10 p-3 text-xs backdrop-blur-2xl">
+      <div className="mb-2 font-medium text-muted-foreground">{label}</div>
       <div className="space-y-1">
         {payload.map((entry) => (
           <div key={entry.dataKey} className="flex items-center justify-between gap-3">
-            <div className="flex items-center gap-2 text-muted-fg capitalize">
+            <div className="flex items-center gap-2 text-muted-foreground capitalize">
               {entry.dataKey === "likes" && <HeartIcon style={{ color: entry.color }} />}
               {entry.dataKey === "comments" && (
                 <ChatBubbleLeftRightIcon style={{ color: entry.color }} />
@@ -36,7 +36,7 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
               {entry.dataKey === "shares" && <ArrowUpTrayIcon style={{ color: entry.color }} />}
               <span>{entry.name}</span>
             </div>
-            <span className="font-mono text-fg tabular-nums">{entry.value}</span>
+            <span className="font-mono text-foreground tabular-nums">{entry.value}</span>
           </div>
         ))}
       </div>

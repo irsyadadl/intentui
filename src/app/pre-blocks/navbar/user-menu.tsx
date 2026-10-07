@@ -1,7 +1,7 @@
 "use client"
 
 import {
-  ArrowRightOnRectangleIcon,
+  ArrowRightStartOnRectangleIcon,
   Cog6ToothIcon,
   CommandLineIcon,
   LifebuoyIcon,
@@ -10,31 +10,31 @@ import {
 } from "@heroicons/react/24/outline"
 import { Avatar } from "@/components/ui/avatar"
 import {
-  Menu,
-  MenuContent,
   MenuHeader,
   MenuItem,
   MenuSection,
   MenuSeparator,
+  Menu,
   MenuTrigger,
 } from "@/components/ui/menu"
+import { Button } from "react-aria-components/Button"
 
 export function UserMenu() {
   return (
-    <Menu>
-      <MenuTrigger aria-label="Open Menu">
+    <MenuTrigger>
+      <Button aria-label="Open Menu">
         <Avatar
           alt="cobain"
           size="md"
           isSquare
           src="https://intentui.com/images/avatar/cobain.jpg"
         />
-      </MenuTrigger>
-      <MenuContent placement="bottom right" className="min-w-60 sm:min-w-56">
+      </Button>
+      <Menu placement="bottom right" className="min-w-60 sm:min-w-56">
         <MenuSection>
           <MenuHeader separator>
             <span className="block">Kurt Cobain</span>
-            <span className="font-normal text-muted-fg">@cobain</span>
+            <span className="font-normal text-muted-foreground">@cobain</span>
           </MenuHeader>
         </MenuSection>
 
@@ -62,10 +62,10 @@ export function UserMenu() {
         </MenuItem>
         <MenuSeparator />
         <MenuItem href="#logout">
-          <ArrowRightOnRectangleIcon />
+          <ArrowRightStartOnRectangleIcon />
           Log out
         </MenuItem>
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   )
 }

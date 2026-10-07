@@ -9,12 +9,12 @@ import * as ReactDOMServer from "react-dom/server"
 import { toast } from "sonner"
 import { aliasLookup } from "@/app/(app)/icons/partials/aliases"
 import {
-  Menu,
-  MenuContent,
   MenuHeader,
   MenuItem,
   MenuLabel,
   MenuSeparator,
+  Menu,
+  MenuTrigger,
 } from "@/components/ui/menu"
 import iconMetadata from "@/generated/icon-metadata.json"
 import { useClipboard } from "@/hooks/use-clipboard"
@@ -84,7 +84,7 @@ function IconsListContent({ searchParams }: SearchParamsProps) {
             selectionMode="single"
             aria-label="List Icon"
             layout="grid"
-            className="grid grid-cols-5 md:grid-cols-9 xl:grid-cols-16 gap-px bg-page *:bg-bg border border-page rounded-lg overflow-hidden"
+            className="grid grid-cols-5 md:grid-cols-9 xl:grid-cols-16 gap-px bg-page *:bg-background border border-page rounded-lg overflow-hidden"
           >
             {filteredIcons.map(([name, Icon]) => (
               <IconListItem key={name} name={name} Icon={Icon} />
@@ -130,8 +130,8 @@ export function IconListItem({ name, Icon }: IconListItemProps) {
     >
       <Icon className={selectedSize} key={name} />
       {isSelected && (
-        <Menu isOpen onOpenChange={setSelected}>
-          <MenuContent
+        <MenuTrigger isOpen onOpenChange={setSelected}>
+          <Menu
             popover={{ triggerRef: triggerRef, arrow: true }}
             className="sm:min-w-48"
             aria-label="Options"
@@ -153,8 +153,8 @@ export function IconListItem({ name, Icon }: IconListItemProps) {
               <MenuLabel>Download SVG</MenuLabel>
               <ArrowDownTrayIcon />
             </MenuItem>
-          </MenuContent>
-        </Menu>
+          </Menu>
+        </MenuTrigger>
       )}
     </ListBoxItem>
   )

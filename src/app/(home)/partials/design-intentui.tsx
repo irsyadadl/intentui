@@ -7,7 +7,7 @@ import { buttonStyles } from "@/components/ui/button"
 
 export function DesignIntentui() {
   return (
-    <div className="border-page border-t text-fg">
+    <div className="border-page border-t text-foreground">
       <PageContainer>
         <div className="border-page sm:border-x sm:p-6">
           <div className="relative mx-auto max-w-3xl py-12 text-center">
@@ -17,7 +17,7 @@ export function DesignIntentui() {
             <div className="mt-4 mb-4 text-3xl sm:text-5xl/14">
               Launch faster with ready-made blocks and templates
             </div>
-            <p className="mx-auto max-w-xl text-pretty text-center text-lg/8 text-muted-fg leading-relaxed sm:text-xl">
+            <p className="mx-auto max-w-xl text-pretty text-center text-lg/8 text-muted-foreground leading-relaxed sm:text-xl">
               Build modern web apps faster with 1000+ resources across components, blocks, patterns,
               templates, and starter kits.
             </p>

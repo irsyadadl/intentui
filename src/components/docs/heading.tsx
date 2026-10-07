@@ -10,7 +10,7 @@ export function Heading({ as: Component, className, id, ...props }: HeadingProps
       {...props}
       id={id}
       className={cn(
-        "not-typeset mt-8 mb-4 scroll-mt-24 font-medium after:ml-2 after:text-muted-fg after:opacity-0 after:transition-opacity after:content-['#'] hover:after:opacity-100",
+        "not-typeset mt-8 mb-4 scroll-mt-24 font-medium after:ml-2 after:text-muted-foreground after:opacity-0 after:transition-opacity after:content-['#'] hover:after:opacity-100",
         className
       )}
     />

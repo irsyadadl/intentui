@@ -180,7 +180,7 @@ const PaginationGap = ({
     <li
       data-slot="pagination-gap"
       className={cn(
-        "w-9 select-none text-center font-semibold text-fg text-sm/6 outline-hidden",
+        "w-9 select-none text-center font-semibold text-foreground text-sm/6 outline-hidden",
         className
       )}
       {...props}
@@ -196,7 +196,7 @@ const PaginationLabel = ({ className, ...props }: React.ComponentPropsWithoutRef
     <li
       data-slot="pagination-label"
       className={cn(
-        "min-w-4 self-center text-fg *:[strong]:font-medium *:[strong]:text-fg",
+        "min-w-4 self-center text-foreground *:[strong]:font-medium *:[strong]:text-foreground",
         className
       )}
       {...props}

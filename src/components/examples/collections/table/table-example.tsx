@@ -2,7 +2,7 @@
 import { EllipsisVerticalIcon } from "@heroicons/react/16/solid"
 import { NumberFormatter } from "@internationalized/number"
 import { Button } from "@/components/ui/button"
-import { Menu, MenuContent, MenuItem, MenuSeparator } from "@/components/ui/menu"
+import { MenuItem, MenuSeparator, Menu, MenuTrigger } from "@/components/ui/menu"
 import {
   Table,
   TableBody,
@@ -38,17 +38,17 @@ export default function TableDemo() {
               </TableCell>
               <TableCell>{item.stock}</TableCell>
               <TableCell className="flex justify-end">
-                <Menu>
+                <MenuTrigger>
                   <Button intent="plain" size="sq-sm" aria-label="Options">
                     <EllipsisVerticalIcon />
                   </Button>
-                  <MenuContent aria-label="Actions" placement="left top">
+                  <Menu aria-label="Actions" placement="left top">
                     <MenuItem>View</MenuItem>
                     <MenuItem>Edit</MenuItem>
                     <MenuSeparator />
                     <MenuItem intent="danger">Delete</MenuItem>
-                  </MenuContent>
-                </Menu>
+                  </Menu>
+                </MenuTrigger>
               </TableCell>
             </TableRow>
           )}

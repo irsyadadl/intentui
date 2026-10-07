@@ -8,12 +8,12 @@ import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
 import { Loader } from "@/components/ui/loader"
 import {
-  Menu,
-  MenuContent,
   MenuDescription,
   MenuItem,
   MenuLabel,
   MenuSeparator,
+  Menu,
+  MenuTrigger,
 } from "@/components/ui/menu"
 import { app } from "@/config/app"
 import { useClipboard } from "@/hooks/use-clipboard"
@@ -74,15 +74,15 @@ export function OpenIn({ url, page }: { url: string; page: string }) {
         {pending ? <Loader /> : copied ? <CheckIcon /> : <DuplicateIcon />}
         Copy page
       </Button>
-      <Menu>
+      <MenuTrigger>
         <Button
-          className="h-10 group rounded-sm pressed:bg-secondary pressed:*:text-fg sm:h-auto dark:bg-secondary/50 dark:hover:bg-secondary"
+          className="h-10 group rounded-sm pressed:bg-secondary pressed:*:text-foreground sm:h-auto dark:bg-secondary/50 dark:hover:bg-secondary"
           intent="outline"
           size="sm"
         >
           <ChevronDownIcon className="group-pressed:rotate-180 transition-transform" />
         </Button>
-        <MenuContent className="min-w-64" placement="bottom end">
+        <Menu className="min-w-64" placement="bottom end">
           <MenuItem href={`${url}.md`} target="_blank" rel="noopener noreferrer">
             <IconMarkdown />
             <MenuLabel>View as Markdown</MenuLabel>
@@ -130,8 +130,8 @@ export function OpenIn({ url, page }: { url: string; page: string }) {
             <MenuLabel>Open in GitHub</MenuLabel>
             <MenuDescription>View the source file on GitHub.</MenuDescription>
           </MenuItem>
-        </MenuContent>
-      </Menu>
+        </Menu>
+      </MenuTrigger>
     </ButtonGroup>
   )
 }

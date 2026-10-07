@@ -21,42 +21,42 @@
 
   --color-ring: var(--ring);
 
-  --color-bg: var(--bg);
-  --color-fg: var(--fg);
+  --color-bg: var(--background);
+  --color-foreground: var(--foreground);
 
   --color-primary: var(--primary);
-  --color-primary-fg: var(--primary-fg);
+  --color-primary-foreground: var(--primary-foreground);
 
   --color-secondary: var(--secondary);
-  --color-secondary-fg: var(--secondary-fg);
+  --color-secondary-foreground: var(--secondary-foreground);
 
   --color-accent: var(--accent);
-  --color-accent-fg: var(--accent-fg);
+  --color-accent-foreground: var(--accent-foreground);
 
   --color-success: var(--success);
-  --color-success-fg: var(--success-fg);
+  --color-success-foreground: var(--success-foreground);
 
   --color-danger: var(--danger);
-  --color-danger-fg: var(--danger-fg);
+  --color-danger-foreground: var(--danger-foreground);
 
   --color-warning: var(--warning);
-  --color-warning-fg: var(--warning-fg);
+  --color-warning-foreground: var(--warning-foreground);
 
   --color-muted: var(--muted);
-  --color-muted-fg: var(--muted-fg);
+  --color-muted-foreground: var(--muted-foreground);
 
   --color-overlay: var(--overlay);
-  --color-overlay-fg: var(--overlay-fg);
+  --color-overlay-foreground: var(--overlay-foreground);
 
   --color-navbar: var(--navbar);
-  --color-navbar-fg: var(--navbar-fg);
+  --color-navbar-foreground: var(--navbar-foreground);
 
   --color-sidebar: var(--sidebar);
-  --color-sidebar-fg: var(--sidebar-fg);
+  --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-fg: var(--sidebar-primary-fg);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
   --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-fg: var(--sidebar-accent-fg);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
@@ -77,46 +77,46 @@
 
 :root {
   --radius: 0.5rem;
-  --bg: oklch(1 0 0);
-  --fg: oklch(0.129 0.042 264.695);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
 
   --primary: oklch(0.546 0.245 262.881);
-  --primary-fg: oklch(1 0 0);
+  --primary-foreground: oklch(1 0 0);
 
   --secondary: oklch(0.929 0.013 255.508);
-  --secondary-fg: oklch(0.129 0.042 264.695);
+  --secondary-foreground: oklch(0.129 0.042 264.695);
 
   --overlay: oklch(1 0 0);
-  --overlay-fg: oklch(0.129 0.042 264.695);
+  --overlay-foreground: oklch(0.129 0.042 264.695);
 
   --accent: oklch(0.929 0.013 255.508);
-  --accent-fg: oklch(0.129 0.042 264.695);
+  --accent-foreground: oklch(0.129 0.042 264.695);
 
   --muted: oklch(0.968 0.007 247.896);
-  --muted-fg: oklch(0.554 0.046 257.417);
+  --muted-foreground: oklch(0.554 0.046 257.417);
 
   --success: oklch(0.596 0.145 163.225);
-  --success-fg: oklch(1 0 0);
+  --success-foreground: oklch(1 0 0);
 
   --warning: oklch(0.828 0.189 84.429);
-  --warning-fg: oklch(0.279 0.077 45.635);
+  --warning-foreground: oklch(0.279 0.077 45.635);
 
   --danger: oklch(0.577 0.245 27.325);
-  --danger-fg: oklch(0.971 0.013 17.38);
+  --danger-foreground: oklch(0.971 0.013 17.38);
 
   --border: oklch(0.909 0.022 252.894);
   --input: oklch(0.869 0.022 252.894);
   --ring: oklch(0.546 0.245 262.881);
 
   --navbar: oklch(0.994 0.003 247.858);
-  --navbar-fg: oklch(0.129 0.042 264.695);
+  --navbar-foreground: oklch(0.129 0.042 264.695);
 
   --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-fg: oklch(0.129 0.042 264.695);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
   --sidebar-primary: oklch(0.546 0.245 262.881);
-  --sidebar-primary-fg: oklch(1 0 0);
+  --sidebar-primary-foreground: oklch(1 0 0);
   --sidebar-accent: oklch(0.929 0.013 255.508);
-  --sidebar-accent-fg: oklch(0.129 0.042 264.695);
+  --sidebar-accent-foreground: oklch(0.129 0.042 264.695);
   --sidebar-border: oklch(0.899 0.022 252.894);
   --sidebar-ring: oklch(0.546 0.245 262.881);
 
@@ -137,46 +137,46 @@
 }
 
 .dark {
-  --bg: oklch(0.079 0.042 264.695);
-  --fg: oklch(0.984 0.003 247.858);
+  --background: oklch(0.079 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
 
   --primary: oklch(0.546 0.245 262.881);
-  --primary-fg: oklch(1 0 0);
+  --primary-foreground: oklch(1 0 0);
 
   --secondary: oklch(0.249 0.041 260.031);
-  --secondary-fg: oklch(0.984 0.003 247.858);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
 
   --accent: oklch(0.279 0.041 260.031);
-  --accent-fg: oklch(0.984 0.003 247.858);
+  --accent-foreground: oklch(0.984 0.003 247.858);
 
   --muted: oklch(0.208 0.042 265.755);
-  --muted-fg: oklch(0.704 0.04 256.788);
+  --muted-foreground: oklch(0.704 0.04 256.788);
 
   --overlay: oklch(0.178 0.042 265.755);
-  --overlay-fg: oklch(0.984 0.003 247.858);
+  --overlay-foreground: oklch(0.984 0.003 247.858);
 
   --success: oklch(0.596 0.145 163.225);
-  --success-fg: oklch(1 0 0);
+  --success-foreground: oklch(1 0 0);
 
   --warning: oklch(0.828 0.189 84.429);
-  --warning-fg: oklch(0.279 0.077 45.635);
+  --warning-foreground: oklch(0.279 0.077 45.635);
 
   --danger: oklch(0.577 0.245 27.325);
-  --danger-fg: oklch(0.971 0.013 17.38);
+  --danger-foreground: oklch(0.971 0.013 17.38);
 
   --border: oklch(0.272 0.044 257.287);
   --input: oklch(0.322 0.044 257.287);
   --ring: oklch(0.546 0.245 262.881);
 
   --navbar: oklch(0.188 0.042 265.755);
-  --navbar-fg: oklch(0.984 0.003 247.858);
+  --navbar-foreground: oklch(0.984 0.003 247.858);
 
   --sidebar: var(--color-slate-900);
-  --sidebar-fg: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
   --sidebar-primary: oklch(0.546 0.245 262.881);
-  --sidebar-primary-fg: oklch(1 0 0);
+  --sidebar-primary-foreground: oklch(1 0 0);
   --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-fg: oklch(0.984 0.003 247.858);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(0.279 0.041 260.031);
   --sidebar-ring: oklch(0.546 0.245 262.881);
 
@@ -232,8 +232,8 @@
   }
 
   body {
-    background-color: var(--bg);
-    color: var(--fg);
+    background-color: var(--background);
+    color: var(--foreground);
   }
 
   ::-webkit-scrollbar {

@@ -1,8 +1,9 @@
+import { Button } from "@/components/ui/button"
 import { describe, it, expect, vi } from "vitest"
 import userEvent from "@testing-library/user-event"
 import { render, screen } from "../utils/render"
 import { User } from "@react-aria/test-utils"
-import { Menu, MenuTrigger, MenuContent, MenuItem } from "@/components/ui/menu"
+import { MenuItem, Menu, MenuTrigger } from "@/components/ui/menu"
 const ariaUser = new User({ interactionType: "mouse" })
 describe("Menu", () => {
   it.each(["mouse", "keyboard"] as const)(
@@ -10,15 +11,15 @@ describe("Menu", () => {
     async (interactionType) => {
       const onAction = vi.fn()
       render(
-        <Menu>
-          <MenuTrigger>Actions</MenuTrigger>
-          <MenuContent onAction={onAction}>
+        <MenuTrigger>
+          <Button>Actions</Button>
+          <Menu onAction={onAction}>
             <MenuItem id="edit">Edit</MenuItem>
             <MenuItem id="delete" isDisabled>
               Delete
             </MenuItem>
-          </MenuContent>
-        </Menu>
+          </Menu>
+        </MenuTrigger>
       )
       const tester = ariaUser.createTester("Menu", {
         root: screen.getByRole("button", { name: "Actions" }),
@@ -38,12 +39,12 @@ describe("Menu", () => {
     const user = userEvent.setup(),
       onAction = vi.fn()
     render(
-      <Menu>
-        <MenuTrigger>Actions</MenuTrigger>
-        <MenuContent onAction={onAction}>
+      <MenuTrigger>
+        <Button>Actions</Button>
+        <Menu onAction={onAction}>
           <MenuItem id="edit">Edit</MenuItem>
-        </MenuContent>
-      </Menu>
+        </Menu>
+      </MenuTrigger>
     )
     await user.click(screen.getByRole("button"))
     await user.keyboard("[Escape]")

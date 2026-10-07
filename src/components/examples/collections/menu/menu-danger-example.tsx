@@ -1,20 +1,15 @@
 "use client"
 
+import { Button } from "@/components/ui/button"
+
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline"
-import {
-  Menu,
-  MenuContent,
-  MenuItem,
-  MenuLabel,
-  MenuSeparator,
-  MenuTrigger,
-} from "@/components/ui/menu"
+import { MenuItem, MenuLabel, MenuSeparator, Menu, MenuTrigger } from "@/components/ui/menu"
 
 export default function MenuDangerDemo() {
   return (
-    <Menu>
-      <MenuTrigger>Open</MenuTrigger>
-      <MenuContent popover={{ placement: "bottom" }}>
+    <MenuTrigger>
+      <Button intent="outline">Open</Button>
+      <Menu popover={{ placement: "bottom" }}>
         <MenuItem>
           <MenuLabel>View</MenuLabel>
         </MenuItem>
@@ -27,7 +22,7 @@ export default function MenuDangerDemo() {
           <TrashIcon />
           <MenuLabel>Delete</MenuLabel>
         </MenuItem>
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   )
 }

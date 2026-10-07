@@ -1,7 +1,7 @@
 "use client"
 
 import {
-  ArrowRightOnRectangleIcon,
+  ArrowRightStartOnRectangleIcon,
   ChartBarIcon,
   ChevronUpDownIcon,
   Cog6ToothIcon,
@@ -19,12 +19,11 @@ import {
 import { Avatar } from "@/components/ui/avatar"
 import { Link } from "@/components/ui/link"
 import {
-  Menu,
-  MenuContent,
   MenuHeader,
   MenuItem,
   MenuSection,
   MenuSeparator,
+  Menu,
   MenuTrigger,
 } from "@/components/ui/menu"
 import {
@@ -38,6 +37,7 @@ import {
   SidebarSection,
   SidebarSectionGroup,
 } from "@/components/ui/sidebar"
+import { Button } from "react-aria-components/Button"
 
 export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -54,7 +54,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
             src="https://design.intentui.com/logo?color=155DFC"
           />
           <SidebarLabel className="font-medium">
-            Intent <span className="text-muted-fg">UI</span>
+            Intent <span className="text-muted-foreground">UI</span>
           </SidebarLabel>
         </Link>
       </SidebarHeader>
@@ -74,8 +74,8 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
       </SidebarContent>
 
       <SidebarFooter className="flex flex-row justify-between gap-4 group-data-[state=collapsed]:flex-col">
-        <Menu>
-          <MenuTrigger className="flex w-full items-center justify-between" aria-label="Profile">
+        <MenuTrigger>
+          <Button className="flex w-full items-center justify-between" aria-label="Profile">
             <div className="flex items-center gap-x-2">
               <Avatar
                 className="size-8 *:size-8 group-data-[state=collapsed]:size-6 group-data-[state=collapsed]:*:size-6"
@@ -84,19 +84,19 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
               />
               <div className="in-data-[collapsible=dock]:hidden text-sm">
                 <SidebarLabel>Kurt Cobain</SidebarLabel>
-                <span className="-mt-0.5 block text-muted-fg">@kurtcobain</span>
+                <span className="-mt-0.5 block text-muted-foreground">@kurtcobain</span>
               </div>
             </div>
             <ChevronUpDownIcon data-slot="chevron" />
-          </MenuTrigger>
-          <MenuContent
+          </Button>
+          <Menu
             className="in-data-[sidebar-collapsible=collapsed]:min-w-56 min-w-(--trigger-width)"
             placement="bottom right"
           >
             <MenuSection>
               <MenuHeader separator>
                 <span className="block">Kurt Cobain</span>
-                <span className="font-normal text-muted-fg">@cobain</span>
+                <span className="font-normal text-muted-foreground">@cobain</span>
               </MenuHeader>
             </MenuSection>
 
@@ -120,11 +120,11 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
             </MenuItem>
             <MenuSeparator />
             <MenuItem href="#logout">
-              <ArrowRightOnRectangleIcon />
+              <ArrowRightStartOnRectangleIcon />
               Log out
             </MenuItem>
-          </MenuContent>
-        </Menu>
+          </Menu>
+        </MenuTrigger>
       </SidebarFooter>
     </Sidebar>
   )

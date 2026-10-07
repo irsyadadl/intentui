@@ -36,7 +36,7 @@ The sidebar just needs one base color to work; the accent is generated from the 
   --color-sidebar: var(--sidebar);
   --color-sidebar-fg: var(--sidebar-fg);
   --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-fg: var(--sidebar-primary-fg);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
   --color-sidebar-accent: var(--sidebar-accent);
   --color-sidebar-accent-fg: var(--sidebar-accent-fg);
   --color-sidebar-border: var(--sidebar-border);
@@ -47,7 +47,7 @@ The sidebar just needs one base color to work; the accent is generated from the 
   --sidebar: oklch(0.985 0 0);
   --sidebar-fg: oklch(0.141 0.005 285.823);
   --sidebar-primary: oklch(0.623 0.214 259.815 / 0.15);
-  --sidebar-primary-fg: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.488 0.243 264.376);
   --sidebar-accent: oklch(0.92 0.004 286.32);
   --sidebar-accent-fg: oklch(0.141 0.005 285.823);
   --sidebar-border: oklch(0.901 0.006 286.286);
@@ -58,7 +58,7 @@ The sidebar just needs one base color to work; the accent is generated from the 
   --sidebar: oklch(0.21 0.006 285.885);
   --sidebar-fg: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.623 0.214 259.815 / 0.1);
-  --sidebar-primary-fg: oklch(0.707 0.165 254.624);
+  --sidebar-primary-foreground: oklch(0.707 0.165 254.624);
   --sidebar-accent: oklch(0.274 0.006 286.033);
   --sidebar-accent-fg: oklch(0.985 0 0);
   --sidebar-border: oklch(0.274 0.006 286.033);
@@ -196,11 +196,11 @@ The sidebar supports menus for displaying additional actions or options.
         <SidebarLabel>Orders</SidebarLabel>
       </SidebarLink>
       {(!isCollapsed || isFocused) && (
-        <Menu>
+        <MenuTrigger>
           <SidebarMenuTrigger aria-label="Manage">
             <EllipsisHorizontalIcon />
-          </MenuTrigger>
-          <MenuContent popover={{ offset: 0, placement: "right top" }}>
+          </SidebarMenuTrigger>
+          <Menu popover={{ offset: 0, placement: "right top" }}>
             <MenuItem href="#new-order">
               <PlusIcon />
               Create New Order
@@ -217,8 +217,8 @@ The sidebar supports menus for displaying additional actions or options.
             <MenuItem href="#export-orders">
               Export Orders
             </MenuItem>
-          </MenuContent>
-        </Menu>
+          </Menu>
+        </MenuTrigger>
       )}
     </>
   )}
@@ -321,19 +321,19 @@ The sidebar supports footers, which can be used to display additional actions or
 <Sidebar {...props}>
   ...
   <SidebarFooter>
-    <Menu>
-      <MenuTrigger aria-label="Profile">
+    <MenuTrigger>
+      <Button aria-label="Profile">
         <Avatar isSquare src="https://intentui.com/images/avatar/cobain.jpg" />
         <div className="group-data-[collapsible=dock]:hidden text-sm">
           Kurt Cobain
-          <span className="block -mt-0.5 text-muted-fg">@cobain</span>
+          <span className="block -mt-0.5 text-muted-foreground">@cobain</span>
         </div>
         <ChevronDownIcon className="absolute right-3 transition-transform size-4 group-pressed:rotate-180" />
-      </MenuTrigger>
-      <MenuContent placement="bottom right" className="min-w-(--trigger-width)">
+      </Button>
+      <Menu placement="bottom right" className="min-w-(--trigger-width)">
         <MenuItem/>
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   </SidebarFooter>
 </Sidebar>
 ```

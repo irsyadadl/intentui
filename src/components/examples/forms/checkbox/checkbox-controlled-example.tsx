@@ -12,7 +12,7 @@ export default function CheckboxControlledDemo() {
       <CheckboxField isSelected={selected} onChange={setSelection} value="updates" name="ru">
         <Checkbox>Receive Updates</Checkbox>
       </CheckboxField>
-      <Description className="mt-2 block [&>strong]:text-fg">
+      <Description className="mt-2 block [&>strong]:text-foreground">
         You have <strong>{selected ? "enabled" : "disabled"}</strong> the option.
       </Description>
     </>

@@ -135,7 +135,7 @@ const TableBody = <T extends object>({ renderEmptyState, ...props }: TableBodyPr
               <svg
                 aria-hidden
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute -top-20 size-5 text-muted-fg/50"
+                className="absolute -top-20 size-5 text-muted-foreground/50"
                 viewBox="0 0 24 24"
                 fill="none"
               >
@@ -149,7 +149,7 @@ const TableBody = <T extends object>({ renderEmptyState, ...props }: TableBodyPr
               <svg
                 aria-hidden
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute -start-10 top-0 size-5 text-muted-fg/80"
+                className="absolute -start-10 top-0 size-5 text-muted-foreground/80"
                 viewBox="0 0 24 24"
                 fill="none"
               >
@@ -164,7 +164,7 @@ const TableBody = <T extends object>({ renderEmptyState, ...props }: TableBodyPr
               <svg
                 aria-hidden
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute -start-20 top-16 size-5 text-muted-fg/70"
+                className="absolute -start-20 top-16 size-5 text-muted-foreground/70"
                 viewBox="0 0 24 24"
                 fill="none"
               >
@@ -179,7 +179,7 @@ const TableBody = <T extends object>({ renderEmptyState, ...props }: TableBodyPr
               <svg
                 aria-hidden
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute -end-24 top-16 size-5 text-muted-fg/50"
+                className="absolute -end-24 top-16 size-5 text-muted-foreground/50"
                 viewBox="0 0 24 24"
                 fill="none"
               >
@@ -202,7 +202,7 @@ const TableBody = <T extends object>({ renderEmptyState, ...props }: TableBodyPr
               <svg
                 aria-hidden
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute start-24 top-0 size-5 text-muted-fg/80"
+                className="absolute start-24 top-0 size-5 text-muted-foreground/80"
                 viewBox="0 0 24 24"
                 fill="none"
               >
@@ -217,7 +217,7 @@ const TableBody = <T extends object>({ renderEmptyState, ...props }: TableBodyPr
               <svg
                 aria-hidden
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute -end-20 -top-20 size-5 text-muted-fg/80"
+                className="absolute -end-20 -top-20 size-5 text-muted-foreground/80"
                 viewBox="0 0 24 24"
                 fill="none"
               >
@@ -232,7 +232,7 @@ const TableBody = <T extends object>({ renderEmptyState, ...props }: TableBodyPr
               <svg
                 aria-hidden
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute -start-20 -top-10 size-5 text-muted-fg/50"
+                className="absolute -start-20 -top-10 size-5 text-muted-foreground/50"
                 viewBox="0 0 24 24"
                 fill="none"
               >
@@ -297,7 +297,7 @@ const TableColumn = ({ isResizable = false, className, ...props }: TableColumnPr
       {...props}
       className={cx(
         [
-          "text-start font-medium text-muted-fg",
+          "text-start font-medium text-muted-foreground",
           "relative allows-sorting:cursor-default dragging:cursor-grabbing outline-hidden",
           "px-4 py-(--gutter-y)",
           "first:ps-(--gutter,--spacing(2)) last:pe-(--gutter,--spacing(2))",
@@ -318,8 +318,8 @@ const TableColumn = ({ isResizable = false, className, ...props }: TableColumnPr
           {values.allowsSorting && (
             <span
               className={twJoin(
-                "touch-target grid size-[1.15rem] flex-none shrink-0 place-content-center rounded bg-secondary text-fg *:[svg]:size-3.5 *:[svg]:shrink-0 *:[svg]:transition-transform *:[svg]:duration-200",
-                values.isHovered ? "bg-secondary-fg/10" : ""
+                "touch-target grid size-[1.15rem] flex-none shrink-0 place-content-center rounded bg-secondary text-foreground *:[svg]:size-3.5 *:[svg]:shrink-0 *:[svg]:transition-transform *:[svg]:duration-200",
+                values.isHovered ? "bg-secondary-foreground/10" : ""
               )}
             >
               <ChevronDownIcon
@@ -417,14 +417,15 @@ const TableRow = <T extends object>({
             "group relative cursor-default outline outline-transparent",
             isFocusVisible &&
               "bg-primary/5 outline-primary ring-3 ring-ring/20 hover:bg-primary/10",
-            isDragging && "cursor-grabbing bg-primary/10 text-fg outline-primary",
-            isSelected && "bg-(--table-selected-bg) text-fg hover:bg-(--table-selected-bg)/50",
+            isDragging && "cursor-grabbing bg-primary/10 text-foreground outline-primary",
+            isSelected &&
+              "bg-(--table-selected-bg) text-foreground hover:bg-(--table-selected-bg)/50",
             striped && "even:bg-muted",
             (props.href || props.onAction || selectionMode === "multiple") &&
-              "hover:bg-(--table-selected-bg) hover:text-fg",
+              "hover:bg-(--table-selected-bg) hover:text-foreground",
             (props.href || props.onAction || selectionMode === "multiple") &&
               isFocusVisibleWithin &&
-              "bg-(--table-selected-bg)/50 selected:bg-(--table-selected-bg)/50 text-fg",
+              "bg-(--table-selected-bg)/50 selected:bg-(--table-selected-bg)/50 text-foreground",
             isDisabled && "opacity-50",
             className
           )
@@ -482,7 +483,7 @@ const TableCell = ({ className, ref, ...props }: TableCellProps) => {
       {...props}
       className={cx(
         twJoin(
-          "group px-4 py-(--gutter-y) align-middle outline-hidden first:ps-(--gutter,--spacing(2)) last:pe-(--gutter,--spacing(2)) group-has-data-focus-visible-within:text-fg",
+          "group px-4 py-(--gutter-y) align-middle outline-hidden first:ps-(--gutter,--spacing(2)) last:pe-(--gutter,--spacing(2)) group-has-data-focus-visible-within:text-foreground",
           !striped && "border-b",
           grid && "border-l first:border-l-0",
           !bleed && "sm:last:pe-1 sm:first:ps-1",
@@ -505,7 +506,7 @@ const TableCell = ({ className, ref, ...props }: TableCellProps) => {
                 slot="chevron"
                 className={twJoin(
                   isDisabled && "opacity-50",
-                  "mr-2 grid size-[1.15rem] flex-none shrink-0 place-content-center rounded text-fg hover:bg-secondary"
+                  "mr-2 grid size-[1.15rem] flex-none shrink-0 place-content-center rounded text-foreground hover:bg-secondary"
                 )}
               >
                 <ChevronRightIcon

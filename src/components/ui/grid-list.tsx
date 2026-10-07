@@ -17,7 +17,7 @@ const GridList = <T extends object>({ className, ...props }: GridListProps<T>) =
   <GridListPrimitive
     data-slot="grid-list"
     className={cx(
-      "relative divide-y overflow-hidden rounded-lg border bg-bg *:drop-target:border-accent sm:text-sm/6 dark:bg-muted",
+      "relative divide-y overflow-hidden rounded-lg border bg-background *:drop-target:border-accent sm:text-sm/6 dark:bg-muted",
       className
     )}
     {...props}
@@ -59,9 +59,9 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
       className={cx(
         "group relative min-w-0 px-3 py-2.5 outline-hidden [--me-icon:--spacing(2)]",
         "flex min-w-0 cursor-default items-center gap-2 sm:gap-2.5",
-        "dragging:cursor-grab dragging:opacity-70 dragging:**:[[slot=drag]]:text-fg",
-        "hover:bg-accent/50 **:[svg:not([data-slot='check-indicator'])]:size-5 **:[svg:not([data-slot='check-indicator'])]:shrink-0 **:[svg:not([data-slot='check-indicator'])]:text-muted-fg sm:**:[svg:not([data-slot='check-indicator'])]:size-4",
-        "selected:bg-accent/40 selected:text-fg selected:hover:bg-accent/80 selected:**:[.text-muted-fg]:text-accent-fg/80",
+        "dragging:cursor-grab dragging:opacity-70 dragging:**:[[slot=drag]]:text-foreground",
+        "hover:bg-accent/50 **:[svg:not([data-slot='check-indicator'])]:size-5 **:[svg:not([data-slot='check-indicator'])]:shrink-0 **:[svg:not([data-slot='check-indicator'])]:text-muted-foreground sm:**:[svg:not([data-slot='check-indicator'])]:size-4",
+        "selected:bg-accent/40 selected:text-foreground selected:hover:bg-accent/80 selected:**:[.text-muted-foreground]:text-accent-foreground/80",
         "href" in props && "cursor-pointer",
         className
       )}
@@ -72,7 +72,7 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
             <Button slot="drag">
               <svg
                 data-slot="drag-icon"
-                className="size-5 text-muted-fg sm:size-4"
+                className="size-5 text-muted-foreground sm:size-4"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"
@@ -147,7 +147,7 @@ const GridListDescription = ({ className, ref, ...props }: GridListTextProps) =>
   <Text
     slot="description"
     ref={ref}
-    className={cn("font-normal text-muted-fg text-sm", className)}
+    className={cn("font-normal text-muted-foreground text-sm", className)}
     {...props}
   />
 )

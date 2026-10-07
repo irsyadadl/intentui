@@ -1,19 +1,14 @@
 "use client"
 
-import {
-  Menu,
-  MenuContent,
-  MenuItem,
-  MenuLabel,
-  MenuSection,
-  MenuTrigger,
-} from "@/components/ui/menu"
+import { Button } from "@/components/ui/button"
+
+import { MenuItem, MenuLabel, MenuSection, Menu, MenuTrigger } from "@/components/ui/menu"
 
 export default function MenuSectionDemo() {
   return (
-    <Menu>
-      <MenuTrigger>Open</MenuTrigger>
-      <MenuContent className="sm:min-w-64" items={cities} popover={{ placement: "bottom" }}>
+    <MenuTrigger>
+      <Button intent="outline">Open</Button>
+      <Menu className="sm:min-w-64" items={cities} popover={{ placement: "bottom" }}>
         {(city) => (
           <MenuSection label={city.name} items={city.landmarks}>
             {(landmark) => (
@@ -23,8 +18,8 @@ export default function MenuSectionDemo() {
             )}
           </MenuSection>
         )}
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   )
 }
 

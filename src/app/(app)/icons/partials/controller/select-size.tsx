@@ -3,7 +3,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { useState } from "react"
 import type { Selection } from "react-aria-components/GridList"
 import { Button } from "@/components/ui/button"
-import { Menu, MenuContent, MenuItem, MenuLabel } from "@/components/ui/menu"
+import { MenuItem, MenuLabel, Menu, MenuTrigger } from "@/components/ui/menu"
 import { useQueryString } from "@/hooks/use-query-string"
 import { title } from "@/lib/utils"
 
@@ -27,7 +27,7 @@ export function SelectSize() {
   }
 
   return (
-    <Menu aria-label="Select Icon Size">
+    <MenuTrigger aria-label="Select Icon Size">
       <Button className="shrink-0 lg:inline-flex hidden" intent="outline" size="sm">
         <span className="inline sm:hidden sm:text-sm/6">
           {title([...selectedSize].join(", ").replace("size-", " ")) || "5"}
@@ -37,7 +37,7 @@ export function SelectSize() {
         </span>
         <IconChevronsY />
       </Button>
-      <MenuContent
+      <Menu
         selectionMode="single"
         selectedKeys={selectedSize}
         onSelectionChange={onSelectionChange}
@@ -52,7 +52,7 @@ export function SelectSize() {
             </MenuLabel>
           </MenuItem>
         )}
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   )
 }

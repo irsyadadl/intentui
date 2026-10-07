@@ -34,7 +34,7 @@ export default function AppSidebar() {
         >
           <BrandIntentuiIcon className="size-6" />
           <SidebarLabel className="font-medium">
-            Intent <span className="text-muted-fg">UI</span>
+            Intent <span className="text-muted-foreground">UI</span>
           </SidebarLabel>
         </Link>
       </SidebarHeader>

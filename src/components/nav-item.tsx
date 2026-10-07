@@ -23,8 +23,8 @@ const NavLink = ({ href, isActive, className, isNextLink, ...props }: NavLinkPro
     <El
       href={href}
       className={cn(
-        "relative flex items-center gap-x-2 p-2 text-sm tracking-tight outline-hidden transition-colors focus:outline-hidden focus-visible:text-fg sm:py-3 **:[svg]:-mx-0.5",
-        isCurrent ? "font-medium text-fg" : "text-muted-fg hover:text-fg",
+        "relative flex items-center gap-x-2 p-2 text-sm tracking-tight outline-hidden transition-colors focus:outline-hidden focus-visible:text-foreground sm:py-3 **:[svg]:-mx-0.5",
+        isCurrent ? "font-medium text-foreground" : "text-muted-foreground hover:text-foreground",
         className
       )}
       {...props}

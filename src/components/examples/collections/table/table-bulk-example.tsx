@@ -41,7 +41,7 @@ export default function TableBulkDemo() {
           )}
         </TableBody>
       </Table>
-      <Description className="mt-2 block text-muted-fg [&>strong]:text-fg">
+      <Description className="mt-2 block text-muted-foreground [&>strong]:text-foreground">
         {Array.from(selectedKeys).length > 0 ? (
           <>
             You have selected: <strong>{Array.from(selectedKeys).join(", ")}</strong>

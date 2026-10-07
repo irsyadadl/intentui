@@ -5,14 +5,14 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { DialogClose } from "@/components/ui/dialog"
 import {
-  ModalContent,
+  Modal,
   ModalDescription,
   ModalFooter,
   ModalHeader,
   ModalTitle,
 } from "@/components/ui/modal"
 
-type Size = Pick<React.ComponentProps<typeof ModalContent>, "size">["size"]
+type Size = Pick<React.ComponentProps<typeof Modal>, "size">["size"]
 const sizes: Size[] = ["xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl"]
 export default function ModalSizeDemo() {
   const [isOpen, setIsOpen] = useState(false)
@@ -34,7 +34,7 @@ export default function ModalSizeDemo() {
         ))}
       </div>
 
-      <ModalContent isOpen={isOpen} onOpenChange={setIsOpen} size={modalSize}>
+      <Modal isOpen={isOpen} onOpenChange={setIsOpen} size={modalSize}>
         <ModalHeader>
           <ModalTitle>Project Update</ModalTitle>
           <ModalDescription>
@@ -46,7 +46,7 @@ export default function ModalSizeDemo() {
           <DialogClose>Close</DialogClose>
           <Button onPress={() => setIsOpen(false)}>Confirm</Button>
         </ModalFooter>
-      </ModalContent>
+      </Modal>
     </>
   )
 }

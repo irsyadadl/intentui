@@ -29,7 +29,7 @@ import {
 
 import { Button } from "@/components/ui/button"
 import { Checkbox, CheckboxField } from "@/components/ui/checkbox"
-import { Menu, MenuContent, MenuItem } from "@/components/ui/menu"
+import { MenuItem, Menu, MenuTrigger } from "@/components/ui/menu"
 import { Toolbar, ToolbarGroup, ToolbarItem, ToolbarSeparator } from "@/components/ui/toolbar"
 
 export default function ToolbarDemo() {
@@ -78,12 +78,12 @@ export default function ToolbarDemo() {
           <Checkbox>Spell Check</Checkbox>
         </CheckboxField>
         <ToolbarGroup className="ml-auto">
-          <Menu>
+          <MenuTrigger>
             <Button aria-label="Other options" size="sm" intent="outline">
               Options...
               <ChevronDownIcon />
             </Button>
-            <MenuContent placement="bottom right">
+            <Menu placement="bottom right">
               <MenuItem>
                 <ArrowUturnLeftIcon />
                 Undo
@@ -104,8 +104,8 @@ export default function ToolbarDemo() {
                 <Squares2X2Icon />
                 Insert Grid
               </MenuItem>
-            </MenuContent>
-          </Menu>
+            </Menu>
+          </MenuTrigger>
         </ToolbarGroup>
       </Toolbar>
     </span>

@@ -6,7 +6,7 @@ import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Loader } from "@/components/ui/loader"
 import {
-  PopoverContent,
+  Popover,
   PopoverDescription,
   PopoverFooter,
   PopoverHeader,
@@ -33,7 +33,7 @@ export default function PopoverControlledDemo() {
       <Button ref={triggerRef} onPress={() => setIsOpen(true)} intent="danger">
         Delete Account
       </Button>
-      <PopoverContent
+      <Popover
         triggerRef={triggerRef}
         isOpen={isOpen}
         onOpenChange={setIsOpen}
@@ -72,7 +72,7 @@ export default function PopoverControlledDemo() {
             )}
           </Button>
         </PopoverFooter>
-      </PopoverContent>
+      </Popover>
     </>
   )
 }

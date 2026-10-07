@@ -101,7 +101,7 @@ const CommandMenu = ({
         >
           <Modal
             className={cx(
-              "row-start-2 bg-overlay text-start text-overlay-fg shadow-lg outline-none ring ring-muted-fg/15 md:row-start-1 dark:ring-border",
+              "row-start-2 bg-overlay text-start text-overlay-foreground shadow-lg outline-none ring ring-muted-foreground/15 md:row-start-1 dark:ring-border",
               "max-h-[calc(var(--visual-viewport-height)*0.8)] w-full sm:fixed sm:top-[10%] sm:left-1/2 sm:-translate-x-1/2",
               "rounded-t-2xl md:rounded-xl",
               sizes[size],
@@ -143,12 +143,12 @@ const CommandMenuSearch = ({ className, placeholder, ...props }: CommandMenuSear
       ) : (
         <MagnifyingGlassIcon
           data-slot="command-menu-search-icon"
-          className="size-5 shrink-0 text-muted-fg"
+          className="size-5 shrink-0 text-muted-foreground"
         />
       )}
       <Input
         placeholder={placeholder ?? "Search..."}
-        className="w-full min-w-0 bg-transparent px-2.5 py-2 text-base text-fg placeholder-muted-fg outline-hidden focus:outline-hidden sm:px-2 sm:py-1.5 sm:text-sm [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden"
+        className="w-full min-w-0 bg-transparent px-2.5 py-2 text-base text-foreground placeholder-muted-foreground outline-hidden focus:outline-hidden sm:px-2 sm:py-1.5 sm:text-sm [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden"
       />
       {escapeButton && (
         <Button
@@ -188,7 +188,7 @@ const CommandMenuSection = <T extends object>({
       {...props}
     >
       {"label" in props && (
-        <Header className="col-span-full mb-1 block min-w-(--trigger-width) truncate px-2.5 text-muted-fg text-xs">
+        <Header className="col-span-full mb-1 block min-w-(--trigger-width) truncate px-2.5 text-muted-foreground text-xs">
           {props.label}
         </Header>
       )}
@@ -219,7 +219,9 @@ const renderer: CollectionRenderer = {
   CollectionRoot(props) {
     if (props.collection.size === 0) {
       return (
-        <div className="col-span-full p-4 text-center text-muted-fg text-sm">No results found.</div>
+        <div className="col-span-full p-4 text-center text-muted-foreground text-sm">
+          No results found.
+        </div>
       )
     }
     return <DefaultCollectionRenderer.CollectionRoot {...props} />
@@ -238,8 +240,8 @@ const CommandMenuFooter = ({ className, ...props }: React.ComponentProps<"div">)
   return (
     <div
       className={cn(
-        "col-span-full flex-none border-t px-2 py-1.5 text-muted-fg text-sm",
-        "*:[kbd]:inset-ring *:[kbd]:inset-ring-fg/10 *:[kbd]:mx-1 *:[kbd]:inline-grid *:[kbd]:h-4 *:[kbd]:min-w-4 *:[kbd]:place-content-center *:[kbd]:rounded-xs *:[kbd]:bg-secondary",
+        "col-span-full flex-none border-t px-2 py-1.5 text-muted-foreground text-sm",
+        "*:[kbd]:inset-ring *:[kbd]:inset-ring-foreground/10 *:[kbd]:mx-1 *:[kbd]:inline-grid *:[kbd]:h-4 *:[kbd]:min-w-4 *:[kbd]:place-content-center *:[kbd]:rounded-xs *:[kbd]:bg-secondary",
         className
       )}
       {...props}
@@ -254,7 +256,7 @@ const CommandMenuShortcut = ({
 }: React.ComponentProps<typeof DropdownKeyboard>) => (
   <DropdownKeyboard
     className={cn(
-      "gap-0.5 font-sans text-[10.5px] uppercase *:inset-ring *:inset-ring-muted-fg/20 *:grid *:size-5.5 *:place-content-center *:rounded-xs *:bg-bg",
+      "gap-0.5 font-sans text-[10.5px] uppercase *:inset-ring *:inset-ring-muted-foreground/20 *:grid *:size-5.5 *:place-content-center *:rounded-xs *:bg-background",
       className
     )}
     {...props}

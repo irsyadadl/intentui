@@ -28,23 +28,13 @@ Use this approach if you prefer to install and wire up the component yourself in
 ## Anatomy
 ```
 import { Button } from "@/components/ui/button"
-import {
-  Sheet,
-  SheetBody,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+import { Sheet, SheetBody, SheetClose, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 ```
 
 ```
-<Sheet>
-  <SheetTrigger>Open</SheetTrigger>
-  <SheetContent>
+<SheetTrigger>
+  <Button>Open</Button>
+  <Sheet>
     <SheetHeader>
       <SheetTitle>Sheet Title</SheetTitle>
       <SheetDescription>Sheet Description</SheetDescription>
@@ -54,8 +44,8 @@ import {
       <SheetClose>Cancel</SheetClose>
       <Button>Save</Button>
     </SheetFooter>
-  </SheetContent>
-</Sheet>
+  </Sheet>
+</SheetTrigger>
 ```
 
 
@@ -90,28 +80,19 @@ You can use the `SheetBody` component to make the sheet sticky.
 
 ## Component API
 
-### Sheet
-
-<ApiParameters>
-  <ApiDescription>
-    **Sheet** extends the React Aria Components [**`<DialogTrigger>`**](https://react-aria.adobe.com/Dialog#api) component.
-  </ApiDescription>
-</ApiParameters>
-
 ### SheetTrigger
 
 <ApiParameters>
   <ApiDescription>
-    **SheetTrigger** extends the Intent UI [**`<DialogTrigger>`**](/docs/components/overlays/dialog#dialogtrigger) component.
+    **SheetTrigger** extends the React Aria Components [**`<DialogTrigger>`**](https://react-aria.adobe.com/Dialog#api) component.
   </ApiDescription>
-  <ApiParameter name="className" type='string' />
 </ApiParameters>
 
-### SheetContent
+### Sheet
 
 <ApiParameters>
   <ApiDescription>
-    **SheetContent** extends the React Aria Components [**`<ModalOverlay>`**](https://react-aria.adobe.com/Modal#api) component.
+    **Sheet** extends the React Aria Components [**`<ModalOverlay>`**](https://react-aria.adobe.com/Modal#api) component.
   </ApiDescription>
   <ApiParameter name="className" type='string' />
   <ApiParameter name="closeButton" type='boolean' defaultValue='true' />

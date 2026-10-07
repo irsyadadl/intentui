@@ -6,7 +6,7 @@ import type { Selection } from "react-aria-components/GridList"
 import { ListBox, ListBoxItem } from "react-aria-components/ListBox"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
-import { Menu, MenuContent, MenuItem, MenuLabel } from "@/components/ui/menu"
+import { MenuItem, MenuLabel, Menu, MenuTrigger } from "@/components/ui/menu"
 import { useClipboard } from "@/hooks/use-clipboard"
 import colors from "@/json/colors.json"
 import { getTextColor } from "@/lib/colors"
@@ -97,12 +97,12 @@ interface SelectedFormatProps {
 
 export function SelectFormat({ selected, setSelected }: SelectedFormatProps) {
   return (
-    <Menu>
+    <MenuTrigger>
       <Button intent="outline" className="w-32 justify-between font-mono uppercase">
         {[...selected].join(", ")}
         <ChevronDownIcon className="ml-1" />
       </Button>
-      <MenuContent
+      <Menu
         placement="bottom right"
         selectedKeys={selected}
         onSelectionChange={setSelected}
@@ -120,7 +120,7 @@ export function SelectFormat({ selected, setSelected }: SelectedFormatProps) {
         <MenuItem id="hex">
           <MenuLabel>HEX</MenuLabel>
         </MenuItem>
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   )
 }

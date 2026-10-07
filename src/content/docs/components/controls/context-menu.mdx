@@ -8,7 +8,7 @@ status: beta
 
 <How toUse="controls/context-menu/context-menu-example" />
 
-Wrap the target and menu content in `ContextMenu`. A separate trigger component is not required.
+Wrap the target and `ContextMenu` content in `ContextMenuTrigger`.
 
 ## Installation
 
@@ -31,8 +31,8 @@ Use this approach if you prefer to install and wire up the component yourself in
 ## Anatomy
 ```
 import {
+  ContextMenuTrigger,
   ContextMenu,
-  ContextMenuContent,
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuShortcut,
@@ -40,7 +40,7 @@ import {
 import { Pressable } from 'react-aria-components'
 ```
 ```
-<ContextMenu>
+<ContextMenuTrigger>
     <Pressable>
       <div
         role="button"
@@ -50,7 +50,7 @@ import { Pressable } from 'react-aria-components'
         <span className="hidden pointer-coarse:inline-block">Long press here</span>
       </div>
     </Pressable>
-    <ContextMenuContent className="min-w-56">
+    <ContextMenu className="min-w-56">
       <ContextMenuItem>Back</ContextMenuItem>
       <ContextMenuItem isDisabled>Forward</ContextMenuItem>
       <ContextMenuItem>Reload</ContextMenuItem>
@@ -65,8 +65,8 @@ import { Pressable } from 'react-aria-components'
       <ContextMenuItem>View source</ContextMenuItem>
       <ContextMenuItem>Inspect Accessibility</ContextMenuItem>
       <ContextMenuItem>Inspect</ContextMenuItem>
-    </ContextMenuContent>
-  </ContextMenu>
+    </ContextMenu>
+  </ContextMenuTrigger>
 ```
 
 ## Examples
@@ -107,29 +107,29 @@ Disable individual items with `isDisabled`.
 
 <How toUse="controls/context-menu/context-menu-disabled-example" />
 
-You can also disable multiple items from `ContextMenuContent` with `disabledKeys`.
+You can also disable multiple items from `ContextMenu` with `disabledKeys`.
 
 ```tsx
-<ContextMenuContent disabledKeys={['gsu']} />
+<ContextMenu disabledKeys={['gsu']} />
 ```
 
 ## Component API
 
-### ContextMenu
+### ContextMenuTrigger
 
 <ApiParameters>
   <ApiDescription>
-    **ContextMenu** extends the React Aria Components [**`<MenuTrigger>`**](https://react-aria.adobe.com/Menu#api) component and opens its menu at the pointer position.
+    **ContextMenuTrigger** extends the React Aria Components [**`<MenuTrigger>`**](https://react-aria.adobe.com/Menu#api) component and opens its menu at the pointer position.
   </ApiDescription>
   <ApiParameter name="className" type='string' />
   <ApiParameter name="onOpenChange" type='(isOpen: boolean) => void' />
 </ApiParameters>
 
-### ContextMenuContent
+### ContextMenu
 
 <ApiParameters>
   <ApiDescription>
-    **ContextMenuContent** extends the Intent UI [**`<MenuContent>`**](/docs/components/collections/menu#menucontent) component.
+    **ContextMenu** extends the Intent UI [**`<Menu>`**](/docs/components/collections/menu#menu) component.
   </ApiDescription>
   <ApiParameter name="className" type='string' />
   <ApiParameter name="placement" type='Placement' defaultValue='"bottom start"' />

@@ -50,10 +50,10 @@ const ToggleGroup = ({
         className={cx(
           [
             "[--toggle-group-radius:var(--radius-lg)] [--toggle-gutter:--spacing(0.5)]",
-            "[--toggle-fg:var(--color-fg)] [--toggle-selected-bg:var(--color-primary)] [--toggle-selected-fg:var(--color-primary-fg)]",
-            "[--toggle-focused-bg:var(--color-secondary)] [--toggle-focused-fg:var(--color-secondary-fg)]",
-            "[--toggle-hover-bg:var(--toggle-focused-bg)] [--toggle-hover-fg:var(--toggle-focused-fg)]",
-            "[--toggle-icon:color-mix(in_oklab,var(--toggle-focused-fg)_50%,var(--toggle-focused-bg))]",
+            "[--toggle-foreground:var(--color-foreground)] [--toggle-selected-bg:var(--color-primary)] [--toggle-selected-foreground:var(--color-primary-foreground)]",
+            "[--toggle-focused-bg:var(--color-secondary)] [--toggle-focused-foreground:var(--color-secondary-foreground)]",
+            "[--toggle-hover-bg:var(--toggle-focused-bg)] [--toggle-hover-foreground:var(--toggle-focused-foreground)]",
+            "[--toggle-icon:color-mix(in_oklab,var(--toggle-focused-foreground)_50%,var(--toggle-focused-bg))]",
             "inset-ring inset-ring-border inline-flex overflow-hidden p-(--toggle-gutter)",
             orientation === "horizontal" ? "flex-row" : "flex-col",
             selectionMode === "single" ? "gap-(--toggle-gutter)" : "gap-0",
@@ -80,7 +80,7 @@ interface ToggleGroupItemProps extends ToggleButtonProps {
 const toggleGroupItemStyles = tv({
   base: [
     "relative isolate",
-    "inline-flex flex-row items-center font-medium text-(--toggle-fg) outline-hidden",
+    "inline-flex flex-row items-center font-medium text-(--toggle-foreground) outline-hidden",
     "inset-ring inset-ring-transparent",
     "*:[svg]:-mx-0.5 *:[svg]:shrink-0 *:[svg]:self-center *:[svg]:text-(--btn-icon) hover:*:[svg]:text-(--btn-icon-active)/90 focus-visible:*:[svg]:text-(--btn-icon-active)/80",
     "forced-colors:[--btn-icon:ButtonText] forced-colors:hover:[--btn-icon:ButtonText]",
@@ -125,16 +125,16 @@ const toggleGroupItemStyles = tv({
         "touch-target size-11 *:data-[slot=loader]:size-5 sm:size-10 sm:*:data-[slot=loader]:size-5 *:[svg]:size-5 sm:*:[svg]:size-5",
     },
     isSelected: {
-      true: "inset-ring-fg/20 bg-(--toggle-selected-bg) text-(--toggle-selected-fg) [--toggle-icon:var(--primary-fg)] hover:bg-(--toggle-selected-bg)/90",
+      true: "inset-ring-foreground/20 bg-(--toggle-selected-bg) text-(--toggle-selected-foreground) [--toggle-icon:var(--primary-foreground)] hover:bg-(--toggle-selected-bg)/90",
     },
     isFocused: {
-      true: "not-selected:bg-(--toggle-focused-bg) not-selected:text-(--toggle-focused-fg) not-selected:[--toggle-icon:var(--toggle-focused-fg)]",
+      true: "not-selected:bg-(--toggle-focused-bg) not-selected:text-(--toggle-focused-foreground) not-selected:[--toggle-icon:var(--toggle-focused-foreground)]",
     },
     isFocusVisible: {
-      true: "inset-ring inset-ring-muted-fg/20",
+      true: "inset-ring inset-ring-muted-foreground/20",
     },
     isHovered: {
-      true: "enabled:not-selected:bg-(--toggle-hover-bg) enabled:not-selected:text-(--toggle-hover-fg) enabled:not-selected:[--toggle-icon:var(--toggle-hover-fg)]",
+      true: "enabled:not-selected:bg-(--toggle-hover-bg) enabled:not-selected:text-(--toggle-hover-foreground) enabled:not-selected:[--toggle-icon:var(--toggle-hover-foreground)]",
     },
     isDisabled: {
       true: "opacity-50 forced-colors:text-[GrayText]",
@@ -147,7 +147,7 @@ const toggleGroupItemStyles = tv({
     {
       isSelected: true,
       isFocusVisible: true,
-      className: "inset-ring-(--toggle-selected-fg)/50",
+      className: "inset-ring-(--toggle-selected-foreground)/50",
     },
     {
       selectionMode: "multiple",

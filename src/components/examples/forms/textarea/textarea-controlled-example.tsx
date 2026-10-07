@@ -13,7 +13,7 @@ export default function TextareaControlledDemo() {
       <Label>Address</Label>
       <Textarea />
       <Description>
-        You have typed: <strong className="text-fg">{value ?? "-"}</strong>
+        You have typed: <strong className="text-foreground">{value ?? "-"}</strong>
       </Description>
     </TextField>
   )

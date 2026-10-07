@@ -12,7 +12,7 @@ import { ResponsiveNavigation } from "@/components/responsive-navigation"
 import { Badge } from "@/components/ui/badge"
 import { Button, buttonStyles } from "@/components/ui/button"
 import { Link } from "@/components/ui/link"
-import { Menu, MenuContent, MenuItem } from "@/components/ui/menu"
+import { MenuItem, Menu, MenuTrigger } from "@/components/ui/menu"
 import { app } from "@/config/app"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { CommandPalette } from "./command-palette"
@@ -27,7 +27,7 @@ export function Navigation() {
   return (
     <>
       <CommandPalette setOpen={setOpen} openCmd={open} />
-      <div className="xnw2 sticky top-0 z-40 hidden overflow-hidden bg-bg/70 border-page border-b backdrop-blur-3xl lg:block">
+      <div className="xnw2 sticky top-0 z-40 hidden overflow-hidden bg-background/70 border-page border-b backdrop-blur-3xl lg:block">
         <PageContainer>
           <div className="relative flex items-center justify-between border-page border-x pl-5 pr-3 py-2">
             <div className="flex items-center gap-x-1.5">
@@ -87,7 +87,7 @@ export function Navigation() {
                   intent: "plain",
                   size: "sq-sm",
                   isCircle: true,
-                  className: "**:data-[slot=icon]:text-fg",
+                  className: "**:data-[slot=icon]:text-foreground",
                 })}
                 target="_blank"
                 href="https://x.com/intent/follow?screen_name=intentui"
@@ -97,12 +97,12 @@ export function Navigation() {
 
               <GithubLink />
               <ThemeSwitcher intent="plain" isCircle />
-              <Menu>
+              <MenuTrigger>
                 <Button intent="plain" size="sm" isCircle>
                   3.x
                   <ChevronDownIcon />
                 </Button>
-                <MenuContent placement="bottom end">
+                <Menu placement="bottom end">
                   <MenuItem href={`${app.url}/docs/getting-started/introduction`} className="group">
                     3.x{" "}
                     <Badge intent="primary" isCircle={false} className="ml-auto">
@@ -116,8 +116,8 @@ export function Navigation() {
                       deprecated
                     </Badge>
                   </MenuItem>
-                </MenuContent>
-              </Menu>
+                </Menu>
+              </MenuTrigger>
             </div>
           </div>
         </PageContainer>

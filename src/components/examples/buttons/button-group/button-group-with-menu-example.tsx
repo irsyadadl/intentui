@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/24/outline"
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
-import { Menu, MenuContent, MenuItem } from "@/components/ui/menu"
+import { MenuItem, Menu, MenuTrigger } from "@/components/ui/menu"
 
 export default function ButtonGroupWithMenuDemo() {
   return (
@@ -19,11 +19,11 @@ export default function ButtonGroupWithMenuDemo() {
         <RocketLaunchIcon />
         Deploy
       </Button>
-      <Menu>
+      <MenuTrigger>
         <Button intent="secondary">
           <EllipsisHorizontalIcon />
         </Button>
-        <MenuContent placement="bottom end">
+        <Menu placement="bottom end">
           <MenuItem href="#">
             <ArrowPathIcon />
             Redeploy
@@ -40,8 +40,8 @@ export default function ButtonGroupWithMenuDemo() {
             <Cog6ToothIcon />
             Settings
           </MenuItem>
-        </MenuContent>
-      </Menu>
+        </Menu>
+      </MenuTrigger>
     </ButtonGroup>
   )
 }

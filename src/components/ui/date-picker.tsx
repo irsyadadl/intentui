@@ -17,8 +17,8 @@ import { Calendar } from "./calendar"
 import { DateInput } from "./date-field"
 import { fieldStyles } from "./field"
 import { InputGroup } from "./input"
-import { ModalContent } from "./modal"
-import { PopoverContent } from "./popover"
+import { Modal } from "./modal"
+import { Popover } from "./popover"
 import { RangeCalendar } from "./range-calendar"
 
 export interface DatePickerProps<T extends DateValue> extends DatePickerPrimitiveProps<T> {
@@ -63,7 +63,7 @@ export function DatePickerOverlay({
   const isMobile = useIsMobile()
 
   return isMobile ? (
-    <ModalContent closeButton={false}>
+    <Modal closeButton={false}>
       <div className="flex justify-center p-6">
         {range ? (
           <RangeCalendar pageBehavior={pageBehavior} visibleDuration={visibleDuration} />
@@ -71,9 +71,9 @@ export function DatePickerOverlay({
           <Calendar />
         )}
       </div>
-    </ModalContent>
+    </Modal>
   ) : (
-    <PopoverContent
+    <Popover
       placement={placement}
       arrow={false}
       className={twJoin(
@@ -87,7 +87,7 @@ export function DatePickerOverlay({
       ) : (
         <Calendar />
       )}
-    </PopoverContent>
+    </Popover>
   )
 }
 
@@ -99,7 +99,7 @@ export function DatePickerTrigger({ className, ...props }: GroupProps) {
         data-slot="date-picker-trigger"
         className={twJoin(
           "touch-target grid place-content-center outline-hidden",
-          "pressed:text-fg text-muted-fg hover:text-fg focus-visible:text-fg",
+          "pressed:text-foreground text-muted-foreground hover:text-foreground focus-visible:text-foreground",
           "px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)]",
           "*:size-5 sm:*:size-4"
         )}

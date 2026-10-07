@@ -22,7 +22,7 @@ import { MenuItem, MenuLabel, MenuSection } from "@/components/ui/menu"
 import {
   ModalBody,
   ModalClose,
-  ModalContent,
+  Modal,
   ModalFooter,
   ModalHeader,
   ModalTitle,
@@ -31,7 +31,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/u
 import {
   Sheet,
   SheetBody,
-  SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
@@ -45,7 +44,7 @@ export default function SheetMenuDemo() {
   const closeModal = () => setIsOpen(false)
   return (
     <>
-      <ModalContent isOpen={isOpen} onOpenChange={setIsOpen}>
+      <Modal isOpen={isOpen} onOpenChange={setIsOpen}>
         <ModalHeader>
           <ModalTitle>Edit status</ModalTitle>
         </ModalHeader>
@@ -93,12 +92,12 @@ export default function SheetMenuDemo() {
           <ModalClose>Clear Status</ModalClose>
           <Button onPress={closeModal}>Set Status</Button>
         </ModalFooter>
-      </ModalContent>
-      <Sheet>
-        <SheetTrigger aria-label="Open menu">
+      </Modal>
+      <SheetTrigger>
+        <Button aria-label="Open menu">
           <Avatar src="https://intentui.com/images/avatar/cobain.jpg" alt="irsyadadl" />
-        </SheetTrigger>
-        <SheetContent isFloat={false} closeButton={false}>
+        </Button>
+        <Sheet isFloat={false} closeButton={false}>
           <SheetHeader className="flex flex-row gap-x-3.5 border-b sm:gap-x-3 sm:px-4 sm:pt-3 sm:pb-2">
             <Avatar src="https://intentui.com/images/avatar/cobain.jpg" isSquare alt="cobain" />
             <div>
@@ -166,13 +165,13 @@ export default function SheetMenuDemo() {
             </MenuPrimitive>
           </SheetBody>
           <SheetFooter className="border-t bg-muted/20 sm:p-4">
-            <Button size="sm" className="w-full justify-between bg-bg" intent="outline">
+            <Button size="sm" className="w-full justify-between bg-background" intent="outline">
               <span>Sign out</span>
               <ArrowLeftStartOnRectangleIcon className="size-5" />
             </Button>
           </SheetFooter>
-        </SheetContent>
-      </Sheet>
+        </Sheet>
+      </SheetTrigger>
     </>
   )
 }

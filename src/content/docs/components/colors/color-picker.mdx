@@ -35,7 +35,7 @@ Use this approach if you prefer to install and wire up the component yourself in
 ## Anatomy
 ```
 import { ColorPicker } from "@/components/ui/color-picker";
-import { Popover, PopoverBody, PopoverContent } from "@/components/ui/popover";
+import { Popover, PopoverBody, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { ColorSwatch } from "@/components/ui/color-swatch";
 import { ColorArea } from "@/components/ui/color-area";
@@ -46,12 +46,12 @@ import { Input } from "@/components/ui/input";
 ```
 ```
 <ColorPicker defaultValue="rgb(120,140,200)">
-  <Popover>
+  <PopoverTrigger>
     <Button intent="plain" data-slot="control">
       <ColorSwatch />
       Select color
     </Button>
-    <PopoverContent className="[--gutter:--spacing(1)]">
+    <Popover className="[--gutter:--spacing(1)]">
       <PopoverBody>
         <div className="space-y-(--gutter)">
           <ColorArea
@@ -72,8 +72,8 @@ import { Input } from "@/components/ui/input";
           </ColorField>
         </div>
       </PopoverBody>
-    </PopoverContent>
-  </Popover>
+    </Popover>
+  </PopoverTrigger>
 </ColorPicker>
 ```
 

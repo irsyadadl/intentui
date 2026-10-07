@@ -1,20 +1,21 @@
+import { Button } from "@/components/ui/button"
 import { describe, it, expect } from "vitest"
 import userEvent from "@testing-library/user-event"
 import { render, screen } from "../utils/render"
 import { User } from "@react-aria/test-utils"
 import { waitFor } from "../utils/render"
-import { Sheet, SheetTrigger, SheetContent, SheetTitle, SheetClose } from "@/components/ui/sheet"
+import { Sheet, SheetTrigger, SheetTitle, SheetClose } from "@/components/ui/sheet"
 
 const ariaUser = new User({ interactionType: "mouse" })
 function Example() {
   return (
-    <Sheet>
-      <SheetTrigger>Open settings</SheetTrigger>
-      <SheetContent>
+    <SheetTrigger>
+      <Button>Open settings</Button>
+      <Sheet>
         <SheetTitle>Settings</SheetTitle>
         <SheetClose>Done</SheetClose>
-      </SheetContent>
-    </Sheet>
+      </Sheet>
+    </SheetTrigger>
   )
 }
 describe("Sheet", () => {

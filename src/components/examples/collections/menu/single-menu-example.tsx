@@ -4,7 +4,7 @@ import { useState } from "react"
 import type { Selection } from "react-aria-components/GridList"
 import type { Placement } from "react-aria-components/Popover"
 import { Button } from "@/components/ui/button"
-import { Menu, MenuContent, MenuItem, MenuLabel } from "@/components/ui/menu"
+import { MenuItem, MenuLabel, Menu, MenuTrigger } from "@/components/ui/menu"
 
 export const placements = [
   "bottom",
@@ -34,9 +34,9 @@ export const placements = [
 export default function SingleMenuDemo() {
   const [selected, setSelected] = useState<Selection>(new Set(["bottom"]))
   return (
-    <Menu>
+    <MenuTrigger>
       <Button intent="outline">Placement</Button>
-      <MenuContent
+      <Menu
         popover={{ placement: Array.from(selected)[0] as Placement }}
         selectionMode="single"
         selectedKeys={selected}
@@ -49,7 +49,7 @@ export default function SingleMenuDemo() {
             <MenuLabel>{item.name}</MenuLabel>
           </MenuItem>
         )}
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   )
 }

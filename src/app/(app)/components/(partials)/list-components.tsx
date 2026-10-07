@@ -37,7 +37,7 @@ function ComponentThumbnail({
         data-slot="component-thumbnail-placeholder"
         className="grid aspect-[59/40] w-full place-items-center rounded-lg border border-page bg-muted/40 px-6 text-center shadow-xs"
       >
-        <span className="text-sm text-fg">{title}</span>
+        <span className="text-sm text-foreground">{title}</span>
       </div>
     )
   }
@@ -116,7 +116,7 @@ export function ListComponents() {
               className="grid grid-cols-1 gap-8 py-6 sm:grid-cols-2 sm:gap-px sm:bg-page sm:py-0 lg:grid-cols-4"
               renderEmptyState={() => (
                 <div className="p-6 bg-muted col-span-full">
-                  <Text className="text-fg">
+                  <Text className="text-foreground">
                     No results found. Try searching for something else!
                   </Text>
                 </div>
@@ -129,20 +129,20 @@ export function ListComponents() {
                   <GridListItem
                     textValue={`${item.slug} ${item.title}`}
                     key={item.slug}
-                    className="group flex cursor-pointer flex-col outline-hidden hover:opacity-80 sm:bg-bg"
+                    className="group flex cursor-pointer flex-col outline-hidden hover:opacity-80 sm:bg-background"
                     href={item.slug}
                   >
                     <div className="mb-3 lg:mb-0 lg:p-6">
                       <ComponentThumbnail name={name} title={item.title} suffix={suffix} />
                     </div>
-                    <span className="border-page font-medium sm:py-3 sm:px-6 sm:text-sm lg:border-t lg:bg-bg">
+                    <span className="border-page font-medium sm:py-3 sm:px-6 sm:text-sm lg:border-t lg:bg-background">
                       {item.title}
                     </span>
                   </GridListItem>
                 )
               })}
 
-              <GridListItem textValue="Space" className="hidden xl:block sm:bg-bg/60" />
+              <GridListItem textValue="Space" className="hidden xl:block sm:bg-background/60" />
             </GridList>
           </div>
         </PageContainer>

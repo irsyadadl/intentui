@@ -59,7 +59,7 @@ export default function PieChartDonutCustomLabelDemo() {
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="fill-fg font-bold text-xl"
+            className="fill-foreground font-bold text-xl"
           >
             ${total.toLocaleString()}
           </text>
@@ -68,7 +68,7 @@ export default function PieChartDonutCustomLabelDemo() {
             y="60%"
             textAnchor="middle"
             dominantBaseline="hanging"
-            className="fill-muted-fg text-xs"
+            className="fill-muted-foreground text-xs"
           >
             Total spent
           </text>

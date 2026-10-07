@@ -29,6 +29,7 @@ Use this approach if you prefer to install and wire up the component yourself in
 
 ```tsx
 import { Preview, PreviewContent } from "@/components/ui/preview"
+import { Button } from "@/components/ui/button"
 ```
 
 ```tsx
@@ -78,7 +79,7 @@ Use a tooltip for short, non-interactive descriptions. Use a preview when users 
 
 <ApiParameters>
   <ApiDescription>
-    **PreviewContent** extends the Intent UI [**`<PopoverContent>`**](/docs/components/overlays/popover#popovercontent) component, with default padding and a maximum width.
+    **PreviewContent** extends the Intent UI [**`<Popover>`**](/docs/components/overlays/popover#popover) component, with default padding and a maximum width.
   </ApiDescription>
   <ApiParameter name="arrow" type='boolean' defaultValue='false' />
   <ApiParameter name="className" type='string' />

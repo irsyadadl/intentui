@@ -1,9 +1,6 @@
 "use client"
 
-import {
-  type DialogProps,
-  DialogTrigger as DialogTriggerPrimitive,
-} from "react-aria-components/Dialog"
+import { type DialogProps, DialogTrigger } from "react-aria-components/Dialog"
 import { Modal, ModalOverlay, type ModalOverlayProps } from "react-aria-components/Modal"
 import { cx } from "@/lib/primitive"
 import {
@@ -15,12 +12,11 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "./dialog"
 
-const Sheet = DialogTriggerPrimitive
+const SheetTrigger = DialogTrigger
 
-interface SheetContentProps
+interface SheetProps
   extends
     Omit<ModalOverlayProps, "children">,
     Pick<DialogProps, "aria-label" | "role" | "aria-labelledby" | "children"> {
@@ -39,7 +35,7 @@ const sideVariants: Record<string, string> = {
     "entering:slide-in-from-right exiting:slide-out-to-right-80 inset-y-0 right-0 h-auto w-3/4 overflow-y-auto border-l sm:max-w-80 data-[float=true]:inset-y-2 data-[float=true]:right-2 data-[float=true]:border-l-0",
 }
 
-const SheetContent = ({
+const Sheet = ({
   className,
   isDismissable: isDismissableInternal,
   side = "right",
@@ -49,7 +45,7 @@ const SheetContent = ({
   overlay,
   children,
   ...props
-}: SheetContentProps) => {
+}: SheetProps) => {
   const isDismissable = isDismissableInternal ?? role !== "alertdialog"
   return (
     <ModalOverlay
@@ -63,10 +59,10 @@ const SheetContent = ({
       <Modal
         data-float={isFloat}
         className={cx(
-          "fixed z-50 grid gap-4 border-muted-fg/20 bg-overlay text-overlay-fg shadow-lg dark:border-border",
+          "fixed z-50 grid gap-4 border-muted-foreground/20 bg-overlay text-overlay-foreground shadow-lg dark:border-border",
           "transform-gpu transition ease-in-out will-change-transform [--visual-viewport-vertical-padding:16px]",
-          "data-[float=true]:rounded-lg data-[float=true]:ring data-[float=true]:ring-fg/5 dark:data-[float=true]:ring-border",
-          "border-fg/20 dark:border-border",
+          "data-[float=true]:rounded-lg data-[float=true]:ring data-[float=true]:ring-foreground/5 dark:data-[float=true]:ring-border",
+          "border-foreground/20 dark:border-border",
           "entering:fade-in entering:animate-in entering:duration-500",
           "exiting:fade-in exiting:animate-out exiting:duration-300",
           sideVariants[side],
@@ -92,7 +88,6 @@ const SheetContent = ({
   )
 }
 
-const SheetTrigger = DialogTrigger
 const SheetFooter = DialogFooter
 const SheetHeader = DialogHeader
 const SheetTitle = DialogTitle
@@ -100,15 +95,14 @@ const SheetDescription = DialogDescription
 const SheetBody = DialogBody
 const SheetClose = DialogClose
 
-export type { SheetContentProps }
+export type { SheetProps }
 export {
-  Sheet,
+  SheetTrigger,
   SheetBody,
   SheetClose,
-  SheetContent,
+  Sheet,
   SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 }

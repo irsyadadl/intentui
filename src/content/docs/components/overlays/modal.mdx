@@ -25,23 +25,13 @@ Use this approach if you prefer to install and wire up the component yourself in
 ## Anatomy
 ```
 import { Button } from "@/components/ui/button"
-import {
-  Modal,
-  ModalBody,
-  ModalClose,
-  ModalContent,
-  ModalDescription,
-  ModalFooter,
-  ModalHeader,
-  ModalTitle,
-  ModalTrigger,
-} from "@/components/ui/modal"
+import { Modal, ModalBody, ModalClose, ModalDescription, ModalFooter, ModalHeader, ModalTitle, ModalTrigger } from "@/components/ui/modal"
 ```
 
 ```
-<Modal>
-  <ModalTrigger>Open Modal</ModalTrigger>
-  <ModalContent>
+<ModalTrigger>
+  <Button>Open Modal</Button>
+  <Modal>
     <ModalHeader>
       <ModalTitle>Modal Title</ModalTitle>
       <ModalDescription>Modal Description</ModalDescription>
@@ -51,8 +41,8 @@ import {
       <ModalClose>Close</ModalClose>
       <Button>Confirm</Button>
     </ModalFooter>
-  </ModalContent>
-</Modal>
+  </Modal>
+</ModalTrigger>
 ```
 
 ## Examples
@@ -79,24 +69,24 @@ The modal is set to `lg` by default. You can adjust it to any size from the avai
 The overlay uses a subtle 1px blur by default. You can increase it or disable it entirely.
 
 ```tsx
-<Modal>
+<ModalTrigger>
   <Button intent="outline">Rename</Button>
-  <ModalContent overlay={{ className: "backdrop-blur-2xl" }}>
+  <Modal overlay={{ className: "backdrop-blur-2xl" }}>
 ```
 
 If you want to turn it off, use `backdrop-blur-none`. If you do not need any blur at all, the recommended approach is to remove the blur class from the component defaults.
 
 ```diff
--"bg-bg/15 backdrop-blur-[1px] motion-reduce:backdrop-blur-0",
-+"bg-bg/15",
+-"bg-background/15 backdrop-blur-[1px] motion-reduce:backdrop-blur-0",
++"bg-background/15",
 ```
 
 Or, you can override it per instance from the component usage:
 
 ```tsx
-<Modal>
+<ModalTrigger>
   <Button intent="outline">Rename</Button>
-  <ModalContent overlay={{ className: "backdrop-blur-none" }}>
+  <Modal overlay={{ className: "backdrop-blur-none" }}>
 ```
 
 ### Sticky
@@ -133,7 +123,7 @@ interface ModalActionProps {
 }
 
 const ModalAction = (props: ModalActionProps) => (
-  <ModalContent isOpen={props.state !== null} onOpenChange={props.onOpenChange}>
+  <Modal isOpen={props.state !== null} onOpenChange={props.onOpenChange}>
     <ModalHeader>
       <ModalTitle>{props.actionType?.title}</ModalTitle>
       <ModalDescription>{props.actionType?.description}</ModalDescription>
@@ -149,7 +139,7 @@ const ModalAction = (props: ModalActionProps) => (
         {props.disabled ? <Loader variant="spin" /> : props.actionType?.confirmText}
       </Button>
     </ModalFooter>
-  </ModalContent>
+  </Modal>
 )
 ```
 
@@ -187,28 +177,19 @@ const actionType = (t: string | null) => {
 
 ## Component API
 
-### Modal
-
-<ApiParameters>
-  <ApiDescription>
-    **Modal** extends the React Aria Components [**`<DialogTrigger>`**](https://react-aria.adobe.com/Dialog#api) component.
-  </ApiDescription>
-</ApiParameters>
-
 ### ModalTrigger
 
 <ApiParameters>
   <ApiDescription>
-    **ModalTrigger** extends the Intent UI [**`<DialogTrigger>`**](/docs/components/overlays/dialog#dialogtrigger) component.
+    **ModalTrigger** extends the React Aria Components [**`<DialogTrigger>`**](https://react-aria.adobe.com/Dialog#api) component.
   </ApiDescription>
-  <ApiParameter name="className" type='string' />
 </ApiParameters>
 
-### ModalContent
+### Modal
 
 <ApiParameters>
   <ApiDescription>
-    **ModalContent** extends the React Aria Components [**`<ModalOverlay>`**](https://react-aria.adobe.com/Modal#api) component.
+    **Modal** extends the React Aria Components [**`<ModalOverlay>`**](https://react-aria.adobe.com/Modal#api) component.
   </ApiDescription>
   <ApiParameter name="className" type='string' />
   <ApiParameter name="closeButton" type='boolean' defaultValue='true' />

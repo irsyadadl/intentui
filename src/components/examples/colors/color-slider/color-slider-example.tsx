@@ -12,7 +12,8 @@ export default function ColorSliderDemo() {
         <ColorThumb />
       </ColorSliderTrack>
       <Description>
-        This color slider is using the <strong className="font-medium text-fg">hue</strong> channel.
+        This color slider is using the <strong className="font-medium text-foreground">hue</strong>{" "}
+        channel.
       </Description>
     </ColorSlider>
   )

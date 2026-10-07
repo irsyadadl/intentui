@@ -3,7 +3,7 @@
 import { ListBox } from "react-aria-components/ListBox"
 import { ListLayout, Virtualizer } from "react-aria-components/Virtualizer"
 import { ComboBox, ComboBoxInput, ComboBoxItem } from "@/components/ui/combo-box"
-import { PopoverContent } from "@/components/ui/popover"
+import { Popover } from "@/components/ui/popover"
 
 const items = Array.from({ length: 5000 }, (_, index) => ({
   id: index + 1,
@@ -14,7 +14,7 @@ export default function ComboBoxVirtualizerExample() {
   return (
     <ComboBox aria-label="Choose a virtualized item" className="max-w-sm">
       <ComboBoxInput placeholder="Choose an item" />
-      <PopoverContent
+      <Popover
         placement="bottom"
         className="min-w-(--trigger-width) overflow-hidden *:data-[slot=popover-inner]:overflow-hidden"
       >
@@ -37,7 +37,7 @@ export default function ComboBoxVirtualizerExample() {
             )}
           </ListBox>
         </Virtualizer>
-      </PopoverContent>
+      </Popover>
     </ComboBox>
   )
 }

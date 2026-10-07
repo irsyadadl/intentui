@@ -8,7 +8,7 @@ export default function SliderRangeDemo() {
     <Slider defaultValue={[25, 75]}>
       <div className="flex items-center justify-between">
         <Label>Distance Range</Label>
-        <SliderOutput className="text-muted-fg text-sm tabular-nums data-[orientation=vertical]:mx-auto data-[orientation=horizontal]:ml-auto">
+        <SliderOutput className="text-muted-foreground text-sm tabular-nums data-[orientation=vertical]:mx-auto data-[orientation=horizontal]:ml-auto">
           {({ state }) => state.values.map((_, i) => state.getThumbValueLabel(i)).join(" – ")}
         </SliderOutput>
       </div>

@@ -95,7 +95,7 @@ export function ColorGenerator() {
           <div className="border-page py-6 xl:border-r xl:px-6">
             <div className="mb-7">
               <Heading level={2}>Generate</Heading>
-              <p className="text-muted-fg text-sm">
+              <p className="text-muted-foreground text-sm">
                 Generate your desired color by picking a shade from the color picker or by entering
                 a hex code.
               </p>

@@ -1,8 +1,8 @@
 "use client"
 
 import {
+  ContextMenuTrigger,
   ContextMenu,
-  ContextMenuContent,
   ContextMenuItem,
   ContextMenuLabel,
   ContextMenuSeparator,
@@ -11,7 +11,7 @@ import { Pressable } from "react-aria-components"
 
 export default function ContextMenuDisabledDemo() {
   return (
-    <ContextMenu>
+    <ContextMenuTrigger>
       <Pressable>
         <div
           role="button"
@@ -21,7 +21,7 @@ export default function ContextMenuDisabledDemo() {
           <span className="hidden pointer-coarse:inline-block">Long press here</span>
         </div>
       </Pressable>
-      <ContextMenuContent>
+      <ContextMenu>
         <ContextMenuItem>
           <ContextMenuLabel>Copy</ContextMenuLabel>
         </ContextMenuItem>
@@ -41,7 +41,7 @@ export default function ContextMenuDisabledDemo() {
         <ContextMenuItem>
           <ContextMenuLabel>Generate</ContextMenuLabel>
         </ContextMenuItem>
-      </ContextMenuContent>
-    </ContextMenu>
+      </ContextMenu>
+    </ContextMenuTrigger>
   )
 }

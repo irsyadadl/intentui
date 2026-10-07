@@ -70,11 +70,11 @@ function SourceTabs({ files }: { files: RegistryFile[] }) {
       <TabList className="scrollbar-none flex flex-nowrap gap-x-2 overflow-x-auto font-medium text-xs/5">
         {items.map((it) => (
           <Tab
-            className="group flex cursor-pointer items-center gap-x-1 whitespace-nowrap rounded-sm selected:bg-secondary px-2 py-1 selected:text-fg text-muted-fg"
+            className="group flex cursor-pointer items-center gap-x-1 whitespace-nowrap rounded-sm selected:bg-secondary px-2 py-1 selected:text-foreground text-muted-foreground"
             id={it.id}
             key={it.id}
           >
-            <BrandReactjsIcon className="size-3.5 shrink-0 text-muted-fg group-selected:text-cyan-500" />
+            <BrandReactjsIcon className="size-3.5 shrink-0 text-muted-foreground group-selected:text-cyan-500" />
             <span className="font-mono">{it.id}</span>
           </Tab>
         ))}
@@ -142,7 +142,7 @@ function RegistryItemViewer({ imgSrc, item }: { imgSrc?: SandboxImageSrc; item: 
                 onPress={() => {
                   copy(`npx shadcn@latest add @intentui/block/${item.title}`)
                 }}
-                className="flex items-center gap-x-2 truncate font-mono text-muted-fg text-sm tracking-tigth"
+                className="flex items-center gap-x-2 truncate font-mono text-muted-foreground text-sm tracking-tigth"
               >
                 {copied ? <CheckIcon className="size-4" /> : <ShadcnuiLogo className="size-4" />}
                 @intentui/block/{item.title}
@@ -213,7 +213,7 @@ function LazyRegistryItem({ imgSrc, name }: { imgSrc?: SandboxImageSrc; name: st
   return (
     <div ref={ref} className="not-typeset min-h-90">
       {error ? (
-        <div className="rounded-lg border p-4 text-danger-subtle-fg text-sm">{error}</div>
+        <div className="rounded-lg border p-4 text-danger-subtle-foreground text-sm">{error}</div>
       ) : item ? (
         <RegistryItemViewer imgSrc={imgSrc} item={item} />
       ) : null}

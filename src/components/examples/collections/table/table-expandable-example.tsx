@@ -5,7 +5,7 @@ import { IdentificationIcon, PencilSquareIcon, TrashIcon } from "@heroicons/reac
 import { Autocomplete } from "react-aria-components/Autocomplete"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Menu, MenuContent, MenuItem, MenuSeparator } from "@/components/ui/menu"
+import { MenuItem, MenuSeparator, Menu, MenuTrigger } from "@/components/ui/menu"
 import {
   Table,
   TableBody,
@@ -169,11 +169,11 @@ export default function TableExpandableDemo() {
                 <TableCell>{row.progress}</TableCell>
                 <TableCell>{row.updated}</TableCell>
                 <TableCell className="flex justify-end">
-                  <Menu>
+                  <MenuTrigger>
                     <Button intent="plain" size="sq-sm" aria-label="Options">
                       <EllipsisVerticalIcon />
                     </Button>
-                    <MenuContent aria-label="Actions" placement="left top">
+                    <Menu aria-label="Actions" placement="left top">
                       <MenuItem>
                         <IdentificationIcon /> View details
                       </MenuItem>
@@ -184,8 +184,8 @@ export default function TableExpandableDemo() {
                       <MenuItem intent="danger">
                         <TrashIcon /> Delete
                       </MenuItem>
-                    </MenuContent>
-                  </Menu>
+                    </Menu>
+                  </MenuTrigger>
                 </TableCell>
                 {row.children?.map((child) => (
                   <TableRow key={child.id} id={child.id}>
@@ -198,11 +198,11 @@ export default function TableExpandableDemo() {
                     <TableCell>{child.progress}</TableCell>
                     <TableCell>{child.updated}</TableCell>
                     <TableCell className="flex justify-end">
-                      <Menu>
+                      <MenuTrigger>
                         <Button intent="plain" size="sq-sm" aria-label="Options">
                           <EllipsisVerticalIcon />
                         </Button>
-                        <MenuContent aria-label="Actions" placement="left top">
+                        <Menu aria-label="Actions" placement="left top">
                           <MenuItem>
                             <IdentificationIcon /> View details
                           </MenuItem>
@@ -213,8 +213,8 @@ export default function TableExpandableDemo() {
                           <MenuItem intent="danger">
                             <TrashIcon /> Delete
                           </MenuItem>
-                        </MenuContent>
-                      </Menu>
+                        </Menu>
+                      </MenuTrigger>
                     </TableCell>
                   </TableRow>
                 ))}

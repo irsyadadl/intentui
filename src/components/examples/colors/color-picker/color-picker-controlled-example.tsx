@@ -11,7 +11,7 @@ import { ColorSlider, ColorSliderTrack } from "@/components/ui/color-slider"
 import { ColorSwatch } from "@/components/ui/color-swatch"
 import { ColorThumb } from "@/components/ui/color-thumb"
 import { Input } from "@/components/ui/input"
-import { Popover, PopoverBody, PopoverContent } from "@/components/ui/popover"
+import { Popover, PopoverBody, PopoverTrigger } from "@/components/ui/popover"
 
 export default function ColorPickerControlledDemo() {
   const [color, setColor] = useState(parseColor("hsl(216, 98%, 52%)"))
@@ -19,12 +19,12 @@ export default function ColorPickerControlledDemo() {
   return (
     <div className="flex flex-col gap-2 lg:flex-row lg:gap-4">
       <ColorPicker value={color} onChange={setColor} defaultValue="rgb(120,140,200)">
-        <Popover>
+        <PopoverTrigger>
           <Button intent="plain" data-slot="control">
             <ColorSwatch />
             Select color
           </Button>
-          <PopoverContent className="[--gutter:--spacing(1)]">
+          <Popover className="[--gutter:--spacing(1)]">
             <PopoverBody>
               <div className="space-y-(--gutter)">
                 <ColorArea
@@ -45,8 +45,8 @@ export default function ColorPickerControlledDemo() {
                 </ColorField>
               </div>
             </PopoverBody>
-          </PopoverContent>
-        </Popover>
+          </Popover>
+        </PopoverTrigger>
       </ColorPicker>
       <ControlledValues color={color} />
     </div>

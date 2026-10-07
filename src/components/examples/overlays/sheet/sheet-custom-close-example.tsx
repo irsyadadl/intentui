@@ -7,18 +7,18 @@ import {
   Sheet,
   SheetBody,
   SheetClose,
-  SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
+  SheetTrigger,
 } from "@/components/ui/sheet"
 
 export default function SheetControlledDemo() {
   return (
-    <Sheet>
+    <SheetTrigger>
       <Button intent="outline">Notifications</Button>
-      <SheetContent aria-label="Notifications">
+      <Sheet aria-label="Notifications">
         <SheetHeader>
           <SheetTitle>Manage Notifications</SheetTitle>
           <SheetDescription>Adjust your notification settings below.</SheetDescription>
@@ -47,7 +47,7 @@ export default function SheetControlledDemo() {
           <SheetClose>Cancel</SheetClose>
           <Button intent="primary">Save Settings</Button>
         </SheetFooter>
-      </SheetContent>
-    </Sheet>
+      </Sheet>
+    </SheetTrigger>
   )
 }

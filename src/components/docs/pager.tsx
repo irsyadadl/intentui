@@ -23,7 +23,7 @@ export const Pager = ({ tree, url, className }: PageProps) => {
             href={neighbours.previous.url}
           >
             <ChevronLeftIcon className="transition-transform group-hover:-translate-x-0.5" />
-            <span className="line-clamp-1 text-fg">{neighbours.previous.name}</span>
+            <span className="line-clamp-1 text-foreground">{neighbours.previous.name}</span>
           </Link>
         </div>
       )}
@@ -34,7 +34,7 @@ export const Pager = ({ tree, url, className }: PageProps) => {
             className={buttonStyles({ intent: "plain", isCircle: true })}
             href={neighbours.next.url}
           >
-            <span className="line-clamp-1 text-fg">{neighbours.next.name}</span>
+            <span className="line-clamp-1 text-foreground">{neighbours.next.name}</span>
             <ChevronRightIcon className="transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>

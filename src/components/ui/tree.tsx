@@ -23,7 +23,7 @@ const Tree = <T extends object>({ className, ...props }: TreeProps<T>) => {
       className={cx(
         twJoin(
           "flex cursor-default flex-col gap-y-2 overflow-auto outline-hidden forced-color-adjust-none",
-          "[--tree-active-bg:var(--color-primary-subtle)] [--tree-active-fg:var(--color-primary-subtle-fg)]"
+          "[--tree-active-bg:var(--color-primary-subtle)] [--tree-active-foreground:var(--color-primary-subtle-foreground)]"
         ),
         className
       )}
@@ -39,7 +39,7 @@ const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) =
         [
           "shrink-0 rounded-lg px-2 py-1.5 pe-2",
           "group/tree-item relative flex select-none rounded-lg focus:outline-hidden",
-          "focus:bg-(--tree-active-bg) focus:text-(--tree-active-fg) focus:**:[.text-muted-fg]:text-(--tree-active-fg)",
+          "focus:bg-(--tree-active-bg) focus:text-(--tree-active-foreground) focus:**:[.text-muted-foreground]:text-(--tree-active-foreground)",
           "**:data-[slot=avatar]:*:size-6 **:data-[slot=avatar]:size-6 sm:**:data-[slot=avatar]:*:size-5 sm:**:data-[slot=avatar]:size-5",
           "**:[svg]:size-5 **:[svg]:shrink-0 sm:**:[svg]:size-4",
           "**:[svg:not([data-slot=check-indicator]):not([data-slot=chevron])]:me-1",
@@ -106,8 +106,8 @@ const TreeIndicator = ({
       slot="chevron"
       isDisabled={values.isDisabled}
       className={twJoin(
-        "shrink-0 content-center text-muted-fg hover:text-fg",
-        values.isExpanded && "text-fg"
+        "shrink-0 content-center text-muted-foreground hover:text-foreground",
+        values.isExpanded && "text-foreground"
       )}
     >
       <ChevronRightIcon

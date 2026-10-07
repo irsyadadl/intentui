@@ -16,7 +16,7 @@ const dropdownSectionStyles = tv({
   slots: {
     section: "col-span-full grid grid-cols-[auto_1fr]",
     header:
-      "col-span-full px-3 py-2 font-medium text-muted-fg text-sm/6 sm:px-2.5 sm:py-1.5 sm:text-xs/3",
+      "col-span-full px-3 py-2 font-medium text-muted-foreground text-sm/6 sm:px-2.5 sm:py-1.5 sm:text-xs/3",
   },
 })
 
@@ -46,11 +46,11 @@ const dropdownItemStyles = tv({
     "not-has-[[slot=description]]:items-center",
     "group relative cursor-default select-none rounded-[calc(var(--radius-lg)-(--spacing(1)))] outline-0",
     // text
-    "text-base/6 text-fg sm:text-sm/6 forced-colors:text-[CanvasText]",
+    "text-base/6 text-foreground sm:text-sm/6 forced-colors:text-[CanvasText]",
     // avatar
     "*:data-[slot=avatar]:*:me-(--me-icon) *:data-[slot=avatar]:me-(--me-icon) has-[[slot=description]]:*:data-[slot=avatar]:row-span-2 *:data-[slot=avatar]:[--avatar-size:--spacing(5)] sm:*:data-[slot=avatar]:[--avatar-size:--spacing(4)]",
     // icon
-    "[&_svg:not([class*='text-'])]:text-muted-fg *:[svg:not([data-slot='check-indicator'])]:col-start-1 *:[svg:not([data-slot='check-indicator'])]:row-start-1 *:[svg:not([data-slot='check-indicator'])]:-ms-0.5 *:[svg:not([data-slot='check-indicator'])]:me-(--me-icon) *:[svg]:shrink-0",
+    "[&_svg:not([class*='text-'])]:text-muted-foreground *:[svg:not([data-slot='check-indicator'])]:col-start-1 *:[svg:not([data-slot='check-indicator'])]:row-start-1 *:[svg:not([data-slot='check-indicator'])]:-ms-0.5 *:[svg:not([data-slot='check-indicator'])]:me-(--me-icon) *:[svg]:shrink-0",
     "not-has-[[slot=description]]:*:[svg]:size-5 sm:not-has-[[slot=description]]:*:[svg]:size-4",
     "has-[[slot=description]]:[&_svg:not([class*='w-'])]:w-5 sm:has-[[slot=description]]:[&_svg:not([class*='w-'])]:w-4 has-[[slot=description]]:*:[svg]:h-lh",
     "[&>[slot=label]+svg:not([data-slot='check-indicator'])]:absolute [&>[slot=label]+svg:not([data-slot='check-indicator'])]:inset-e-0 [&>[slot=label]+svg:not([data-slot='check-indicator'])]:top-1",
@@ -65,36 +65,36 @@ const dropdownItemStyles = tv({
   variants: {
     intent: {
       danger: [
-        "text-danger-subtle-fg focus:text-danger-subtle-fg [&_svg:not([class*='text-'])]:text-danger-subtle-fg/70",
-        "*:[[slot=description]]:text-danger-subtle-fg/80 focus:*:[[slot=description]]:text-danger-subtle-fg focus:*:[[slot=label]]:text-danger-subtle-fg",
-        "focus:bg-danger-subtle focus:text-danger-subtle-fg forced-colors:focus:text-[Mark] focus:[&_svg:not([class*='text-'])]:text-danger-subtle-fg",
-        "*:data-[slot=keyboard]:text-danger-subtle-fg/70 focus:*:data-[slot=keyboard]:text-danger-subtle-fg",
+        "text-danger-subtle-foreground focus:text-danger-subtle-foreground [&_svg:not([class*='text-'])]:text-danger-subtle-foreground/70",
+        "*:[[slot=description]]:text-danger-subtle-foreground/80 focus:*:[[slot=description]]:text-danger-subtle-foreground focus:*:[[slot=label]]:text-danger-subtle-foreground",
+        "focus:bg-danger-subtle focus:text-danger-subtle-foreground forced-colors:focus:text-[Mark] focus:[&_svg:not([class*='text-'])]:text-danger-subtle-foreground",
+        "*:data-[slot=keyboard]:text-danger-subtle-foreground/70 focus:*:data-[slot=keyboard]:text-danger-subtle-foreground",
       ],
       warning: [
-        "text-warning-subtle-fg focus:text-warning-subtle-fg [&_svg:not([class*='text-'])]:text-warning-subtle-fg/70",
-        "*:[[slot=description]]:text-warning-subtle-fg/80 focus:*:[[slot=description]]:text-warning-subtle-fg focus:*:[[slot=label]]:text-warning-subtle-fg",
-        "focus:bg-warning-subtle focus:text-warning-subtle-fg focus:[&_svg:not([class*='text-'])]:text-warning-subtle-fg",
-        "*:data-[slot=keyboard]:text-warning-subtle-fg/70 focus:*:data-[slot=keyboard]:text-warning-subtle-fg",
+        "text-warning-subtle-foreground focus:text-warning-subtle-foreground [&_svg:not([class*='text-'])]:text-warning-subtle-foreground/70",
+        "*:[[slot=description]]:text-warning-subtle-foreground/80 focus:*:[[slot=description]]:text-warning-subtle-foreground focus:*:[[slot=label]]:text-warning-subtle-foreground",
+        "focus:bg-warning-subtle focus:text-warning-subtle-foreground focus:[&_svg:not([class*='text-'])]:text-warning-subtle-foreground",
+        "*:data-[slot=keyboard]:text-warning-subtle-foreground/70 focus:*:data-[slot=keyboard]:text-warning-subtle-foreground",
       ],
     },
     isDisabled: {
       true: "opacity-50 forced-colors:text-[GrayText]",
     },
     isSelected: {
-      true: "[&_svg:not([class*='text-'])]:text-accent-fg",
+      true: "[&_svg:not([class*='text-'])]:text-accent-foreground",
     },
     isFocused: {
       true: [
-        "*:data-[slot=keyboard]:text-accent-fg [&_svg:not([class*='text-'])]:text-accent-fg",
-        "bg-accent text-accent-fg forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]",
-        "[&_.text-muted-fg]:text-accent-fg/80 *:[[slot=description]]:text-accent-fg *:[[slot=label]]:text-accent-fg",
+        "*:data-[slot=keyboard]:text-accent-foreground [&_svg:not([class*='text-'])]:text-accent-foreground",
+        "bg-accent text-accent-foreground forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]",
+        "[&_.text-muted-foreground]:text-accent-foreground/80 *:[[slot=description]]:text-accent-foreground *:[[slot=label]]:text-accent-foreground",
       ],
     },
     isHovered: {
       true: [
-        "*:data-[slot=keyboard]:text-accent-fg [&_svg:not([class*='text-'])]:text-accent-fg",
-        "bg-accent text-accent-fg forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]",
-        "[&_.text-muted-fg]:text-accent-fg/80 *:[[slot=description]]:text-accent-fg *:[[slot=label]]:text-accent-fg",
+        "*:data-[slot=keyboard]:text-accent-foreground [&_svg:not([class*='text-'])]:text-accent-foreground",
+        "bg-accent text-accent-foreground forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]",
+        "[&_.text-muted-foreground]:text-accent-foreground/80 *:[[slot=description]]:text-accent-foreground *:[[slot=label]]:text-accent-foreground",
       ],
     },
   },
@@ -140,7 +140,7 @@ const DropdownLabel = ({ className, ...props }: TextProps) => (
 const DropdownDescription = ({ className, ...props }: TextProps) => (
   <Text
     slot="description"
-    className={cn("col-start-2 font-normal text-muted-fg text-sm", className)}
+    className={cn("col-start-2 font-normal text-muted-foreground text-sm", className)}
     {...props}
   />
 )
@@ -148,7 +148,7 @@ const DropdownDescription = ({ className, ...props }: TextProps) => (
 const DropdownSeparator = ({ className, ...props }: Omit<SeparatorProps, "orientation">) => (
   <Separator
     orientation="horizontal"
-    className={cn("col-span-full -mx-1 h-px bg-fg/10", className)}
+    className={cn("col-span-full -mx-1 h-px bg-foreground/10", className)}
     {...props}
   />
 )
@@ -157,7 +157,7 @@ const DropdownKeyboard = ({ className, ...props }: React.ComponentProps<typeof K
   return (
     <Keyboard
       className={cn(
-        "absolute end-2 ps-2 group-hover:text-primary-fg group-focus:text-primary-fg",
+        "absolute end-2 ps-2 group-hover:text-primary-foreground group-focus:text-primary-foreground",
         className
       )}
       {...props}

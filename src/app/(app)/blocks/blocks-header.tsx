@@ -48,8 +48,8 @@ function NavLink(props: LinkProps) {
     <Link
       className={twJoin(
         "inline-flex items-center gap-x-2.5 px-2 py-3 text-sm/6 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0",
-        "text-muted-fg hover:text-fg",
-        pathname === props.href ? "text-fg" : "text-muted-fg"
+        "text-muted-foreground hover:text-foreground",
+        pathname === props.href ? "text-foreground" : "text-muted-foreground"
       )}
       {...props}
     />

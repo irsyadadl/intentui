@@ -14,12 +14,12 @@ import { tv } from "tailwind-variants"
 
 const tooltipStyles = tv({
   base: [
-    "group max-w-sm origin-(--trigger-anchor-point) rounded-lg border border-(--tooltip-border) px-2.5 py-1.5 text-sm/6 will-change-transform [--tooltip-border:var(--color-muted-fg)]/30 dark:shadow-none *:[strong]:font-medium",
+    "group max-w-sm origin-(--trigger-anchor-point) rounded-lg border border-(--tooltip-border) px-2.5 py-1.5 text-sm/6 will-change-transform [--tooltip-border:var(--color-muted-foreground)]/30 dark:shadow-none *:[strong]:font-medium",
   ],
   variants: {
     inverse: {
-      true: ["border-transparent bg-fg text-bg", "**:[.text-muted-fg]:text-bg/60"],
-      false: "bg-overlay text-overlay-fg",
+      true: ["border-transparent bg-foreground text-bg", "**:[.text-muted-foreground]:text-bg/60"],
+      false: "bg-overlay text-overlay-foreground",
     },
     isEntering: {
       true: [
@@ -75,7 +75,9 @@ const TooltipContent = ({
             viewBox="0 0 12 12"
             className={twJoin(
               "block group-placement-bottom:rotate-180 group-placement-left:-rotate-90 group-placement-right:rotate-90 forced-colors:fill-[Canvas] forced-colors:stroke-[ButtonBorder]",
-              inverse ? "fill-fg stroke-transparent" : "fill-overlay stroke-(--tooltip-border)"
+              inverse
+                ? "fill-foreground stroke-transparent"
+                : "fill-overlay stroke-(--tooltip-border)"
             )}
           >
             <path d="M0 0 L6 6 L12 0" />

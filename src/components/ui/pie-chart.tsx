@@ -91,7 +91,7 @@ const PieChart = ({
         >
           {showLabel && variant === "donut" && (
             <text
-              className="fill-fg font-semibold"
+              className="fill-foreground font-semibold"
               x="50%"
               data-slot="label"
               y="50%"

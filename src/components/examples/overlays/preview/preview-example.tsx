@@ -8,7 +8,7 @@ export default function Basic() {
     <div>
       Deployment is currently blocked by{" "}
       <Preview>
-        <Link href="#" className="text-primary-subtle-fg">
+        <Link href="#" className="text-primary-subtle-foreground">
           #1842
         </Link>
         <PreviewContent>
@@ -29,7 +29,7 @@ export default function Basic() {
       </Preview>{" "}
       and{" "}
       <Preview>
-        <Link href="#" className="text-primary-subtle-fg">
+        <Link href="#" className="text-primary-subtle-foreground">
           #1917
         </Link>
         <PreviewContent>

@@ -67,7 +67,7 @@ export function Toc({ className, context = "docs", items }: TocProps) {
           <Suspense>
             {items.length > 0 && (
               <>
-                <h2 id="on-this-page-title" className="text-sm/6 mb-4 text-muted-fg">
+                <h2 id="on-this-page-title" className="text-sm/6 mb-4 text-muted-foreground">
                   On this page
                 </h2>
 
@@ -103,15 +103,15 @@ function TocLink({ item, activeId, minDepth }: TocLinkProps) {
             mass: 0.8,
           }}
           layoutId="currentIndicator"
-          className="absolute top-1/2 -left-6 hidden h-6 w-0.5 -translate-y-1/2 rounded-full bg-primary md:block dark:bg-primary-subtle-fg"
+          className="absolute top-1/2 -left-6 hidden h-6 w-0.5 -translate-y-1/2 rounded-full bg-primary md:block dark:bg-primary-subtle-foreground"
         />
       )}
       <a
         className={cn(
-          "block text-sm/6 tracking-tight no-underline outline-hidden duration-200 focus-visible:text-fg focus-visible:outline-hidden",
+          "block text-sm/6 tracking-tight no-underline outline-hidden duration-200 focus-visible:text-foreground focus-visible:outline-hidden",
           item.url.split("#")[1] === activeId
-            ? "text-fg forced-colors:text-[Highlight]"
-            : "text-muted-fg/90 forced-colors:text-[GrayText]"
+            ? "text-foreground forced-colors:text-[Highlight]"
+            : "text-muted-foreground/90 forced-colors:text-[GrayText]"
         )}
         style={{
           marginLeft: (item.depth - minDepth) * 16,

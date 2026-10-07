@@ -7,7 +7,12 @@ export default function ScrollAreaFadeDemo() {
         {Array.from({ length: 120 }).map((_, i) => {
           const width = `${Math.floor(Math.random() * (100 - 40) + 40)}%`
           return (
-            <i key={i} aria-hidden className="h-2 rounded-[2.5px] bg-fg/20" style={{ width }} />
+            <i
+              key={i}
+              aria-hidden
+              className="h-2 rounded-[2.5px] bg-foreground/20"
+              style={{ width }}
+            />
           )
         })}
       </div>

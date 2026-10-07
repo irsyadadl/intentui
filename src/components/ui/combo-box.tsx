@@ -19,7 +19,7 @@ import { fieldStyles } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { cx } from "@/lib/primitive"
 import { DropdownDescription, DropdownItem, DropdownLabel, DropdownSection } from "./dropdown"
-import { PopoverContent } from "./popover"
+import { Popover } from "./popover"
 
 interface ComboBoxProps<T extends object, M extends "single" | "multiple" = "single"> extends Omit<
   ComboBoxPrimitiveProps<T, M>,
@@ -50,7 +50,7 @@ const ComboBoxContent = <T extends object>({
   ...props
 }: ComboBoxListProps<T>) => {
   return (
-    <PopoverContent
+    <Popover
       placement={popover?.placement ?? "bottom"}
       className={cx(
         "min-w-(--trigger-width) overflow-hidden *:data-[slot=popover-inner]:overflow-hidden",
@@ -70,7 +70,7 @@ const ComboBoxContent = <T extends object>({
       >
         {children}
       </ListBox>
-    </PopoverContent>
+    </Popover>
   )
 }
 
@@ -84,7 +84,10 @@ const ComboBoxInput = (props: InputProps) => {
       <Input {...props} placeholder={props?.placeholder} />
       <Button className="absolute end-0 top-0 grid h-full w-11 cursor-default place-content-center sm:w-9">
         {!context?.inputValue && (
-          <ChevronUpDownIcon data-slot="chevron" className="-me-1 size-5 text-muted-fg sm:size-4" />
+          <ChevronUpDownIcon
+            data-slot="chevron"
+            className="-me-1 size-5 text-muted-foreground sm:size-4"
+          />
         )}
       </Button>
     </span>

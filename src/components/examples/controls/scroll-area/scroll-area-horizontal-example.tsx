@@ -10,7 +10,7 @@ export default function ScrollAreaHorizontalDemo() {
             <i
               key={i}
               aria-hidden
-              className="w-2 rounded-[2.5px] bg-accent-fg/20"
+              className="w-2 rounded-[2.5px] bg-accent-foreground/20"
               style={{ height }}
             />
           )

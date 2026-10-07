@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { useRef, useState } from "react"
 import { flushSync } from "react-dom"
 import getCaretRect from "textarea-caret"
-import { Menu, MenuContent, MenuItem } from "@/components/ui/menu"
+import { MenuItem, Menu, MenuTrigger } from "@/components/ui/menu"
 import { Label } from "@/components/ui/field"
 
 const usernames = [
@@ -75,8 +75,8 @@ export default function TextareaAutocompleteExample() {
         <Label>Reply</Label>
         <Textarea ref={inputRef} placeholder="Type @ for mention" />
       </TextField>
-      <Menu>
-        <MenuContent
+      <MenuTrigger>
+        <Menu
           renderEmptyState={() => "No results found."}
           popover={{
             triggerRef: inputRef,
@@ -110,8 +110,8 @@ export default function TextareaAutocompleteExample() {
               {item.name}
             </MenuItem>
           )}
-        </MenuContent>
-      </Menu>
+        </Menu>
+      </MenuTrigger>
     </Autocomplete>
   )
 }

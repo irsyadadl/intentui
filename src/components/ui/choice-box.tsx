@@ -86,7 +86,7 @@ const ChoiceBox = <T extends object>({
 const choiceBoxItemStyles = tv({
   base: [
     "group outline-hidden",
-    "[--choice-box-fg:var(--color-primary-subtle-fg)] [--choice-box:var(--color-primary-subtle)]",
+    "[--choice-box-foreground:var(--color-primary-subtle-foreground)] [--choice-box:var(--color-primary-subtle)]",
     "[--choice-box-selected-hovered:var(--color-primary-subtle)]/90",
     "inset-ring inset-ring-border rounded-lg p-(--gutter) **:data-[slot=label]:font-medium",
     "**:data-[slot=avatar]:row-span-2 **:data-[slot=avatar]:mt-0.5 **:data-[slot=avatar]:shrink-0",
@@ -102,25 +102,25 @@ const choiceBoxItemStyles = tv({
       false: "cursor-default",
     },
     isHovered: {
-      true: "not-data-readonly:not-data-focus-visible:not-selected:inset-ring-muted-fg/30",
+      true: "not-data-readonly:not-data-focus-visible:not-selected:inset-ring-muted-foreground/30",
     },
     isFocused: {
-      true: "inset-ring-(--choice-box-active-ring) ring-(--choice-box-ring) ring-3 invalid:ring-danger-subtle-fg/20",
+      true: "inset-ring-(--choice-box-active-ring) ring-(--choice-box-ring) ring-3 invalid:ring-danger-subtle-foreground/20",
     },
-    isInvalid: { true: "ring-3 ring-danger-subtle-fg/20" },
+    isInvalid: { true: "ring-3 ring-danger-subtle-foreground/20" },
     isOneColumn: {
       true: "col-span-full",
     },
     isActive: {
       true: [
-        "bg-(--choice-box) text-(--choice-box-fg)",
+        "bg-(--choice-box) text-(--choice-box-foreground)",
         "inset-ring-(--choice-box-active-ring) z-20 hover:bg-(--choice-box-selected-hovered)",
-        "**:data-[slot=label]:text-(--choice-box-fg)",
-        "**:[[slot=description]]:text-(--choice-box-fg)",
+        "**:data-[slot=label]:text-(--choice-box-foreground)",
+        "**:[[slot=description]]:text-(--choice-box-foreground)",
       ],
     },
     isDisabled: {
-      true: "z-10 opacity-50 **:data-[slot=label]:text-muted-fg forced-colors:text-[GrayText] **:[[slot=description]]:text-muted-fg/70",
+      true: "z-10 opacity-50 **:data-[slot=label]:text-muted-foreground forced-colors:text-[GrayText] **:[[slot=description]]:text-muted-foreground/70",
     },
   },
 })
@@ -202,7 +202,7 @@ const ChoiceBoxLabel = ({ className, ref, ...props }: ChoiceBoxLabelProps) => {
       data-slot="label"
       ref={ref}
       className={cn(
-        "select-none text-base/6 text-fg group-disabled:opacity-50 sm:text-sm/6",
+        "select-none text-base/6 text-foreground group-disabled:opacity-50 sm:text-sm/6",
         "col-start-1 row-start-1",
         "group-has-[svg:not([data-slot=check-indicator])]:col-start-2",
         "group-has-data-[slot=avatar]:col-start-2",
@@ -224,7 +224,7 @@ const ChoiceBoxDescription = ({ className, ref, ...props }: ChoiceBoxDescription
         "col-start-1 row-start-2",
         "group-has-[svg:not([data-slot=check-indicator])]:col-start-2",
         "group-has-data-[slot=avatar]:col-start-2",
-        "text-base/6 text-muted-fg sm:text-sm/6",
+        "text-base/6 text-muted-foreground sm:text-sm/6",
         "group-disabled:opacity-50",
         className
       )}

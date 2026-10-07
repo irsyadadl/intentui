@@ -6,10 +6,10 @@ import { useState } from "react"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Loader } from "@/components/ui/loader"
-import { Menu, MenuContent, MenuItem, MenuLabel } from "@/components/ui/menu"
+import { MenuItem, MenuLabel, Menu, MenuTrigger } from "@/components/ui/menu"
 import {
   ModalClose,
-  ModalContent,
+  Modal,
   ModalDescription,
   ModalFooter,
   ModalHeader,
@@ -63,12 +63,12 @@ export default function ModalTriggeredByMenuDemo() {
 
   return (
     <>
-      <Menu>
+      <MenuTrigger>
         <Button intent="outline" className="group">
           Actions...
           <ChevronDownIcon className="decoration-200 transition-transform group-pressed:rotate-180" />
         </Button>
-        <MenuContent popover={{ placement: "bottom" }}>
+        <Menu popover={{ placement: "bottom" }}>
           <MenuItem onAction={() => setState("delete")}>
             <TrashIcon /> <MenuLabel>Delete</MenuLabel>
           </MenuItem>
@@ -79,10 +79,10 @@ export default function ModalTriggeredByMenuDemo() {
           <MenuItem onAction={() => setState("restore")}>
             <MenuLabel>Restore</MenuLabel>
           </MenuItem>
-        </MenuContent>
-      </Menu>
+        </Menu>
+      </MenuTrigger>
 
-      <ModalContent isOpen={state !== null} onOpenChange={closeModal}>
+      <Modal isOpen={state !== null} onOpenChange={closeModal}>
         <ModalHeader>
           <ModalTitle>{actionType(state)?.title}</ModalTitle>
           <ModalDescription>{actionType(state)?.description}</ModalDescription>
@@ -99,7 +99,7 @@ export default function ModalTriggeredByMenuDemo() {
             {loading ? <Loader variant="spin" /> : actionType(state)?.confirmText}
           </Button>
         </ModalFooter>
-      </ModalContent>
+      </Modal>
     </>
   )
 }

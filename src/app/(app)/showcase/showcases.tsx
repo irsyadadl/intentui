@@ -18,11 +18,15 @@ export function Showcases() {
       ))}
 
       {Array.from({ length: xlFillers }).map((_, index) => (
-        <div key={`xl-filler-${index}`} className="hidden bg-bg xl:block 2xl:hidden" aria-hidden />
+        <div
+          key={`xl-filler-${index}`}
+          className="hidden bg-background xl:block 2xl:hidden"
+          aria-hidden
+        />
       ))}
 
       {Array.from({ length: twoXlFillers }).map((_, index) => (
-        <div key={`2xl-filler-${index}`} className="hidden bg-bg 2xl:block" aria-hidden />
+        <div key={`2xl-filler-${index}`} className="hidden bg-background 2xl:block" aria-hidden />
       ))}
     </div>
   )
@@ -47,7 +51,7 @@ export function ShowcaseCard({
 
   return (
     <a
-      className="group/link bg-bg p-0 sm:p-6 outline-hidden"
+      className="group/link bg-background p-0 sm:p-6 outline-hidden"
       href={`${url}/?utm_source=intentui.com&utm_medium=referral&utm_campaign=showcase`}
       target={target}
     >
@@ -78,8 +82,8 @@ export function ShowcaseCard({
         />
       </div>
       <div className="p-4 sm:p-0 mt-0 sm:mt-4">
-        <p className="font-semibold text-fg text-sm/6">{name}</p>
-        <p className="text-muted-fg text-sm">{description}</p>
+        <p className="font-semibold text-foreground text-sm/6">{name}</p>
+        <p className="text-muted-foreground text-sm">{description}</p>
       </div>
     </a>
   )

@@ -43,7 +43,7 @@ export default function AppNavbar(props: NavbarProps) {
               src="https://design.intentui.com/logo?color=155DFC"
             />
             <span>
-              Intent <span className="text-muted-fg">UI</span>
+              Intent <span className="text-muted-foreground">UI</span>
             </span>
           </Link>
         </NavbarStart>

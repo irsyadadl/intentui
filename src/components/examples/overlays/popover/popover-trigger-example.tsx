@@ -4,7 +4,6 @@ import { Avatar } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
   Popover,
-  PopoverContent,
   PopoverDescription,
   PopoverFooter,
   PopoverHeader,
@@ -14,11 +13,11 @@ import {
 
 export default function PopoverTriggerDemo() {
   return (
-    <Popover>
-      <PopoverTrigger aria-label="Open Popover">
+    <PopoverTrigger>
+      <Button aria-label="Open Popover">
         <Avatar alt="cobain" src="https://intentui.com/images/avatar/cobain.jpg" />
-      </PopoverTrigger>
-      <PopoverContent className="min-w-72">
+      </Button>
+      <Popover className="min-w-72">
         <PopoverHeader>
           <PopoverTitle>Email</PopoverTitle>
           <PopoverDescription>We'll send you an email to log in.</PopoverDescription>
@@ -26,7 +25,7 @@ export default function PopoverTriggerDemo() {
         <PopoverFooter>
           <Button>Send Login Link</Button>
         </PopoverFooter>
-      </PopoverContent>
-    </Popover>
+      </Popover>
+    </PopoverTrigger>
   )
 }

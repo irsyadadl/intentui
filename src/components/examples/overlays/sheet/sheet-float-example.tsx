@@ -4,18 +4,18 @@ import { Button } from "@/components/ui/button"
 import {
   Sheet,
   SheetClose,
-  SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
+  SheetTrigger,
 } from "@/components/ui/sheet"
 
 export default function SheetFloatDemo() {
   return (
-    <Sheet>
+    <SheetTrigger>
       <Button intent="outline">Float</Button>
-      <SheetContent isFloat={false}>
+      <Sheet isFloat={false}>
         <SheetHeader>
           <SheetTitle>Not Floated</SheetTitle>
           <SheetDescription>This sheet is not floated.</SheetDescription>
@@ -24,7 +24,7 @@ export default function SheetFloatDemo() {
           <SheetClose>Cancel</SheetClose>
           <Button intent="primary">Save</Button>
         </SheetFooter>
-      </SheetContent>
-    </Sheet>
+      </Sheet>
+    </SheetTrigger>
   )
 }

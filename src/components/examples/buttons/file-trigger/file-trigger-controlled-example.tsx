@@ -17,7 +17,7 @@ export default function FileTriggerDemo() {
         }}
       />
       {file && (
-        <Description className="mt-2 block max-w-60 truncate [&>strong]:font-medium [&>strong]:text-fg">
+        <Description className="mt-2 block max-w-60 truncate [&>strong]:font-medium [&>strong]:text-foreground">
           Your file: <strong>{file}</strong>
         </Description>
       )}

@@ -8,7 +8,7 @@ export function ApiParameters({ children }: { children: React.ReactNode }) {
 
 export function ApiDescription({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-muted/60 px-4 py-2 text-muted-fg text-sm/6 [&_a]:text-primary-subtle-fg [&_a]:underline-offset-4 [&_a]:hover:underline [&_code]:font-medium [&_code]:text-fg [&_p]:m-0 [&_strong]:font-semibold [&_strong]:text-fg">
+    <div className="bg-muted/60 px-4 py-2 text-muted-foreground text-sm/6 [&_a]:text-primary-subtle-foreground [&_a]:underline-offset-4 [&_a]:hover:underline [&_code]:font-medium [&_code]:text-foreground [&_p]:m-0 [&_strong]:font-semibold [&_strong]:text-foreground">
       {children}
     </div>
   )
@@ -16,7 +16,7 @@ export function ApiDescription({ children }: { children: React.ReactNode }) {
 
 export function ApiReference({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-muted/30 px-4 py-2 text-muted-fg text-sm/5 [&_a]:text-primary-subtle-fg [&_a]:underline-offset-4 [&_a]:hover:underline [&_p]:m-0">
+    <div className="bg-muted/30 px-4 py-2 text-muted-foreground text-sm/5 [&_a]:text-primary-subtle-foreground [&_a]:underline-offset-4 [&_a]:hover:underline [&_p]:m-0">
       {children}
     </div>
   )
@@ -35,17 +35,17 @@ export function ApiParameter({ name, type, required, defaultValue, children }: A
     <div className="p-4 text-xs">
       <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
         <code className="bg-transparent p-0 font-medium">{name}</code>
-        <code className="bg-transparent p-0 text-primary-subtle-fg">{type}</code>
+        <code className="bg-transparent p-0 text-primary-subtle-foreground">{type}</code>
         {required !== undefined ? (
           <Badge intent={required ? "danger" : "secondary"}>
             {required ? "required" : "optional"}
           </Badge>
         ) : null}
       </div>
-      {children ? <div className="mt-2 text-muted-fg/6">{children}</div> : null}
+      {children ? <div className="mt-2 text-muted-foreground/6">{children}</div> : null}
       {defaultValue ? (
-        <div className="mt-2 text-muted-fg">
-          Default: <code className="bg-transparent p-0 text-fg">{defaultValue}</code>
+        <div className="mt-2 text-muted-foreground">
+          Default: <code className="bg-transparent p-0 text-foreground">{defaultValue}</code>
         </div>
       ) : null}
     </div>

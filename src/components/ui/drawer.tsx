@@ -74,7 +74,7 @@ const DrawerContent = ({
           {({ state }) => (
             <DrawerRoot
               className={twJoin(
-                "fixed max-h-full touch-none overflow-hidden bg-bg align-middle text-fg ring ring-input will-change-transform",
+                "fixed max-h-full touch-none overflow-hidden bg-background align-middle text-foreground ring ring-input will-change-transform",
                 side === "top" &&
                   (isFloat ? "inset-x-2 top-2 rounded-lg" : "inset-x-0 top-0 rounded-b-2xl"),
                 side === "right" && [
@@ -146,11 +146,11 @@ const DrawerContent = ({
                 )}
               >
                 {notch && side === "bottom" && (
-                  <div className="notch sticky top-0 mx-auto mt-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-fg/20" />
+                  <div className="notch sticky top-0 mx-auto mt-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-foreground/20" />
                 )}
                 {children as React.ReactNode}
                 {notch && side === "top" && (
-                  <div className="notch sticky bottom-0 mx-auto mb-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-fg/20" />
+                  <div className="notch sticky bottom-0 mx-auto mb-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-foreground/20" />
                 )}
               </Dialog>
             </DrawerRoot>
@@ -176,7 +176,7 @@ const DrawerTitle = ({ className, ...props }: HeadingProps) => (
 )
 
 const DrawerDescription = ({ className, ...props }: TextProps) => (
-  <Text slot="description" className={cn("text-muted-fg text-sm", className)} {...props} />
+  <Text slot="description" className={cn("text-muted-foreground text-sm", className)} {...props} />
 )
 
 const DrawerBody = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (

@@ -77,7 +77,7 @@ export function BarList<T>({
                   <Link
                     href={item.href}
                     className={twJoin(
-                      "truncate whitespace-nowrap rounded-sm font-normal text-base/6 text-fg sm:text-sm/6",
+                      "truncate whitespace-nowrap rounded-sm font-normal text-base/6 text-foreground sm:text-sm/6",
                       "hover:underline hover:underline-offset-2",
                       "focus:inset-ring focus:inset-ring-ring focus:outline-hidden focus:ring-2 focus:ring-ring/20"
                     )}
@@ -88,7 +88,7 @@ export function BarList<T>({
                     {item.name}
                   </Link>
                 ) : (
-                  <p className="truncate whitespace-nowrap text-base/6 text-fg sm:text-sm/6">
+                  <p className="truncate whitespace-nowrap text-base/6 text-foreground sm:text-sm/6">
                     {item.name}
                   </p>
                 )}
@@ -107,7 +107,7 @@ export function BarList<T>({
               index === sortedData.length - 1 ? "mb-0" : "mb-1.5"
             )}
           >
-            <p className="truncate whitespace-nowrap text-fg text-sm leading-none">
+            <p className="truncate whitespace-nowrap text-foreground text-sm leading-none">
               {valueFormatter(item.value)}
             </p>
           </div>

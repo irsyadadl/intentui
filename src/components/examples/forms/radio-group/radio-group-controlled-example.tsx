@@ -27,7 +27,7 @@ export default function RadioGroupControlledDemo() {
           <Radio>Privacy</Radio>
         </RadioField>
       </RadioGroup>
-      <Description className="mt-2 block [&>strong]:text-fg">
+      <Description className="mt-2 block [&>strong]:text-foreground">
         You have selected: <strong>{selected ?? "-"}</strong>
       </Description>
     </>

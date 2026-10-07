@@ -1,5 +1,7 @@
 "use client"
 
+import { Button } from "@/components/ui/button"
+
 import {
   BoldIcon,
   ClipboardDocumentIcon,
@@ -10,22 +12,15 @@ import {
 } from "@heroicons/react/24/outline"
 import { useState } from "react"
 import type { Selection } from "react-aria-components/GridList"
-import {
-  Menu,
-  MenuContent,
-  MenuItem,
-  MenuLabel,
-  MenuSection,
-  MenuTrigger,
-} from "@/components/ui/menu"
+import { MenuItem, MenuLabel, MenuSection, Menu, MenuTrigger } from "@/components/ui/menu"
 
 export default function MenuSectionLevelSelection() {
   const [style, setStyle] = useState<Selection>(new Set(["bold"]))
   const [align, setAlign] = useState<Selection>(new Set(["left"]))
   return (
-    <Menu>
-      <MenuTrigger>Open</MenuTrigger>
-      <MenuContent popover={{ placement: "bottom" }} className="min-w-52">
+    <MenuTrigger>
+      <Button intent="outline">Open</Button>
+      <Menu popover={{ placement: "bottom" }} className="min-w-52">
         <MenuSection label="Actions">
           <MenuItem textValue="Cut">
             <ScissorsIcon />
@@ -75,7 +70,7 @@ export default function MenuSectionLevelSelection() {
             <MenuLabel>Right</MenuLabel>
           </MenuItem>
         </MenuSection>
-      </MenuContent>
-    </Menu>
+      </Menu>
+    </MenuTrigger>
   )
 }

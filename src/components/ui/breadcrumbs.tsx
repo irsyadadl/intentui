@@ -45,7 +45,7 @@ const BreadcrumbsItem = ({
       {({ isCurrent }) => (
         <>
           <Link
-            className="has-data-[slot=icon]:inline-flex has-data-[slot=icon]:items-center has-data-[slot=icon]:gap-x-2 *:data-[slot=icon]:size-5 sm:*:data-[slot=icon]:size-4 *:data-[slot=icon]:text-muted-fg hover:*:data-[slot=icon]:text-fg"
+            className="has-data-[slot=icon]:inline-flex has-data-[slot=icon]:items-center has-data-[slot=icon]:gap-x-2 *:data-[slot=icon]:size-5 sm:*:data-[slot=icon]:size-4 *:data-[slot=icon]:text-muted-foreground hover:*:data-[slot=icon]:text-foreground"
             {...props}
           />
           {!isCurrent && separator !== false && <Separator separator={separatorValue} />}
@@ -61,9 +61,9 @@ const Separator = ({
   separator?: BreadcrumbsItemProps["separator"]
 }) => {
   return (
-    <span className="*:shrink-0 *:text-muted-fg *:data-[slot=icon]:size-3.5">
+    <span className="*:shrink-0 *:text-muted-foreground *:data-[slot=icon]:size-3.5">
       {separator === "chevron" && <ChevronRightIcon />}
-      {separator === "slash" && <span className="text-muted-fg">/</span>}
+      {separator === "slash" && <span className="text-muted-foreground">/</span>}
     </span>
   )
 }

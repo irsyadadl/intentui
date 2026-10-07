@@ -51,7 +51,7 @@ export default function Page() {
                 .sort((a, b) => new Date(b.published).getTime() - new Date(a.published).getTime())
                 .map((item) => (
                   <div
-                    className="relative aspect-16/17 flex flex-col bg-bg p-6 hover:bg-muted"
+                    className="relative aspect-16/17 flex flex-col bg-background p-6 hover:bg-muted"
                     key={item.title}
                   >
                     <Link
@@ -74,7 +74,7 @@ export default function Page() {
                           />
                           <strong className="font-semibold text-sm">{item.author}</strong>
                         </div>
-                        <span className="font-mono text-muted-fg text-sm">
+                        <span className="font-mono text-muted-foreground text-sm">
                           {formatDate(item.published)}
                         </span>
                       </div>

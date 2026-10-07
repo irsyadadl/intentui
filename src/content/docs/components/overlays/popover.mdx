@@ -26,24 +26,15 @@ Use this approach if you prefer to install and wire up the component yourself in
 
 ## Anatomy
 ```
-import {
-  Popover,
-  PopoverBody,
-  PopoverClose,
-  PopoverContent,
-  PopoverDescription,
-  PopoverFooter,
-  PopoverHeader,
-  PopoverTitle,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+import { Popover, PopoverBody, PopoverClose, PopoverDescription, PopoverFooter, PopoverHeader, PopoverTitle, PopoverTrigger } from "@/components/ui/popover"
+import { Button } from "@/components/ui/button"
 import { Dialog } from "@/components/ui/dialog"
 ```
 
 ```
-<Popover>
-  <PopoverTrigger>Open Popover</PopoverTrigger>
-  <PopoverContent>
+<PopoverTrigger>
+  <Button>Open Popover</Button>
+  <Popover>
     <Dialog>
       <PopoverHeader>
         <PopoverTitle>Popover Title</PopoverTitle>
@@ -55,8 +46,8 @@ import { Dialog } from "@/components/ui/dialog"
         <PopoverClose>Confirm</PopoverClose>
       </PopoverFooter>
     </Dialog>
-  </PopoverContent>
-</Popover>
+  </Popover>
+</PopoverTrigger>
 ```
 
 ## Examples
@@ -95,28 +86,19 @@ All the examples above use `<Button/>` as the trigger, but what if you wanna swi
 
 ## Component API
 
+### PopoverTrigger
+
+<ApiParameters>
+  <ApiDescription>
+    **PopoverTrigger** extends the React Aria Components [**`<DialogTrigger>`**](https://react-aria.adobe.com/Dialog#api) component.
+  </ApiDescription>
+</ApiParameters>
+
 ### Popover
 
 <ApiParameters>
   <ApiDescription>
     **Popover** extends the React Aria Components [**`<Popover>`**](https://react-aria.adobe.com/Popover#api) component.
-  </ApiDescription>
-</ApiParameters>
-
-### PopoverTrigger
-
-<ApiParameters>
-  <ApiDescription>
-    **PopoverTrigger** extends the Intent UI [**`<DialogTrigger>`**](/docs/components/overlays/dialog#dialogtrigger) component.
-  </ApiDescription>
-  <ApiParameter name="className" type='string' />
-</ApiParameters>
-
-### PopoverContent
-
-<ApiParameters>
-  <ApiDescription>
-    **PopoverContent** extends the React Aria Components [**`<Popover>`**](https://react-aria.adobe.com/Popover#api) component.
   </ApiDescription>
   <ApiParameter name="arrow" type='boolean' defaultValue='false' />
   <ApiParameter name="className" type='string' />

@@ -14,7 +14,7 @@ export default function NumberFieldControlledDemo() {
         <NumberInput />
       </NumberField>
 
-      <Description className="mt-2 block [&>strong]:text-fg">
+      <Description className="mt-2 block [&>strong]:text-foreground">
         You have typed: <strong>{number ?? "-"}</strong>
       </Description>
     </div>

@@ -5,18 +5,18 @@ import {
   Sheet,
   SheetBody,
   SheetClose,
-  SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
+  SheetTrigger,
 } from "@/components/ui/sheet"
 
 export default function SheetStickyDemo() {
   return (
-    <Sheet>
+    <SheetTrigger>
       <Button>Read</Button>
-      <SheetContent>
+      <Sheet>
         <SheetHeader>
           <SheetTitle>Terms of Use</SheetTitle>
           <SheetDescription>
@@ -121,7 +121,7 @@ export default function SheetStickyDemo() {
           <SheetClose>Close</SheetClose>
           <Button>Accept</Button>
         </SheetFooter>
-      </SheetContent>
-    </Sheet>
+      </Sheet>
+    </SheetTrigger>
   )
 }

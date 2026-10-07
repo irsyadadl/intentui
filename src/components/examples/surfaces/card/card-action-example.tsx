@@ -3,7 +3,7 @@
 import { ChevronDownIcon } from "@heroicons/react/20/solid"
 import { Button } from "@/components/ui/button"
 import { Card, CardAction, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Menu, MenuContent, MenuItem } from "@/components/ui/menu"
+import { MenuItem, Menu, MenuTrigger } from "@/components/ui/menu"
 
 export default function CardActionDemo() {
   return (
@@ -14,15 +14,15 @@ export default function CardActionDemo() {
           Manage and view customer details with available actions aligned to the right.
         </CardDescription>
         <CardAction>
-          <Menu>
+          <MenuTrigger>
             <Button size="sm" intent="outline">
               Export... <ChevronDownIcon />
             </Button>
-            <MenuContent placement="bottom end">
+            <Menu placement="bottom end">
               <MenuItem>Export to PDF</MenuItem>
               <MenuItem>Export to CSV</MenuItem>
-            </MenuContent>
-          </Menu>
+            </Menu>
+          </MenuTrigger>
         </CardAction>
       </CardHeader>
     </Card>

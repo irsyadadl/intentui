@@ -1,20 +1,21 @@
+import { Button } from "@/components/ui/button"
 import { describe, it, expect } from "vitest"
 import userEvent from "@testing-library/user-event"
 import { render, screen } from "../utils/render"
 import { User } from "@react-aria/test-utils"
 import { waitFor } from "../utils/render"
-import { Modal, ModalTrigger, ModalContent, ModalTitle, ModalClose } from "@/components/ui/modal"
+import { Modal, ModalTrigger, ModalTitle, ModalClose } from "@/components/ui/modal"
 
 const ariaUser = new User({ interactionType: "mouse" })
 function Example() {
   return (
-    <Modal>
-      <ModalTrigger>Open settings</ModalTrigger>
-      <ModalContent>
+    <ModalTrigger>
+      <Button>Open settings</Button>
+      <Modal>
         <ModalTitle>Settings</ModalTitle>
         <ModalClose>Done</ModalClose>
-      </ModalContent>
-    </Modal>
+      </Modal>
+    </ModalTrigger>
   )
 }
 describe("Modal", () => {
@@ -42,13 +43,13 @@ describe("Modal", () => {
 it("Modal respects disabled keyboard dismissal and still permits an explicit close", async () => {
   const user = userEvent.setup()
   render(
-    <Modal>
-      <ModalTrigger>Open</ModalTrigger>
-      <ModalContent isKeyboardDismissDisabled>
+    <ModalTrigger>
+      <Button>Open</Button>
+      <Modal isKeyboardDismissDisabled>
         <ModalTitle>Confirm</ModalTitle>
         <ModalClose>Cancel</ModalClose>
-      </ModalContent>
-    </Modal>
+      </Modal>
+    </ModalTrigger>
   )
   await user.click(screen.getByRole("button", { name: "Open" }))
   await user.keyboard("[Escape]")

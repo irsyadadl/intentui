@@ -1,5 +1,7 @@
 "use client"
 
+import { Button } from "@/components/ui/button"
+
 import { EllipsisVerticalIcon } from "@heroicons/react/16/solid"
 import { EyeIcon, PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline"
 import {
@@ -10,7 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Menu, MenuContent, MenuItem, MenuSeparator, MenuTrigger } from "@/components/ui/menu"
+import { MenuItem, MenuSeparator, Menu, MenuTrigger } from "@/components/ui/menu"
 import {
   Pagination,
   PaginationFirst,
@@ -62,11 +64,11 @@ export default function CardTableDemo() {
                 <TableCell>{item.age}</TableCell>
                 <TableCell>{item.occupation}</TableCell>
                 <TableCell className="text-end last:pr-2.5">
-                  <Menu>
-                    <MenuTrigger>
+                  <MenuTrigger>
+                    <Button>
                       <EllipsisVerticalIcon />
-                    </MenuTrigger>
-                    <MenuContent placement="left top">
+                    </Button>
+                    <Menu placement="left top">
                       <MenuItem>
                         <EyeIcon /> View
                       </MenuItem>
@@ -77,8 +79,8 @@ export default function CardTableDemo() {
                       <MenuItem intent="danger">
                         <TrashIcon /> Delete
                       </MenuItem>
-                    </MenuContent>
-                  </Menu>
+                    </Menu>
+                  </MenuTrigger>
                 </TableCell>
               </TableRow>
             )}
@@ -111,7 +113,7 @@ export default function CardTableDemo() {
             <PaginationPrevious href="#" />
             <PaginationSection className="rounded-(--section-radius) border px-3 *:min-w-4">
               <PaginationLabel>3</PaginationLabel>
-              <PaginationLabel className="text-muted-fg">/</PaginationLabel>
+              <PaginationLabel className="text-muted-foreground">/</PaginationLabel>
               <PaginationLabel>10</PaginationLabel>
             </PaginationSection>
             <PaginationNext href="#" />

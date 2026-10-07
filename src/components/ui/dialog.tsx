@@ -27,10 +27,6 @@ const Dialog = ({
   )
 }
 
-const DialogTrigger = ({ className, ...props }: ButtonProps) => (
-  <PrimitiveButton className={cx("cursor-pointer", className)} {...props} />
-)
-
 interface DialogHeaderProps extends Omit<React.ComponentProps<"div">, "title"> {
   title?: string
   description?: string
@@ -63,7 +59,7 @@ const DialogTitle = ({ className, ref, ...props }: DialogTitleProps) => (
   <Heading
     slot="title"
     ref={ref}
-    className={cn("text-balance font-semibold text-fg text-lg/6 sm:text-base/6", className)}
+    className={cn("text-balance font-semibold text-foreground text-lg/6 sm:text-base/6", className)}
     {...props}
   />
 )
@@ -75,7 +71,7 @@ const DialogDescription = ({ className, ref, ...props }: DialogDescriptionProps)
   <p
     data-slot="description"
     className={cn(
-      "text-pretty text-base/6 text-muted-fg group-disabled:opacity-50 sm:text-sm/6",
+      "text-pretty text-base/6 text-muted-foreground group-disabled:opacity-50 sm:text-sm/6",
       className
     )}
     ref={ref}
@@ -150,5 +146,4 @@ export {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 }

@@ -58,7 +58,7 @@ export default function TableInfiniteScrollDemo() {
         </TableHeader>
         <TableBody
           renderEmptyState={() => (
-            <div className="flex h-full items-center justify-center p-4 text-muted-fg">
+            <div className="flex h-full items-center justify-center p-4 text-muted-foreground">
               No characters found.
             </div>
           )}

@@ -20,7 +20,7 @@ import { BrandXIcon } from "@/components/icons/brand-x-icon"
 import { ThemeSwitcher } from "@/components/theme-switcher"
 import { Button, buttonStyles } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Sheet, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { app } from "@/config/app"
 import { Logo } from "@/components/logo"
 
@@ -60,8 +60,8 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
   return (
     <nav
       className={cn(
-        "sticky top-0 z-40 flex items-center bg-bg px-2 py-2 lg:hidden",
-        pathname === "/" && "bg-bg",
+        "sticky top-0 z-40 flex items-center bg-background px-2 py-2 lg:hidden",
+        pathname === "/" && "bg-background",
         className
       )}
     >
@@ -71,19 +71,19 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
         style={{ opacity: scrollDecorationOpacity }}
       />
       <div className="flex items-center gap-x-2">
-        <Sheet isOpen={open} onOpenChange={setOpen}>
+        <SheetTrigger isOpen={open} onOpenChange={setOpen}>
           <Button size="sq-sm" intent="plain" className="pressed:bg-transparent outline-hidden">
             <span className="relative flex h-8 w-(--width) items-center justify-center [--width:--spacing(4.5)]">
               <span className="relative size-(--width)">
                 <span
                   className={twJoin(
-                    "absolute left-0 block h-0.5 w-(--width) bg-fg transition-all duration-100",
+                    "absolute left-0 block h-0.5 w-(--width) bg-foreground transition-all duration-100",
                     open ? "top-[0.4rem] -rotate-45" : "top-1"
                   )}
                 />
                 <span
                   className={twJoin(
-                    "absolute left-0 block h-0.5 w-(--width) bg-fg transition-all duration-100",
+                    "absolute left-0 block h-0.5 w-(--width) bg-foreground transition-all duration-100",
                     open ? "top-[0.4rem] rotate-45" : "top-[--spacing(2.6)]"
                   )}
                 />
@@ -91,7 +91,7 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
               <span className="sr-only">Toggle Menu</span>
             </span>
           </Button>
-          <SheetContent
+          <Sheet
             side="left"
             isFloat={false}
             aria-label="Navigation"
@@ -101,7 +101,7 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
               <SheetTitle className="flex items-center gap-x-3">
                 <Logo />{" "}
                 <span>
-                  Intent <span className="text-muted-fg">UI</span>
+                  Intent <span className="text-muted-foreground">UI</span>
                 </span>
               </SheetTitle>
             </SheetHeader>
@@ -127,11 +127,11 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
                   </AsideLink>
                 ))}
             </Aside>
-          </SheetContent>
-        </Sheet>
+          </Sheet>
+        </SheetTrigger>
         <Separator orientation="vertical" className="mr-1 h-4" />
-        <Link href="/" className="font-semibold text-base text-fg">
-          Intent <span className="text-muted-fg">UI</span>
+        <Link href="/" className="font-semibold text-base text-foreground">
+          Intent <span className="text-muted-foreground">UI</span>
         </Link>
       </div>
       <div className="flex-1" aria-hidden />

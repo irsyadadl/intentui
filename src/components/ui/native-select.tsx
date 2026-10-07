@@ -27,11 +27,11 @@ export function NativeSelectContent({ className, isInvalid, ...props }: NativeSe
         aria-invalid={isInvalid ? "true" : undefined}
         className={cn(
           "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:py-[calc(--spacing(1.5)-1px)] sm:pr-8 sm:pl-[calc(--spacing(3)-1px)]",
-          "text-base/6 text-fg placeholder:text-muted-fg sm:text-sm/6",
+          "text-base/6 text-foreground placeholder:text-muted-foreground sm:text-sm/6",
           "bg-(--control-bg,transparent)",
-          "border border-input enabled:hover:border-muted-fg/30",
+          "border border-input enabled:hover:border-muted-foreground/30",
           "outline-hidden focus:border-ring/70 focus:ring-3 focus:ring-ring/20 focus:enabled:hover:border-ring/80",
-          "aria-invalid:border-danger-subtle-fg/70 focus:aria-invalid:border-danger-subtle-fg/70 focus:aria-invalid:ring-danger-subtle-fg/20 aria-invalid:enabled:hover:border-danger-subtle-fg/80 focus:aria-invalid:enabled:hover:border-danger-subtle-fg/80",
+          "aria-invalid:border-danger-subtle-foreground/70 focus:aria-invalid:border-danger-subtle-foreground/70 focus:aria-invalid:ring-danger-subtle-foreground/20 aria-invalid:enabled:hover:border-danger-subtle-foreground/80 focus:aria-invalid:enabled:hover:border-danger-subtle-foreground/80",
           "disabled:bg-muted forced-colors:in-disabled:text-[GrayText]",
           "in-disabled:bg-muted forced-colors:in-disabled:text-[GrayText]",
           "dark:scheme-dark",
@@ -39,7 +39,7 @@ export function NativeSelectContent({ className, isInvalid, ...props }: NativeSe
         )}
         {...props}
       />
-      <ChevronUpDownIcon className="pointer-events-none absolute top-1/2 right-3 size-5 -translate-y-1/2 text-muted-fg sm:right-2.5 sm:size-4" />
+      <ChevronUpDownIcon className="pointer-events-none absolute top-1/2 right-3 size-5 -translate-y-1/2 text-muted-foreground sm:right-2.5 sm:size-4" />
     </div>
   )
 }

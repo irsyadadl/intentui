@@ -1,4 +1,5 @@
 "use client"
+
 import { configure } from "onedollarstats"
 import { useEffect } from "react"
 

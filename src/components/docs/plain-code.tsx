@@ -75,7 +75,7 @@ export const PlainCode = ({
         <div className="flex w-full flex-row items-center gap-2 border-b px-4 py-1.5">
           {icon ? (
             <div
-              className="text-muted-fg [&_svg]:size-3.5"
+              className="text-muted-foreground [&_svg]:size-3.5"
               dangerouslySetInnerHTML={
                 typeof icon === "string"
                   ? {
@@ -87,7 +87,7 @@ export const PlainCode = ({
               {typeof icon !== "string" ? icon : null}
             </div>
           ) : null}
-          <figcaption className="flex-1 truncate text-muted-fg">{title}</figcaption>
+          <figcaption className="flex-1 truncate text-muted-foreground">{title}</figcaption>
           {allowCopy ? (
             <CopyButton
               className="absolute top-1 right-1 z-2 grid size-10 place-content-center"

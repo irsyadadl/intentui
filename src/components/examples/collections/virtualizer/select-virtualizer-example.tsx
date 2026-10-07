@@ -2,7 +2,7 @@
 
 import { ListBox } from "react-aria-components/ListBox"
 import { ListLayout, Virtualizer } from "react-aria-components/Virtualizer"
-import { PopoverContent } from "@/components/ui/popover"
+import { Popover } from "@/components/ui/popover"
 import { Select, SelectItem, SelectTrigger } from "@/components/ui/select"
 
 const items = Array.from({ length: 5000 }, (_, index) => ({
@@ -18,7 +18,7 @@ export default function SelectVirtualizerExample() {
       className="min-w-40"
     >
       <SelectTrigger />
-      <PopoverContent
+      <Popover
         placement="bottom"
         className="min-w-(--trigger-width) overflow-hidden *:data-[slot=popover-inner]:overflow-hidden"
       >
@@ -41,7 +41,7 @@ export default function SelectVirtualizerExample() {
             )}
           </ListBox>
         </Virtualizer>
-      </PopoverContent>
+      </Popover>
     </Select>
   )
 }
