@@ -2,28 +2,28 @@
 
 import { Button } from "@/components/ui/button"
 import {
-  Modal,
-  ModalBody,
-  ModalClose,
-  ModalDescription,
-  ModalFooter,
-  ModalHeader,
-  ModalTitle,
-  ModalTrigger,
-} from "@/components/ui/modal"
+  Dialog,
+  DialogBody,
+  DialogClose,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
-export default function ModalStickyDemo() {
+export default function DialogStickyDemo() {
   return (
-    <ModalTrigger>
+    <DialogTrigger>
       <Button>Read</Button>
-      <Modal size="2xl">
-        <ModalHeader>
-          <ModalTitle>Terms of Use</ModalTitle>
-          <ModalDescription>
+      <Dialog size="2xl">
+        <DialogHeader>
+          <DialogTitle>Terms of Use</DialogTitle>
+          <DialogDescription>
             If you do not agree to these terms, please refrain from using our services.
-          </ModalDescription>
-        </ModalHeader>
-        <ModalBody>
+          </DialogDescription>
+        </DialogHeader>
+        <DialogBody>
           <div className="prose prose-zinc dark:prose-invert prose-h3:text-sm/6 prose-h4:text-sm/6 prose-p:text-muted-foreground">
             <p>
               By accessing or using our services, you agree to be bound by these terms. If you do
@@ -93,12 +93,12 @@ export default function ModalStickyDemo() {
               accordance with these terms.
             </p>
           </div>
-        </ModalBody>
-        <ModalFooter>
-          <ModalClose>Close</ModalClose>
+        </DialogBody>
+        <DialogFooter>
+          <DialogClose>Close</DialogClose>
           <Button>Accept</Button>
-        </ModalFooter>
-      </Modal>
-    </ModalTrigger>
+        </DialogFooter>
+      </Dialog>
+    </DialogTrigger>
   )
 }

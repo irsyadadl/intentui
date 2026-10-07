@@ -4,7 +4,6 @@ import { JsonLd } from "@/components/json-ld"
 import { app, META_THEME_COLORS } from "@/config/app"
 import "@/styles/app.css"
 import type { Metadata, Viewport } from "next"
-import { JetBrains_Mono } from "next/font/google"
 import localFont from "next/font/local"
 import { headers } from "next/headers"
 import { Providers } from "@/components/providers"
@@ -90,12 +89,17 @@ const fontSans = localFont({
   variable: "--font-inter",
 })
 
-const fontMono = JetBrains_Mono({
-  weight: ["400", "500"],
-  subsets: ["latin"],
+const fontMono = localFont({
+  src: [
+    {
+      path: "./fonts/PaperMono[wght].woff2",
+      weight: "100 900",
+      style: "normal",
+    },
+  ],
+
   variable: "--font-docs-mono",
 })
-
 interface Props {
   children: React.ReactNode
 }

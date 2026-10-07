@@ -3,23 +3,35 @@
 import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
-import { DialogClose } from "@/components/ui/dialog"
 import {
-  Modal,
-  ModalDescription,
-  ModalFooter,
-  ModalHeader,
-  ModalTitle,
-} from "@/components/ui/modal"
+  Dialog,
+  DialogClose,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 
-type Size = Pick<React.ComponentProps<typeof Modal>, "size">["size"]
-const sizes: Size[] = ["xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl"]
-export default function ModalSizeDemo() {
+type Size = Pick<React.ComponentProps<typeof Dialog>, "size">["size"]
+const sizes: Size[] = [
+  "2xs",
+  "xs",
+  "sm",
+  "md",
+  "lg",
+  "xl",
+  "2xl",
+  "3xl",
+  "4xl",
+  "5xl",
+  "fullscreen",
+]
+export default function DialogSizeDemo() {
   const [isOpen, setIsOpen] = useState(false)
-  const [modalSize, setModalSize] = useState<Size>("md")
+  const [dialogSize, setDialogSize] = useState<Size>("md")
 
   const handlePress = (size: Size, open: boolean) => {
-    setModalSize(size)
+    setDialogSize(size)
     setIsOpen(open)
   }
   return (
@@ -34,19 +46,19 @@ export default function ModalSizeDemo() {
         ))}
       </div>
 
-      <Modal isOpen={isOpen} onOpenChange={setIsOpen} size={modalSize}>
-        <ModalHeader>
-          <ModalTitle>Project Update</ModalTitle>
-          <ModalDescription>
+      <Dialog isOpen={isOpen} onOpenChange={setIsOpen} size={dialogSize}>
+        <DialogHeader>
+          <DialogTitle>Project Update</DialogTitle>
+          <DialogDescription>
             Dive deep into our project’s latest updates where we've streamlined workflow and
             improved user interfaces.
-          </ModalDescription>
-        </ModalHeader>
-        <ModalFooter>
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
           <DialogClose>Close</DialogClose>
           <Button onPress={() => setIsOpen(false)}>Confirm</Button>
-        </ModalFooter>
-      </Modal>
+        </DialogFooter>
+      </Dialog>
     </>
   )
 }

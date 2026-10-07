@@ -1,6 +1,5 @@
 "use client"
 
-import { DialogTrigger } from "react-aria-components/Dialog"
 import {
   OverlayArrow,
   Popover as PopoverPrimitive,
@@ -15,8 +14,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "./dialog"
-
-const PopoverTrigger = DialogTrigger
 
 const PopoverTitle = DialogTitle
 const PopoverHeader = DialogHeader
@@ -74,7 +71,6 @@ const PopoverDescription = DialogDescription
 
 export type { PopoverProps }
 export {
-  PopoverTrigger,
   PopoverBody,
   PopoverClose,
   Popover,

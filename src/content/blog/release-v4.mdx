@@ -11,28 +11,41 @@ Intent UI v4 brings a more consistent way to compose overlays and menus. The tri
 
 This release includes breaking changes. If you're moving from v3, update both your imports and JSX structure, along with your theme tokens and custom styles.
 
+## Removed components
+
+`Drawer` and `Modal` have been removed in v4, along with their component files, documentation pages, examples, and registry entries. Update existing imports and CLI installation commands to use their replacements.
+
+| Removed | Replacement | Migration |
+| --- | --- | --- |
+| `Drawer` (`@/components/ui/drawer`, `@intentui/drawer`) | [Sheet](/docs/components/overlays/sheet) | Use `SheetTrigger` with a `Button` and `Sheet`. Choose the opening edge with `position`, and use `SheetHeader`, `SheetBody`, `SheetFooter`, and `SheetClose` for composition. |
+| `Modal` (`@/components/ui/modal`, `@intentui/modal`) | [Dialog](/docs/components/overlays/dialog) | Use `DialogTrigger` with a `Button` and `Dialog`. Rename `ModalHeader`, `ModalTitle`, `ModalDescription`, `ModalBody`, `ModalFooter`, and `ModalClose` to their `Dialog` equivalents. |
+
+`Dialog` now includes its backdrop and overlay surface. If you previously used the Intent UI `Dialog` as a content primitive inside another overlay, remove that wrapper or import the content-only `Dialog` from `react-aria-components/Dialog`.
+
+The local `PopoverTrigger` export has also been removed. Use a custom button with `triggerRef`, `isOpen`, and `onOpenChange` as shown in the [Popover documentation](/docs/components/overlays/popover#anatomy).
+
 ## A consistent composition pattern
 
 In v3, names like `Modal` and `Menu` referred to the wrapper, while `ModalContent` and `MenuContent` rendered the content. In v4, the wrapper uses the `Trigger` suffix, and the content uses the component name directly.
 
 | Purpose | v3 | v4 |
 | --- | --- | --- |
-| Modal wrapper | `Modal` | `ModalTrigger` |
-| Modal content | `ModalContent` | `Modal` |
+| Dialog wrapper | `Modal` | `DialogTrigger` |
+| Dialog content | `ModalContent` | `Dialog` |
 | Sheet wrapper | `Sheet` | `SheetTrigger` |
 | Sheet content | `SheetContent` | `Sheet` |
 | Menu wrapper | `Menu` | `MenuTrigger` |
 | Menu content | `MenuContent` | `Menu` |
-| Popover wrapper | `Popover` | `PopoverTrigger` |
+| Popover state | `Popover` | `isOpen`, `onOpenChange`, and `triggerRef` |
 | Popover content | `PopoverContent` | `Popover` |
 | Context menu wrapper | `ContextMenu` | `ContextMenuTrigger` |
 | Context menu content | `ContextMenuContent` | `ContextMenu` |
 
-The old `ModalTrigger`, `SheetTrigger`, `PopoverTrigger`, and `MenuTrigger` button components are no longer used as buttons. Use `Button` inside the new trigger wrapper instead. Move button props such as `intent`, `className`, and `isDisabled` to that button.
+The old `ModalTrigger`, `SheetTrigger`, `PopoverTrigger`, and `MenuTrigger` button components are no longer used as buttons. Use `Button` inside the new trigger wrapper for dialogs, sheets, and menus. For popovers, use a custom button with controlled state and a trigger ref. Move button props such as `intent`, `className`, and `isDisabled` to that button.
 
-## Modal
+## Dialog
 
-`ModalTrigger` now wraps the opening button and `Modal`. Props that previously belonged to `ModalContent`, such as `size`, `role`, `isDismissable`, and `closeButton`, now belong to `Modal`.
+`DialogTrigger` now wraps the opening button and `Dialog`. The Intent UI `Modal` component has been removed; import `Dialog` from `@/components/ui/dialog`. Props that previously belonged to `ModalContent`, such as `size`, `role`, `isDismissable`, and `closeButton`, now belong to `Dialog`.
 
 **Before (v3)**
 
@@ -60,39 +73,39 @@ import {
 ```tsx
 import { Button } from "@/components/ui/button"
 import {
-  Modal,
-  ModalHeader,
-  ModalTitle,
-  ModalTrigger,
-} from "@/components/ui/modal"
+  Dialog,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
-<ModalTrigger>
+<DialogTrigger>
   <Button intent="outline">Rename project</Button>
-  <Modal size="lg">
-    <ModalHeader>
-      <ModalTitle>Rename project</ModalTitle>
-    </ModalHeader>
-  </Modal>
-</ModalTrigger>
+  <Dialog size="lg">
+    <DialogHeader>
+      <DialogTitle>Rename project</DialogTitle>
+    </DialogHeader>
+  </Dialog>
+</DialogTrigger>
 ```
 
-`ModalHeader`, `ModalBody`, `ModalFooter`, and `ModalClose` keep their names. The render prop for accessing `close` still works inside `Modal`.
+Rename `ModalHeader`, `ModalBody`, `ModalFooter`, and `ModalClose` to `DialogHeader`, `DialogBody`, `DialogFooter`, and `DialogClose`. The render prop for accessing `close` still works inside `Dialog`.
 
-For a controlled modal without a trigger wrapper, replace `ModalContent` with `Modal` and keep your state props on it:
+For a controlled dialog without a trigger wrapper, replace `ModalContent` with `Dialog` and keep your state props on it:
 
 ```tsx
 const [isOpen, setIsOpen] = useState(false)
 
-<Modal isOpen={isOpen} onOpenChange={setIsOpen}>
-  <ModalHeader>
-    <ModalTitle>Rename project</ModalTitle>
-  </ModalHeader>
-</Modal>
+<Dialog isOpen={isOpen} onOpenChange={setIsOpen}>
+  <DialogHeader>
+    <DialogTitle>Rename project</DialogTitle>
+  </DialogHeader>
+</Dialog>
 ```
 
 If you're controlling an overlay through its trigger wrapper, keep `isOpen` and `onOpenChange` on the new wrapper instead.
 
-Read the [Modal documentation](/docs/components/overlays/modal) for complete examples.
+Read the [Dialog documentation](/docs/components/overlays/dialog) for complete examples.
 
 ## Sheet
 
@@ -150,33 +163,11 @@ Use `start` or `end` when the sheet should follow the locale's reading direction
 
 Read the [Sheet documentation](/docs/components/overlays/sheet) for position and controlled examples.
 
-## Dialog
+## Composing overlay content
 
-The local `DialogTrigger` export has been removed from `@/components/ui/dialog`. `Dialog` remains the content primitive, with `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogBody`, `DialogFooter`, and `DialogClose` for composition.
+The Intent UI `Dialog` now includes its backdrop and modal surface. Use it directly for centered dialogs. `Sheet` and `Popover` provide their own overlay surfaces and share the `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogBody`, and `DialogFooter` building blocks.
 
-For a modal, sheet, or popover, use its corresponding trigger wrapper with a `Button`. If you're composing an overlay directly with React Aria, import its state wrapper from React Aria:
-
-```tsx
-import { DialogTrigger } from "react-aria-components/Dialog"
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Popover } from "@/components/ui/popover"
-
-<DialogTrigger>
-  <Button intent="outline">Show details</Button>
-  <Popover>
-    <Dialog>
-      <DialogHeader>
-        <DialogTitle>Project details</DialogTitle>
-      </DialogHeader>
-    </Dialog>
-  </Popover>
-</DialogTrigger>
-```
-
-The removed local `DialogTrigger` was a button. React Aria's `DialogTrigger` is the wrapper that manages the open state, so changing the import alone is not enough: update the composition too.
-
-Read the [Dialog documentation](/docs/components/overlays/dialog) for the available content primitives.
+Do not place the Intent UI `Dialog` inside a `Sheet` or `Popover`. For custom overlays that need only the accessible content primitive, import `Dialog` from `react-aria-components/Dialog`.
 
 ## Menu
 
@@ -219,7 +210,7 @@ Read the [Menu documentation](/docs/components/collections/menu) for selection, 
 
 ## Popover and context menu
 
-These components use the same naming pattern.
+Popover uses a custom trigger with controlled state. Context menu uses a trigger wrapper.
 
 **Popover: v3 → v4**
 
@@ -234,15 +225,20 @@ These components use the same naming pattern.
   </PopoverContent>
 </Popover>
 
-// After
-<PopoverTrigger>
-  <Button>Details</Button>
-  <Popover>
+// After (inside a component)
+const [isOpen, setIsOpen] = useState(false)
+const triggerRef = useRef<HTMLButtonElement>(null)
+
+<>
+  <Button ref={triggerRef} aria-haspopup="dialog" aria-expanded={isOpen} onPress={() => setIsOpen(true)}>
+    Details
+  </Button>
+  <Popover triggerRef={triggerRef} isOpen={isOpen} onOpenChange={setIsOpen}>
     <PopoverHeader>
       <PopoverTitle>Project details</PopoverTitle>
     </PopoverHeader>
   </Popover>
-</PopoverTrigger>
+</>
 ```
 
 **Context menu: v3 → v4**
@@ -364,12 +360,14 @@ Only the token names change here. Tailwind utility prefixes such as `bg-` stay t
 ## Migration checklist
 
 - Update your local component source and theme CSS together, preserving any customizations.
-- Replace the old overlay wrappers with `ModalTrigger`, `SheetTrigger`, `PopoverTrigger`, `MenuTrigger`, or `ContextMenuTrigger` as appropriate.
+- Replace removed `Drawer` imports and installations with `Sheet`, and removed `Modal` imports and installations with `Dialog`.
+- Remove local `PopoverTrigger` imports and use a custom trigger with controlled state and a trigger ref.
+- Replace the old overlay wrappers with `DialogTrigger`, `SheetTrigger`, `MenuTrigger`, or `ContextMenuTrigger` as appropriate. Use controlled state and a trigger ref for popovers.
 - Replace opening button components with `Button` inside the trigger wrapper.
-- Rename `ModalContent`, `SheetContent`, `PopoverContent`, `MenuContent`, and `ContextMenuContent` to their component names, and update imports.
+- Rename `ModalContent` to `Dialog` and import it from `@/components/ui/dialog`. Rename `SheetContent`, `PopoverContent`, `MenuContent`, and `ContextMenuContent` to their component names.
 - Rename `SheetContentProps` to `SheetProps` and `PopoverContentProps` to `PopoverProps` in custom wrappers.
 - Change `Sheet`'s `side` prop to `position`.
-- Remove imports of the local `DialogTrigger` and update any custom overlay composition.
+- Use the local `DialogTrigger` as a wrapper around a button and `Dialog`. Update custom overlay composition to avoid nesting overlay surfaces.
 - Update abbreviated theme tokens and utility classes in custom components and styles.
 - Check controlled overlays, nested menus, keyboard navigation, focus restoration, and RTL sheet placement after migrating.
 

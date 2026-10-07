@@ -23,8 +23,8 @@ export default function BreadcrumbsMenuDemo() {
             <MenuItem href="/docs/components/layouts/navbar">
               <MenuLabel>Navbar</MenuLabel>
             </MenuItem>
-            <MenuItem href="/docs/components/overlays/modal">
-              <WindowIcon /> <MenuLabel>Modal</MenuLabel>
+            <MenuItem href="/docs/components/overlays/dialog">
+              <WindowIcon /> <MenuLabel>Dialog</MenuLabel>
             </MenuItem>
             <MenuItem href="/docs/components/collections/menu">
               <MenuLabel>Menu</MenuLabel>

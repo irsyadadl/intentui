@@ -102,8 +102,6 @@
 
 ### Overlays
 - [Dialog](https://intentui.com/docs/components/overlays/dialog.md)
-- [Drawer](https://intentui.com/docs/components/overlays/drawer.md)
-- [Modal](https://intentui.com/docs/components/overlays/modal.md)
 - [Popover](https://intentui.com/docs/components/overlays/popover.md)
 - [Preview](https://intentui.com/docs/components/overlays/preview.md)
 - [Sheet](https://intentui.com/docs/components/overlays/sheet.md)

@@ -3,44 +3,44 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
-  Modal,
-  ModalBody,
-  ModalClose,
-  ModalDescription,
-  ModalFooter,
-  ModalHeader,
-  ModalTitle,
-  ModalTrigger,
-} from "@/components/ui/modal"
+  Dialog,
+  DialogBody,
+  DialogClose,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import { TextField } from "@/components/ui/text-field"
 
-export default function ModalDemo() {
+export default function DialogDemo() {
   return (
-    <ModalTrigger>
+    <DialogTrigger>
       <Button intent="outline">Rename</Button>
-      <Modal>
+      <Dialog>
         {({ close }) => (
           <>
-            <ModalHeader>
-              <ModalTitle>Rename project</ModalTitle>
-              <ModalDescription>
+            <DialogHeader>
+              <DialogTitle>Rename project</DialogTitle>
+              <DialogDescription>
                 Change how this project will appear across the dashboard.
-              </ModalDescription>
-            </ModalHeader>
-            <ModalBody>
+              </DialogDescription>
+            </DialogHeader>
+            <DialogBody>
               <TextField aria-label="Name">
                 <Input placeholder="Enter a name" />
               </TextField>
-            </ModalBody>
-            <ModalFooter>
-              <ModalClose>Cancel</ModalClose>
+            </DialogBody>
+            <DialogFooter>
+              <DialogClose>Cancel</DialogClose>
               <Button onPress={close} intent="primary">
                 Save changes
               </Button>
-            </ModalFooter>
+            </DialogFooter>
           </>
         )}
-      </Modal>
-    </ModalTrigger>
+      </Dialog>
+    </DialogTrigger>
   )
 }

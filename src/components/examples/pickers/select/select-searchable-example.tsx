@@ -1,7 +1,8 @@
 "use client"
+
 import { Autocomplete, useFilter } from "react-aria-components/Autocomplete"
 import { Popover } from "react-aria-components/Popover"
-import { Dialog } from "@/components/ui/dialog"
+import { Dialog } from "react-aria-components/Dialog"
 import { Label } from "@/components/ui/field"
 import { ListBox } from "@/components/ui/list-box"
 import { SearchField, SearchInput } from "@/components/ui/search-field"

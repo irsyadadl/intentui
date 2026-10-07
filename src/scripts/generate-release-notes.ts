@@ -1,4 +1,4 @@
-import { execSync } from "node:child_process"
+import { execFileSync, execSync } from "node:child_process"
 import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs"
 import { basename, join, resolve } from "node:path"
 
@@ -102,24 +102,16 @@ function getDiffStats(file: string): { additions: number; deletions: number } {
   let additions = 0
   let deletions = 0
 
-  try {
-    const diff = execSync(`git diff --numstat ${file}`, { encoding: "utf-8" }).trim()
+  for (const args of [
+    ["diff", "--numstat", "--", file],
+    ["diff", "--cached", "--numstat", "--", file],
+  ]) {
+    const diff = execFileSync("git", args, { encoding: "utf-8" }).trim()
     if (diff) {
       const [add, del] = diff.split("\t")
-      additions = Number.parseInt(add, 10) || 0
-      deletions = Number.parseInt(del, 10) || 0
+      additions += Number.parseInt(add, 10) || 0
+      deletions += Number.parseInt(del, 10) || 0
     }
-  } catch {
-    try {
-      const stagedDiff = execSync(`git diff --cached --numstat ${file}`, {
-        encoding: "utf-8",
-      }).trim()
-      if (stagedDiff) {
-        const [add, del] = stagedDiff.split("\t")
-        additions = Number.parseInt(add, 10) || 0
-        deletions = Number.parseInt(del, 10) || 0
-      }
-    } catch {}
   }
 
   return { additions, deletions }

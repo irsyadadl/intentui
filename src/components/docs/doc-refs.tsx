@@ -17,7 +17,12 @@ export function DocRefs({ references }: { references: string[] }) {
 
     switch (true) {
       case url.includes("react-aria"):
-        title = "RAC"
+        title =
+          new URL(url).pathname
+            .split("/")
+            .filter(Boolean)
+            .pop()
+            ?.replace(/\.html$/, "") || "React Aria"
         icon = BrandReactAriaIcon
         break
       case url.includes("icons"):

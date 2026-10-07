@@ -6,14 +6,14 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/field"
 import { Input, InputGroup } from "@/components/ui/input"
 import {
-  ModalBody,
-  ModalClose,
-  Modal,
-  ModalDescription,
-  ModalFooter,
-  ModalHeader,
-  ModalTitle,
-} from "@/components/ui/modal"
+  DialogBody,
+  DialogClose,
+  Dialog,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 import { TextField } from "@/components/ui/text-field"
 
 export default function TextFieldSuffixButtonDemo() {
@@ -21,12 +21,12 @@ export default function TextFieldSuffixButtonDemo() {
   const close = () => setOpen(false)
   return (
     <>
-      <Modal isOpen={open} onOpenChange={close}>
-        <ModalHeader>
-          <ModalTitle>New User</ModalTitle>
-          <ModalDescription>Create a new user account</ModalDescription>
-        </ModalHeader>
-        <ModalBody className="flex flex-col gap-4">
+      <Dialog isOpen={open} onOpenChange={close}>
+        <DialogHeader>
+          <DialogTitle>New User</DialogTitle>
+          <DialogDescription>Create a new user account</DialogDescription>
+        </DialogHeader>
+        <DialogBody className="flex flex-col gap-4">
           <TextField name="username">
             <Label>Username</Label>
             <Input placeholder="Username" />
@@ -35,12 +35,12 @@ export default function TextFieldSuffixButtonDemo() {
             <Label>Email</Label>
             <Input type="email" placeholder="Email" />
           </TextField>
-        </ModalBody>
-        <ModalFooter>
-          <ModalClose intent="outline">Cancel</ModalClose>
+        </DialogBody>
+        <DialogFooter>
+          <DialogClose intent="outline">Cancel</DialogClose>
           <Button onPress={close}>Continue</Button>
-        </ModalFooter>
-      </Modal>
+        </DialogFooter>
+      </Dialog>
       <TextField>
         <Label>Username</Label>
         <InputGroup>

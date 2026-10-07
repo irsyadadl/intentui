@@ -21,13 +21,13 @@ import { Description, Label } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { MenuItem, MenuLabel, MenuSection } from "@/components/ui/menu"
 import {
-  ModalBody,
-  ModalClose,
-  Modal,
-  ModalFooter,
-  ModalHeader,
-  ModalTitle,
-} from "@/components/ui/modal"
+  DialogBody,
+  DialogClose,
+  Dialog,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select"
 import {
   Sheet,
@@ -42,14 +42,14 @@ import { TextField } from "@/components/ui/text-field"
 
 export default function SheetMenuDemo() {
   const [isOpen, setIsOpen] = useState(false)
-  const closeModal = () => setIsOpen(false)
+  const closeDialog = () => setIsOpen(false)
   return (
     <>
-      <Modal isOpen={isOpen} onOpenChange={setIsOpen}>
-        <ModalHeader>
-          <ModalTitle>Edit status</ModalTitle>
-        </ModalHeader>
-        <ModalBody>
+      <Dialog isOpen={isOpen} onOpenChange={setIsOpen}>
+        <DialogHeader>
+          <DialogTitle>Edit status</DialogTitle>
+        </DialogHeader>
+        <DialogBody>
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <PencilSquareIcon className="size-5" />
@@ -88,12 +88,12 @@ export default function SheetMenuDemo() {
               </Description>
             </CheckboxField>
           </div>
-        </ModalBody>
-        <ModalFooter>
-          <ModalClose>Clear Status</ModalClose>
-          <Button onPress={closeModal}>Set Status</Button>
-        </ModalFooter>
-      </Modal>
+        </DialogBody>
+        <DialogFooter>
+          <DialogClose>Clear Status</DialogClose>
+          <Button onPress={closeDialog}>Set Status</Button>
+        </DialogFooter>
+      </Dialog>
       <SheetTrigger>
         <PrimitiveButton aria-label="Open menu">
           <Avatar src="https://intentui.com/images/avatar/cobain.jpg" alt="irsyadadl" />

@@ -34,6 +34,7 @@ export default function PopoverControlledDemo() {
         Delete Account
       </Button>
       <Popover
+        aria-label="Confirm deletion"
         triggerRef={triggerRef}
         isOpen={isOpen}
         onOpenChange={setIsOpen}

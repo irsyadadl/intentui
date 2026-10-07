@@ -1,4 +1,5 @@
 "use client"
+
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid"
 import { findNeighbour, type Root as PageTreeRoot } from "fumadocs-core/page-tree"
 import { cn } from "cn"

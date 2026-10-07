@@ -1,9 +1,10 @@
 "use client"
+
 import { cn } from "cn"
 import SwitchDescriptionDemo from "@/components/examples/controls/switch/switch-description-example"
 import CheckboxGroupDescriptionDemo from "@/components/examples/forms/checkbox/checkbox-group-description-example"
 import RadioGroupDescriptionDemo from "@/components/examples/forms/radio-group/radio-group-description-example"
-import ModalDemo from "@/components/examples/overlays/modal/modal-example"
+import DialogDemo from "@/components/examples/overlays/dialog/dialog-example"
 import PopoverDemo from "@/components/examples/overlays/popover/popover-example"
 import SheetDemo from "@/components/examples/overlays/sheet/sheet-example"
 import TooltipDemo from "@/components/examples/overlays/tooltip/tooltip-example"
@@ -29,7 +30,7 @@ export function Blocks() {
         <div className="grid grid-cols-2 gap-px border-page border-x bg-page *:bg-background *:p-6 sm:*:min-h-40 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <Center>
-              <ModalDemo />
+              <DialogDemo />
             </Center>
           </div>
           <div>

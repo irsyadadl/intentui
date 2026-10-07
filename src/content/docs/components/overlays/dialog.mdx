@@ -1,11 +1,12 @@
 ---
 title: "Dialog"
-description: A small, interactive UI element that overlays content to display important information or actions. It appears over the main interface for user interaction.
-order: 2
+description: Centered overlay that blocks the interface until dismissed, focusing attention on key info or actions, ideal for confirmations, alerts, and quick approvals
+order: 1
 published: true
-status: primitive
-references: ["https://react-aria.adobe.com/Dialog#api"]
+references: ["https://react-aria.adobe.com/Dialog#api", "https://react-aria.adobe.com/Modal#api"]
 ---
+
+<How toUse="overlays/dialog/dialog-example" />
 
 ## Installation
 
@@ -16,20 +17,188 @@ Install the component via the CLI in one command.
 <Composed components={['button']}/>
 
 ## Manual installation
-
 Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
 <PackageCommand command="npm i react-aria-components @heroicons/react cn"/>
-<SourceCode toShow='dialog' />
+
+<SourceCode toShow='dialog'/>
+
+## Anatomy
+```
+import { Button } from "@/components/ui/button"
+import { Dialog, DialogBody, DialogClose, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+```
+
+```
+<DialogTrigger>
+  <Button>Open Dialog</Button>
+  <Dialog>
+    <DialogHeader>
+      <DialogTitle>Dialog Title</DialogTitle>
+      <DialogDescription>Dialog Description</DialogDescription>
+    </DialogHeader>
+    <DialogBody>Dialog Body</DialogBody>
+    <DialogFooter>
+      <DialogClose>Close</DialogClose>
+      <Button>Confirm</Button>
+    </DialogFooter>
+  </Dialog>
+</DialogTrigger>
+```
+
+## Examples
+
+### Alert dialog
+Use `role="alertdialog"` for a critical message that requires an explicit response.
+<How toUse="overlays/dialog/alert-dialog-example" />
+Alert dialogs cannot be dismissed by clicking outside by default, and the close icon is hidden. Provide an explicit action such as Cancel.
+
+```tsx
+<Dialog role="alertdialog" />
+```
+
+### Controlled
+You can control the dialog programmatically.
+<How toUse="overlays/dialog/dialog-controlled-example" />
+
+### Sizes
+The dialog defaults to `md`. Available sizes are `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`, and `fullscreen`.
+<How toUse="overlays/dialog/dialog-size-example" />
+
+### Dialog overlay styles
+
+The overlay uses a subtle 1px blur by default. You can increase it or disable it entirely.
+
+```tsx
+<DialogTrigger>
+  <Button intent="outline">Rename</Button>
+  <Dialog overlay={{ className: "backdrop-blur-2xl" }}>
+```
+
+If you want to turn it off, use `backdrop-blur-none`. If you do not need any blur at all, the recommended approach is to remove the blur class from the component defaults.
+
+```diff
+-"bg-background/15 backdrop-blur-[1px] motion-reduce:backdrop-blur-none",
++"bg-background/15",
+```
+
+Or, you can override it per instance from the component usage:
+
+```tsx
+<DialogTrigger>
+  <Button intent="outline">Rename</Button>
+  <Dialog overlay={{ className: "backdrop-blur-none" }}>
+```
+
+### Sticky
+Use `DialogBody` for scrollable content while the header and footer stay visible.
+<How toUse="overlays/dialog/dialog-sticky-example" />
+
+### Nested
+You can also nest dialogs. Try open it and confirm!
+<How toUse="overlays/dialog/dialog-nested-example" />
+
+### Header
+This setup’s super flexible. If you skip adding `DialogTitle` and just drop a string as its child, it'll auto-render as the title. Like this:
+```
+<DialogHeader>
+  Title
+</DialogHeader>
+```
+Wanna customize more? Throw in props like `title` and `description` for a tailored header:
+```
+<DialogHeader title='Title' description='Description' />
+```
+
+### Triggered by menu
+You can also trigger the dialog by clicking on a menu item.
+<How toUse="overlays/dialog/dialog-triggered-by-menu-example" />
+It might be a good idea to extract the dialog into a separate component for better organization.
+
+```
+interface DialogActionProps {
+  state: string | null
+  onOpenChange: () => void
+  actionType: { description: string; action: () => void; confirmText: string; title: string }
+  disabled: boolean
+}
+
+const DialogAction = (props: DialogActionProps) => (
+  <Dialog isOpen={props.state !== null} onOpenChange={props.onOpenChange}>
+    <DialogHeader>
+      <DialogTitle>{props.actionType?.title}</DialogTitle>
+      <DialogDescription>{props.actionType?.description}</DialogDescription>
+    </DialogHeader>
+    <DialogFooter>
+      <DialogClose>Cancel</DialogClose>
+      <Button
+        intent={props.state === "ban" ? "danger" : "primary"}
+        className="min-w-24"
+        isDisabled={props.disabled}
+        onPress={props.actionType?.action}
+      >
+        {props.disabled ? <Loader variant="spin" /> : props.actionType?.confirmText}
+      </Button>
+    </DialogFooter>
+  </Dialog>
+)
+```
+
+Then you can use it like this.
+
+```
+<DialogAction
+  state={state}
+  onOpenChange={closeDialog}
+  actionType={actionType(state)}
+  disabled={loading}
+/>
+```
+
+With that, now we can modify the `actionType` function to return the initial state.
+
+```tsx
+const actionType = (t: string | null) => {
+  const initialsState = {
+    title: '',
+    description: '',
+    confirmText: '',
+    action: () => {}
+  }
+
+  switch (t) {
+    case 'delete': ...
+    case 'ban': ...
+    case 'restore': ...
+    default:
+      return initialsState
+  }
+}
+```
 
 ## Component API
+
+### DialogTrigger
+
+<ApiParameters>
+  <ApiDescription>
+    **DialogTrigger** extends the React Aria Components [**`<DialogTrigger>`**](https://react-aria.adobe.com/Dialog#api) component.
+  </ApiDescription>
+</ApiParameters>
 
 ### Dialog
 
 <ApiParameters>
   <ApiDescription>
-    **Dialog** extends the React Aria Components [**`<Dialog>`**](https://react-aria.adobe.com/Dialog#api) component.
+    **Dialog** extends the React Aria Components [**`<ModalOverlay>`**](https://react-aria.adobe.com/Modal#api) component.
   </ApiDescription>
   <ApiParameter name="className" type='string' />
+  <ApiParameter name="isOpen" type="boolean" />
+  <ApiParameter name="onOpenChange" type="(isOpen: boolean) => void" />
+  <ApiParameter name="isDismissable" type="boolean" defaultValue="true, except for alertdialog" />
+  <ApiParameter name="role" type='"dialog" | "alertdialog"' defaultValue="dialog" />
+  <ApiParameter name="closeButton" type='boolean' defaultValue='true' />
+  <ApiParameter name="overlay" type='Pick<ModalOverlayProps, "className">' />
+  <ApiParameter name="size" type='keyof typeof sizes' defaultValue='md' />
 </ApiParameters>
 
 ### DialogBody
@@ -45,7 +214,7 @@ Use this approach if you prefer to install and wire up the component yourself in
 
 <ApiParameters>
   <ApiDescription>
-    **DialogCloseIcon** extends the Intent UI [**`<Button>`**](/docs/components/buttons/button#button) component.
+    **DialogCloseIcon** renders a React Aria **Button** with the `close` slot. Dialog renders it automatically when `closeButton` and `isDismissable` are enabled.
   </ApiDescription>
   <ApiParameter name="className" type='string' />
   <ApiParameter name="isDismissable" type='boolean | undefined' />
@@ -69,7 +238,7 @@ Use this approach if you prefer to install and wire up the component yourself in
 
 <ApiParameters>
   <ApiDescription>
-    **DialogDescription** extends the React Aria Components [**`<Text>`**](https://react-aria.adobe.com/collections) component.
+    **DialogDescription** renders a native **`<p>`** element.
   </ApiDescription>
   <ApiParameter name="className" type='string' />
 </ApiParameters>

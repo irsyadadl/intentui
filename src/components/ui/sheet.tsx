@@ -1,11 +1,10 @@
 "use client"
 
 import { useLocale } from "react-aria-components/I18nProvider"
-import { type DialogProps, DialogTrigger } from "react-aria-components/Dialog"
+import { type DialogProps, Dialog, DialogTrigger } from "react-aria-components/Dialog"
 import { Modal, ModalOverlay, type ModalOverlayProps } from "react-aria-components/Modal"
 import { cx } from "@/lib/primitive"
 import {
-  Dialog,
   DialogBody,
   DialogClose,
   DialogCloseIcon,
@@ -14,6 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "./dialog"
+import { cn } from "cn"
 
 const SheetTrigger = DialogTrigger
 
@@ -87,9 +87,14 @@ const Sheet = ({
         )}
       >
         <Dialog
-          className="sm:[--gutter:--spacing(6)]"
           aria-label={props["aria-label"] ?? undefined}
+          aria-labelledby={props["aria-labelledby"]}
+          data-slot="dialog"
           role={role}
+          className={cn(
+            "peer/dialog group/dialog relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-hidden outline-hidden [--gutter:--spacing(6)]",
+            className
+          )}
         >
           {(values) => (
             <>

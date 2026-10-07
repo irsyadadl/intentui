@@ -17,7 +17,7 @@ import { Calendar } from "./calendar"
 import { DateInput } from "./date-field"
 import { fieldStyles } from "./field"
 import { InputGroup } from "./input"
-import { Modal } from "./modal"
+import { Dialog } from "./dialog"
 import { Popover } from "./popover"
 import { RangeCalendar } from "./range-calendar"
 
@@ -63,7 +63,7 @@ export function DatePickerOverlay({
   const isMobile = useIsMobile()
 
   return isMobile ? (
-    <Modal closeButton={false}>
+    <Dialog closeButton={false}>
       <div className="flex justify-center p-6">
         {range ? (
           <RangeCalendar pageBehavior={pageBehavior} visibleDuration={visibleDuration} />
@@ -71,7 +71,7 @@ export function DatePickerOverlay({
           <Calendar />
         )}
       </div>
-    </Modal>
+    </Dialog>
   ) : (
     <Popover
       placement={placement}

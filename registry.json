@@ -2501,7 +2501,7 @@
         "http://localhost:3000/r/date-field",
         "http://localhost:3000/r/field",
         "http://localhost:3000/r/input",
-        "http://localhost:3000/r/modal",
+        "http://localhost:3000/r/dialog",
         "http://localhost:3000/r/popover",
         "http://localhost:3000/r/range-calendar"
       ],
@@ -2585,25 +2585,6 @@
       "files": [
         {
           "path": "src/components/ui/disclosure-group.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "type": "registry:ui"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer",
-      "title": "drawer",
-      "description": "drawer",
-      "dependencies": ["motion", "react-aria-components", "cn"],
-      "registryDependencies": [
-        "http://localhost:3000/r/primitive",
-        "http://localhost:3000/r/button"
-      ],
-      "files": [
-        {
-          "path": "src/components/ui/drawer.tsx",
           "type": "registry:ui"
         }
       ],
@@ -2866,25 +2847,6 @@
       "files": [
         {
           "path": "src/components/ui/meter.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "type": "registry:ui"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "modal",
-      "title": "modal",
-      "description": "modal",
-      "dependencies": ["react-aria-components"],
-      "registryDependencies": [
-        "http://localhost:3000/r/primitive",
-        "http://localhost:3000/r/dialog"
-      ],
-      "files": [
-        {
-          "path": "src/components/ui/modal.tsx",
           "type": "registry:ui"
         }
       ],
@@ -3240,7 +3202,7 @@
       "name": "sheet",
       "title": "sheet",
       "description": "sheet",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "cn"],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/dialog"
@@ -5365,7 +5327,6 @@
       "description": "select-searchable-example",
       "dependencies": ["react-aria-components"],
       "registryDependencies": [
-        "http://localhost:3000/r/dialog",
         "http://localhost:3000/r/field",
         "http://localhost:3000/r/list-box",
         "http://localhost:3000/r/search-field",
@@ -6087,7 +6048,7 @@
         "http://localhost:3000/r/field",
         "http://localhost:3000/r/input",
         "http://localhost:3000/r/menu",
-        "http://localhost:3000/r/modal",
+        "http://localhost:3000/r/dialog",
         "http://localhost:3000/r/select",
         "http://localhost:3000/r/sheet",
         "http://localhost:3000/r/text-field"
@@ -6249,7 +6210,6 @@
       "registryDependencies": [
         "http://localhost:3000/r/button",
         "http://localhost:3000/r/checkbox",
-        "http://localhost:3000/r/dialog",
         "http://localhost:3000/r/field",
         "http://localhost:3000/r/input",
         "http://localhost:3000/r/link",
@@ -6324,10 +6284,10 @@
       "name": "alert-dialog-example",
       "title": "Alert Dialog",
       "description": "alert-dialog-example",
-      "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/modal"],
+      "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/dialog"],
       "files": [
         {
-          "path": "src/components/examples/overlays/modal/alert-dialog-example.tsx",
+          "path": "src/components/examples/overlays/dialog/alert-dialog-example.tsx",
           "type": "registry:page",
           "target": "app/alert-dialog-example/page.tsx"
         }
@@ -6337,15 +6297,15 @@
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "extends": "none",
-      "name": "modal-controlled-example",
-      "title": "Modal Controlled",
-      "description": "modal-controlled-example",
-      "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/modal"],
+      "name": "dialog-controlled-example",
+      "title": "Dialog Controlled",
+      "description": "dialog-controlled-example",
+      "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/dialog"],
       "files": [
         {
-          "path": "src/components/examples/overlays/modal/modal-controlled-example.tsx",
+          "path": "src/components/examples/overlays/dialog/dialog-controlled-example.tsx",
           "type": "registry:page",
-          "target": "app/modal-controlled-example/page.tsx"
+          "target": "app/dialog-controlled-example/page.tsx"
         }
       ],
       "type": "registry:page"
@@ -6353,20 +6313,20 @@
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "extends": "none",
-      "name": "modal-example",
-      "title": "Modal",
-      "description": "modal-example",
+      "name": "dialog-example",
+      "title": "Dialog",
+      "description": "dialog-example",
       "registryDependencies": [
         "http://localhost:3000/r/button",
         "http://localhost:3000/r/input",
-        "http://localhost:3000/r/modal",
+        "http://localhost:3000/r/dialog",
         "http://localhost:3000/r/text-field"
       ],
       "files": [
         {
-          "path": "src/components/examples/overlays/modal/modal-example.tsx",
+          "path": "src/components/examples/overlays/dialog/dialog-example.tsx",
           "type": "registry:page",
-          "target": "app/modal-example/page.tsx"
+          "target": "app/dialog-example/page.tsx"
         }
       ],
       "type": "registry:page"
@@ -6374,22 +6334,22 @@
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "extends": "none",
-      "name": "modal-nested-example",
-      "title": "Modal Nested",
-      "description": "modal-nested-example",
+      "name": "dialog-nested-example",
+      "title": "Dialog Nested",
+      "description": "dialog-nested-example",
       "dependencies": ["react-aria-components", "sonner"],
       "registryDependencies": [
         "http://localhost:3000/r/button",
         "http://localhost:3000/r/field",
-        "http://localhost:3000/r/modal",
+        "http://localhost:3000/r/dialog",
         "http://localhost:3000/r/text-field",
         "http://localhost:3000/r/textarea"
       ],
       "files": [
         {
-          "path": "src/components/examples/overlays/modal/modal-nested-example.tsx",
+          "path": "src/components/examples/overlays/dialog/dialog-nested-example.tsx",
           "type": "registry:page",
-          "target": "app/modal-nested-example/page.tsx"
+          "target": "app/dialog-nested-example/page.tsx"
         }
       ],
       "type": "registry:page"
@@ -6397,19 +6357,15 @@
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "extends": "none",
-      "name": "modal-size-example",
-      "title": "Modal Size",
-      "description": "modal-size-example",
-      "registryDependencies": [
-        "http://localhost:3000/r/button",
-        "http://localhost:3000/r/dialog",
-        "http://localhost:3000/r/modal"
-      ],
+      "name": "dialog-size-example",
+      "title": "Dialog Size",
+      "description": "dialog-size-example",
+      "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/dialog"],
       "files": [
         {
-          "path": "src/components/examples/overlays/modal/modal-size-example.tsx",
+          "path": "src/components/examples/overlays/dialog/dialog-size-example.tsx",
           "type": "registry:page",
-          "target": "app/modal-size-example/page.tsx"
+          "target": "app/dialog-size-example/page.tsx"
         }
       ],
       "type": "registry:page"
@@ -6417,15 +6373,15 @@
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "extends": "none",
-      "name": "modal-sticky-example",
-      "title": "Modal Sticky",
-      "description": "modal-sticky-example",
-      "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/modal"],
+      "name": "dialog-sticky-example",
+      "title": "Dialog Sticky",
+      "description": "dialog-sticky-example",
+      "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/dialog"],
       "files": [
         {
-          "path": "src/components/examples/overlays/modal/modal-sticky-example.tsx",
+          "path": "src/components/examples/overlays/dialog/dialog-sticky-example.tsx",
           "type": "registry:page",
-          "target": "app/modal-sticky-example/page.tsx"
+          "target": "app/dialog-sticky-example/page.tsx"
         }
       ],
       "type": "registry:page"
@@ -6433,163 +6389,22 @@
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "extends": "none",
-      "name": "modal-triggered-by-menu-example",
-      "title": "Modal Triggered by Menu",
-      "description": "modal-triggered-by-menu-example",
+      "name": "dialog-triggered-by-menu-example",
+      "title": "Dialog Triggered by Menu",
+      "description": "dialog-triggered-by-menu-example",
       "dependencies": ["@heroicons/react", "sonner"],
       "registryDependencies": [
         "http://localhost:3000/r/button",
         "http://localhost:3000/r/loader",
         "http://localhost:3000/r/menu",
-        "http://localhost:3000/r/modal",
+        "http://localhost:3000/r/dialog",
         "http://localhost:3000/r/utils"
       ],
       "files": [
         {
-          "path": "src/components/examples/overlays/modal/modal-triggered-by-menu-example.tsx",
+          "path": "src/components/examples/overlays/dialog/dialog-triggered-by-menu-example.tsx",
           "type": "registry:page",
-          "target": "app/modal-triggered-by-menu-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer-basic-example",
-      "title": "Drawer Basic",
-      "description": "drawer-basic-example",
-      "registryDependencies": [
-        "http://localhost:3000/r/button",
-        "http://localhost:3000/r/drawer",
-        "http://localhost:3000/r/field",
-        "http://localhost:3000/r/input",
-        "http://localhost:3000/r/text-field"
-      ],
-      "files": [
-        {
-          "path": "src/components/examples/overlays/drawer/drawer-basic-example.tsx",
-          "type": "registry:page",
-          "target": "app/drawer-basic-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer-controlled-example",
-      "title": "Drawer Controlled",
-      "description": "drawer-controlled-example",
-      "registryDependencies": [
-        "http://localhost:3000/r/button",
-        "http://localhost:3000/r/drawer",
-        "http://localhost:3000/r/field",
-        "http://localhost:3000/r/input",
-        "http://localhost:3000/r/text-field"
-      ],
-      "files": [
-        {
-          "path": "src/components/examples/overlays/drawer/drawer-controlled-example.tsx",
-          "type": "registry:page",
-          "target": "app/drawer-controlled-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer-float-example",
-      "title": "Drawer Float",
-      "description": "drawer-float-example",
-      "registryDependencies": [
-        "http://localhost:3000/r/button",
-        "http://localhost:3000/r/drawer",
-        "http://localhost:3000/r/radio",
-        "http://localhost:3000/r/separator"
-      ],
-      "files": [
-        {
-          "path": "src/components/examples/overlays/drawer/drawer-float-example.tsx",
-          "type": "registry:page",
-          "target": "app/drawer-float-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer-nested-example",
-      "title": "Drawer Nested",
-      "description": "drawer-nested-example",
-      "dependencies": ["react-aria-components", "sonner"],
-      "registryDependencies": [
-        "http://localhost:3000/r/button",
-        "http://localhost:3000/r/drawer",
-        "http://localhost:3000/r/field",
-        "http://localhost:3000/r/text-field",
-        "http://localhost:3000/r/textarea"
-      ],
-      "files": [
-        {
-          "path": "src/components/examples/overlays/drawer/drawer-nested-example.tsx",
-          "type": "registry:page",
-          "target": "app/drawer-nested-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer-side-example",
-      "title": "Drawer Side",
-      "description": "drawer-side-example",
-      "registryDependencies": [
-        "http://localhost:3000/r/button",
-        "http://localhost:3000/r/drawer",
-        "http://localhost:3000/r/radio",
-        "http://localhost:3000/r/separator"
-      ],
-      "files": [
-        {
-          "path": "src/components/examples/overlays/drawer/drawer-side-example.tsx",
-          "type": "registry:page",
-          "target": "app/drawer-side-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer-sticky-example",
-      "title": "Drawer Sticky",
-      "description": "drawer-sticky-example",
-      "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/drawer"],
-      "files": [
-        {
-          "path": "src/components/examples/overlays/drawer/drawer-sticky-example.tsx",
-          "type": "registry:page",
-          "target": "app/drawer-sticky-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer-without-notch-example",
-      "title": "Drawer Without Notch",
-      "description": "drawer-without-notch-example",
-      "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/drawer"],
-      "files": [
-        {
-          "path": "src/components/examples/overlays/drawer/drawer-without-notch-example.tsx",
-          "type": "registry:page",
-          "target": "app/drawer-without-notch-example/page.tsx"
+          "target": "app/dialog-triggered-by-menu-example/page.tsx"
         }
       ],
       "type": "registry:page"
@@ -7518,7 +7333,7 @@
         "http://localhost:3000/r/button",
         "http://localhost:3000/r/field",
         "http://localhost:3000/r/input",
-        "http://localhost:3000/r/modal",
+        "http://localhost:3000/r/dialog",
         "http://localhost:3000/r/text-field"
       ],
       "files": [
@@ -12830,7 +12645,6 @@
         "http://localhost:3000/r/ui/description-list",
         "http://localhost:3000/r/ui/dialog",
         "http://localhost:3000/r/ui/disclosure-group",
-        "http://localhost:3000/r/ui/drawer",
         "http://localhost:3000/r/ui/drop-zone",
         "http://localhost:3000/r/ui/dropdown",
         "http://localhost:3000/r/ui/field",
@@ -12847,7 +12661,6 @@
         "http://localhost:3000/r/ui/loader",
         "http://localhost:3000/r/ui/menu",
         "http://localhost:3000/r/ui/meter",
-        "http://localhost:3000/r/ui/modal",
         "http://localhost:3000/r/ui/multiple-select",
         "http://localhost:3000/r/ui/native-select",
         "http://localhost:3000/r/ui/navbar",

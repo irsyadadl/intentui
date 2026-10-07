@@ -1,4 +1,5 @@
 "use client"
+
 import showcases from "./showcases.json"
 import Image from "next/image"
 import { useRef } from "react"

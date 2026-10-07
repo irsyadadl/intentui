@@ -8,25 +8,25 @@ import { Button } from "@/components/ui/button"
 import { Loader } from "@/components/ui/loader"
 import { MenuItem, MenuLabel, Menu, MenuTrigger } from "@/components/ui/menu"
 import {
-  ModalClose,
-  Modal,
-  ModalDescription,
-  ModalFooter,
-  ModalHeader,
-  ModalTitle,
-} from "@/components/ui/modal"
+  DialogClose,
+  Dialog,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 import { wait } from "@/lib/utils"
 
-export default function ModalTriggeredByMenuDemo() {
+export default function DialogTriggeredByMenuDemo() {
   const [state, setState] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
-  const closeModal = () => setState(null)
+  const closeDialog = () => setState(null)
 
   const executeAction = async (action: string) => {
     setLoading(true)
     try {
       await wait(2000)
-      closeModal()
+      closeDialog()
       toast(`${action.charAt(0).toUpperCase() + action.slice(1)} action executed!`)
     } finally {
       setLoading(false)
@@ -82,13 +82,13 @@ export default function ModalTriggeredByMenuDemo() {
         </Menu>
       </MenuTrigger>
 
-      <Modal isOpen={state !== null} onOpenChange={closeModal}>
-        <ModalHeader>
-          <ModalTitle>{actionType(state)?.title}</ModalTitle>
-          <ModalDescription>{actionType(state)?.description}</ModalDescription>
-        </ModalHeader>
-        <ModalFooter>
-          <ModalClose>Cancel</ModalClose>
+      <Dialog isOpen={state !== null} onOpenChange={closeDialog}>
+        <DialogHeader>
+          <DialogTitle>{actionType(state)?.title}</DialogTitle>
+          <DialogDescription>{actionType(state)?.description}</DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <DialogClose>Cancel</DialogClose>
           <Button
             autoFocus
             intent={state === "ban" ? "danger" : "primary"}
@@ -98,8 +98,8 @@ export default function ModalTriggeredByMenuDemo() {
           >
             {loading ? <Loader variant="spin" /> : actionType(state)?.confirmText}
           </Button>
-        </ModalFooter>
-      </Modal>
+        </DialogFooter>
+      </Dialog>
     </>
   )
 }
