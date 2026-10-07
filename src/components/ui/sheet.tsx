@@ -1,5 +1,6 @@
 "use client"
 
+import { useLocale } from "react-aria-components/I18nProvider"
 import { type DialogProps, DialogTrigger } from "react-aria-components/Dialog"
 import { Modal, ModalOverlay, type ModalOverlayProps } from "react-aria-components/Modal"
 import { cx } from "@/lib/primitive"
@@ -26,13 +27,18 @@ interface SheetProps
   overlay?: Omit<ModalOverlayProps, "children">
 }
 
-const positionVariants: Record<string, string> = {
+const positionVariants: Record<
+  Exclude<NonNullable<SheetProps["position"]>, "start" | "end">,
+  string
+> = {
   top: "entering:slide-in-from-top exiting:slide-out-to-top inset-x-0 top-0 rounded-b-2xl border-b data-[float=true]:inset-x-2 data-[float=true]:top-2 data-[float=true]:border-b-0",
   bottom:
     "entering:slide-in-from-bottom exiting:slide-out-to-bottom inset-x-0 bottom-0 rounded-t-2xl border-t data-[float=true]:inset-x-2 data-[float=true]:bottom-2 data-[float=true]:border-t-0",
   left: "entering:slide-in-from-left exiting:slide-out-to-left-80 inset-y-0 left-0 h-auto w-3/4 overflow-y-auto border-r sm:max-w-80 data-[float=true]:inset-y-2 data-[float=true]:left-2 data-[float=true]:border-r-0",
   right:
     "entering:slide-in-from-right exiting:slide-out-to-right-80 inset-y-0 right-0 h-auto w-3/4 overflow-y-auto border-l sm:max-w-80 data-[float=true]:inset-y-2 data-[float=true]:right-2 data-[float=true]:border-l-0",
+  center:
+    "entering:zoom-in-95 exiting:zoom-out-95 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-var(--spacing)*4)] max-w-lg rounded-2xl border data-[float=true]:border-0",
 }
 
 const Sheet = ({
@@ -46,6 +52,17 @@ const Sheet = ({
   children,
   ...props
 }: SheetProps) => {
+  const { direction } = useLocale()
+  const resolvedPosition =
+    position === "start"
+      ? direction === "rtl"
+        ? "right"
+        : "left"
+      : position === "end"
+        ? direction === "rtl"
+          ? "left"
+          : "right"
+        : position
   const isDismissable = isDismissableInternal ?? role !== "alertdialog"
   return (
     <ModalOverlay
@@ -64,8 +81,8 @@ const Sheet = ({
           "data-[float=true]:rounded-lg data-[float=true]:ring data-[float=true]:ring-foreground/5 dark:data-[float=true]:ring-border",
           "border-foreground/20 dark:border-border",
           "entering:fade-in entering:animate-in entering:duration-500",
-          "exiting:fade-in exiting:animate-out exiting:duration-300",
-          positionVariants[position],
+          "exiting:fade-out exiting:animate-out exiting:duration-300",
+          positionVariants[resolvedPosition],
           className
         )}
       >

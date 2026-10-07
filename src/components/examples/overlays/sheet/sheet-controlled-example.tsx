@@ -19,7 +19,9 @@ export default function SheetControlledDemo() {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <>
-      <Button onPress={() => setIsOpen(true)}>Feedback</Button>
+      <Button intent="outline" onPress={() => setIsOpen(true)}>
+        Feedback
+      </Button>
       <Sheet isOpen={isOpen} onOpenChange={setIsOpen}>
         <SheetHeader>
           <SheetTitle>Submit Feedback</SheetTitle>

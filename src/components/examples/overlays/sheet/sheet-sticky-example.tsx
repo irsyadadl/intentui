@@ -15,7 +15,7 @@ import {
 export default function SheetStickyDemo() {
   return (
     <SheetTrigger>
-      <Button>Read</Button>
+      <Button intent="outline">Read</Button>
       <Sheet>
         <SheetHeader>
           <SheetTitle>Terms of Use</SheetTitle>

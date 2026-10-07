@@ -1,6 +1,6 @@
 ---
 title: Sheet
-description: A slide-in panel for presenting additional content without disrupting the main screen. It slides in from the side to show related information or options.
+description: A panel for presenting related information or options. It can slide in from an edge or appear in the center of the screen.
 order: 2
 references: ["https://react-aria.adobe.com/Modal#api"]
 
@@ -61,7 +61,9 @@ You can control the open state of the sheet by using the `isOpen` prop. You can 
 <How toUse="overlays/sheet/sheet-controlled-example" />
 
 ### Positioning
-You can position the modal component in different ways. You can use the `side` prop to position the modal component in the different directions.
+Use the `position` prop to choose `top`, `bottom`, `left`, `right`, `start`, `end`, or `center`. The default is `right`.
+
+`left` and `right` are physical positions. `start` and `end` follow the locale direction: in LTR they map to left and right, and in RTL they map to right and left. `center` displays a centered panel with a zoom animation and a responsive width.
 
 <How toUse="overlays/sheet/sheet-position-example" />
 
@@ -71,7 +73,7 @@ You can customize the close button by using the `SheetClose` component. This exa
 <How toUse="overlays/sheet/sheet-custom-close-example" />
 
 ### Float
-By default, the sheet will stack, but you can change this behavior by using the `isFloat` prop. This example demonstrates how to use the `isFloat` prop to create a sheet that does not stack.
+Sheets float by default, with spacing from the screen edges. Set `isFloat={false}` to attach an edge-positioned sheet to the screen edge. A sheet with `position="center"` remains centered in either mode.
 <How toUse="overlays/sheet/sheet-float-example" />
 
 ### Sticky
@@ -98,7 +100,7 @@ You can use the `SheetBody` component to make the sheet sticky.
   <ApiParameter name="closeButton" type='boolean' defaultValue='true' />
   <ApiParameter name="isFloat" type='boolean' defaultValue='true' />
   <ApiParameter name="overlay" type='Omit<ModalOverlayProps, "children">' />
-  <ApiParameter name="side" type='"top" | "bottom" | "left" | "right"' defaultValue='right' />
+  <ApiParameter name="position" type='"bottom" | "top" | "left" | "right" | "start" | "end" | "center"' defaultValue='right' />
 </ApiParameters>
 
 ### SheetHeader

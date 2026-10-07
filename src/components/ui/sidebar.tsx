@@ -220,7 +220,7 @@ const Sidebar = ({
           data-slot="sidebar"
           data-intent="default"
           className="w-(--sidebar-width) entering:blur-in exiting:blur-out [--sidebar-width:18rem] has-data-[slot=calendar]:[--sidebar-width:23rem]"
-          side={side}
+          position={side}
         >
           {children}
         </Sheet>

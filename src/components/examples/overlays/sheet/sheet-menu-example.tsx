@@ -15,6 +15,7 @@ import { useState } from "react"
 import { Menu as MenuPrimitive } from "react-aria-components/Menu"
 import { Avatar } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
+import { Button as PrimitiveButton } from "react-aria-components/Button"
 import { Checkbox, CheckboxField } from "@/components/ui/checkbox"
 import { Description, Label } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
@@ -94,9 +95,9 @@ export default function SheetMenuDemo() {
         </ModalFooter>
       </Modal>
       <SheetTrigger>
-        <Button aria-label="Open menu">
+        <PrimitiveButton aria-label="Open menu">
           <Avatar src="https://intentui.com/images/avatar/cobain.jpg" alt="irsyadadl" />
-        </Button>
+        </PrimitiveButton>
         <Sheet isFloat={false} closeButton={false}>
           <SheetHeader className="flex flex-row gap-x-3.5 border-b sm:gap-x-3 sm:px-4 sm:pt-3 sm:pb-2">
             <Avatar src="https://intentui.com/images/avatar/cobain.jpg" isSquare alt="cobain" />
