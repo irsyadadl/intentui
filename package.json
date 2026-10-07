@@ -86,7 +86,7 @@
     "baseline-browser-mapping": "^2.10.29",
     "encoding": "^0.1.13",
     "jsdom": "^30.1.0",
-    "oxfmt": "^0.55.0",
+    "oxfmt": "^0.72.0",
     "oxlint": "^1.64.0",
     "postcss": "^8.5.14",
     "rehype-autolink-headings": "^7.1.0",
