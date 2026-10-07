@@ -1,0 +1,376 @@
+---
+title: Release 4.0.0
+description: Intent UI v4 introduces clearer overlay composition, new sheet positions, and explicit theme token names. Here's what changed and how to migrate from v3.
+published: 2026-10-07
+author: irsyadadl
+---
+
+## Introduction
+
+Intent UI v4 brings a more consistent way to compose overlays and menus. The trigger wrapper manages the interaction, a button opens it, and the component itself renders the content.
+
+This release includes breaking changes. If you're moving from v3, update both your imports and JSX structure, along with your theme tokens and custom styles.
+
+## A consistent composition pattern
+
+In v3, names like `Modal` and `Menu` referred to the wrapper, while `ModalContent` and `MenuContent` rendered the content. In v4, the wrapper uses the `Trigger` suffix, and the content uses the component name directly.
+
+| Purpose | v3 | v4 |
+| --- | --- | --- |
+| Modal wrapper | `Modal` | `ModalTrigger` |
+| Modal content | `ModalContent` | `Modal` |
+| Sheet wrapper | `Sheet` | `SheetTrigger` |
+| Sheet content | `SheetContent` | `Sheet` |
+| Menu wrapper | `Menu` | `MenuTrigger` |
+| Menu content | `MenuContent` | `Menu` |
+| Popover wrapper | `Popover` | `PopoverTrigger` |
+| Popover content | `PopoverContent` | `Popover` |
+| Context menu wrapper | `ContextMenu` | `ContextMenuTrigger` |
+| Context menu content | `ContextMenuContent` | `ContextMenu` |
+
+The old `ModalTrigger`, `SheetTrigger`, `PopoverTrigger`, and `MenuTrigger` button components are no longer used as buttons. Use `Button` inside the new trigger wrapper instead. Move button props such as `intent`, `className`, and `isDisabled` to that button.
+
+## Modal
+
+`ModalTrigger` now wraps the opening button and `Modal`. Props that previously belonged to `ModalContent`, such as `size`, `role`, `isDismissable`, and `closeButton`, now belong to `Modal`.
+
+**Before (v3)**
+
+```tsx
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalTitle,
+  ModalTrigger,
+} from "@/components/ui/modal"
+
+<Modal>
+  <ModalTrigger>Rename project</ModalTrigger>
+  <ModalContent size="lg">
+    <ModalHeader>
+      <ModalTitle>Rename project</ModalTitle>
+    </ModalHeader>
+  </ModalContent>
+</Modal>
+```
+
+**After (v4)**
+
+```tsx
+import { Button } from "@/components/ui/button"
+import {
+  Modal,
+  ModalHeader,
+  ModalTitle,
+  ModalTrigger,
+} from "@/components/ui/modal"
+
+<ModalTrigger>
+  <Button intent="outline">Rename project</Button>
+  <Modal size="lg">
+    <ModalHeader>
+      <ModalTitle>Rename project</ModalTitle>
+    </ModalHeader>
+  </Modal>
+</ModalTrigger>
+```
+
+`ModalHeader`, `ModalBody`, `ModalFooter`, and `ModalClose` keep their names. The render prop for accessing `close` still works inside `Modal`.
+
+For a controlled modal without a trigger wrapper, replace `ModalContent` with `Modal` and keep your state props on it:
+
+```tsx
+const [isOpen, setIsOpen] = useState(false)
+
+<Modal isOpen={isOpen} onOpenChange={setIsOpen}>
+  <ModalHeader>
+    <ModalTitle>Rename project</ModalTitle>
+  </ModalHeader>
+</Modal>
+```
+
+If you're controlling an overlay through its trigger wrapper, keep `isOpen` and `onOpenChange` on the new wrapper instead.
+
+Read the [Modal documentation](/docs/components/overlays/modal) for complete examples.
+
+## Sheet
+
+Sheets follow the same structure: `SheetTrigger` wraps a `Button` and `Sheet`. The `side` prop is now called `position`.
+
+**Before (v3)**
+
+```tsx
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+
+<Sheet>
+  <SheetTrigger>Edit settings</SheetTrigger>
+  <SheetContent side="right">
+    <SheetHeader>
+      <SheetTitle>Settings</SheetTitle>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+```
+
+**After (v4)**
+
+```tsx
+import { Button } from "@/components/ui/button"
+import {
+  Sheet,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+
+<SheetTrigger>
+  <Button intent="outline">Edit settings</Button>
+  <Sheet position="right">
+    <SheetHeader>
+      <SheetTitle>Settings</SheetTitle>
+    </SheetHeader>
+  </Sheet>
+</SheetTrigger>
+```
+
+Alongside `top`, `bottom`, `left`, and `right`, `position` now supports `start`, `end`, and `center`. The default is still `right`.
+
+- `start` opens on the left in LTR layouts and on the right in RTL layouts.
+- `end` opens on the right in LTR layouts and on the left in RTL layouts.
+- `center` displays the sheet in the center with a zoom animation.
+
+Use `start` or `end` when the sheet should follow the locale's reading direction. `isFloat` is still available, and sheets now fade out when closing.
+
+Read the [Sheet documentation](/docs/components/overlays/sheet) for position and controlled examples.
+
+## Dialog
+
+The local `DialogTrigger` export has been removed from `@/components/ui/dialog`. `Dialog` remains the content primitive, with `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogBody`, `DialogFooter`, and `DialogClose` for composition.
+
+For a modal, sheet, or popover, use its corresponding trigger wrapper with a `Button`. If you're composing an overlay directly with React Aria, import its state wrapper from React Aria:
+
+```tsx
+import { DialogTrigger } from "react-aria-components/Dialog"
+import { Button } from "@/components/ui/button"
+import { Dialog, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Popover } from "@/components/ui/popover"
+
+<DialogTrigger>
+  <Button intent="outline">Show details</Button>
+  <Popover>
+    <Dialog>
+      <DialogHeader>
+        <DialogTitle>Project details</DialogTitle>
+      </DialogHeader>
+    </Dialog>
+  </Popover>
+</DialogTrigger>
+```
+
+The removed local `DialogTrigger` was a button. React Aria's `DialogTrigger` is the wrapper that manages the open state, so changing the import alone is not enough: update the composition too.
+
+Read the [Dialog documentation](/docs/components/overlays/dialog) for the available content primitives.
+
+## Menu
+
+`MenuTrigger` now manages the menu interaction, and `Menu` renders the menu and its popover. Replace the old trigger button with `Button`.
+
+**Before (v3)**
+
+```tsx
+import { Menu, MenuContent, MenuItem, MenuTrigger } from "@/components/ui/menu"
+
+<Menu>
+  <MenuTrigger>Actions</MenuTrigger>
+  <MenuContent placement="bottom start">
+    <MenuItem id="edit">Edit</MenuItem>
+    <MenuItem id="delete" intent="danger">Delete</MenuItem>
+  </MenuContent>
+</Menu>
+```
+
+**After (v4)**
+
+```tsx
+import { Button } from "@/components/ui/button"
+import { Menu, MenuItem, MenuTrigger } from "@/components/ui/menu"
+
+<MenuTrigger>
+  <Button intent="outline">Actions</Button>
+  <Menu placement="bottom start">
+    <MenuItem id="edit">Edit</MenuItem>
+    <MenuItem id="delete" intent="danger">Delete</MenuItem>
+  </Menu>
+</MenuTrigger>
+```
+
+Move content props such as `items`, `selectionMode`, `selectedKeys`, and `onAction` from `MenuContent` to `Menu`. Popover customization remains available through the `popover` prop. `MenuItem`, `MenuSection`, and `MenuSubMenu` keep their names.
+
+For custom menu styling and TypeScript imports, `menuContentStyles` becomes `menuStyles`, and `MenuContentProps` becomes `MenuProps`. The local button type `MenuTriggerProps` has been removed; use `ButtonProps` for your button or infer wrapper props with `React.ComponentProps<typeof MenuTrigger>`.
+
+Read the [Menu documentation](/docs/components/collections/menu) for selection, sections, and submenus.
+
+## Popover and context menu
+
+These components use the same naming pattern.
+
+**Popover: v3 → v4**
+
+```tsx
+// Before
+<Popover>
+  <Button>Details</Button>
+  <PopoverContent>
+    <PopoverHeader>
+      <PopoverTitle>Project details</PopoverTitle>
+    </PopoverHeader>
+  </PopoverContent>
+</Popover>
+
+// After
+<PopoverTrigger>
+  <Button>Details</Button>
+  <Popover>
+    <PopoverHeader>
+      <PopoverTitle>Project details</PopoverTitle>
+    </PopoverHeader>
+  </Popover>
+</PopoverTrigger>
+```
+
+**Context menu: v3 → v4**
+
+```tsx
+// Before
+<ContextMenu>
+  <Button intent="outline">Right-click here</Button>
+  <ContextMenuContent>
+    <ContextMenuItem id="edit">Edit</ContextMenuItem>
+  </ContextMenuContent>
+</ContextMenu>
+
+// After
+<ContextMenuTrigger>
+  <Button intent="outline">Right-click here</Button>
+  <ContextMenu>
+    <ContextMenuItem id="edit">Edit</ContextMenuItem>
+  </ContextMenu>
+</ContextMenuTrigger>
+```
+
+Update the imports from `@/components/ui/popover` and `@/components/ui/context-menu` along with the JSX. See the [Popover](/docs/components/overlays/popover) and [Context Menu](/docs/components/controls/context-menu) documentation for full examples.
+
+## Explicit theme token names
+
+Theme tokens now use `background` and `foreground` instead of the abbreviated `bg` and `fg` names. Update your CSS variables, Tailwind theme mappings, and utility classes together, including dark mode overrides.
+
+| v3 | v4 |
+| --- | --- |
+| `--bg` | `--background` |
+| `--fg` | `--foreground` |
+| `--color-bg` | `--color-background` |
+| `--color-fg` | `--color-foreground` |
+| `--card-fg` | `--card-foreground` |
+| `--primary-fg` | `--primary-foreground` |
+| `--primary-subtle-fg` | `--primary-subtle-foreground` |
+| `--secondary-fg` | `--secondary-foreground` |
+| `--accent-fg` | `--accent-foreground` |
+| `--muted-fg` | `--muted-foreground` |
+| `--overlay-fg` | `--overlay-foreground` |
+| `--navbar-fg` | `--navbar-foreground` |
+| `--sidebar-fg` | `--sidebar-foreground` |
+| `--sidebar-primary-fg` | `--sidebar-primary-foreground` |
+| `--sidebar-accent-fg` | `--sidebar-accent-foreground` |
+| `bg-bg` | `bg-background` |
+| `text-fg` | `text-foreground` |
+| `text-muted-fg` | `text-muted-foreground` |
+| `text-primary-fg` | `text-primary-foreground` |
+
+The same `-fg` to `-foreground` rename applies to the other semantic foreground tokens, including card, secondary, accent, status colors, navbar, and sidebar. Tailwind mappings such as `--color-primary-fg` also become `--color-primary-foreground`.
+
+### CSS variables and Tailwind mappings
+
+Rename both the variable definitions and every `var(...)` reference. Keep your existing color values when migrating a customized theme. The following is a minimal example; apply the same changes to the rest of your theme and its `.dark` overrides.
+
+**Before (v3)**
+
+```css
+:root {
+  --bg: oklch(1 0 0);
+  --fg: oklch(0.21 0.006 285.885);
+  --primary-fg: oklch(1 0 0);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-primary-fg: var(--primary-fg);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+```
+
+**After (v4)**
+
+```css
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.21 0.006 285.885);
+  --primary-foreground: oklch(1 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary-foreground: var(--primary-foreground);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+```
+
+Status foreground tokens follow the same rule: `--success-fg`, `--danger-fg`, and `--warning-fg` become `--success-foreground`, `--danger-foreground`, and `--warning-foreground`. Their subtle variants also change, including `--info-subtle-fg` → `--info-subtle-foreground`.
+
+### Utility classes
+
+The Tailwind mappings generate the new utility names. Update variants and opacity modifiers too: `dark:bg-bg` becomes `dark:bg-background`, and `text-fg/80` becomes `text-foreground/80`.
+
+```tsx
+// Before
+<div className="bg-bg text-fg">
+  <p className="text-muted-fg">Project details</p>
+</div>
+
+// After
+<div className="bg-background text-foreground">
+  <p className="text-muted-foreground">Project details</p>
+</div>
+```
+
+Only the token names change here. Tailwind utility prefixes such as `bg-` stay the same: `bg-primary` still uses the primary background token.
+
+## Migration checklist
+
+- Update your local component source and theme CSS together, preserving any customizations.
+- Replace the old overlay wrappers with `ModalTrigger`, `SheetTrigger`, `PopoverTrigger`, `MenuTrigger`, or `ContextMenuTrigger` as appropriate.
+- Replace opening button components with `Button` inside the trigger wrapper.
+- Rename `ModalContent`, `SheetContent`, `PopoverContent`, `MenuContent`, and `ContextMenuContent` to their component names, and update imports.
+- Rename `SheetContentProps` to `SheetProps` and `PopoverContentProps` to `PopoverProps` in custom wrappers.
+- Change `Sheet`'s `side` prop to `position`.
+- Remove imports of the local `DialogTrigger` and update any custom overlay composition.
+- Update abbreviated theme tokens and utility classes in custom components and styles.
+- Check controlled overlays, nested menus, keyboard navigation, focus restoration, and RTL sheet placement after migrating.
+
+Since several existing names now have different roles, avoid a global search-and-replace. Update each wrapper, button, and content element together using the examples above.
