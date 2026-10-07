@@ -1,7 +1,7 @@
 "use client"
 
 import {
-  ArrowRightOnRectangleIcon,
+  ArrowRightStartOnRectangleIcon,
   Cog6ToothIcon,
   CommandLineIcon,
   Squares2X2Icon,
@@ -67,7 +67,7 @@ function UserMenu() {
         </MenuItem>
         <MenuSeparator />
         <MenuItem href="#logout">
-          <ArrowRightOnRectangleIcon />
+          <ArrowRightStartOnRectangleIcon />
           <MenuLabel>Log out</MenuLabel>
         </MenuItem>
       </MenuContent>

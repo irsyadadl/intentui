@@ -1,7 +1,7 @@
 "use client"
 
 import {
-  ArrowRightOnRectangleIcon,
+  ArrowRightStartOnRectangleIcon,
   ChartBarIcon,
   ChevronUpDownIcon,
   Cog6ToothIcon,
@@ -120,7 +120,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
             </MenuItem>
             <MenuSeparator />
             <MenuItem href="#logout">
-              <ArrowRightOnRectangleIcon />
+              <ArrowRightStartOnRectangleIcon />
               Log out
             </MenuItem>
           </MenuContent>

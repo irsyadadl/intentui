@@ -10,7 +10,7 @@ import {
   UsersIcon,
 } from "@heroicons/react/24/outline"
 import {
-  ArrowRightOnRectangleIcon as ArrowRightOnRectangleSolid,
+  ArrowRightStartOnRectangleIcon as ArrowRightStartOnRectangleSolid,
   Cog6ToothIcon as Cog6ToothSolid,
   LifebuoyIcon as LifebuoySolid,
   ShieldCheckIcon as ShieldCheckSolid,
@@ -121,7 +121,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
             </MenuItem>
             <MenuSeparator />
             <MenuItem href="#logout">
-              <ArrowRightOnRectangleSolid />
+              <ArrowRightStartOnRectangleSolid />
               Log out
             </MenuItem>
           </MenuContent>
