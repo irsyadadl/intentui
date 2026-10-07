@@ -86,7 +86,7 @@ export const makeRegistry = () => {
         fs.writeFileSync(jsonOutputPath, JSON.stringify(registryItem, null, 2))
       }
 
-      if (type !== "anatomies") {
+      if (type !== "anatomies" && filePath.endsWith(".tsx")) {
         registryEntries.push(`
         "${key}": {
           name: "${componentName}",
@@ -133,4 +133,8 @@ export default registry;
   clearInterval(loadingInterval)
 
   console.info("Registry generation complete.")
+}
+
+if (import.meta.main) {
+  makeRegistry()
 }

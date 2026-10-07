@@ -19,14 +19,11 @@ import {
   IconBrandTailwindcss,
   IconBrandX,
   IconChevronDown,
-  IconChevronLgDown,
   IconColorPalette,
-  IconColors,
   IconCube,
   IconHome,
   IconNotepad,
   IconSearch,
-  IconWindowVisit,
   IconWindowVisitFill,
 } from "@intentui/icons"
 import { LayoutGroup } from "motion/react"
@@ -88,30 +85,7 @@ export function Navbar() {
                     Themes
                   </NavLink>
 
-                  <NavLink href="/icons">Icons</NavLink>
-
-                  <NavLink href="/colors">Colors</NavLink>
-
-                  <NavLink href="/blocks">Blocks</NavLink>
-                  <Menu>
-                    <Menu.Trigger className="group flex cursor-default items-center gap-x-2 py-3 text-muted-fg text-sm tracking-tight outline-hidden focus-visible:text-fg">
-                      Premium
-                      <IconChevronLgDown className="size-3 duration-200 group-pressed:rotate-180" />
-                    </Menu.Trigger>
-                    <Menu.Content
-                      offset={4}
-                      className="sm:min-w-xs sm:max-w-min"
-                      placement="bottom"
-                      items={premium}
-                    >
-                      {(item) => (
-                        <Menu.Item href={item.href}>
-                          <Menu.Label>{item.label}</Menu.Label>
-                          <Menu.Description>{item.description}</Menu.Description>
-                        </Menu.Item>
-                      )}
-                    </Menu.Content>
-                  </Menu>
+                  <NavLink href="https://intentui.com/icons">Icons</NavLink>
                 </div>
                 <div className="flex items-center gap-x-1">
                   <>
@@ -205,23 +179,15 @@ export function NavbarDropdown() {
               <IconCube />
               <Menu.Label>Components</Menu.Label>
             </Menu.Item>
-            <Menu.Item href="/colors">
-              <IconColors />
-              <Menu.Label>Colors</Menu.Label>
-            </Menu.Item>
             <Menu.Item href="/themes">
               <IconColorPalette />
               <Menu.Label>Themes</Menu.Label>
             </Menu.Item>
-            <Menu.Item href="/blocks">
-              <IconWindowVisit />
-              <Menu.Label>Blocks</Menu.Label>
-            </Menu.Item>
-            <Menu.Item target="_blank" href="https://blocks.intentui.com">
+            <Menu.Item target="_blank" href="https://design.intentui.com">
               <IconBrandIntentui />
               <Menu.Label>Premium Blocks</Menu.Label>
             </Menu.Item>
-            <Menu.Item href="/icons">
+            <Menu.Item href="https://intentui.com/icons">
               <IconBrandIntentui />
               <Menu.Label>Icons</Menu.Label>
             </Menu.Item>
@@ -279,14 +245,14 @@ const premium = [
   {
     id: 1,
     label: "Premium Blocks",
-    href: "https://blocks.intentui.com",
+    href: "https://design.intentui.com",
     icon: IconBrandIntentui,
     description: "Pre-designed, ready-to-use React components for seamless integration.",
   },
   {
     id: 4,
     label: "Templates",
-    href: "https://blocks.intentui.com/templates",
+    href: "https://design.intentui.com/templates",
     icon: IconBrandIntentui,
     description: "Pre-designed, ready-to-use React components for seamless integration.",
   },

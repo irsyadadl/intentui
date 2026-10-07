@@ -141,7 +141,7 @@ export default async function Page(props: DocPageProps) {
           <Mdx code={page.data.body} />
           <Link
             className="not-prose my-6 flex rounded-lg border border-fg/10 bg-overlay p-2 transition duration-200 hover:border-fg/20"
-            href="https://blocks.intentui.com"
+            href="https://design.intentui.com"
             target="_blank"
           >
             <IconBrandIntentui className="mr-3 size-10 shrink-0" />

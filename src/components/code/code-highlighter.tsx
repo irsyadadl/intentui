@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 
-import { codeToHtml } from "shiki"
+import { codeToHtml } from "@/lib/code-highlighter"
 import { twMerge } from "tailwind-merge"
 
 export interface CodeHighlighterProps {

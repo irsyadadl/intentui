@@ -44,7 +44,7 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
               <IconColorPalette />
               <CommandMenu.Label>Themes</CommandMenu.Label>
             </CommandMenu.Item>
-            <CommandMenu.Item textValue="colors" href="/colors">
+            <CommandMenu.Item textValue="colors" href="https://intentui.com/colors">
               <IconColors />
               <CommandMenu.Label>Colors</CommandMenu.Label>
             </CommandMenu.Item>

@@ -16,7 +16,7 @@ import { ColorSwatch } from "@/components/ui/color-swatch"
 import { Description } from "@/components/ui/field"
 import { Popover, PopoverContent, type PopoverContentProps } from "@/components/ui/popover"
 import { IconEyeDropper } from "@intentui/icons"
-import { parseColor } from "@react-stately/color"
+import { parseColor } from "react-aria-components"
 import { twJoin, twMerge } from "tailwind-merge"
 
 interface ColorPickerProps

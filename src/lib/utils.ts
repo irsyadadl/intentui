@@ -1,3 +1,4 @@
+import { siteConfig } from "@/config/site"
 import { titleCase } from "usemods"
 
 export function title(title: string) {
@@ -83,6 +84,6 @@ export function extractImports(code: string) {
 
 export const openInV0Url = (blockName: string) => {
   const title = titleCase(blockName.replace(/-/g, " "))
-  const url = `https://intentui.com/r/block/${blockName}`
+  const url = `${siteConfig.url}/r/block/${blockName}`
   return `https://v0.dev/chat/api/open?title=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`
 }

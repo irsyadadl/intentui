@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "Themes",
   description:
     "Curated themes, selected for you, ready to copy, paste, and integrate into your apps for a polished, custom look without the hassle.",
-  metadataBase: new URL("https://intentui.com"),
+  metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
   category: "Themes",
   twitter: {

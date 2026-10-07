@@ -88,7 +88,7 @@ export default function RootLayout({
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://intentui.com"),
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: `${siteConfig.name}`,
     template: `%s / ${siteConfig.name}`,
@@ -96,8 +96,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,
-    url: "https://intentui.com",
+    url: siteConfig.url,
     siteName: siteConfig.name,
+    images: [{ url: "/opengraph-image.png", width: 1654, height: 868, alt: "Intent UI" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [{ url: "/opengraph-image.png", alt: "Intent UI" }],
   },
   description: siteConfig.description,
   alternates: {

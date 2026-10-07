@@ -24,6 +24,9 @@ registry.json
 /components/docs/generated/previews.json
 # next.js
 /.next/
+/.open-next/
+/.wrangler/
+.dev.vars*
 /out/
 
 # production

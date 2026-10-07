@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-import { parseColor } from "@react-stately/color"
+import { parseColor } from "react-aria-components"
 
 import { ColorArea } from "@/components/ui/color-area"
 import { ColorField } from "@/components/ui/color-field"

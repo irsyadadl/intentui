@@ -1,5 +1,6 @@
 import fs from "node:fs"
 import path from "node:path"
+import { siteConfig } from "../config/site"
 import { makeRegistry } from "./make-registry"
 import { baseTheme } from "./styles/base-theme"
 import { blueDark, blueLight } from "./styles/blue"
@@ -11,7 +12,7 @@ import { skyDark, skyLight } from "./styles/sky"
 // Make the registry to __registry__/generated.ts
 makeRegistry() // internal only
 
-const registryUrl = process.env.VERCEL_URL ? "https://intentui.com" : "http://localhost:3000"
+const registryUrl = siteConfig.url
 
 const customCSS = {
   "@layer base": {
@@ -380,7 +381,7 @@ const generateComponentRegistry = () => {
   const registryJsonObject = {
     $schema: "https://ui.shadcn.com/schema/registry.json",
     name: "intentui",
-    homepage: "https://intentui.com",
+    homepage: registryUrl,
     items: finalRegistryItems,
   }
 

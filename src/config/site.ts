@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Intent UI",
-  url: "https://intentui.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://2x.intentui.com",
   description:
     "Intent offers customizable, accessible React components with Tailwind CSS, ready for easy copy and paste into your projects.",
   author: "irsyadadl",

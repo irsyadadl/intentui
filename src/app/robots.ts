@@ -1,3 +1,4 @@
+import { siteConfig } from "@/config/site"
 import type { MetadataRoute } from "next"
 
 export default function robots(): MetadataRoute.Robots {
@@ -6,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://intentui.com/sitemap.xml",
+    sitemap: `${siteConfig.url}/sitemap.xml`,
   }
 }

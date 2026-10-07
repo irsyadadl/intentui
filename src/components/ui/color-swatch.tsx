@@ -1,7 +1,7 @@
 "use client"
 
 import { composeTailwindRenderProps } from "@/lib/primitive"
-import { parseColor } from "@react-stately/color"
+import { parseColor } from "react-aria-components"
 import type { ColorSwatchProps } from "react-aria-components"
 import { ColorSwatch as ColorSwatchPrimitive } from "react-aria-components"
 
