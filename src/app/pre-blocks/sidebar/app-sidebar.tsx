@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { Button } from "react-aria-components/Button"
 
 import { EllipsisHorizontalIcon } from "@heroicons/react/16/solid"
 import { ChevronUpDownIcon, PlusIcon } from "@heroicons/react/20/solid"
@@ -227,7 +227,10 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
 
       <SidebarFooter className="flex flex-row justify-between gap-4 group-data-[state=collapsed]:flex-col">
         <MenuTrigger>
-          <Button className="flex w-full items-center justify-between" aria-label="Profile">
+          <Button
+            className="flex w-full items-center justify-between outline-hidden"
+            aria-label="Profile"
+          >
             <div className="flex items-center gap-x-2">
               <Avatar
                 className="size-8 *:size-8 group-data-[state=collapsed]:size-6 group-data-[state=collapsed]:*:size-6"
@@ -235,11 +238,11 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                 src="https://intentui.com/images/avatar/cobain.jpg"
               />
               <div className="in-data-[collapsible=dock]:hidden text-sm">
-                <SidebarLabel>Kurt Cobain</SidebarLabel>
+                <span>Kurt Cobain</span>
                 <span className="-mt-0.5 block text-muted-foreground">@kurtcobain</span>
               </div>
             </div>
-            <ChevronUpDownIcon data-slot="chevron" />
+            <ChevronUpDownIcon className="size-5 sm:size-4" />
           </Button>
           <Menu
             className="in-data-[sidebar-collapsible=collapsed]:min-w-56 min-w-(--trigger-width)"

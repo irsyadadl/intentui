@@ -1,5 +1,29 @@
 [
   {
+    "name": "App sidebar",
+    "component": "app-sidebar/page.tsx",
+    "url": null,
+    "type": "block",
+    "category": "sidebar",
+    "kind": "improvement",
+    "description": null,
+    "additions": 7,
+    "deletions": 4,
+    "date": "2026-10-07"
+  },
+  {
+    "name": "Sheet menu example",
+    "component": "sheet-menu-example.tsx",
+    "url": "/sheet",
+    "type": "example",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 55,
+    "deletions": 62,
+    "date": "2026-10-07"
+  },
+  {
     "name": "File trigger disabled example",
     "component": "file-trigger-disabled-example.tsx",
     "url": "/file-trigger",
@@ -432,18 +456,6 @@
     "date": "2026-10-07"
   },
   {
-    "name": "Sheet menu example",
-    "component": "sheet-menu-example.tsx",
-    "url": "/sheet",
-    "type": "example",
-    "category": "overlays",
-    "kind": "improvement",
-    "description": null,
-    "additions": 19,
-    "deletions": 19,
-    "date": "2026-10-07"
-  },
-  {
     "name": "Tooltip example",
     "component": "tooltip-example.tsx",
     "url": "/tooltip",
@@ -669,18 +681,6 @@
     "description": null,
     "additions": 9,
     "deletions": 9,
-    "date": "2026-10-07"
-  },
-  {
-    "name": "App sidebar",
-    "component": "app-sidebar/page.tsx",
-    "url": null,
-    "type": "block",
-    "category": "sidebar",
-    "kind": "improvement",
-    "description": null,
-    "additions": 20,
-    "deletions": 19,
     "date": "2026-10-07"
   },
   {
