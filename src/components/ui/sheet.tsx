@@ -22,11 +22,11 @@ interface SheetProps
     Pick<DialogProps, "aria-label" | "role" | "aria-labelledby" | "children"> {
   closeButton?: boolean
   isFloat?: boolean
-  side?: "top" | "bottom" | "left" | "right"
+  position?: "bottom" | "top" | "left" | "right" | "start" | "end" | "center"
   overlay?: Omit<ModalOverlayProps, "children">
 }
 
-const sideVariants: Record<string, string> = {
+const positionVariants: Record<string, string> = {
   top: "entering:slide-in-from-top exiting:slide-out-to-top inset-x-0 top-0 rounded-b-2xl border-b data-[float=true]:inset-x-2 data-[float=true]:top-2 data-[float=true]:border-b-0",
   bottom:
     "entering:slide-in-from-bottom exiting:slide-out-to-bottom inset-x-0 bottom-0 rounded-t-2xl border-t data-[float=true]:inset-x-2 data-[float=true]:bottom-2 data-[float=true]:border-t-0",
@@ -38,7 +38,7 @@ const sideVariants: Record<string, string> = {
 const Sheet = ({
   className,
   isDismissable: isDismissableInternal,
-  side = "right",
+  position = "right",
   role = "dialog",
   closeButton = true,
   isFloat = true,
@@ -65,7 +65,7 @@ const Sheet = ({
           "border-foreground/20 dark:border-border",
           "entering:fade-in entering:animate-in entering:duration-500",
           "exiting:fade-in exiting:animate-out exiting:duration-300",
-          sideVariants[side],
+          positionVariants[position],
           className
         )}
       >

@@ -71,6 +71,37 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
         style={{ opacity: scrollDecorationOpacity }}
       />
       <div className="flex items-center gap-x-2">
+        <Logo />
+        <Link href="/" className="font-semibold text-base text-foreground">
+          Intent <span className="text-muted-foreground">UI</span>
+        </Link>
+      </div>
+      <div className="flex-1" aria-hidden />
+      <div className="flex items-center gap-x-0.5">
+        <Link
+          className={buttonStyles({ intent: "plain", size: "sq-sm" })}
+          href={app.links.twitter}
+          target="_blank"
+        >
+          <BrandXIcon className="size-5" />
+        </Link>
+        <Link
+          className={buttonStyles({ intent: "plain", size: "sq-sm" })}
+          href={app.links.discord}
+          target="_blank"
+        >
+          <BrandDiscordIcon className="size-5" />
+        </Link>
+        <Link
+          className={buttonStyles({ intent: "plain", size: "sq-sm" })}
+          href={app.repo.url}
+          target="_blank"
+        >
+          <BrandGithubIcon className="size-5" />
+        </Link>
+        <Separator orientation="vertical" className="mr-1.5 ml-2.5 h-5" />
+        <ThemeSwitcher className="**:data-[slot=icon]:size-5" intent="plain" />
+        <Separator orientation="vertical" className="mr-1.5 ml-2.5 h-5" />
         <SheetTrigger isOpen={open} onOpenChange={setOpen}>
           <Button size="sq-sm" intent="plain" className="pressed:bg-transparent outline-hidden">
             <span className="relative flex h-8 w-(--width) items-center justify-center [--width:--spacing(4.5)]">
@@ -92,7 +123,6 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
             </span>
           </Button>
           <Sheet
-            side="left"
             isFloat={false}
             aria-label="Navigation"
             className="w-[min(22rem,90vw)] sm:max-w-88 **:data-[slot=dialog]:h-full **:data-[slot=dialog]:max-h-full [--visual-viewport-vertical-padding:0px]"
@@ -129,36 +159,6 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
             </Aside>
           </Sheet>
         </SheetTrigger>
-        <Separator orientation="vertical" className="mr-1 h-4" />
-        <Link href="/" className="font-semibold text-base text-foreground">
-          Intent <span className="text-muted-foreground">UI</span>
-        </Link>
-      </div>
-      <div className="flex-1" aria-hidden />
-      <div className="flex items-center gap-x-0.5">
-        <Link
-          className={buttonStyles({ intent: "plain", size: "sq-sm" })}
-          href={app.links.twitter}
-          target="_blank"
-        >
-          <BrandXIcon className="size-5" />
-        </Link>
-        <Link
-          className={buttonStyles({ intent: "plain", size: "sq-sm" })}
-          href={app.links.discord}
-          target="_blank"
-        >
-          <BrandDiscordIcon className="size-5" />
-        </Link>
-        <Link
-          className={buttonStyles({ intent: "plain", size: "sq-sm" })}
-          href={app.repo.url}
-          target="_blank"
-        >
-          <BrandGithubIcon className="size-5" />
-        </Link>
-        <Separator orientation="vertical" className="mr-1.5 ml-2.5 h-5" />
-        <ThemeSwitcher className="**:data-[slot=icon]:size-5" intent="plain" />
       </div>
     </nav>
   )
