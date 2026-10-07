@@ -12,7 +12,7 @@ export function SponsorButton({ className }: { className?: string }) {
         size: "sm",
         intent: "outline",
         className: cn(
-          "rounded-sm border-foreground bg-foreground text-bg hover:bg-foreground *:data-[slot=icon]:text-zinc-300 dark:*:data-[slot=icon]:text-zinc-600",
+          "rounded-sm border-foreground bg-foreground text-background hover:bg-foreground *:data-[slot=icon]:text-zinc-300 dark:*:data-[slot=icon]:text-zinc-600",
           className
         ),
       })}

@@ -46,12 +46,12 @@ export default function Page() {
       <PageContainer>
         <div className="border-x border-page">
           <div className="mx-auto flex flex-col">
-            <div className="grid gap-px bg-page grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="grid *:bg-background gap-px bg-page grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
               {blog
                 .sort((a, b) => new Date(b.published).getTime() - new Date(a.published).getTime())
                 .map((item) => (
                   <div
-                    className="relative aspect-16/17 flex flex-col bg-background p-6 hover:bg-muted"
+                    className="relative aspect-16/17 flex flex-col p-6 hover:bg-muted"
                     key={item.title}
                   >
                     <Link
@@ -81,6 +81,8 @@ export default function Page() {
                     </div>
                   </div>
                 ))}
+
+              <div aria-hidden />
             </div>
           </div>
         </div>

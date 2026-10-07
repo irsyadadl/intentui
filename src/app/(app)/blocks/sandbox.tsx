@@ -70,7 +70,7 @@ function SourceTabs({ files }: { files: RegistryFile[] }) {
       <TabList className="scrollbar-none flex flex-nowrap gap-x-2 overflow-x-auto font-medium text-xs/5">
         {items.map((it) => (
           <Tab
-            className="group flex cursor-pointer items-center gap-x-1 whitespace-nowrap rounded-sm selected:bg-secondary px-2 py-1 selected:text-foreground text-muted-foreground"
+            className="group flex cursor-pointer items-center gap-x-1 whitespace-nowrap rounded-full selected:bg-secondary px-2 py-1 selected:text-foreground text-muted-foreground"
             id={it.id}
             key={it.id}
           >
@@ -132,7 +132,7 @@ function RegistryItemViewer({ imgSrc, item }: { imgSrc?: SandboxImageSrc; item: 
     <section data-slot="registry-viewer" className="not-typeset mt-6 space-y-4">
       <Tabs selectedKey={tab} onSelectionChange={setTab} className="flex flex-col gap-3">
         <div className="not-typeset flex flex-col justify-between gap-4 md:flex-row md:items-end">
-          <header className="space-y-1">
+          <header className="flex items-center gap-x-2">
             <Heading className="font-medium capitalize sm:text-base" level={2}>
               {item.title.replaceAll("-", " ")}
             </Heading>
@@ -187,7 +187,7 @@ function SourceTab({ className, ...props }: React.ComponentProps<typeof Tab>) {
   return (
     <Tab
       className={cx(
-        "group inline-flex cursor-default items-center gap-x-2 rounded-sm selected:bg-secondary px-2 py-1 font-medium text-sm/6 hover:bg-secondary",
+        "group inline-flex cursor-default items-center gap-x-2 rounded-full selected:bg-secondary px-3.5 py-1 font-medium text-sm/6 hover:bg-secondary",
         className
       )}
       {...props}

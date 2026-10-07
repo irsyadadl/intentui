@@ -56,7 +56,7 @@ export function Radio({ className, children, ...props }: RadioButtonProps) {
             <span
               data-slot="indicator"
               className={cn([
-                "relative col-start-1 row-start-1 mt-0.75 sm:mt-1 inset-ring inset-ring-input isolate flex size-4.5 shrink-0 items-center justify-center rounded-full bg-(--control-bg,transparent) text-bg transition before:absolute before:inset-auto before:size-2 before:shrink-0 before:rounded-full before:content-[''] hover:before:bg-muted-foreground/20 sm:size-4 sm:before:size-1.7",
+                "relative col-start-1 row-start-1 mt-0.75 sm:mt-1 inset-ring inset-ring-input isolate flex size-4.5 shrink-0 items-center justify-center rounded-full bg-(--control-bg,transparent) text-background transition before:absolute before:inset-auto before:size-2 before:shrink-0 before:rounded-full before:content-[''] hover:before:bg-muted-foreground/20 sm:size-4 sm:before:size-1.7",
                 "in-disabled:bg-muted",
                 isSelected && [
                   "inset-ring-(--radio-ring,var(--color-ring)) bg-(--radio-bg,var(--color-primary)) text-(--radio-foreground,var(--color-primary-foreground)) before:bg-background hover:before:bg-muted/90",

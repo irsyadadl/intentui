@@ -7,11 +7,11 @@ import { Link } from "@/components/ui/link"
 import { app } from "@/config/app"
 export function OpenSource() {
   return (
-    <div className="relative z-20 mx-auto max-w-lg rounded-3xl bg-foreground p-6 text-center text-bg sm:rounded-4xl lg:p-12">
+    <div className="relative z-20 mx-auto max-w-lg rounded-3xl bg-foreground p-6 text-center text-background sm:rounded-4xl lg:p-12">
       <Heading level={3} className="text-zinc-50 dark:text-zinc-900">
         Open source
       </Heading>
-      <p className="mt-2 mb-4 text-base text-bg/70">
+      <p className="mt-2 mb-4 text-base text-background/70">
         Fully open source and built with care. Explore the code, contribute, or use it freely in
         your own projects.
       </p>

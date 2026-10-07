@@ -17,7 +17,7 @@ export function Cta() {
           className={buttonStyles({
             intent: "primary",
             size: "lg",
-            className: "bg-foreground hover:bg-foreground/90 text-bg",
+            className: "bg-foreground hover:bg-foreground/90 text-background",
           })}
           href="/sponsor"
         >

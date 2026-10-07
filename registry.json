@@ -10873,12 +10873,8 @@
       "name": "menu-with-arrow-example",
       "title": "Menu With Arrow",
       "description": "menu-with-arrow-example",
-      "dependencies": ["@heroicons/react"],
-      "registryDependencies": [
-        "http://localhost:3000/r/button",
-        "http://localhost:3000/r/avatar",
-        "http://localhost:3000/r/menu"
-      ],
+      "dependencies": ["react-aria-components", "@heroicons/react"],
+      "registryDependencies": ["http://localhost:3000/r/avatar", "http://localhost:3000/r/menu"],
       "files": [
         {
           "path": "src/components/examples/collections/menu/menu-with-arrow-example.tsx",

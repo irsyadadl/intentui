@@ -1,5 +1,41 @@
 [
   {
+    "name": "Checkbox",
+    "component": "checkbox.tsx",
+    "url": "/checkbox",
+    "type": "component",
+    "category": "forms",
+    "kind": "improvement",
+    "description": null,
+    "additions": 1,
+    "deletions": 1,
+    "date": "2026-10-07"
+  },
+  {
+    "name": "Radio",
+    "component": "radio.tsx",
+    "url": "/radio",
+    "type": "component",
+    "category": "unknown",
+    "kind": "improvement",
+    "description": null,
+    "additions": 1,
+    "deletions": 1,
+    "date": "2026-10-07"
+  },
+  {
+    "name": "Tooltip",
+    "component": "tooltip.tsx",
+    "url": "/tooltip",
+    "type": "component",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 4,
+    "deletions": 1,
+    "date": "2026-10-07"
+  },
+  {
     "name": "App navbar",
     "component": "app-navbar/page.tsx",
     "url": null,
@@ -1392,18 +1428,6 @@
     "date": "2026-10-07"
   },
   {
-    "name": "Checkbox",
-    "component": "checkbox.tsx",
-    "url": "/checkbox",
-    "type": "component",
-    "category": "forms",
-    "kind": "improvement",
-    "description": null,
-    "additions": 4,
-    "deletions": 4,
-    "date": "2026-10-07"
-  },
-  {
     "name": "Choice box",
     "component": "choice-box.tsx",
     "url": "/choice-box",
@@ -1824,18 +1848,6 @@
     "date": "2026-10-07"
   },
   {
-    "name": "Radio",
-    "component": "radio.tsx",
-    "url": "/radio",
-    "type": "component",
-    "category": "unknown",
-    "kind": "improvement",
-    "description": null,
-    "additions": 4,
-    "deletions": 4,
-    "date": "2026-10-07"
-  },
-  {
     "name": "Range calendar",
     "component": "range-calendar.tsx",
     "url": "/range-calendar",
@@ -2025,18 +2037,6 @@
     "description": null,
     "additions": 3,
     "deletions": 3,
-    "date": "2026-10-07"
-  },
-  {
-    "name": "Tooltip",
-    "component": "tooltip.tsx",
-    "url": "/tooltip",
-    "type": "component",
-    "category": "overlays",
-    "kind": "improvement",
-    "description": null,
-    "additions": 6,
-    "deletions": 4,
     "date": "2026-10-07"
   },
   {

@@ -17,10 +17,8 @@ import { Aside, AsideLink } from "@/components/docs/aside"
 import { BrandDiscordIcon } from "@/components/icons/brand-discord-icon"
 import { BrandGithubIcon } from "@/components/icons/brand-github-icon"
 import { BrandXIcon } from "@/components/icons/brand-x-icon"
-import { ThemeSwitcher } from "@/components/theme-switcher"
-import { Button, buttonStyles } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
-import { Sheet, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { Button } from "@/components/ui/button"
+import { Sheet, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { app } from "@/config/app"
 import { Logo } from "@/components/logo"
 
@@ -78,30 +76,6 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
       </div>
       <div className="flex-1" aria-hidden />
       <div className="flex items-center gap-x-0.5">
-        <Link
-          className={buttonStyles({ intent: "plain", size: "sq-sm" })}
-          href={app.links.twitter}
-          target="_blank"
-        >
-          <BrandXIcon className="size-5" />
-        </Link>
-        <Link
-          className={buttonStyles({ intent: "plain", size: "sq-sm" })}
-          href={app.links.discord}
-          target="_blank"
-        >
-          <BrandDiscordIcon className="size-5" />
-        </Link>
-        <Link
-          className={buttonStyles({ intent: "plain", size: "sq-sm" })}
-          href={app.repo.url}
-          target="_blank"
-        >
-          <BrandGithubIcon className="size-5" />
-        </Link>
-        <Separator orientation="vertical" className="mr-1.5 ml-2.5 h-5" />
-        <ThemeSwitcher className="**:data-[slot=icon]:size-5" intent="plain" />
-        <Separator orientation="vertical" className="mr-1.5 ml-2.5 h-5" />
         <SheetTrigger isOpen={open} onOpenChange={setOpen}>
           <Button size="sq-sm" intent="plain" className="pressed:bg-transparent outline-hidden">
             <span className="relative flex h-8 w-(--width) items-center justify-center [--width:--spacing(4.5)]">
@@ -157,6 +131,19 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
                   </AsideLink>
                 ))}
             </Aside>
+            <SheetFooter className="p-2 border-t bg-background/60">
+              <ul className="rounded-lg mt-2 p-2 bg-overlay border">
+                <AsideLink href={app.links.twitter} target="_blank" onPress={() => setOpen(false)}>
+                  <BrandXIcon /> Twitter
+                </AsideLink>
+                <AsideLink href={app.links.discord} target="_blank" onPress={() => setOpen(false)}>
+                  <BrandDiscordIcon /> Discord
+                </AsideLink>
+                <AsideLink href={app.links.github} target="_blank" onPress={() => setOpen(false)}>
+                  <BrandGithubIcon /> Github
+                </AsideLink>
+              </ul>
+            </SheetFooter>
           </Sheet>
         </SheetTrigger>
       </div>

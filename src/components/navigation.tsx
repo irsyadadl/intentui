@@ -99,17 +99,20 @@ export function Navigation() {
               <ThemeSwitcher intent="plain" isCircle />
               <MenuTrigger>
                 <Button intent="plain" size="sm" isCircle>
-                  3.x
+                  4.x
                   <ChevronDownIcon />
                 </Button>
                 <Menu placement="bottom end">
                   <MenuItem href={`${app.url}/docs/getting-started/introduction`} className="group">
-                    3.x{" "}
+                    4.x{" "}
                     <Badge intent="primary" isCircle={false} className="ml-auto">
                       latest
                     </Badge>
                   </MenuItem>
-                  <MenuItem href="https://github.com/irsyadadl/intentui/tree/2.x">2.x</MenuItem>
+                  <MenuItem href={`${app.url}/docs/getting-started/introduction`} className="group">
+                    3.x
+                  </MenuItem>
+                  <MenuItem href="https://2x.intentui.com">2.x</MenuItem>
                   <MenuItem href="https://github.com/irsyadadl/intentui/tree/1.x" className="group">
                     1.x{" "}
                     <Badge intent="warning" className="ml-2" isCircle={false}>
