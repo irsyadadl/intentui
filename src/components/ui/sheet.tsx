@@ -30,6 +30,7 @@ interface SheetContentProps
   isFloat?: boolean
   position?: SheetOverlayProps["position"]
   overlay?: Omit<SheetOverlayProps, "children" | "position">
+  overscrollPadding?: boolean
 }
 
 const positionVariants = {
@@ -78,10 +79,11 @@ const SheetContent = ({
         swipeAnimationRange={snapPoints ? { start: snapPoints.length - 1 } : undefined}
       />
       <SheetPrimitive
+        overscrollPadding={isFloat ? false : (props.overscrollPadding ?? true)}
         stackAnimation="sheet-scale-back"
         data-float={isFloat}
         className={cx(
-          "react-aria-sheet relative origin-top transition-transform motion-reduce:transition-none [--sheet-gap:0px] data-[float=true]:[--sheet-gap:16px] border-fg/20 bg-overlay text-overlay-fg shadow-lg dark:border-border",
+          "react-aria-sheet relative box-content shrink-0 origin-top transition-transform motion-reduce:transition-none [--sheet-gap:0px] data-[float=true]:[--sheet-gap:16px] border-fg/20 bg-overlay text-overlay-fg shadow-lg dark:border-border",
           "data-[float=true]:rounded-lg data-[float=true]:ring data-[float=true]:ring-fg/5 dark:data-[float=true]:ring-border",
           positionVariants[resolvedPosition],
           className
