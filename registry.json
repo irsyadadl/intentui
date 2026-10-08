@@ -3110,7 +3110,7 @@
       "name": "navbar",
       "title": "navbar",
       "description": "navbar",
-      "dependencies": ["@heroicons/react", "motion", "cn"],
+      "dependencies": ["@heroicons/react", "motion", "cn", "react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/link",
         "http://localhost:3000/r/use-mobile",
@@ -6488,6 +6488,22 @@
           "path": "src/components/examples/overlays/sheet/sheet-position-example.tsx",
           "type": "registry:page",
           "target": "app/sheet-position-example/page.tsx"
+        }
+      ],
+      "type": "registry:page"
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "extends": "none",
+      "name": "sheet-prevent-dismissal-example",
+      "title": "Sheet Prevent Dismissal",
+      "description": "sheet-prevent-dismissal-example",
+      "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/sheet"],
+      "files": [
+        {
+          "path": "src/components/examples/overlays/sheet/sheet-prevent-dismissal-example.tsx",
+          "type": "registry:page",
+          "target": "app/sheet-prevent-dismissal-example/page.tsx"
         }
       ],
       "type": "registry:page"

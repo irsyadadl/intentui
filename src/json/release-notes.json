@@ -1,5 +1,65 @@
 [
   {
+    "name": "Sheet custom close example",
+    "component": "sheet-custom-close-example.tsx",
+    "url": "/sheet",
+    "type": "example",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 1,
+    "deletions": 1,
+    "date": "2026-10-08"
+  },
+  {
+    "name": "Sheet menu example",
+    "component": "sheet-menu-example.tsx",
+    "url": "/sheet",
+    "type": "example",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 1,
+    "deletions": 1,
+    "date": "2026-10-08"
+  },
+  {
+    "name": "Sheet",
+    "component": "sheet.tsx",
+    "url": "/sheet",
+    "type": "component",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 11,
+    "deletions": 22,
+    "date": "2026-10-08"
+  },
+  {
+    "name": "Sidebar",
+    "component": "sidebar.tsx",
+    "url": "/sidebar",
+    "type": "component",
+    "category": "layouts",
+    "kind": "improvement",
+    "description": null,
+    "additions": 3,
+    "deletions": 4,
+    "date": "2026-10-08"
+  },
+  {
+    "name": "Sheet prevent dismissal example",
+    "component": "sheet-prevent-dismissal-example.tsx",
+    "url": "/sheet",
+    "type": "example",
+    "category": "overlays",
+    "kind": "new",
+    "description": null,
+    "additions": 0,
+    "deletions": 0,
+    "date": "2026-10-08"
+  },
+  {
     "name": "Sheet snap points example",
     "component": "sheet-snap-points-example.tsx",
     "url": "/sheet",
@@ -24,18 +84,6 @@
     "date": "2026-10-08"
   },
   {
-    "name": "Sheet",
-    "component": "sheet.tsx",
-    "url": "/sheet",
-    "type": "component",
-    "category": "overlays",
-    "kind": "improvement",
-    "description": null,
-    "additions": 6,
-    "deletions": 6,
-    "date": "2026-10-08"
-  },
-  {
     "name": "Tabs",
     "component": "tabs.tsx",
     "url": "/tabs",
@@ -50,18 +98,6 @@
   {
     "name": "Sheet controlled example",
     "component": "sheet-controlled-example.tsx",
-    "url": "/sheet",
-    "type": "example",
-    "category": "overlays",
-    "kind": "improvement",
-    "description": null,
-    "additions": 1,
-    "deletions": 1,
-    "date": "2026-10-08"
-  },
-  {
-    "name": "Sheet custom close example",
-    "component": "sheet-custom-close-example.tsx",
     "url": "/sheet",
     "type": "example",
     "category": "overlays",
@@ -96,18 +132,6 @@
     "date": "2026-10-08"
   },
   {
-    "name": "Sheet menu example",
-    "component": "sheet-menu-example.tsx",
-    "url": "/sheet",
-    "type": "example",
-    "category": "overlays",
-    "kind": "improvement",
-    "description": null,
-    "additions": 53,
-    "deletions": 60,
-    "date": "2026-10-08"
-  },
-  {
     "name": "Sheet position example",
     "component": "sheet-position-example.tsx",
     "url": "/sheet",
@@ -135,18 +159,6 @@
     "name": "Navbar",
     "component": "navbar.tsx",
     "url": "/navbar",
-    "type": "component",
-    "category": "layouts",
-    "kind": "improvement",
-    "description": null,
-    "additions": 1,
-    "deletions": 1,
-    "date": "2026-10-08"
-  },
-  {
-    "name": "Sidebar",
-    "component": "sidebar.tsx",
-    "url": "/sidebar",
     "type": "component",
     "category": "layouts",
     "kind": "improvement",

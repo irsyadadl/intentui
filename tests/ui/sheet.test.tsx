@@ -87,30 +87,25 @@ describe("Sheet", () => {
     render(
       <Sheet>
         <SheetTrigger>Open alert</SheetTrigger>
-        <SheetContent role="alertdialog" aria-label="Confirm changes">
+        <SheetContent preventDismissal>
+          <SheetTitle className="sr-only">Confirm changes</SheetTitle>
           <SheetClose>Confirm</SheetClose>
         </SheetContent>
       </Sheet>
     )
     await user.click(screen.getByRole("button", { name: "Open alert" }))
     await user.keyboard("[Escape]")
-    expect(screen.getByRole("alertdialog", { name: "Confirm changes" })).toBeInTheDocument()
+    expect(screen.getByRole("dialog", { name: "Confirm changes" })).toBeInTheDocument()
     await user.click(screen.getByRole("button", { name: "Confirm" }))
-    await waitFor(() => expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument())
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument())
   })
 
   it("supports controlled content without a trigger and an external accessible title", async () => {
     const onOpenChange = vi.fn()
     const user = userEvent.setup()
     render(
-      <SheetContent
-        isOpen
-        onOpenChange={onOpenChange}
-        position="bottom"
-        aria-labelledby="sheet-title"
-        closeButton={false}
-      >
-        <h2 id="sheet-title">Details</h2>
+      <SheetContent isOpen onOpenChange={onOpenChange} position="bottom">
+        <SheetTitle className="sr-only">Details</SheetTitle>
         <SheetClose>Close details</SheetClose>
       </SheetContent>
     )

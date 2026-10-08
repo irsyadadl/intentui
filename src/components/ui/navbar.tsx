@@ -4,6 +4,7 @@ import { Bars2Icon } from "@heroicons/react/20/solid"
 import { LayoutGroup, motion } from "motion/react"
 import { createContext, use, useCallback, useId, useMemo, useState } from "react"
 import { twJoin, cn } from "cn"
+import { Heading } from "react-aria-components/Heading"
 import { Link, type LinkProps } from "@/components/ui/link"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { cx } from "@/lib/primitive"
@@ -132,11 +133,10 @@ const Navbar = ({
           data-placement={placement ?? undefined}
         />
         <Sheet isOpen={open} onOpenChange={setOpen} {...props}>
-          <SheetContent
-            position={side}
-            aria-label="Mobile Navbar"
-            className="entering:blur-in exiting:blur-out [&>button]:hidden"
-          >
+          <SheetContent position={side} className="entering:blur-in exiting:blur-out">
+            <Heading slot="title" className="sr-only">
+              Mobile Navbar
+            </Heading>
             <SheetBody className="p-[calc(var(--gutter)-(--spacing(2)))] sm:p-[calc(var(--gutter)-(--spacing(4)))]">
               {children}
             </SheetBody>

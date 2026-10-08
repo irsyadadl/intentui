@@ -117,9 +117,12 @@ Set `snapPoints` to control how much of the sheet is visible at each stop. Numbe
 
 ### Prevent dismissal
 
-Set `preventDismissal` to prevent closing by swiping, pressing Escape, or interacting outside. A `SheetClose` action can still close the sheet. This defaults to `true` for `role="alertdialog"`.
+Set `preventDismissal` to prevent closing by swiping, pressing Escape, or interacting outside. A `SheetClose` action can still close the sheet. This defaults to `false`.
+
+<How toUse="overlays/sheet/sheet-prevent-dismissal-example" />
 
 ### Custom close
+Sheets do not include a built-in close icon. Dismissible bottom sheets show a handle outside the content without changing the header spacing.
 You can customize the close button by using the `SheetClose` component. This example demonstrates how to use the `SheetClose` component to create a custom close button.
 
 <How toUse="overlays/sheet/sheet-custom-close-example" />
@@ -160,7 +163,6 @@ Requires `react-aria-components` 1.22.0 or later. Use `preventDismissal` in plac
     **SheetContent** extends the React Aria Components [**`<SheetOverlay>`**](https://react-aria.adobe.com/Sheet#api), and composes React Aria’s `SheetBackdrop`, `Sheet`, and `SheetContent` component.
   </ApiDescription>
   <ApiParameter name="className" type='string' />
-  <ApiParameter name="closeButton" type='boolean' defaultValue='true' />
   <ApiParameter name="isFloat" type='boolean' defaultValue='true' />
   <ApiParameter name="overlay" type='Omit<SheetOverlayProps, "children" | "position">' />
   <ApiParameter name="snapPoints" type='Array<number | string>' />

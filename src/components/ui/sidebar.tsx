@@ -178,12 +178,10 @@ interface SidebarProps extends React.ComponentProps<"div"> {
   intent?: "default" | "float" | "inset"
   collapsible?: "hidden" | "dock" | "none"
   side?: "left" | "right"
-  closeButton?: boolean
 }
 
 const Sidebar = ({
   children,
-  closeButton = true,
   collapsible = "hidden",
   side = "left",
   intent = "default",
@@ -215,13 +213,14 @@ const Sidebar = ({
         <SheetContent
           isOpen={isOpenOnMobile}
           onOpenChange={setIsOpenOnMobile}
-          closeButton={closeButton}
-          aria-label="Sidebar"
           data-slot="sidebar"
           data-intent="default"
           className="w-(--sidebar-width) entering:blur-in exiting:blur-out [--sidebar-width:18rem] has-data-[slot=calendar]:[--sidebar-width:23rem]"
           position={side}
         >
+          <Heading slot="title" className="sr-only">
+            Sidebar
+          </Heading>
           {children}
         </SheetContent>
       </>
