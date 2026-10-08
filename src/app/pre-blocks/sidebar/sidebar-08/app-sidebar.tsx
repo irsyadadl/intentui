@@ -130,7 +130,10 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                 <span className="-mt-0.5 block text-muted-fg">@kurtcobain</span>
               </div>
             </div>
-            <ChevronUpDownIcon data-slot="chevron" />
+            <ChevronUpDownIcon
+              data-slot="chevron"
+              className="group-data-[state=collapsed]:hidden"
+            />
           </MenuTrigger>
           <MenuContent
             className="in-data-[sidebar-collapsible=collapsed]:min-w-56 min-w-(--trigger-width)"
