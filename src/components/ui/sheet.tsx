@@ -1,13 +1,17 @@
 "use client"
 
 import {
-  type DialogProps,
-  DialogTrigger as DialogTriggerPrimitive,
-} from "react-aria-components/Dialog"
-import { Modal, ModalOverlay, type ModalOverlayProps } from "react-aria-components/Modal"
+  Sheet as SheetPrimitive,
+  SheetBackdrop,
+  SheetContent as SheetContentPrimitive,
+  type SheetContentProps as SheetContentPrimitiveProps,
+  SheetOverlay,
+  type SheetOverlayProps,
+  SheetTrigger as SheetTriggerPrimitive,
+} from "react-aria-components/Sheet"
+import { useLocale } from "@react-aria/i18n"
 import { cx } from "@/lib/primitive"
 import {
-  Dialog,
   DialogBody,
   DialogClose,
   DialogCloseIcon,
@@ -18,64 +22,83 @@ import {
   DialogTrigger,
 } from "./dialog"
 
-const Sheet = DialogTriggerPrimitive
+const Sheet = SheetTriggerPrimitive
 
 interface SheetContentProps
   extends
-    Omit<ModalOverlayProps, "children">,
-    Pick<DialogProps, "aria-label" | "role" | "aria-labelledby" | "children"> {
+    Omit<SheetOverlayProps, "children" | "position">,
+    Pick<SheetContentPrimitiveProps, "aria-label" | "role" | "aria-labelledby" | "children"> {
   closeButton?: boolean
   isFloat?: boolean
-  side?: "top" | "bottom" | "left" | "right"
-  overlay?: Omit<ModalOverlayProps, "children">
+  position?: SheetOverlayProps["position"]
+  overlay?: Omit<SheetOverlayProps, "children" | "position">
 }
 
-const sideVariants: Record<string, string> = {
-  top: "entering:slide-in-from-top exiting:slide-out-to-top inset-x-0 top-0 rounded-b-2xl border-b data-[float=true]:inset-x-2 data-[float=true]:top-2 data-[float=true]:border-b-0",
+const positionVariants = {
+  top: "[--sheet-stack-y:24px] w-full rounded-b-2xl border-b data-[float=true]:mx-2 data-[float=true]:mt-2 data-[float=true]:w-[calc(100%-1rem)] data-[float=true]:border-b-0",
   bottom:
-    "entering:slide-in-from-bottom exiting:slide-out-to-bottom inset-x-0 bottom-0 rounded-t-2xl border-t data-[float=true]:inset-x-2 data-[float=true]:bottom-2 data-[float=true]:border-t-0",
-  left: "entering:slide-in-from-left exiting:slide-out-to-left-80 inset-y-0 left-0 h-auto w-3/4 overflow-y-auto border-r sm:max-w-80 data-[float=true]:inset-y-2 data-[float=true]:left-2 data-[float=true]:border-r-0",
+    "[--sheet-stack-y:-24px] w-full rounded-t-2xl border-t data-[float=true]:mx-2 data-[float=true]:mb-2 data-[float=true]:w-[calc(100%-1rem)] data-[float=true]:border-t-0",
+  left: "[--sheet-stack-x:24px] h-dvh w-3/4 border-r sm:max-w-80 data-[float=true]:my-2 data-[float=true]:ml-2 data-[float=true]:h-[calc(100dvh-1rem)] data-[float=true]:border-r-0",
   right:
-    "entering:slide-in-from-right exiting:slide-out-to-right-80 inset-y-0 right-0 h-auto w-3/4 overflow-y-auto border-l sm:max-w-80 data-[float=true]:inset-y-2 data-[float=true]:right-2 data-[float=true]:border-l-0",
+    "[--sheet-stack-x:-24px] h-dvh w-3/4 border-l sm:max-w-80 data-[float=true]:my-2 data-[float=true]:mr-2 data-[float=true]:h-[calc(100dvh-1rem)] data-[float=true]:border-l-0",
+  center: "w-[calc(100%-2rem)] max-w-lg rounded-2xl border data-[float=true]:border-0",
 }
 
 const SheetContent = ({
   className,
-  isDismissable: isDismissableInternal,
-  side = "right",
+  position = "bottom",
   role = "dialog",
   closeButton = true,
   isFloat = true,
   overlay,
   children,
+  snapPoints,
+  "aria-label": ariaLabel,
+  "aria-labelledby": ariaLabelledby,
+  preventDismissal = role === "alertdialog",
   ...props
 }: SheetContentProps) => {
-  const isDismissable = isDismissableInternal ?? role !== "alertdialog"
+  const { direction } = useLocale()
+  const resolvedPosition =
+    position === "start"
+      ? direction === "rtl"
+        ? "right"
+        : "left"
+      : position === "end"
+        ? direction === "rtl"
+          ? "left"
+          : "right"
+        : position
+  const isDismissable = !(overlay?.preventDismissal ?? preventDismissal)
   return (
-    <ModalOverlay
-      isDismissable={isDismissable}
-      className={cx(
-        "entering:fade-in exiting:fade-out fixed start-0 top-0 z-50 size-full entering:animate-in exiting:animate-out overflow-hidden bg-black/15 entering:duration-500 exiting:duration-300",
-        overlay?.className
-      )}
+    <SheetOverlay
       {...props}
+      {...overlay}
+      snapPoints={snapPoints}
+      position={position}
+      preventDismissal={!isDismissable}
+      className={cx("z-50", overlay?.className)}
     >
-      <Modal
+      <SheetBackdrop
+        swipeAnimation="sheet-backdrop"
+        className="bg-black/15 entering:animate-in entering:fade-in exiting:animate-out exiting:fade-out entering:duration-300 exiting:duration-300"
+        swipeAnimationRange={snapPoints ? { start: snapPoints.length - 1 } : undefined}
+      />
+      <SheetPrimitive
+        stackAnimation="sheet-stack"
         data-float={isFloat}
         className={cx(
-          "fixed z-50 grid gap-4 border-muted-fg/20 bg-overlay text-overlay-fg shadow-lg dark:border-border",
-          "transform-gpu transition ease-in-out will-change-transform [--visual-viewport-vertical-padding:16px]",
+          "react-aria-sheet origin-top transition-transform motion-reduce:transition-none grid gap-4 [--sheet-gap:0px] data-[float=true]:[--sheet-gap:16px] border-fg/20 bg-overlay text-overlay-fg shadow-lg dark:border-border",
           "data-[float=true]:rounded-lg data-[float=true]:ring data-[float=true]:ring-fg/5 dark:data-[float=true]:ring-border",
-          "border-fg/20 dark:border-border",
-          "entering:fade-in entering:animate-in entering:duration-500",
-          "exiting:fade-in exiting:animate-out exiting:duration-300",
-          sideVariants[side],
+          positionVariants[resolvedPosition],
           className
         )}
       >
-        <Dialog
-          className="sm:[--gutter:--spacing(6)]"
-          aria-label={props["aria-label"] ?? undefined}
+        <SheetContentPrimitive
+          data-slot="dialog"
+          className="peer/dialog group/dialog relative flex max-h-[calc(var(--visual-viewport-height)-var(--sheet-gap))] flex-col overflow-hidden outline-hidden [--gutter:--spacing(6)]"
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledby}
           role={role}
         >
           {(values) => (
@@ -86,9 +109,9 @@ const SheetContent = ({
               )}
             </>
           )}
-        </Dialog>
-      </Modal>
-    </ModalOverlay>
+        </SheetContentPrimitive>
+      </SheetPrimitive>
+    </SheetOverlay>
   )
 }
 

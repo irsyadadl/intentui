@@ -1,5 +1,5 @@
-import { execSync } from "node:child_process"
-import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs"
+import { execFileSync, execSync } from "node:child_process"
+import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs"
 import { basename, join, resolve } from "node:path"
 
 const UI_COMPONENTS_PATH = "src/components/ui"
@@ -103,27 +103,22 @@ function getDiffStats(file: string): { additions: number; deletions: number } {
   let deletions = 0
 
   try {
-    const diff = execSync(`git diff --numstat ${file}`, { encoding: "utf-8" }).trim()
+    // Compare the working tree to HEAD so staged and unstaged changes are both included.
+    // The separator also makes deleted paths unambiguous to Git.
+    const diff = execFileSync("git", ["diff", "HEAD", "--numstat", "--", file], {
+      encoding: "utf-8",
+    }).trim()
     if (diff) {
       const [add, del] = diff.split("\t")
       additions = Number.parseInt(add, 10) || 0
       deletions = Number.parseInt(del, 10) || 0
     }
-  } catch {
-    try {
-      const stagedDiff = execSync(`git diff --cached --numstat ${file}`, {
-        encoding: "utf-8",
-      }).trim()
-      if (stagedDiff) {
-        const [add, del] = stagedDiff.split("\t")
-        additions = Number.parseInt(add, 10) || 0
-        deletions = Number.parseInt(del, 10) || 0
-      }
-    } catch {}
-  }
+  } catch {}
 
   return { additions, deletions }
 }
+
+const deletedChangeKeys = new Set<string>()
 
 function getChangedComponents(): ReleaseNote[] {
   const changes: ReleaseNote[] = []
@@ -189,6 +184,13 @@ function getChangedComponents(): ReleaseNote[] {
         continue
       }
 
+      if (!existsSync(file)) {
+        // Removed components have no current docs or examples to link to.
+        // Also discard notes generated for these deletions earlier today.
+        deletedChangeKeys.add(`${component}-${date}`)
+        continue
+      }
+
       const { additions, deletions } = getDiffStats(file)
 
       // Determine kind based on git status flag
@@ -243,7 +245,7 @@ function updateSearchScript(components: string[]) {
 function main() {
   const changes = getChangedComponents()
 
-  if (changes.length === 0) {
+  if (changes.length === 0 && deletedChangeKeys.size === 0) {
     console.log("No release notes to generate.")
     return
   }
@@ -256,7 +258,9 @@ function main() {
 
   const changeKeys = new Set(changes.map((c) => `${c.component}-${c.date}`))
   const filteredExisting = existingNotes.filter(
-    (note) => !changeKeys.has(`${note.component}-${note.date}`)
+    (note) =>
+      !changeKeys.has(`${note.component}-${note.date}`) &&
+      !deletedChangeKeys.has(`${note.component}-${note.date}`)
   )
 
   const merged = [...changes, ...filteredExisting].sort((a, b) => b.date.localeCompare(a.date))
@@ -272,7 +276,7 @@ function main() {
 
   // Only update search script for components, not examples or blocks
   const componentChanges = changes.filter((c) => c.type === "component")
-  if (componentChanges.length > 0) {
+  if (componentChanges.length > 0 || deletedChangeKeys.size > 0) {
     const componentNames = [
       ...new Set(componentChanges.filter((c) => c.url).map((c) => c.url!.replace("/", ""))),
     ]

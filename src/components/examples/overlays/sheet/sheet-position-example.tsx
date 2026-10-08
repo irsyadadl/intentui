@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
+  type SheetContentProps,
   SheetClose,
   SheetContent,
   SheetDescription,
@@ -12,31 +13,31 @@ import {
 } from "@/components/ui/sheet"
 import { title } from "@/lib/utils"
 
-type Side = "left" | "right" | "top" | "bottom"
+type Position = NonNullable<SheetContentProps["position"]>
 export default function SheetPositionDemo() {
-  const [sheetSide, setSheetSide] = useState<Side>("left")
+  const [sheetPosition, setSheetPosition] = useState<Position>("bottom")
   const [isOpen, setIsOpen] = useState(false)
 
-  const sides: Side[] = ["left", "right", "top", "bottom"]
+  const positions: Position[] = ["bottom", "top", "left", "right", "start", "end", "center"]
 
-  const pressHandler = (side: Side, open: boolean) => {
-    setSheetSide(side)
+  const pressHandler = (position: Position, open: boolean) => {
+    setSheetPosition(position)
     setIsOpen(open)
   }
 
   return (
     <>
       <div className="grid grid-cols-2 gap-2">
-        {sides.map((side, idx) => (
-          <Button intent="outline" onPress={() => pressHandler(side, true)} key={idx}>
-            {title(side)}
+        {positions.map((position) => (
+          <Button intent="outline" onPress={() => pressHandler(position, true)} key={position}>
+            {title(position)}
           </Button>
         ))}
       </div>
-      <SheetContent isOpen={isOpen} onOpenChange={setIsOpen} side={sheetSide}>
+      <SheetContent isOpen={isOpen} onOpenChange={setIsOpen} position={sheetPosition}>
         <SheetHeader>
-          <SheetTitle>{title(sheetSide)}</SheetTitle>
-          <SheetDescription>The sheet will go from {sheetSide} side.</SheetDescription>
+          <SheetTitle>{title(sheetPosition)}</SheetTitle>
+          <SheetDescription>The sheet opens at the {sheetPosition} position.</SheetDescription>
         </SheetHeader>
         <SheetFooter>
           <SheetClose>Close</SheetClose>
