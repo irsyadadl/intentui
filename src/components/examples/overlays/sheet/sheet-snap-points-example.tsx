@@ -1,7 +1,14 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetBody, SheetClose, SheetContent, SheetHeader } from "@/components/ui/sheet"
+import {
+  Sheet,
+  SheetBody,
+  SheetClose,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+} from "@/components/ui/sheet"
 
 const itinerary = [
   { time: "09:00", title: "Coffee at the studio", description: "Meet the team and plan the day." },
@@ -47,12 +54,10 @@ export default function SheetSnapPointsExample() {
               </li>
             ))}
           </ol>
-          <div className="py-4">
-            <SheetClose intent="secondary" className="w-full">
-              Done
-            </SheetClose>
-          </div>
         </SheetBody>
+        <SheetFooter>
+          <SheetClose intent="secondary">Done</SheetClose>
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   )

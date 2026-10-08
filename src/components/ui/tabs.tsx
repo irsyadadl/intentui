@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, use } from "react"
+import { createContext, use, useSyncExternalStore } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import { SelectionIndicator } from "react-aria-components/SelectionIndicator"
 import { useSlottedContext } from "react-aria-components/slots"
@@ -12,12 +12,12 @@ import type {
   TabsProps as TabsPrimitiveProps,
 } from "react-aria-components/Tabs"
 import {
-  Tab as TabPrimitive,
+  TabPanels as PrimitiveTabPanels,
   TabList as TabListPrimitive,
   TabPanel as TabPanelPrimitive,
-  TabPanels as PrimitiveTabPanels,
-  Tabs as TabsPrimitive,
+  Tab as TabPrimitive,
   TabsContext,
+  Tabs as TabsPrimitive,
 } from "react-aria-components/Tabs"
 import { cn } from "cn"
 import { cx } from "@/lib/primitive"
@@ -102,7 +102,17 @@ export function TabScrollArea({ className, ...props }: React.ComponentProps<"div
 interface TabProps extends TabPrimitiveProps {
   ref?: React.RefObject<HTMLDivElement>
 }
-const Tab = ({ className, ref, ...props }: TabProps) => {
+
+function subscribeToHydration() {
+  return () => {}
+}
+
+function Tab({ className, ref, ...props }: TabProps) {
+  const isHydrated = useSyncExternalStore(
+    subscribeToHydration,
+    () => true,
+    () => false
+  )
   const { orientation } = useSlottedContext(TabsContext)!
   const { selectionIndicator } = useTabListContext()
   return (
@@ -127,7 +137,7 @@ const Tab = ({ className, ref, ...props }: TabProps) => {
       {composeRenderProps(props.children, (children) => (
         <>
           {children}
-          {selectionIndicator && (
+          {selectionIndicator && isHydrated && (
             <SelectionIndicator
               data-slot="selected-indicator"
               className={cn(

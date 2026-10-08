@@ -21,23 +21,25 @@ Install the component via the CLI in one command.
 
 Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
 
-<PackageCommand command="npm i react-aria-components@^1.22.0 cn tailwind-variants"/>
+<PackageCommand command="npm i react-aria-components cn tailwind-variants"/>
 
 <SourceCode toShow='sheet' />
 
-Add the stacking and backdrop keyframes to your global CSS:
+Add the backdrop and stacking animations to your global CSS. `@theme static` keeps their keyframes available for React Aria’s swipe and stack animations.
 
 ```css
-@keyframes sheet-stack {
-  from { transform: translate(0, 0) scale(1); }
-  to {
-    transform: translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95);
-  }
-}
+@theme static {
+  --animate-sheet-backdrop: sheet-backdrop 300ms linear both;
+  --animate-sheet-scale-back: sheet-scale-back 300ms ease-out both;
 
-@keyframes sheet-backdrop {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  @keyframes sheet-backdrop {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes sheet-scale-back {
+    to { transform: translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95); }
+  }
 }
 
 @supports not (animation-timeline: view()) {
@@ -47,6 +49,9 @@ Add the stacking and backdrop keyframes to your global CSS:
 }
 ```
 
+`sheet-backdrop` animates the backdrop opacity from `0` to `1`. React Aria uses it through `swipeAnimation` to keep the fade synchronized with the sheet’s movement.
+
+`sheet-scale-back` scales the sheet behind to `0.95` and offsets it by `8px` toward the opposite edge. `SheetContent` sets `--sheet-stack-x` or `--sheet-stack-y` based on its position. The smaller offset keeps the close button behind the front sheet. The `@supports` rule provides the stacked appearance in browsers without view timelines.
 
 ## Anatomy
 ```
@@ -91,7 +96,7 @@ This example is like Github's profile page. You can see the sheet component is u
 
 ### Stacking
 
-Nest a `Sheet` inside another sheet to open a new panel on top. The sheet behind scales down and moves back as the next sheet opens. Each sheet has its own close action, so closing the top sheet returns you to the previous one. This example uses three levels: workspace settings, team access, and member permissions.
+Nest a `Sheet` inside another sheet to open a new panel on top. The sheet behind moves back as the next sheet opens. Each sheet has its own close action, so closing the top sheet returns you to the previous one. This example uses three levels: workspace settings, team access, and member permissions.
 
 <How toUse="overlays/sheet/sheet-stacking-example" />
 

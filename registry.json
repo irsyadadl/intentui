@@ -2064,6 +2064,44 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-primary-subtle": "var(--primary-subtle)",
+          "color-primary-subtle-fg": "var(--primary-subtle-fg)",
+          "color-success-subtle": "var(--success-subtle)",
+          "color-success-subtle-fg": "var(--success-subtle-fg)",
+          "color-info-subtle": "var(--info-subtle)",
+          "color-info-subtle-fg": "var(--info-subtle-fg)",
+          "color-warning-subtle": "var(--warning-subtle)",
+          "color-warning-subtle-fg": "var(--warning-subtle-fg)",
+          "color-danger-subtle": "var(--danger-subtle)",
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.15)",
+          "primary-subtle-fg": "oklch(0.488 0.243 264.376)",
+          "success-subtle": "oklch(0.696 0.17 162.48 / 0.15)",
+          "success-subtle-fg": "oklch(0.508 0.118 165.612)",
+          "info-subtle": "oklch(0.685 0.169 237.323 / 0.15)",
+          "info-subtle-fg": "oklch(0.5 0.134 242.749)",
+          "warning-subtle": "oklch(0.828 0.189 84.429 / 0.2)",
+          "warning-subtle-fg": "oklch(0.555 0.163 48.998)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.15)",
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.1)",
+          "primary-subtle-fg": "oklch(0.707 0.165 254.624)",
+          "success-subtle": "oklch(0.696 0.17 162.48 / 0.1)",
+          "success-subtle-fg": "oklch(0.765 0.177 163.223)",
+          "info-subtle": "oklch(0.685 0.169 237.323 / 0.1)",
+          "info-subtle-fg": "oklch(0.828 0.111 230.318)",
+          "warning-subtle": "oklch(0.828 0.189 84.429 / 0.1)",
+          "warning-subtle-fg": "oklch(0.828 0.189 84.429)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.1)",
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -2231,6 +2269,20 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-danger-subtle": "var(--danger-subtle)",
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.15)",
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.1)",
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -2250,6 +2302,23 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-primary-subtle": "var(--primary-subtle)",
+          "color-primary-subtle-fg": "var(--primary-subtle-fg)",
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.15)",
+          "primary-subtle-fg": "oklch(0.488 0.243 264.376)",
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.1)",
+          "primary-subtle-fg": "oklch(0.707 0.165 254.624)",
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -2480,6 +2549,26 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-primary-subtle": "var(--primary-subtle)",
+          "color-primary-subtle-fg": "var(--primary-subtle-fg)",
+          "color-danger-subtle": "var(--danger-subtle)",
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.15)",
+          "primary-subtle-fg": "oklch(0.488 0.243 264.376)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.15)",
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.1)",
+          "primary-subtle-fg": "oklch(0.707 0.165 254.624)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.1)",
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -2538,6 +2627,23 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-primary-subtle": "var(--primary-subtle)",
+          "color-danger-subtle": "var(--danger-subtle)",
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.15)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.15)",
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.1)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.1)",
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -2619,6 +2725,26 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-warning-subtle": "var(--warning-subtle)",
+          "color-warning-subtle-fg": "var(--warning-subtle-fg)",
+          "color-danger-subtle": "var(--danger-subtle)",
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "warning-subtle": "oklch(0.828 0.189 84.429 / 0.2)",
+          "warning-subtle-fg": "oklch(0.555 0.163 48.998)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.15)",
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "warning-subtle": "oklch(0.828 0.189 84.429 / 0.1)",
+          "warning-subtle-fg": "oklch(0.828 0.189 84.429)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.1)",
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -2635,6 +2761,17 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -2701,6 +2838,20 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-primary-subtle": "var(--primary-subtle)",
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.15)",
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.1)",
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -2717,6 +2868,17 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -2834,6 +2996,26 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-warning-subtle": "var(--warning-subtle)",
+          "color-warning-subtle-fg": "var(--warning-subtle-fg)",
+          "color-danger-subtle": "var(--danger-subtle)",
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "warning-subtle": "oklch(0.828 0.189 84.429 / 0.2)",
+          "warning-subtle-fg": "oklch(0.555 0.163 48.998)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.15)",
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "warning-subtle": "oklch(0.828 0.189 84.429 / 0.1)",
+          "warning-subtle-fg": "oklch(0.828 0.189 84.429)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.1)",
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -2909,6 +3091,17 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -2947,6 +3140,38 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-success-subtle": "var(--success-subtle)",
+          "color-success-subtle-fg": "var(--success-subtle-fg)",
+          "color-info-subtle": "var(--info-subtle)",
+          "color-info-subtle-fg": "var(--info-subtle-fg)",
+          "color-warning-subtle": "var(--warning-subtle)",
+          "color-warning-subtle-fg": "var(--warning-subtle-fg)",
+          "color-danger-subtle": "var(--danger-subtle)",
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "success-subtle": "oklch(0.696 0.17 162.48 / 0.15)",
+          "success-subtle-fg": "oklch(0.508 0.118 165.612)",
+          "info-subtle": "oklch(0.685 0.169 237.323 / 0.15)",
+          "info-subtle-fg": "oklch(0.5 0.134 242.749)",
+          "warning-subtle": "oklch(0.828 0.189 84.429 / 0.2)",
+          "warning-subtle-fg": "oklch(0.555 0.163 48.998)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.15)",
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "success-subtle": "oklch(0.696 0.17 162.48 / 0.1)",
+          "success-subtle-fg": "oklch(0.765 0.177 163.223)",
+          "info-subtle": "oklch(0.685 0.169 237.323 / 0.1)",
+          "info-subtle-fg": "oklch(0.828 0.111 230.318)",
+          "warning-subtle": "oklch(0.828 0.189 84.429 / 0.1)",
+          "warning-subtle-fg": "oklch(0.828 0.189 84.429)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.1)",
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -3126,6 +3351,20 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-danger-subtle": "var(--danger-subtle)",
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.15)",
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.1)",
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -3142,6 +3381,26 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-primary-subtle": "var(--primary-subtle)",
+          "color-primary-subtle-fg": "var(--primary-subtle-fg)",
+          "color-danger-subtle": "var(--danger-subtle)",
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.15)",
+          "primary-subtle-fg": "oklch(0.488 0.243 264.376)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.15)",
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.1)",
+          "primary-subtle-fg": "oklch(0.707 0.165 254.624)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.1)",
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -3198,6 +3457,17 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -3233,20 +3503,21 @@
         }
       ],
       "css": {
-        "@keyframes sheet-stack": {
-          "from": {
-            "transform": "translate(0, 0) scale(1)"
+        "@theme static": {
+          "--animate-sheet-backdrop": "sheet-backdrop 300ms linear both",
+          "--animate-sheet-scale-back": "sheet-scale-back 300ms ease-out both",
+          "@keyframes sheet-backdrop": {
+            "from": {
+              "opacity": "0"
+            },
+            "to": {
+              "opacity": "1"
+            }
           },
-          "to": {
-            "transform": "translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95)"
-          }
-        },
-        "@keyframes sheet-backdrop": {
-          "from": {
-            "opacity": "0"
-          },
-          "to": {
-            "opacity": "1"
+          "@keyframes sheet-scale-back": {
+            "to": {
+              "transform": "translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95)"
+            }
           }
         },
         "@supports not (animation-timeline: view())": {
@@ -3402,6 +3673,20 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-primary-subtle": "var(--primary-subtle)",
+          "color-primary-subtle-fg": "var(--primary-subtle-fg)"
+        },
+        "light": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.15)",
+          "primary-subtle-fg": "oklch(0.488 0.243 264.376)"
+        },
+        "dark": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.1)",
+          "primary-subtle-fg": "oklch(0.707 0.165 254.624)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -3438,6 +3723,20 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-primary-subtle": "var(--primary-subtle)",
+          "color-primary-subtle-fg": "var(--primary-subtle-fg)"
+        },
+        "light": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.15)",
+          "primary-subtle-fg": "oklch(0.488 0.243 264.376)"
+        },
+        "dark": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.1)",
+          "primary-subtle-fg": "oklch(0.707 0.165 254.624)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -3473,6 +3772,17 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-primary-subtle-fg": "var(--primary-subtle-fg)"
+        },
+        "light": {
+          "primary-subtle-fg": "oklch(0.488 0.243 264.376)"
+        },
+        "dark": {
+          "primary-subtle-fg": "oklch(0.707 0.165 254.624)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -3489,6 +3799,17 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -3524,6 +3845,38 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-success-subtle": "var(--success-subtle)",
+          "color-success-subtle-fg": "var(--success-subtle-fg)",
+          "color-info-subtle": "var(--info-subtle)",
+          "color-info-subtle-fg": "var(--info-subtle-fg)",
+          "color-warning-subtle": "var(--warning-subtle)",
+          "color-warning-subtle-fg": "var(--warning-subtle-fg)",
+          "color-danger-subtle": "var(--danger-subtle)",
+          "color-danger-subtle-fg": "var(--danger-subtle-fg)"
+        },
+        "light": {
+          "success-subtle": "oklch(0.696 0.17 162.48 / 0.15)",
+          "success-subtle-fg": "oklch(0.508 0.118 165.612)",
+          "info-subtle": "oklch(0.685 0.169 237.323 / 0.15)",
+          "info-subtle-fg": "oklch(0.5 0.134 242.749)",
+          "warning-subtle": "oklch(0.828 0.189 84.429 / 0.2)",
+          "warning-subtle-fg": "oklch(0.555 0.163 48.998)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.15)",
+          "danger-subtle-fg": "oklch(0.505 0.213 27.518)"
+        },
+        "dark": {
+          "success-subtle": "oklch(0.696 0.17 162.48 / 0.1)",
+          "success-subtle-fg": "oklch(0.765 0.177 163.223)",
+          "info-subtle": "oklch(0.685 0.169 237.323 / 0.1)",
+          "info-subtle-fg": "oklch(0.828 0.111 230.318)",
+          "warning-subtle": "oklch(0.828 0.189 84.429 / 0.1)",
+          "warning-subtle-fg": "oklch(0.828 0.189 84.429)",
+          "danger-subtle": "oklch(0.637 0.237 25.331 / 0.1)",
+          "danger-subtle-fg": "oklch(0.704 0.191 22.216)"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -3625,6 +3978,20 @@
           "type": "registry:ui"
         }
       ],
+      "cssVars": {
+        "theme": {
+          "color-primary-subtle": "var(--primary-subtle)",
+          "color-primary-subtle-fg": "var(--primary-subtle-fg)"
+        },
+        "light": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.15)",
+          "primary-subtle-fg": "oklch(0.488 0.243 264.376)"
+        },
+        "dark": {
+          "primary-subtle": "oklch(0.623 0.214 259.815 / 0.1)",
+          "primary-subtle-fg": "oklch(0.707 0.165 254.624)"
+        }
+      },
       "type": "registry:ui"
     },
     {
