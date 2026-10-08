@@ -2593,25 +2593,6 @@
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "extends": "none",
-      "name": "drawer",
-      "title": "drawer",
-      "description": "drawer",
-      "dependencies": ["motion", "react-aria-components", "cn"],
-      "registryDependencies": [
-        "http://localhost:3000/r/primitive",
-        "http://localhost:3000/r/button"
-      ],
-      "files": [
-        {
-          "path": "src/components/ui/drawer.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "type": "registry:ui"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
       "name": "drop-zone",
       "title": "drop-zone",
       "description": "drop-zone",
@@ -3240,7 +3221,7 @@
       "name": "sheet",
       "title": "sheet",
       "description": "sheet",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "@react-aria/i18n"],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/dialog"
@@ -3251,6 +3232,29 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@keyframes sheet-stack": {
+          "from": {
+            "transform": "translate(0, 0) scale(1)"
+          },
+          "to": {
+            "transform": "translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95)"
+          }
+        },
+        "@keyframes sheet-backdrop": {
+          "from": {
+            "opacity": "0"
+          },
+          "to": {
+            "opacity": "1"
+          }
+        },
+        "@supports not (animation-timeline: view())": {
+          ".react-aria-sheet[data-has-descendants]": {
+            "transform": "translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95)"
+          }
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -6078,18 +6082,19 @@
       "name": "sheet-menu-example",
       "title": "Sheet Menu",
       "description": "sheet-menu-example",
-      "dependencies": ["@heroicons/react", "react-aria-components"],
+      "dependencies": ["@heroicons/react"],
       "registryDependencies": [
         "http://localhost:3000/r/avatar",
         "http://localhost:3000/r/button",
         "http://localhost:3000/r/checkbox",
         "http://localhost:3000/r/field",
         "http://localhost:3000/r/input",
-        "http://localhost:3000/r/menu",
         "http://localhost:3000/r/modal",
         "http://localhost:3000/r/select",
         "http://localhost:3000/r/sheet",
-        "http://localhost:3000/r/text-field"
+        "http://localhost:3000/r/text-field",
+        "http://localhost:3000/r/dropdown",
+        "http://localhost:3000/r/link"
       ],
       "files": [
         {
@@ -6116,6 +6121,47 @@
           "path": "src/components/examples/overlays/sheet/sheet-position-example.tsx",
           "type": "registry:page",
           "target": "app/sheet-position-example/page.tsx"
+        }
+      ],
+      "type": "registry:page"
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "extends": "none",
+      "name": "sheet-snap-points-example",
+      "title": "Sheet Snap Points",
+      "description": "sheet-snap-points-example",
+      "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/sheet"],
+      "files": [
+        {
+          "path": "src/components/examples/overlays/sheet/sheet-snap-points-example.tsx",
+          "type": "registry:page",
+          "target": "app/sheet-snap-points-example/page.tsx"
+        }
+      ],
+      "type": "registry:page"
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "extends": "none",
+      "name": "sheet-stacking-example",
+      "title": "Sheet Stacking",
+      "description": "sheet-stacking-example",
+      "dependencies": ["@heroicons/react"],
+      "registryDependencies": [
+        "http://localhost:3000/r/button",
+        "http://localhost:3000/r/checkbox",
+        "http://localhost:3000/r/field",
+        "http://localhost:3000/r/input",
+        "http://localhost:3000/r/radio",
+        "http://localhost:3000/r/sheet",
+        "http://localhost:3000/r/text-field"
+      ],
+      "files": [
+        {
+          "path": "src/components/examples/overlays/sheet/sheet-stacking-example.tsx",
+          "type": "registry:page",
+          "target": "app/sheet-stacking-example/page.tsx"
         }
       ],
       "type": "registry:page"
@@ -6448,147 +6494,6 @@
           "path": "src/components/examples/overlays/modal/modal-triggered-by-menu-example.tsx",
           "type": "registry:page",
           "target": "app/modal-triggered-by-menu-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer-basic-example",
-      "title": "Drawer Basic",
-      "description": "drawer-basic-example",
-      "registryDependencies": [
-        "http://localhost:3000/r/button",
-        "http://localhost:3000/r/drawer",
-        "http://localhost:3000/r/field",
-        "http://localhost:3000/r/input",
-        "http://localhost:3000/r/text-field"
-      ],
-      "files": [
-        {
-          "path": "src/components/examples/overlays/drawer/drawer-basic-example.tsx",
-          "type": "registry:page",
-          "target": "app/drawer-basic-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer-controlled-example",
-      "title": "Drawer Controlled",
-      "description": "drawer-controlled-example",
-      "registryDependencies": [
-        "http://localhost:3000/r/button",
-        "http://localhost:3000/r/drawer",
-        "http://localhost:3000/r/field",
-        "http://localhost:3000/r/input",
-        "http://localhost:3000/r/text-field"
-      ],
-      "files": [
-        {
-          "path": "src/components/examples/overlays/drawer/drawer-controlled-example.tsx",
-          "type": "registry:page",
-          "target": "app/drawer-controlled-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer-float-example",
-      "title": "Drawer Float",
-      "description": "drawer-float-example",
-      "registryDependencies": [
-        "http://localhost:3000/r/button",
-        "http://localhost:3000/r/drawer",
-        "http://localhost:3000/r/radio",
-        "http://localhost:3000/r/separator"
-      ],
-      "files": [
-        {
-          "path": "src/components/examples/overlays/drawer/drawer-float-example.tsx",
-          "type": "registry:page",
-          "target": "app/drawer-float-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer-nested-example",
-      "title": "Drawer Nested",
-      "description": "drawer-nested-example",
-      "dependencies": ["react-aria-components", "sonner"],
-      "registryDependencies": [
-        "http://localhost:3000/r/button",
-        "http://localhost:3000/r/drawer",
-        "http://localhost:3000/r/field",
-        "http://localhost:3000/r/text-field",
-        "http://localhost:3000/r/textarea"
-      ],
-      "files": [
-        {
-          "path": "src/components/examples/overlays/drawer/drawer-nested-example.tsx",
-          "type": "registry:page",
-          "target": "app/drawer-nested-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer-side-example",
-      "title": "Drawer Side",
-      "description": "drawer-side-example",
-      "registryDependencies": [
-        "http://localhost:3000/r/button",
-        "http://localhost:3000/r/drawer",
-        "http://localhost:3000/r/radio",
-        "http://localhost:3000/r/separator"
-      ],
-      "files": [
-        {
-          "path": "src/components/examples/overlays/drawer/drawer-side-example.tsx",
-          "type": "registry:page",
-          "target": "app/drawer-side-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer-sticky-example",
-      "title": "Drawer Sticky",
-      "description": "drawer-sticky-example",
-      "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/drawer"],
-      "files": [
-        {
-          "path": "src/components/examples/overlays/drawer/drawer-sticky-example.tsx",
-          "type": "registry:page",
-          "target": "app/drawer-sticky-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "drawer-without-notch-example",
-      "title": "Drawer Without Notch",
-      "description": "drawer-without-notch-example",
-      "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/drawer"],
-      "files": [
-        {
-          "path": "src/components/examples/overlays/drawer/drawer-without-notch-example.tsx",
-          "type": "registry:page",
-          "target": "app/drawer-without-notch-example/page.tsx"
         }
       ],
       "type": "registry:page"
@@ -12813,7 +12718,6 @@
         "http://localhost:3000/r/ui/description-list",
         "http://localhost:3000/r/ui/dialog",
         "http://localhost:3000/r/ui/disclosure-group",
-        "http://localhost:3000/r/ui/drawer",
         "http://localhost:3000/r/ui/drop-zone",
         "http://localhost:3000/r/ui/dropdown",
         "http://localhost:3000/r/ui/field",

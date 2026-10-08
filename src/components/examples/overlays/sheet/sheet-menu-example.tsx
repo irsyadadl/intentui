@@ -12,13 +12,11 @@ import {
   UserIcon,
 } from "@heroicons/react/24/outline"
 import { useState } from "react"
-import { Menu as MenuPrimitive } from "react-aria-components/Menu"
 import { Avatar } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Checkbox, CheckboxField } from "@/components/ui/checkbox"
 import { Description, Label } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { MenuItem, MenuLabel, MenuSection } from "@/components/ui/menu"
 import {
   ModalBody,
   ModalClose,
@@ -39,6 +37,40 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { TextField } from "@/components/ui/text-field"
+import { dropdownItemStyles } from "@/components/ui/dropdown"
+import { Link } from "@/components/ui/link"
+
+const menuGroups: {
+  id: string
+  items: { label: string; icon?: typeof UserIcon }[]
+}[] = [
+  {
+    id: "account",
+    items: [
+      { label: "Your profile", icon: UserIcon },
+      { label: "Your repositories", icon: BookOpenIcon },
+      { label: "Copilot", icon: SparklesIcon },
+      { label: "Your projects" },
+      { label: "Your stars", icon: StarIcon },
+      { label: "Your gists" },
+      { label: "Your organizations" },
+      { label: "Your enterprises" },
+      { label: "Your sponsors", icon: HeartIcon },
+    ],
+  },
+  {
+    id: "settings",
+    items: [{ label: "Feature preview" }, { label: "Settings", icon: Cog6ToothIcon }],
+  },
+  {
+    id: "support",
+    items: [
+      { label: "GitHub Docs" },
+      { label: "GitHub Support" },
+      { label: "GitHub Community", icon: ChatBubbleLeftRightIcon },
+    ],
+  },
+]
 
 export default function SheetMenuDemo() {
   const [isOpen, setIsOpen] = useState(false)
@@ -98,7 +130,7 @@ export default function SheetMenuDemo() {
         <SheetTrigger aria-label="Open menu">
           <Avatar src="https://intentui.com/images/avatar/cobain.jpg" alt="irsyadadl" />
         </SheetTrigger>
-        <SheetContent isFloat={false} closeButton={false}>
+        <SheetContent position="right" isFloat={false} closeButton={false}>
           <SheetHeader className="flex flex-row gap-x-3.5 border-b sm:gap-x-3 sm:px-4 sm:pt-3 sm:pb-2">
             <Avatar src="https://intentui.com/images/avatar/cobain.jpg" isSquare alt="cobain" />
             <div>
@@ -107,63 +139,24 @@ export default function SheetMenuDemo() {
             </div>
           </SheetHeader>
           <SheetBody className="px-0 sm:px-0">
-            <MenuPrimitive className="divide-y *:[[role=group]]:p-2">
-              <MenuSection>
-                <MenuItem>
-                  <UserIcon className="size-5" />
-                  <MenuLabel>Your profile</MenuLabel>
-                </MenuItem>
-                <MenuItem>
-                  <BookOpenIcon className="size-5" />
-                  <MenuLabel>Your repositories</MenuLabel>
-                </MenuItem>
-                <MenuItem>
-                  <SparklesIcon className="size-5" />
-                  <MenuLabel>Copilot</MenuLabel>
-                </MenuItem>
-                <MenuItem>
-                  <MenuLabel>Your projects</MenuLabel>
-                </MenuItem>
-                <MenuItem>
-                  <StarIcon className="size-5" />
-                  <MenuLabel>Your stars</MenuLabel>
-                </MenuItem>
-                <MenuItem>
-                  <MenuLabel>Your gists</MenuLabel>
-                </MenuItem>
-                <MenuItem>
-                  <MenuLabel>Your organizations</MenuLabel>
-                </MenuItem>
-                <MenuItem>
-                  <MenuLabel>Your enterprises</MenuLabel>
-                </MenuItem>
-                <MenuItem>
-                  <HeartIcon className="size-5" />
-                  <MenuLabel>Your sponsors</MenuLabel>
-                </MenuItem>
-              </MenuSection>
-              <MenuSection>
-                <MenuItem>
-                  <MenuLabel>Feature preview</MenuLabel>
-                </MenuItem>
-                <MenuItem>
-                  <Cog6ToothIcon className="size-5" />
-                  <MenuLabel>Settings</MenuLabel>
-                </MenuItem>
-              </MenuSection>
-              <MenuSection>
-                <MenuItem>
-                  <MenuLabel>GitHub Docs</MenuLabel>
-                </MenuItem>
-                <MenuItem>
-                  <MenuLabel>GitHub Support</MenuLabel>
-                </MenuItem>
-                <MenuItem>
-                  <ChatBubbleLeftRightIcon className="size-5" />
-                  <MenuLabel>GitHub Community</MenuLabel>
-                </MenuItem>
-              </MenuSection>
-            </MenuPrimitive>
+            <ul className="divide-y [&_li_ul]:p-4">
+              {menuGroups.map((group) => (
+                <li key={group.id}>
+                  <ul className="grid grid-cols-[auto_1fr]">
+                    {group.items.map(({ label, icon: Icon }) => (
+                      <li key={label} className="col-span-full grid grid-cols-subgrid">
+                        <Link href="#" className={dropdownItemStyles}>
+                          {Icon && <Icon />}
+                          <span slot="label" className="col-start-2">
+                            {label}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
           </SheetBody>
           <SheetFooter className="border-t bg-muted/20 sm:p-4">
             <Button size="sm" className="w-full justify-between bg-bg" intent="outline">

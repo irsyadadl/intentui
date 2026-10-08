@@ -16,7 +16,7 @@ export default function SheetStickyDemo() {
   return (
     <Sheet>
       <Button>Read</Button>
-      <SheetContent>
+      <SheetContent position="right">
         <SheetHeader>
           <SheetTitle>Terms of Use</SheetTitle>
           <SheetDescription>

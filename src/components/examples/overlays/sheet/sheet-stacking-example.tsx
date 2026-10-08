@@ -1,0 +1,103 @@
+"use client"
+
+import { ChevronRightIcon } from "@heroicons/react/20/solid"
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Checkbox, CheckboxField, CheckboxGroup } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import { Radio, RadioField, RadioGroup } from "@/components/ui/radio"
+import {
+  Sheet,
+  SheetBody,
+  SheetClose,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+} from "@/components/ui/sheet"
+import { TextField } from "@/components/ui/text-field"
+
+export default function SheetStackingExample() {
+  const [workspaceName, setWorkspaceName] = useState("Design studio")
+  const [access, setAccess] = useState("invite-only")
+  const [permissions, setPermissions] = useState(["comments", "downloads"])
+
+  return (
+    <Sheet>
+      <Button intent="secondary">Workspace settings</Button>
+      <SheetContent position="bottom" className="mx-auto h-96 max-w-lg">
+        <SheetHeader
+          title="Workspace settings"
+          description="Set up your workspace and manage how your team collaborates."
+        />
+        <SheetBody className="gap-6">
+          <TextField value={workspaceName} onChange={setWorkspaceName}>
+            <Label>Workspace name</Label>
+            <Input />
+          </TextField>
+          <Sheet>
+            <Button intent="secondary" className="w-full justify-between">
+              Team access
+              <ChevronRightIcon />
+            </Button>
+            <SheetContent position="bottom" className="mx-auto h-96 max-w-lg">
+              <SheetHeader
+                title="Team access"
+                description="Choose who can join. Close this sheet to return to your workspace."
+              />
+              <SheetBody className="gap-6">
+                <RadioGroup value={access} onChange={setAccess}>
+                  <Label>Who can join?</Label>
+                  <RadioField value="invite-only">
+                    <Radio>Invited people only</Radio>
+                  </RadioField>
+                  <RadioField value="domain">
+                    <Radio>Anyone with your company email</Radio>
+                  </RadioField>
+                </RadioGroup>
+                <Sheet>
+                  <Button intent="secondary" className="w-full justify-between">
+                    Member permissions
+                    <ChevronRightIcon />
+                  </Button>
+                  <SheetContent position="bottom" className="mx-auto h-96 max-w-lg">
+                    <SheetHeader
+                      title="Member permissions"
+                      description="Choose what members can do. Close this sheet to return to team access."
+                    />
+                    <SheetBody>
+                      <CheckboxGroup value={permissions} onChange={setPermissions}>
+                        <Label>Allow members to</Label>
+                        <CheckboxField value="comments">
+                          <Checkbox>Leave comments</Checkbox>
+                        </CheckboxField>
+                        <CheckboxField value="downloads">
+                          <Checkbox>Download files</Checkbox>
+                        </CheckboxField>
+                        <CheckboxField value="invites">
+                          <Checkbox>Invite teammates</Checkbox>
+                        </CheckboxField>
+                        <CheckboxField value="projects">
+                          <Checkbox>Create projects</Checkbox>
+                        </CheckboxField>
+                      </CheckboxGroup>
+                    </SheetBody>
+                    <SheetFooter>
+                      <SheetClose intent="primary">Back to team access</SheetClose>
+                    </SheetFooter>
+                  </SheetContent>
+                </Sheet>
+              </SheetBody>
+              <SheetFooter>
+                <SheetClose intent="primary">Back to workspace</SheetClose>
+              </SheetFooter>
+            </SheetContent>
+          </Sheet>
+        </SheetBody>
+        <SheetFooter>
+          <SheetClose intent="primary">Done</SheetClose>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
+  )
+}

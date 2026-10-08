@@ -133,7 +133,7 @@ const Navbar = ({
         />
         <Sheet isOpen={open} onOpenChange={setOpen} {...props}>
           <SheetContent
-            side={side}
+            position={side}
             aria-label="Mobile Navbar"
             className="entering:blur-in exiting:blur-out [&>button]:hidden"
           >

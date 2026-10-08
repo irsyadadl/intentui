@@ -20,7 +20,7 @@ export default function SheetDemo() {
   return (
     <Sheet>
       <Button intent="outline">Edit Settings</Button>
-      <SheetContent>
+      <SheetContent position="right">
         {({ close }) => (
           <>
             <SheetHeader>

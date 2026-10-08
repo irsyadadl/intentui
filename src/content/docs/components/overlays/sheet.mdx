@@ -2,7 +2,7 @@
 title: Sheet
 description: A slide-in panel for presenting additional content without disrupting the main screen. It slides in from the side to show related information or options.
 order: 2
-references: ["https://react-aria.adobe.com/Modal#api"]
+references: ["https://react-aria.adobe.com/Sheet#api"]
 
 published: true
 ---
@@ -21,9 +21,32 @@ Install the component via the CLI in one command.
 
 Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
 
-<PackageCommand command="npm i react-aria-components cn tailwind-variants"/>
+<PackageCommand command="npm i react-aria-components@^1.22.0 cn tailwind-variants"/>
 
 <SourceCode toShow='sheet' />
+
+Add the stacking and backdrop keyframes to your global CSS:
+
+```css
+@keyframes sheet-stack {
+  from { transform: translate(0, 0) scale(1); }
+  to {
+    transform: translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95);
+  }
+}
+
+@keyframes sheet-backdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@supports not (animation-timeline: view()) {
+  .react-aria-sheet[data-has-descendants] {
+    transform: translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95);
+  }
+}
+```
+
 
 ## Anatomy
 ```
@@ -44,7 +67,7 @@ import {
 ```
 <Sheet>
   <SheetTrigger>Open</SheetTrigger>
-  <SheetContent>
+  <SheetContent position="right">
     <SheetHeader>
       <SheetTitle>Sheet Title</SheetTitle>
       <SheetDescription>Sheet Description</SheetDescription>
@@ -61,19 +84,35 @@ import {
 
 ## Examples
 
-### Like github
+### Menu
 This example is like Github's profile page. You can see the sheet component is used to display the profile information.
 
 <How toUse="overlays/sheet/sheet-menu-example" />
+
+### Stacking
+
+Nest a `Sheet` inside another sheet to open a new panel on top. The sheet behind scales down and moves back as the next sheet opens. Each sheet has its own close action, so closing the top sheet returns you to the previous one. This example uses three levels: workspace settings, team access, and member permissions.
+
+<How toUse="overlays/sheet/sheet-stacking-example" />
 
 ### Controlled
 You can control the open state of the sheet by using the `isOpen` prop. You can also use the `onOpenChange` prop to listen to the open state change.
 <How toUse="overlays/sheet/sheet-controlled-example" />
 
 ### Positioning
-You can position the modal component in different ways. You can use the `side` prop to position the modal component in the different directions.
+Use the `position` prop to place the sheet at `bottom`, `top`, `left`, `right`, `start`, `end`, or `center`. The default is `bottom`. The `start` and `end` positions follow the text direction.
 
 <How toUse="overlays/sheet/sheet-position-example" />
+
+### Snap points
+
+Set `snapPoints` to control how much of the sheet is visible at each stop. Numbers are pixels; percentages are relative to the sheet’s size. The sheet opens at the first snap point. Set an explicit height for a bottom or top sheet when using percentage snap points.
+
+<How toUse="overlays/sheet/sheet-snap-points-example" />
+
+### Prevent dismissal
+
+Set `preventDismissal` to prevent closing by swiping, pressing Escape, or interacting outside. A `SheetClose` action can still close the sheet. This defaults to `true` for `role="alertdialog"`.
 
 ### Custom close
 You can customize the close button by using the `SheetClose` component. This example demonstrates how to use the `SheetClose` component to create a custom close button.
@@ -81,11 +120,11 @@ You can customize the close button by using the `SheetClose` component. This exa
 <How toUse="overlays/sheet/sheet-custom-close-example" />
 
 ### Float
-By default, the sheet will stack, but you can change this behavior by using the `isFloat` prop. This example demonstrates how to use the `isFloat` prop to create a sheet that does not stack.
+By default, the sheet floats with a gap from the viewport edges and rounded corners. Set `isFloat={false}` to make it sit flush against the viewport edge.
 <How toUse="overlays/sheet/sheet-float-example" />
 
 ### Sticky
-You can use the `SheetBody` component to make the sheet sticky.
+Use `SheetBody` for scrollable content while keeping the header and footer visible.
 <How toUse="overlays/sheet/sheet-sticky-example" />
 
 ## Component API
@@ -94,7 +133,7 @@ You can use the `SheetBody` component to make the sheet sticky.
 
 <ApiParameters>
   <ApiDescription>
-    **Sheet** extends the React Aria Components [**`<DialogTrigger>`**](https://react-aria.adobe.com/Dialog#api) component.
+    **Sheet** extends the React Aria Components [**`<SheetTrigger>`**](https://react-aria.adobe.com/Sheet#api) component.
   </ApiDescription>
 </ApiParameters>
 
@@ -109,15 +148,20 @@ You can use the `SheetBody` component to make the sheet sticky.
 
 ### SheetContent
 
+Requires `react-aria-components` 1.22.0 or later. Use `preventDismissal` in place of the previous modal props `isDismissable` and `isKeyboardDismissDisabled`.
+
 <ApiParameters>
   <ApiDescription>
-    **SheetContent** extends the React Aria Components [**`<ModalOverlay>`**](https://react-aria.adobe.com/Modal#api) component.
+    **SheetContent** extends the React Aria Components [**`<SheetOverlay>`**](https://react-aria.adobe.com/Sheet#api), and composes React Aria’s `SheetBackdrop`, `Sheet`, and `SheetContent` component.
   </ApiDescription>
   <ApiParameter name="className" type='string' />
   <ApiParameter name="closeButton" type='boolean' defaultValue='true' />
   <ApiParameter name="isFloat" type='boolean' defaultValue='true' />
-  <ApiParameter name="overlay" type='Omit<ModalOverlayProps, "children">' />
-  <ApiParameter name="side" type='"top" | "bottom" | "left" | "right"' defaultValue='right' />
+  <ApiParameter name="overlay" type='Omit<SheetOverlayProps, "children" | "position">' />
+  <ApiParameter name="snapPoints" type='Array<number | string>' />
+  <ApiParameter name="swipeDirection" type='"top" | "bottom" | "left" | "right" | "start" | "end" | "vertical" | "horizontal"' />
+  <ApiParameter name="preventDismissal" type='boolean' defaultValue='false (true for alertdialog)' />
+  <ApiParameter name="position" type='"bottom" | "top" | "left" | "right" | "start" | "end" | "center"' defaultValue='bottom' />
 </ApiParameters>
 
 ### SheetHeader
@@ -180,6 +224,6 @@ You can use the `SheetBody` component to make the sheet sticky.
     defaultValue='plain'
   />
   <ApiReference>
-    See the [React Aria](https://react-aria.adobe.com/Modal#api) for the full API reference.
+    See the [React Aria](https://react-aria.adobe.com/Sheet#api) for the full API reference.
   </ApiReference>
 </ApiParameters>

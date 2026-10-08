@@ -66,7 +66,7 @@ export const componentOrder: Record<string, readonly string[]> = {
     "pagination",
     "snippet",
   ],
-  Overlays: ["modal", "sheet", "drawer", "popover", "preview", "tooltip", "dialog"],
+  Overlays: ["modal", "sheet", "popover", "preview", "tooltip", "dialog"],
   Pickers: ["select", "multiple-select", "native-select", "combo-box"],
   Statuses: [
     "badge",
