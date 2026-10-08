@@ -66,7 +66,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
               <SidebarItem tooltip={item.label} key={index} isCurrent={item.isCurrent} href="#">
                 {item.icon}
                 <SidebarLabel>{item.label}</SidebarLabel>
-                <SidebarBadge>{item.badge}</SidebarBadge>
+                {item.badge != null && <SidebarBadge>{item.badge}</SidebarBadge>}
               </SidebarItem>
             ))}
           </SidebarSection>
@@ -87,7 +87,10 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                 <span className="-mt-0.5 block text-muted-foreground">@kurtcobain</span>
               </div>
             </div>
-            <ChevronUpDownIcon data-slot="chevron" />
+            <ChevronUpDownIcon
+              data-slot="chevron"
+              className="group-data-[state=collapsed]:hidden"
+            />
           </Button>
           <Menu
             className="in-data-[sidebar-collapsible=collapsed]:min-w-56 min-w-(--trigger-width)"

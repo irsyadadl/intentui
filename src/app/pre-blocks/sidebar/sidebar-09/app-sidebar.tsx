@@ -5,7 +5,6 @@ import { Button } from "react-aria-components/Button"
 import {
   ArrowRightStartOnRectangleIcon,
   ChartBarIcon,
-  ChevronUpDownIcon,
   Cog6ToothIcon,
   CubeIcon,
   ShoppingCartIcon,
@@ -18,6 +17,7 @@ import {
   ShieldCheckIcon as ShieldCheckSolid,
   Squares2X2Icon as Squares2X2Solid,
 } from "@heroicons/react/24/solid"
+import { ChevronUpDownIcon } from "@heroicons/react/20/solid"
 import { Avatar } from "@/components/ui/avatar"
 import { Link } from "@/components/ui/link"
 import {
@@ -38,9 +38,11 @@ import {
   SidebarLabel,
   SidebarSection,
   SidebarSectionGroup,
+  useSidebar,
 } from "@/components/ui/sidebar"
 
 export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
+  const { state } = useSidebar()
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -67,7 +69,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
               <SidebarItem key={index} isCurrent={item.isCurrent} href="#">
                 {item.icon}
                 <SidebarLabel>{item.label}</SidebarLabel>
-                <SidebarBadge>{item.badge}</SidebarBadge>
+                {item.badge != null && <SidebarBadge>{item.badge}</SidebarBadge>}
               </SidebarItem>
             ))}
           </SidebarSection>
@@ -89,7 +91,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                 <span className="-mt-0.5 block text-muted-foreground">@kurtcobain</span>
               </div>
             </div>
-            <ChevronUpDownIcon className="size-5 sm:size-4" data-slot="chevron" />
+            {state !== "collapsed" && <ChevronUpDownIcon className="size-5 sm:size-4" />}
           </Button>
           <Menu
             className="in-data-[sidebar-collapsible=collapsed]:min-w-56 min-w-(--trigger-width)"
