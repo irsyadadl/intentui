@@ -1,17 +1,11 @@
 "use client"
 
-import {
-  ContextMenuTrigger,
-  ContextMenu,
-  ContextMenuItem,
-  ContextMenuSeparator,
-  ContextMenuShortcut,
-} from "@/components/ui/context-menu"
+import { MenuTrigger, Menu, MenuItem, MenuSeparator, MenuShortcut } from "@/components/ui/menu"
 import { Pressable } from "react-aria-components"
 
-export default function ContextMenuSeparatorDemo() {
+export default function MenuSeparatorDemo() {
   return (
-    <ContextMenuTrigger>
+    <MenuTrigger trigger="contextMenu">
       <Pressable>
         <div
           role="button"
@@ -21,38 +15,38 @@ export default function ContextMenuSeparatorDemo() {
           <span className="hidden pointer-coarse:inline-block">Long press here</span>
         </div>
       </Pressable>
-      <ContextMenu className="min-w-60">
-        <ContextMenuItem>Go to Definition</ContextMenuItem>
-        <ContextMenuItem>Go to Type Definition</ContextMenuItem>
-        <ContextMenuItem>Go to Source Definition</ContextMenuItem>
-        <ContextMenuItem>Go to Implementations</ContextMenuItem>
-        <ContextMenuItem>
+      <Menu className="min-w-60">
+        <MenuItem>Go to Definition</MenuItem>
+        <MenuItem>Go to Type Definition</MenuItem>
+        <MenuItem>Go to Source Definition</MenuItem>
+        <MenuItem>Go to Implementations</MenuItem>
+        <MenuItem>
           Go to References
-          <ContextMenuShortcut>⌘F12</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuItem>
+          <MenuShortcut>⌘F12</MenuShortcut>
+        </MenuItem>
+        <MenuItem>
           Peek
-          <ContextMenuShortcut>⇧F12</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuSeparator />
-        <ContextMenuItem>
+          <MenuShortcut>⇧F12</MenuShortcut>
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem>
           Find All References
-          <ContextMenuShortcut>⌘⇧F</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuItem>
+          <MenuShortcut>⌘⇧F</MenuShortcut>
+        </MenuItem>
+        <MenuItem>
           Find All Implementations
-          <ContextMenuShortcut>⌘⇧I</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuItem>Show Call Hierarchy</ContextMenuItem>
-        <ContextMenuSeparator />
-        <ContextMenuItem>Rename Symbol</ContextMenuItem>
-        <ContextMenuItem>Change All Occurrences</ContextMenuItem>
-        <ContextMenuItem>Format Document</ContextMenuItem>
-        <ContextMenuItem>
+          <MenuShortcut>⌘⇧I</MenuShortcut>
+        </MenuItem>
+        <MenuItem>Show Call Hierarchy</MenuItem>
+        <MenuSeparator />
+        <MenuItem>Rename Symbol</MenuItem>
+        <MenuItem>Change All Occurrences</MenuItem>
+        <MenuItem>Format Document</MenuItem>
+        <MenuItem>
           Refactor...
-          <ContextMenuShortcut>⌘⇧R</ContextMenuShortcut>
-        </ContextMenuItem>
-      </ContextMenu>
-    </ContextMenuTrigger>
+          <MenuShortcut>⌘⇧R</MenuShortcut>
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   )
 }

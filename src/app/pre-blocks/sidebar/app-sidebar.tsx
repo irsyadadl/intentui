@@ -53,9 +53,11 @@ import {
   SidebarRail,
   SidebarSection,
   SidebarSectionGroup,
+  useSidebar,
 } from "@/components/ui/sidebar"
 
 export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
+  const { state } = useSidebar()
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -242,7 +244,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                 <span className="-mt-0.5 block text-muted-foreground">@kurtcobain</span>
               </div>
             </div>
-            <ChevronUpDownIcon className="size-5 sm:size-4" />
+            {state !== "collapsed" && <ChevronUpDownIcon className="size-5 sm:size-4" />}
           </Button>
           <Menu
             className="in-data-[sidebar-collapsible=collapsed]:min-w-56 min-w-(--trigger-width)"

@@ -106,7 +106,11 @@ Use the `bleed` prop to make the table stretch to the edges of its container. Th
 ```
 
 ### With card
-When placing a table inside a card, you can use bleed and adjust the `--spacing` variable to align with the card’s padding, allowing the table to span the full width.
+When placing a table inside a card, use `bleed` and set `--gutter` to `var(--card-spacing)` to align the table with the card's padding.
+
+```tsx
+<Table bleed className="[--gutter:var(--card-spacing)]" aria-label="Users" />
+```
 <How isCenter={false} withNoPadding toUse="surfaces/card/card-table-example"/>
 
 

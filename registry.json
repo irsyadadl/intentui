@@ -2450,22 +2450,6 @@
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "extends": "none",
-      "name": "context-menu",
-      "title": "context-menu",
-      "description": "context-menu",
-      "dependencies": ["react-aria-components"],
-      "registryDependencies": ["http://localhost:3000/r/menu", "http://localhost:3000/r/popover"],
-      "files": [
-        {
-          "path": "src/components/ui/context-menu.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "type": "registry:ui"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
       "name": "date-field",
       "title": "date-field",
       "description": "date-field",
@@ -9206,7 +9190,7 @@
       "title": "Context Menu Danger",
       "description": "context-menu-danger-example",
       "dependencies": ["react-aria-components"],
-      "registryDependencies": ["http://localhost:3000/r/context-menu"],
+      "registryDependencies": ["http://localhost:3000/r/menu"],
       "files": [
         {
           "path": "src/components/examples/controls/context-menu/context-menu-danger-example.tsx",
@@ -9223,7 +9207,7 @@
       "title": "Context Menu Detail Description",
       "description": "context-menu-detail-description-example",
       "dependencies": ["react-aria-components"],
-      "registryDependencies": ["http://localhost:3000/r/context-menu"],
+      "registryDependencies": ["http://localhost:3000/r/menu"],
       "files": [
         {
           "path": "src/components/examples/controls/context-menu/context-menu-detail-description-example.tsx",
@@ -9240,7 +9224,7 @@
       "title": "Context Menu Disabled",
       "description": "context-menu-disabled-example",
       "dependencies": ["react-aria-components"],
-      "registryDependencies": ["http://localhost:3000/r/context-menu"],
+      "registryDependencies": ["http://localhost:3000/r/menu"],
       "files": [
         {
           "path": "src/components/examples/controls/context-menu/context-menu-disabled-example.tsx",
@@ -9257,7 +9241,7 @@
       "title": "Context Menu",
       "description": "context-menu-example",
       "dependencies": ["react-aria-components"],
-      "registryDependencies": ["http://localhost:3000/r/context-menu"],
+      "registryDependencies": ["http://localhost:3000/r/menu"],
       "files": [
         {
           "path": "src/components/examples/controls/context-menu/context-menu-example.tsx",
@@ -9274,7 +9258,7 @@
       "title": "Context Menu Separator",
       "description": "context-menu-separator-example",
       "dependencies": ["react-aria-components"],
-      "registryDependencies": ["http://localhost:3000/r/context-menu"],
+      "registryDependencies": ["http://localhost:3000/r/menu"],
       "files": [
         {
           "path": "src/components/examples/controls/context-menu/context-menu-separator-example.tsx",
@@ -9291,7 +9275,7 @@
       "title": "Context Menu Sub",
       "description": "context-menu-sub-example",
       "dependencies": ["react-aria-components"],
-      "registryDependencies": ["http://localhost:3000/r/context-menu"],
+      "registryDependencies": ["http://localhost:3000/r/menu"],
       "files": [
         {
           "path": "src/components/examples/controls/context-menu/context-menu-sub-example.tsx",
@@ -9308,7 +9292,7 @@
       "title": "Context Menu With Icon",
       "description": "context-menu-with-icon-example",
       "dependencies": ["@heroicons/react", "react-aria-components"],
-      "registryDependencies": ["http://localhost:3000/r/context-menu"],
+      "registryDependencies": ["http://localhost:3000/r/menu"],
       "files": [
         {
           "path": "src/components/examples/controls/context-menu/context-menu-with-icon-example.tsx",
@@ -12624,7 +12608,6 @@
         "http://localhost:3000/r/ui/combo-box",
         "http://localhost:3000/r/ui/command-menu",
         "http://localhost:3000/r/ui/container",
-        "http://localhost:3000/r/ui/context-menu",
         "http://localhost:3000/r/ui/date-field",
         "http://localhost:3000/r/ui/date-picker",
         "http://localhost:3000/r/ui/date-range-picker",

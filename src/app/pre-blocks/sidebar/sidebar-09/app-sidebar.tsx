@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { Button } from "react-aria-components/Button"
 
 import {
   ArrowRightStartOnRectangleIcon,
@@ -89,7 +89,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                 <span className="-mt-0.5 block text-muted-foreground">@kurtcobain</span>
               </div>
             </div>
-            <ChevronUpDownIcon data-slot="chevron" />
+            <ChevronUpDownIcon className="size-5 sm:size-4" data-slot="chevron" />
           </Button>
           <Menu
             className="in-data-[sidebar-collapsible=collapsed]:min-w-56 min-w-(--trigger-width)"

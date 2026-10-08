@@ -36,17 +36,13 @@ import {
 
 export default function CardTableDemo() {
   return (
-    <Card className="[--card-spacing:var(--gutter)]">
+    <Card>
       <CardHeader>
         <CardTitle>Users</CardTitle>
         <CardDescription>Manage users, groups, and roles.</CardDescription>
       </CardHeader>
       <CardContent>
-        <Table
-          bleed
-          className="[--gutter:var(--card-spacing)] sm:[--gutter:var(--card-spacing)]"
-          aria-label="Users"
-        >
+        <Table bleed className="[--gutter:var(--card-spacing)]" aria-label="Users">
           <TableHeader>
             <TableColumn className="w-0">#</TableColumn>
             <TableColumn isRowHeader>Name</TableColumn>

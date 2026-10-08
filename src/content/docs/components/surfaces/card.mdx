@@ -43,6 +43,17 @@ import {
 </Card>
 ```
 
+## Spacing
+
+Use `--card-spacing` to control the card's vertical padding, the gap between sections, and the horizontal padding of its header, content, and footer. The default is `--spacing(6)`.
+
+```tsx
+<Card className="[--card-spacing:--spacing(4)] sm:[--card-spacing:--spacing(6)]">
+  <CardHeader title="Users" />
+  <CardContent>Card content</CardContent>
+</Card>
+```
+
 ## Examples
 
 ### With form
@@ -54,7 +65,7 @@ You can add actions to your card, which will be aligned to the right. This examp
 <How toUse="surfaces/card/card-action-example"/>
 
 ### With table
-When you place a table inside a card, The table gutter inherits the padding from its parent card to ensure visual consistency.
+Use `bleed` and set the table's `--gutter` to `var(--card-spacing)` to align its columns with the card's padding.
 <How isCenter={false} withNoPadding toUse="surfaces/card/card-table-example"/>
 
 For table docs, check out the [Table](/docs/components/collections/table) docs.

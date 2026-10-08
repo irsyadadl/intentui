@@ -109,11 +109,20 @@ You can add details to menu items by using the `MenuDescription` component.
 ### Open dialog
 Trigger a dialog from a menu item. Refer to the [dialog demo](/docs/components/overlays/dialog#triggered-by-menu) for further information.
 
+### Context menu
+
+Set `trigger="contextMenu"` on `MenuTrigger` to open a menu on right click or long press. Wrap the target in `Pressable` from `react-aria-components`.
+
+<How toUse="controls/context-menu/context-menu-example" />
+
+See [Context Menu](/docs/components/controls/context-menu) for more examples.
+
 ## Component API
 
 ### MenuTrigger
 
 <ApiParameters>
+  <ApiParameter name="trigger" type='"press" | "longPress" | "contextMenu"' defaultValue='"press"' />
   <ApiDescription>
     **MenuTrigger** extends the React Aria Components [**`<MenuTrigger>`**](https://react-aria.adobe.com/Menu#api) component.
   </ApiDescription>

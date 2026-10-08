@@ -1,17 +1,11 @@
 "use client"
 
-import {
-  ContextMenuTrigger,
-  ContextMenu,
-  ContextMenuItem,
-  ContextMenuSeparator,
-  ContextMenuShortcut,
-} from "@/components/ui/context-menu"
+import { MenuTrigger, Menu, MenuItem, MenuSeparator, MenuShortcut } from "@/components/ui/menu"
 import { Pressable } from "react-aria-components"
 
-export default function ContextMenuDemo() {
+export default function MenuDemo() {
   return (
-    <ContextMenuTrigger>
+    <MenuTrigger trigger="contextMenu">
       <Pressable>
         <div
           role="button"
@@ -21,22 +15,22 @@ export default function ContextMenuDemo() {
           <span className="hidden pointer-coarse:inline-block">Long press here</span>
         </div>
       </Pressable>
-      <ContextMenu className="min-w-56">
-        <ContextMenuItem>Back</ContextMenuItem>
-        <ContextMenuItem isDisabled>Forward</ContextMenuItem>
-        <ContextMenuItem>Reload</ContextMenuItem>
-        <ContextMenuSeparator />
-        <ContextMenuItem>Bookmark</ContextMenuItem>
-        <ContextMenuItem>Save as</ContextMenuItem>
-        <ContextMenuItem>
+      <Menu className="min-w-56">
+        <MenuItem>Back</MenuItem>
+        <MenuItem isDisabled>Forward</MenuItem>
+        <MenuItem>Reload</MenuItem>
+        <MenuSeparator />
+        <MenuItem>Bookmark</MenuItem>
+        <MenuItem>Save as</MenuItem>
+        <MenuItem>
           Select all
-          <ContextMenuShortcut>⌘A</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuSeparator />
-        <ContextMenuItem>View source</ContextMenuItem>
-        <ContextMenuItem>Inspect Accessibility</ContextMenuItem>
-        <ContextMenuItem>Inspect</ContextMenuItem>
-      </ContextMenu>
-    </ContextMenuTrigger>
+          <MenuShortcut>⌘A</MenuShortcut>
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem>View source</MenuItem>
+        <MenuItem>Inspect Accessibility</MenuItem>
+        <MenuItem>Inspect</MenuItem>
+      </Menu>
+    </MenuTrigger>
   )
 }

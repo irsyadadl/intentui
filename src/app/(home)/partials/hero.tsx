@@ -28,6 +28,7 @@ export function Hero() {
             <Link
               className={buttonStyles({
                 size: "lg",
+                isCircle: true,
                 className: "inset-ring-white/10 shadow-none",
               })}
               href="/docs/getting-started/installation"
@@ -38,6 +39,7 @@ export function Hero() {
             <Link
               className={buttonStyles({
                 size: "lg",
+                isCircle: true,
                 intent: "secondary",
                 className: "shadow-none",
               })}

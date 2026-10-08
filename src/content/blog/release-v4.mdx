@@ -38,8 +38,8 @@ In v3, names like `Modal` and `Menu` referred to the wrapper, while `ModalConten
 | Menu content | `MenuContent` | `Menu` |
 | Popover state | `Popover` | `isOpen`, `onOpenChange`, and `triggerRef` |
 | Popover content | `PopoverContent` | `Popover` |
-| Context menu wrapper | `ContextMenu` | `ContextMenuTrigger` |
-| Context menu content | `ContextMenuContent` | `ContextMenu` |
+| Context menu wrapper | `ContextMenu` | `MenuTrigger trigger="contextMenu"` |
+| Context menu content | `ContextMenuContent` | `Menu` |
 
 The old `ModalTrigger`, `SheetTrigger`, `PopoverTrigger`, and `MenuTrigger` button components are no longer used as buttons. Use `Button` inside the new trigger wrapper for dialogs, sheets, and menus. For popovers, use a custom button with controlled state and a trigger ref. Move button props such as `intent`, `className`, and `isDisabled` to that button.
 
@@ -210,7 +210,7 @@ Read the [Menu documentation](/docs/components/collections/menu) for selection, 
 
 ## Popover and context menu
 
-Popover uses a custom trigger with controlled state. Context menu uses a trigger wrapper.
+Popover uses a custom trigger with controlled state. Context menu uses `MenuTrigger` with `trigger="contextMenu"`.
 
 **Popover: v3 → v4**
 
@@ -253,15 +253,44 @@ const triggerRef = useRef<HTMLButtonElement>(null)
 </ContextMenu>
 
 // After
-<ContextMenuTrigger>
+import { Menu, MenuItem, MenuTrigger } from "@/components/ui/menu"
+
+<MenuTrigger trigger="contextMenu">
   <Button intent="outline">Right-click here</Button>
-  <ContextMenu>
-    <ContextMenuItem id="edit">Edit</ContextMenuItem>
-  </ContextMenu>
-</ContextMenuTrigger>
+  <Menu>
+    <MenuItem id="edit">Edit</MenuItem>
+  </Menu>
+</MenuTrigger>
 ```
 
-Update the imports from `@/components/ui/popover` and `@/components/ui/context-menu` along with the JSX. See the [Popover](/docs/components/overlays/popover) and [Context Menu](/docs/components/controls/context-menu) documentation for full examples.
+Update the imports from `@/components/ui/popover` and `@/components/ui/menu` along with the JSX. See the [Popover](/docs/components/overlays/popover) and [Context Menu](/docs/components/controls/context-menu) documentation for full examples.
+
+## Card spacing
+
+Card now uses `--card-spacing` instead of `--gutter` for its padding and gaps. Rename custom spacing overrides on `Card` and styles that read the card's spacing.
+
+```tsx
+// Before (v3)
+<Card className="[--gutter:--spacing(4)]" />
+
+// After (v4)
+<Card className="[--card-spacing:--spacing(4)]" />
+```
+
+The default remains `--spacing(6)`. Table still uses `--gutter`; when a table sits inside a card, set its gutter explicitly to the card spacing.
+
+```tsx
+<Card>
+  <CardHeader title="Users" />
+  <CardContent>
+    <Table bleed className="[--gutter:var(--card-spacing)]" aria-label="Users">
+      {/* Table header and body */}
+    </Table>
+  </CardContent>
+</Card>
+```
+
+See [Card](/docs/components/surfaces/card#spacing) for spacing customization.
 
 ## Explicit theme token names
 
@@ -362,7 +391,7 @@ Only the token names change here. Tailwind utility prefixes such as `bg-` stay t
 - Update your local component source and theme CSS together, preserving any customizations.
 - Replace removed `Drawer` imports and installations with `Sheet`, and removed `Modal` imports and installations with `Dialog`.
 - Remove local `PopoverTrigger` imports and use a custom trigger with controlled state and a trigger ref.
-- Replace the old overlay wrappers with `DialogTrigger`, `SheetTrigger`, `MenuTrigger`, or `ContextMenuTrigger` as appropriate. Use controlled state and a trigger ref for popovers.
+- Replace the old overlay wrappers with `DialogTrigger`, `SheetTrigger`, `MenuTrigger` as appropriate. Set `trigger="contextMenu"` for context menus. Use controlled state and a trigger ref for popovers.
 - Replace opening button components with `Button` inside the trigger wrapper.
 - Rename `ModalContent` to `Dialog` and import it from `@/components/ui/dialog`. Rename `SheetContent`, `PopoverContent`, `MenuContent`, and `ContextMenuContent` to their component names.
 - Rename `SheetContentProps` to `SheetProps` and `PopoverContentProps` to `PopoverProps` in custom wrappers.

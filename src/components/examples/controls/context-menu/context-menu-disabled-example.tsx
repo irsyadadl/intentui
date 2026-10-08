@@ -1,17 +1,11 @@
 "use client"
 
-import {
-  ContextMenuTrigger,
-  ContextMenu,
-  ContextMenuItem,
-  ContextMenuLabel,
-  ContextMenuSeparator,
-} from "@/components/ui/context-menu"
+import { MenuTrigger, Menu, MenuItem, MenuLabel, MenuSeparator } from "@/components/ui/menu"
 import { Pressable } from "react-aria-components"
 
-export default function ContextMenuDisabledDemo() {
+export default function MenuDisabledDemo() {
   return (
-    <ContextMenuTrigger>
+    <MenuTrigger trigger="contextMenu">
       <Pressable>
         <div
           role="button"
@@ -21,27 +15,27 @@ export default function ContextMenuDisabledDemo() {
           <span className="hidden pointer-coarse:inline-block">Long press here</span>
         </div>
       </Pressable>
-      <ContextMenu>
-        <ContextMenuItem>
-          <ContextMenuLabel>Copy</ContextMenuLabel>
-        </ContextMenuItem>
-        <ContextMenuItem isDisabled>
-          <ContextMenuLabel>Paste</ContextMenuLabel>
-        </ContextMenuItem>
-        <ContextMenuItem>
-          <ContextMenuLabel>Convert</ContextMenuLabel>
-        </ContextMenuItem>
-        <ContextMenuSeparator />
-        <ContextMenuItem isDisabled>
-          <ContextMenuLabel>Rename</ContextMenuLabel>
-        </ContextMenuItem>
-        <ContextMenuItem>
-          <ContextMenuLabel>Refactor</ContextMenuLabel>
-        </ContextMenuItem>
-        <ContextMenuItem>
-          <ContextMenuLabel>Generate</ContextMenuLabel>
-        </ContextMenuItem>
-      </ContextMenu>
-    </ContextMenuTrigger>
+      <Menu>
+        <MenuItem>
+          <MenuLabel>Copy</MenuLabel>
+        </MenuItem>
+        <MenuItem isDisabled>
+          <MenuLabel>Paste</MenuLabel>
+        </MenuItem>
+        <MenuItem>
+          <MenuLabel>Convert</MenuLabel>
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem isDisabled>
+          <MenuLabel>Rename</MenuLabel>
+        </MenuItem>
+        <MenuItem>
+          <MenuLabel>Refactor</MenuLabel>
+        </MenuItem>
+        <MenuItem>
+          <MenuLabel>Generate</MenuLabel>
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   )
 }

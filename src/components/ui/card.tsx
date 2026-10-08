@@ -5,7 +5,7 @@ export function Card({ className, ...props }: React.HTMLAttributes<HTMLDivElemen
     <div
       data-slot="card"
       className={cn(
-        "group/card flex flex-col gap-(--gutter) rounded-lg bg-card text-card-foreground border py-(--gutter) shadow-xs [--gutter:--spacing(6)] has-[table]:overflow-hidden has-[table]:not-has-data-[slot=card-footer]:pb-0 **:data-[slot=table-header]:bg-muted/50 has-[table]:**:data-[slot=card-footer]:pt-0 **:[table]:overflow-hidden",
+        "group/card flex flex-col gap-(--card-spacing) rounded-lg bg-card text-card-foreground border py-(--card-spacing) shadow-xs [--card-spacing:--spacing(6)] has-[table]:overflow-hidden has-[table]:not-has-data-[slot=card-footer]:pb-0 **:data-[slot=table-header]:bg-muted/50 has-[table]:**:data-[slot=card-footer]:pt-0 **:[table]:overflow-hidden",
         className
       )}
       {...props}
@@ -23,7 +23,7 @@ export function CardHeader({ className, title, description, children, ...props }
     <div
       data-slot="card-header"
       className={cn(
-        "grid auto-rows-min grid-rows-[auto_auto] items-start gap-1 px-(--gutter) has-data-[slot=card-action]:grid-cols-[1fr_auto]",
+        "grid auto-rows-min grid-rows-[auto_auto] items-start gap-1 px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto]",
         className
       )}
       {...props}
@@ -70,7 +70,7 @@ export function CardContent({ className, ...props }: React.HTMLAttributes<HTMLDi
   return (
     <div
       data-slot="card-content"
-      className={cn("px-(--gutter) has-[table]:border-t", className)}
+      className={cn("px-(--card-spacing) has-[table]:border-t", className)}
       {...props}
     />
   )
@@ -81,7 +81,7 @@ export function CardFooter({ className, ...props }: React.HTMLAttributes<HTMLDiv
     <div
       data-slot="card-footer"
       className={cn(
-        "flex items-center px-(--gutter) group-has-[table]/card:pt-(--gutter) [.border-t]:pt-6",
+        "flex items-center px-(--card-spacing) group-has-[table]/card:pt-(--card-spacing) [.border-t]:pt-6",
         className
       )}
       {...props}

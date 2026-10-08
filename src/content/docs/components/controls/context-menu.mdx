@@ -8,17 +8,13 @@ status: beta
 
 <How toUse="controls/context-menu/context-menu-example" />
 
-Wrap the target and `ContextMenu` content in `ContextMenuTrigger`.
+Wrap the target and `Menu` content in `MenuTrigger` with `trigger="contextMenu"`.
 
 ## Installation
 
 Install the component via the CLI in one command.
 
-<PackageCommand command="npx shadcn@latest add @intentui/context-menu"/>
-
-## Composed components
-
-<Composed components={['menu']}/>
+<PackageCommand command="npx shadcn@latest add @intentui/menu"/>
 
 ## Manual installation
 
@@ -26,21 +22,21 @@ Use this approach if you prefer to install and wire up the component yourself in
 
 <PackageCommand command="npm i react-aria-components @heroicons/react cn"/>
 
-<SourceCode toShow='context-menu' />
+<SourceCode toShow='menu' />
 
 ## Anatomy
 ```
 import {
-  ContextMenuTrigger,
-  ContextMenu,
-  ContextMenuItem,
-  ContextMenuSeparator,
-  ContextMenuShortcut,
-} from '@/components/ui/context-menu'
+  MenuTrigger,
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  MenuShortcut,
+} from '@/components/ui/menu'
 import { Pressable } from 'react-aria-components'
 ```
 ```
-<ContextMenuTrigger>
+<MenuTrigger trigger="contextMenu">
     <Pressable>
       <div
         role="button"
@@ -50,30 +46,30 @@ import { Pressable } from 'react-aria-components'
         <span className="hidden pointer-coarse:inline-block">Long press here</span>
       </div>
     </Pressable>
-    <ContextMenu className="min-w-56">
-      <ContextMenuItem>Back</ContextMenuItem>
-      <ContextMenuItem isDisabled>Forward</ContextMenuItem>
-      <ContextMenuItem>Reload</ContextMenuItem>
-      <ContextMenuSeparator />
-      <ContextMenuItem>Bookmark</ContextMenuItem>
-      <ContextMenuItem>Save as</ContextMenuItem>
-      <ContextMenuItem>
+    <Menu className="min-w-56">
+      <MenuItem>Back</MenuItem>
+      <MenuItem isDisabled>Forward</MenuItem>
+      <MenuItem>Reload</MenuItem>
+      <MenuSeparator />
+      <MenuItem>Bookmark</MenuItem>
+      <MenuItem>Save as</MenuItem>
+      <MenuItem>
         Select all
-        <ContextMenuShortcut>⌘A</ContextMenuShortcut>
-      </ContextMenuItem>
-      <ContextMenuSeparator />
-      <ContextMenuItem>View source</ContextMenuItem>
-      <ContextMenuItem>Inspect Accessibility</ContextMenuItem>
-      <ContextMenuItem>Inspect</ContextMenuItem>
-    </ContextMenu>
-  </ContextMenuTrigger>
+        <MenuShortcut>⌘A</MenuShortcut>
+      </MenuItem>
+      <MenuSeparator />
+      <MenuItem>View source</MenuItem>
+      <MenuItem>Inspect Accessibility</MenuItem>
+      <MenuItem>Inspect</MenuItem>
+    </Menu>
+  </MenuTrigger>
 ```
 
 ## Examples
 
 ### Item description
 
-Add supporting details to a menu item with `ContextMenuDescription`.
+Add supporting details to a menu item with `MenuDescription`.
 
 <How toUse="controls/context-menu/context-menu-detail-description-example" />
 
@@ -91,13 +87,13 @@ Add icons to make actions easier to identify.
 
 ### Separator
 
-Use `ContextMenuSeparator` to divide related groups of actions.
+Use `MenuSeparator` to divide related groups of actions.
 
 <How toUse="controls/context-menu/context-menu-separator-example" />
 
 ### Submenu
 
-Nest another menu with `ContextMenuSub`.
+Nest another menu with `MenuSubMenu`.
 
 <How toUse="controls/context-menu/context-menu-sub-example" />
 
@@ -107,107 +103,20 @@ Disable individual items with `isDisabled`.
 
 <How toUse="controls/context-menu/context-menu-disabled-example" />
 
-You can also disable multiple items from `ContextMenu` with `disabledKeys`.
+You can also disable multiple items from `Menu` with `disabledKeys`.
 
 ```tsx
-<ContextMenu disabledKeys={['gsu']} />
+<Menu disabledKeys={['gsu']} />
 ```
 
 ## Component API
 
-### ContextMenuTrigger
+Context menus use the same components and props as [Menu](/docs/components/collections/menu#component-api).
 
-<ApiParameters>
-  <ApiDescription>
-    **ContextMenuTrigger** extends the React Aria Components [**`<MenuTrigger>`**](https://react-aria.adobe.com/Menu#api) component and opens its menu at the pointer position.
-  </ApiDescription>
-  <ApiParameter name="className" type='string' />
-  <ApiParameter name="onOpenChange" type='(isOpen: boolean) => void' />
-</ApiParameters>
+Set `trigger="contextMenu"` on `MenuTrigger` to open the menu on right click or long press. Use `MenuSubMenu` for nested menus. Configure positioning through the `Menu` component's `placement` and `popover` props.
 
-### ContextMenu
-
-<ApiParameters>
-  <ApiDescription>
-    **ContextMenu** extends the Intent UI [**`<Menu>`**](/docs/components/collections/menu#menu) component.
-  </ApiDescription>
-  <ApiParameter name="className" type='string' />
-  <ApiParameter name="placement" type='Placement' defaultValue='"bottom start"' />
-  <ApiParameter name="offset" type='number' defaultValue='4' />
-  <ApiParameter name="crossOffset" type='number' defaultValue='0' />
-</ApiParameters>
-
-### ContextMenuSub
-
-<ApiParameters>
-  <ApiDescription>
-    **ContextMenuSub** extends the Intent UI [**`<MenuSubMenu>`**](/docs/components/collections/menu#menusubmenu) component.
-  </ApiDescription>
-  <ApiParameter name="delay" type='number' defaultValue='0' />
-</ApiParameters>
-
-### ContextMenuHeader
-
-<ApiParameters>
-  <ApiDescription>
-    **ContextMenuHeader** extends the Intent UI [**`<MenuHeader>`**](/docs/components/collections/menu#menuheader) component.
-  </ApiDescription>
-  <ApiParameter name="className" type='string' />
-  <ApiParameter name="separator" type='boolean' defaultValue='false' />
-</ApiParameters>
-
-### ContextMenuItem
-
-<ApiParameters>
-  <ApiDescription>
-    **ContextMenuItem** extends the Intent UI [**`<MenuItem>`**](/docs/components/collections/menu#menuitem) component.
-  </ApiDescription>
-  <ApiParameter name="className" type='string' />
-  <ApiParameter name="intent" type='"danger" | "warning"' />
-</ApiParameters>
-
-### ContextMenuLabel
-
-<ApiParameters>
-  <ApiDescription>
-    **ContextMenuLabel** extends the Intent UI [**`<MenuLabel>`**](/docs/components/collections/menu#menulabel) component.
-  </ApiDescription>
-  <ApiParameter name="className" type='string' />
-</ApiParameters>
-
-### ContextMenuDescription
-
-<ApiParameters>
-  <ApiDescription>
-    **ContextMenuDescription** extends the Intent UI [**`<MenuDescription>`**](/docs/components/collections/menu#menudescription) component.
-  </ApiDescription>
-  <ApiParameter name="className" type='string' />
-</ApiParameters>
-
-### ContextMenuSection
-
-<ApiParameters>
-  <ApiDescription>
-    **ContextMenuSection** extends the Intent UI [**`<MenuSection>`**](/docs/components/collections/menu#menusection) component.
-  </ApiDescription>
-  <ApiParameter name="className" type='string' />
-  <ApiParameter name="label" type='string' />
-</ApiParameters>
-
-### ContextMenuSeparator
-
-<ApiParameters>
-  <ApiDescription>
-    **ContextMenuSeparator** extends the Intent UI [**`<MenuSeparator>`**](/docs/components/collections/menu#menuseparator) component.
-  </ApiDescription>
-  <ApiParameter name="className" type='string' />
-</ApiParameters>
-
-### ContextMenuShortcut
-
-<ApiParameters>
-  <ApiDescription>
-    **ContextMenuShortcut** extends the Intent UI [**`<MenuShortcut>`**](/docs/components/collections/menu#menushortcut) component.
-  </ApiDescription>
-  <ApiParameter name="className" type='string' />
-</ApiParameters>
+```tsx
+<Menu placement="bottom start" popover={{ offset: 4, crossOffset: 0 }}>
+  <MenuItem>Open</MenuItem>
+</Menu>
+```

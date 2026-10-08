@@ -10,18 +10,18 @@ import {
 } from "@heroicons/react/24/outline"
 
 import {
-  ContextMenuTrigger,
-  ContextMenu,
-  ContextMenuItem,
-  ContextMenuLabel,
-  ContextMenuSeparator,
-  ContextMenuShortcut,
-} from "@/components/ui/context-menu"
+  MenuTrigger,
+  Menu,
+  MenuItem,
+  MenuLabel,
+  MenuSeparator,
+  MenuShortcut,
+} from "@/components/ui/menu"
 import { Pressable } from "react-aria-components"
 
-export default function ContextMenuWithIconDemo() {
+export default function MenuWithIconDemo() {
   return (
-    <ContextMenuTrigger>
+    <MenuTrigger trigger="contextMenu">
       <Pressable>
         <div
           role="button"
@@ -31,41 +31,41 @@ export default function ContextMenuWithIconDemo() {
           <span className="hidden pointer-coarse:inline-block">Long press here</span>
         </div>
       </Pressable>
-      <ContextMenu className="min-w-52">
-        <ContextMenuItem>
+      <Menu className="min-w-52">
+        <MenuItem>
           <FolderOpenIcon />
-          <ContextMenuLabel>Open Folder</ContextMenuLabel>
-        </ContextMenuItem>
-        <ContextMenuItem>
+          <MenuLabel>Open Folder</MenuLabel>
+        </MenuItem>
+        <MenuItem>
           <DocumentIcon />
-          <ContextMenuLabel>Open File</ContextMenuLabel>
-        </ContextMenuItem>
-        <ContextMenuItem>
-          <ContextMenuLabel>Open with...</ContextMenuLabel>
-        </ContextMenuItem>
-        <ContextMenuSeparator />
-        <ContextMenuItem>
+          <MenuLabel>Open File</MenuLabel>
+        </MenuItem>
+        <MenuItem>
+          <MenuLabel>Open with...</MenuLabel>
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem>
           <PencilSquareIcon />
-          <ContextMenuLabel>Rename</ContextMenuLabel>
-        </ContextMenuItem>
-        <ContextMenuItem>
+          <MenuLabel>Rename</MenuLabel>
+        </MenuItem>
+        <MenuItem>
           <Square2StackIcon />
-          <ContextMenuLabel>Duplicate</ContextMenuLabel>
-        </ContextMenuItem>
-        <ContextMenuItem>
-          <ContextMenuLabel>Share</ContextMenuLabel>
-        </ContextMenuItem>
-        <ContextMenuSeparator />
-        <ContextMenuItem>
+          <MenuLabel>Duplicate</MenuLabel>
+        </MenuItem>
+        <MenuItem>
+          <MenuLabel>Share</MenuLabel>
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem>
           <TrashIcon />
-          <ContextMenuLabel>Delete</ContextMenuLabel>
-          <ContextMenuShortcut>⌘←</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuItem>
+          <MenuLabel>Delete</MenuLabel>
+          <MenuShortcut>⌘←</MenuShortcut>
+        </MenuItem>
+        <MenuItem>
           <ArchiveBoxIcon />
-          <ContextMenuLabel>Bin</ContextMenuLabel>
-        </ContextMenuItem>
-      </ContextMenu>
-    </ContextMenuTrigger>
+          <MenuLabel>Bin</MenuLabel>
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   )
 }

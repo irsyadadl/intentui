@@ -1,16 +1,11 @@
 "use client"
 
-import {
-  ContextMenuTrigger,
-  ContextMenu,
-  ContextMenuItem,
-  ContextMenuSeparator,
-} from "@/components/ui/context-menu"
+import { MenuTrigger, Menu, MenuItem, MenuSeparator } from "@/components/ui/menu"
 import { Pressable } from "react-aria-components"
 
-export default function ContextMenuDangerDemo() {
+export default function MenuDangerDemo() {
   return (
-    <ContextMenuTrigger>
+    <MenuTrigger trigger="contextMenu">
       <Pressable>
         <div
           role="button"
@@ -20,14 +15,14 @@ export default function ContextMenuDangerDemo() {
           <span className="hidden pointer-coarse:inline-block">Long press here</span>
         </div>
       </Pressable>
-      <ContextMenu>
-        <ContextMenuItem>Open</ContextMenuItem>
-        <ContextMenuItem>Rename</ContextMenuItem>
-        <ContextMenuItem>Duplicate</ContextMenuItem>
-        <ContextMenuItem>Share</ContextMenuItem>
-        <ContextMenuSeparator />
-        <ContextMenuItem intent="danger">Delete</ContextMenuItem>
-      </ContextMenu>
-    </ContextMenuTrigger>
+      <Menu>
+        <MenuItem>Open</MenuItem>
+        <MenuItem>Rename</MenuItem>
+        <MenuItem>Duplicate</MenuItem>
+        <MenuItem>Share</MenuItem>
+        <MenuSeparator />
+        <MenuItem intent="danger">Delete</MenuItem>
+      </Menu>
+    </MenuTrigger>
   )
 }

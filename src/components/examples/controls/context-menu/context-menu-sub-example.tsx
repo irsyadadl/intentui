@@ -3,18 +3,18 @@
 import { Pressable } from "react-aria-components"
 
 import {
-  ContextMenuTrigger,
-  ContextMenu,
-  ContextMenuItem,
-  ContextMenuSection,
-  ContextMenuSeparator,
-  ContextMenuShortcut,
-  ContextMenuSub,
-} from "@/components/ui/context-menu"
+  MenuTrigger,
+  Menu,
+  MenuItem,
+  MenuSection,
+  MenuSeparator,
+  MenuShortcut,
+  MenuSubMenu,
+} from "@/components/ui/menu"
 
-export default function ContextMenuSubExample() {
+export default function MenuSubMenuExample() {
   return (
-    <ContextMenuTrigger>
+    <MenuTrigger trigger="contextMenu">
       <Pressable>
         <div
           role="button"
@@ -24,34 +24,34 @@ export default function ContextMenuSubExample() {
           <span className="hidden pointer-coarse:inline-block">Long press here</span>
         </div>
       </Pressable>
-      <ContextMenu>
-        <ContextMenuItem>
+      <Menu>
+        <MenuItem>
           Copy
-          <ContextMenuShortcut>⌘C</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuItem>
+          <MenuShortcut>⌘C</MenuShortcut>
+        </MenuItem>
+        <MenuItem>
           Cut
-          <ContextMenuShortcut>⌘X</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuSub>
-          <ContextMenuItem>More Tools</ContextMenuItem>
-          <ContextMenu>
-            <ContextMenuSection>
-              <ContextMenuItem>Save Page...</ContextMenuItem>
-              <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-              <ContextMenuItem>Name Window...</ContextMenuItem>
-            </ContextMenuSection>
-            <ContextMenuSeparator />
-            <ContextMenuSection>
-              <ContextMenuItem>Developer Tools</ContextMenuItem>
-            </ContextMenuSection>
-            <ContextMenuSeparator />
-            <ContextMenuSection>
-              <ContextMenuItem>Delete</ContextMenuItem>
-            </ContextMenuSection>
-          </ContextMenu>
-        </ContextMenuSub>
-      </ContextMenu>
-    </ContextMenuTrigger>
+          <MenuShortcut>⌘X</MenuShortcut>
+        </MenuItem>
+        <MenuSubMenu>
+          <MenuItem>More Tools</MenuItem>
+          <Menu>
+            <MenuSection>
+              <MenuItem>Save Page...</MenuItem>
+              <MenuItem>Create Shortcut...</MenuItem>
+              <MenuItem>Name Window...</MenuItem>
+            </MenuSection>
+            <MenuSeparator />
+            <MenuSection>
+              <MenuItem>Developer Tools</MenuItem>
+            </MenuSection>
+            <MenuSeparator />
+            <MenuSection>
+              <MenuItem>Delete</MenuItem>
+            </MenuSection>
+          </Menu>
+        </MenuSubMenu>
+      </Menu>
+    </MenuTrigger>
   )
 }
