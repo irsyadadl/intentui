@@ -333,3 +333,29 @@
   outline: 1px solid var(--primary);
   transform: translateZ(0);
 }
+
+@theme static {
+  --animate-sheet-backdrop: sheet-backdrop 300ms linear both;
+  --animate-sheet-scale-back: sheet-scale-back 300ms ease-out both;
+
+  @keyframes sheet-backdrop {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes sheet-scale-back {
+    to {
+      transform: translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95);
+    }
+  }
+}
+
+@supports not (animation-timeline: view()) {
+  .react-aria-sheet[data-has-descendants] {
+    transform: translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95);
+  }
+}

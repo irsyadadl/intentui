@@ -1,5 +1,53 @@
 [
   {
+    "name": "Sheet snap points example",
+    "component": "sheet-snap-points-example.tsx",
+    "url": "/sheet",
+    "type": "example",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 11,
+    "deletions": 6,
+    "date": "2026-10-08"
+  },
+  {
+    "name": "Sheet stacking example",
+    "component": "sheet-stacking-example.tsx",
+    "url": "/sheet",
+    "type": "example",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 4,
+    "deletions": 4,
+    "date": "2026-10-08"
+  },
+  {
+    "name": "Sheet",
+    "component": "sheet.tsx",
+    "url": "/sheet",
+    "type": "component",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 6,
+    "deletions": 6,
+    "date": "2026-10-08"
+  },
+  {
+    "name": "Tabs",
+    "component": "tabs.tsx",
+    "url": "/tabs",
+    "type": "component",
+    "category": "navigation",
+    "kind": "improvement",
+    "description": null,
+    "additions": 16,
+    "deletions": 6,
+    "date": "2026-10-08"
+  },
+  {
     "name": "Sheet controlled example",
     "component": "sheet-controlled-example.tsx",
     "url": "/sheet",
@@ -96,18 +144,6 @@
     "date": "2026-10-08"
   },
   {
-    "name": "Sheet",
-    "component": "sheet.tsx",
-    "url": "/sheet",
-    "type": "component",
-    "category": "overlays",
-    "kind": "improvement",
-    "description": null,
-    "additions": 60,
-    "deletions": 37,
-    "date": "2026-10-08"
-  },
-  {
     "name": "Sidebar",
     "component": "sidebar.tsx",
     "url": "/sidebar",
@@ -117,30 +153,6 @@
     "description": null,
     "additions": 1,
     "deletions": 1,
-    "date": "2026-10-08"
-  },
-  {
-    "name": "Sheet snap points example",
-    "component": "sheet-snap-points-example.tsx",
-    "url": "/sheet",
-    "type": "example",
-    "category": "overlays",
-    "kind": "new",
-    "description": null,
-    "additions": 0,
-    "deletions": 0,
-    "date": "2026-10-08"
-  },
-  {
-    "name": "Sheet stacking example",
-    "component": "sheet-stacking-example.tsx",
-    "url": "/sheet",
-    "type": "example",
-    "category": "overlays",
-    "kind": "new",
-    "description": null,
-    "additions": 0,
-    "deletions": 0,
     "date": "2026-10-08"
   },
   {

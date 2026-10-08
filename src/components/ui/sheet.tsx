@@ -35,12 +35,12 @@ interface SheetContentProps
 }
 
 const positionVariants = {
-  top: "[--sheet-stack-y:24px] w-full rounded-b-2xl border-b data-[float=true]:mx-2 data-[float=true]:mt-2 data-[float=true]:w-[calc(100%-1rem)] data-[float=true]:border-b-0",
+  top: "[--sheet-stack-y:8px] w-full rounded-b-2xl border-b data-[float=true]:mx-2 data-[float=true]:mt-2 data-[float=true]:w-[calc(100%-1rem)] data-[float=true]:border-b-0",
   bottom:
-    "[--sheet-stack-y:-24px] w-full rounded-t-2xl border-t data-[float=true]:mx-2 data-[float=true]:mb-2 data-[float=true]:w-[calc(100%-1rem)] data-[float=true]:border-t-0",
-  left: "[--sheet-stack-x:24px] h-dvh w-3/4 border-r sm:max-w-80 data-[float=true]:my-2 data-[float=true]:ml-2 data-[float=true]:h-[calc(100dvh-1rem)] data-[float=true]:border-r-0",
+    "[--sheet-stack-y:-8px] w-full rounded-t-2xl border-t data-[float=true]:mx-2 data-[float=true]:mb-2 data-[float=true]:w-[calc(100%-1rem)] data-[float=true]:border-t-0",
+  left: "[--sheet-stack-x:8px] h-dvh w-3/4 border-r sm:max-w-80 data-[float=true]:my-2 data-[float=true]:ml-2 data-[float=true]:h-[calc(100dvh-1rem)] data-[float=true]:border-r-0",
   right:
-    "[--sheet-stack-x:-24px] h-dvh w-3/4 border-l sm:max-w-80 data-[float=true]:my-2 data-[float=true]:mr-2 data-[float=true]:h-[calc(100dvh-1rem)] data-[float=true]:border-l-0",
+    "[--sheet-stack-x:-8px] h-dvh w-3/4 border-l sm:max-w-80 data-[float=true]:my-2 data-[float=true]:mr-2 data-[float=true]:h-[calc(100dvh-1rem)] data-[float=true]:border-l-0",
   center: "w-[calc(100%-2rem)] max-w-lg rounded-2xl border data-[float=true]:border-0",
 }
 
@@ -81,11 +81,11 @@ const SheetContent = ({
     >
       <SheetBackdrop
         swipeAnimation="sheet-backdrop"
-        className="bg-black/15 entering:animate-in entering:fade-in exiting:animate-out exiting:fade-out entering:duration-300 exiting:duration-300"
+        className="data-[stack-index='0']:bg-black/15"
         swipeAnimationRange={snapPoints ? { start: snapPoints.length - 1 } : undefined}
       />
       <SheetPrimitive
-        stackAnimation="sheet-stack"
+        stackAnimation="sheet-scale-back"
         data-float={isFloat}
         className={cx(
           "react-aria-sheet origin-top transition-transform motion-reduce:transition-none grid gap-4 [--sheet-gap:0px] data-[float=true]:[--sheet-gap:16px] border-fg/20 bg-overlay text-overlay-fg shadow-lg dark:border-border",
