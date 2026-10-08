@@ -18,7 +18,7 @@ export default function SheetControlledDemo() {
   return (
     <SheetTrigger>
       <Button intent="outline">Notifications</Button>
-      <Sheet aria-label="Notifications">
+      <Sheet position="right" aria-label="Notifications">
         <SheetHeader>
           <SheetTitle>Manage Notifications</SheetTitle>
           <SheetDescription>Adjust your notification settings below.</SheetDescription>

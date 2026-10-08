@@ -8,6 +8,8 @@ import PopoverCustomClose from "@/components/examples/overlays/popover/popover-c
 import PopoverTriggerDemo from "@/components/examples/overlays/popover/popover-trigger-example"
 import SheetDemo from "@/components/examples/overlays/sheet/sheet-example"
 
+import SheetStackingExample from "@/components/examples/overlays/sheet/sheet-stacking-example"
+
 describe("overlay migration", () => {
   it("opens Dialog, closes via its render prop, and restores focus", async () => {
     const user = userEvent.setup()
@@ -71,5 +73,28 @@ describe("overlay migration", () => {
     expect(screen.getAllByRole("dialog")).toHaveLength(1)
     await user.keyboard("{Escape}")
     await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument())
+  })
+})
+
+describe("stacked sheets", () => {
+  it("closes the top sheet and returns focus to the parent trigger", async () => {
+    const user = userEvent.setup()
+    render(<SheetStackingExample />)
+    await user.click(screen.getByRole("button", { name: "Workspace settings" }))
+    const teamTrigger = screen.getByRole("button", { name: "Team access" })
+    await user.click(teamTrigger)
+    expect(screen.getByRole("dialog", { name: "Team access" })).toBeInTheDocument()
+    await user.click(screen.getByRole("button", { name: "Member permissions" }))
+    expect(screen.getByRole("dialog", { name: "Member permissions" })).toBeInTheDocument()
+    await user.click(screen.getByRole("button", { name: "Back to team access" }))
+    await waitFor(() =>
+      expect(screen.queryByRole("dialog", { name: "Member permissions" })).not.toBeInTheDocument()
+    )
+    expect(screen.getByRole("dialog", { name: "Team access" })).toBeInTheDocument()
+    await user.click(screen.getByRole("button", { name: "Back to workspace" }))
+    await waitFor(() =>
+      expect(screen.queryByRole("dialog", { name: "Team access" })).not.toBeInTheDocument()
+    )
+    await waitFor(() => expect(teamTrigger).toHaveFocus())
   })
 })

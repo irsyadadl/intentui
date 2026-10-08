@@ -384,6 +384,29 @@ const buildComponentItem = async (absPath: string) => {
     dependencies: deps.length ? deps : undefined,
     registryDependencies: regDeps.length ? regDeps : undefined,
     files,
+    ...(name === "sheet"
+      ? {
+          css: {
+            "@keyframes sheet-stack": {
+              from: { transform: "translate(0, 0) scale(1)" },
+              to: {
+                transform:
+                  "translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95)",
+              },
+            },
+            "@keyframes sheet-backdrop": {
+              from: { opacity: "0" },
+              to: { opacity: "1" },
+            },
+            "@supports not (animation-timeline: view())": {
+              ".react-aria-sheet[data-has-descendants]": {
+                transform:
+                  "translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95)",
+              },
+            },
+          },
+        }
+      : {}),
   }
   return registryItemSchema.parse(raw)
 }

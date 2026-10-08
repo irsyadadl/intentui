@@ -15,7 +15,7 @@ export default function SheetFloatDemo() {
   return (
     <SheetTrigger>
       <Button intent="outline">Float</Button>
-      <Sheet isFloat={false}>
+      <Sheet position="right" isFloat={false}>
         <SheetHeader>
           <SheetTitle>Not Floated</SheetTitle>
           <SheetDescription>This sheet is not floated.</SheetDescription>

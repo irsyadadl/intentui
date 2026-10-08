@@ -130,7 +130,7 @@ export default function SheetMenuDemo() {
         <PrimitiveButton aria-label="Open menu">
           <Avatar src="https://intentui.com/images/avatar/cobain.jpg" alt="irsyadadl" />
         </PrimitiveButton>
-        <Sheet isFloat={false} closeButton={false}>
+        <Sheet position="right" isFloat={false} closeButton={false}>
           <SheetHeader className="flex flex-row gap-x-3.5 border-b sm:gap-x-3 sm:px-4 sm:pt-3 sm:pb-2">
             <Avatar src="https://intentui.com/images/avatar/cobain.jpg" isSquare alt="cobain" />
             <div>
