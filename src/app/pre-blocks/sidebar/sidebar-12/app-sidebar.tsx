@@ -66,7 +66,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
               <SidebarItem tooltip={item.label} key={index} isCurrent={item.isCurrent} href="#">
                 {item.icon}
                 <SidebarLabel>{item.label}</SidebarLabel>
-                <SidebarBadge>{item.badge}</SidebarBadge>
+                {item.badge != null && <SidebarBadge>{item.badge}</SidebarBadge>}
               </SidebarItem>
             ))}
           </SidebarSection>
