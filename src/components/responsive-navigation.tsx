@@ -99,7 +99,6 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
           <Sheet
             position="right"
             isFloat={false}
-            aria-label="Navigation"
             className="w-[min(22rem,90vw)] sm:max-w-88 **:data-[slot=dialog]:h-full **:data-[slot=dialog]:max-h-full [--visual-viewport-vertical-padding:0px]"
           >
             <SheetHeader>

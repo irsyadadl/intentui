@@ -21,7 +21,7 @@ Install the component via the CLI in one command.
 
 Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
 
-<PackageCommand command="npm i react-aria-components@^1.22.0 cn tailwind-variants"/>
+<PackageCommand command="npm i react-aria-components cn tailwind-variants"/>
 
 <SourceCode toShow='sheet' />
 
@@ -109,9 +109,13 @@ Set `snapPoints` to control how much of the sheet is visible at each stop. Numbe
 
 ### Prevent dismissal
 
-Set `preventDismissal` to prevent closing by swiping, pressing Escape, or interacting outside. A `SheetClose` action can still close the sheet. This defaults to `true` for `role="alertdialog"`.
+Set `preventDismissal` to prevent closing by swiping, pressing Escape, or interacting outside. A `SheetClose` action can still close the sheet. This defaults to `false`.
+
+<How toUse="overlays/sheet/sheet-prevent-dismissal-example" />
 
 ### Custom close
+
+Sheets do not include a built-in close icon. Use `SheetClose` for an explicit close action. Dismissible sheets at `bottom` show a drag handle above the sheet content.
 You can customize the close button by using the `SheetClose` component. This example demonstrates how to use the `SheetClose` component to create a custom close button.
 
 <How toUse="overlays/sheet/sheet-custom-close-example" />
@@ -141,11 +145,10 @@ You can use the `SheetBody` component to make the sheet sticky.
     **Sheet** extends the React Aria Components [**`<SheetOverlay>`**](https://react-aria.adobe.com/Sheet#api) component.
   </ApiDescription>
   <ApiParameter name="className" type='string' />
-  <ApiParameter name="closeButton" type='boolean' defaultValue='true' />
   <ApiParameter name="isFloat" type='boolean' defaultValue='true' />
   <ApiParameter name="overlay" type='Omit<SheetOverlayProps, "children" | "position">' />
   <ApiParameter name="snapPoints" type='Array<number | string>' />
-  <ApiParameter name="preventDismissal" type='boolean' defaultValue='false (true for alertdialog)' />
+  <ApiParameter name="preventDismissal" type='boolean' defaultValue='false' />
   <ApiParameter name="position" type='"bottom" | "top" | "left" | "right" | "start" | "end" | "center"' defaultValue='bottom' />
 </ApiParameters>
 

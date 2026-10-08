@@ -7,10 +7,22 @@ import DialogControlledDemo from "@/components/examples/overlays/dialog/dialog-c
 import PopoverCustomClose from "@/components/examples/overlays/popover/popover-custom-close"
 import PopoverTriggerDemo from "@/components/examples/overlays/popover/popover-trigger-example"
 import SheetDemo from "@/components/examples/overlays/sheet/sheet-example"
+import SheetPreventDismissalExample from "@/components/examples/overlays/sheet/sheet-prevent-dismissal-example"
 
 import SheetStackingExample from "@/components/examples/overlays/sheet/sheet-stacking-example"
 
 describe("overlay migration", () => {
+  it("keeps a non-dismissable Sheet open until its close action is pressed", async () => {
+    const user = userEvent.setup()
+    render(<SheetPreventDismissalExample />)
+    await user.click(screen.getByRole("button", { name: "Review changes" }))
+    const dialog = await screen.findByRole("dialog", { name: "Review changes" })
+    await user.keyboard("{Escape}")
+    await user.click(document.body)
+    expect(dialog).toBeInTheDocument()
+    await user.click(screen.getByRole("button", { name: "Done" }))
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument())
+  })
   it("opens Dialog, closes via its render prop, and restores focus", async () => {
     const user = userEvent.setup()
     render(<DialogDemo />)

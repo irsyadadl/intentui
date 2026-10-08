@@ -31,11 +31,7 @@ export default function SheetSnapPointsExample() {
   return (
     <SheetTrigger>
       <Button intent="outline">View itinerary</Button>
-      <Sheet
-        position="bottom"
-        snapPoints={["50%", "100%"]}
-        className="group/itinerary mx-auto h-[80dvh] max-w-lg"
-      >
+      <Sheet snapPoints={["50%", "100%"]} className="group/itinerary mx-auto h-[80dvh] max-w-lg">
         <SheetHeader
           title="Team day itinerary"
           description="Swipe up to see the full schedule, or down to collapse or dismiss."

@@ -6532,6 +6532,22 @@
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "extends": "none",
+      "name": "sheet-prevent-dismissal-example",
+      "title": "Sheet Prevent Dismissal",
+      "description": "sheet-prevent-dismissal-example",
+      "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/sheet"],
+      "files": [
+        {
+          "path": "src/components/examples/overlays/sheet/sheet-prevent-dismissal-example.tsx",
+          "type": "registry:page",
+          "target": "app/sheet-prevent-dismissal-example/page.tsx"
+        }
+      ],
+      "type": "registry:page"
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "extends": "none",
       "name": "sheet-snap-points-example",
       "title": "Sheet Snap Points",
       "description": "sheet-snap-points-example",

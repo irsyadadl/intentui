@@ -22,7 +22,7 @@ export default function SheetControlledDemo() {
       <Button intent="outline" onPress={() => setIsOpen(true)}>
         Feedback
       </Button>
-      <Sheet position="right" isOpen={isOpen} onOpenChange={setIsOpen}>
+      <Sheet isOpen={isOpen} onOpenChange={setIsOpen}>
         <SheetHeader>
           <SheetTitle>Submit Feedback</SheetTitle>
           <SheetDescription>
