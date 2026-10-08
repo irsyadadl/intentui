@@ -1,5 +1,41 @@
 [
   {
+    "name": "Sheet snap points example",
+    "component": "sheet-snap-points-example.tsx",
+    "url": "/sheet",
+    "type": "example",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 11,
+    "deletions": 6,
+    "date": "2026-10-09"
+  },
+  {
+    "name": "Sheet stacking example",
+    "component": "sheet-stacking-example.tsx",
+    "url": "/sheet",
+    "type": "example",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 4,
+    "deletions": 4,
+    "date": "2026-10-09"
+  },
+  {
+    "name": "Sheet",
+    "component": "sheet.tsx",
+    "url": "/sheet",
+    "type": "component",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 6,
+    "deletions": 6,
+    "date": "2026-10-09"
+  },
+  {
     "name": "App sidebar",
     "component": "app-sidebar/page.tsx",
     "url": null,

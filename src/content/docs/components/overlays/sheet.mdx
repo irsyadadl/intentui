@@ -25,19 +25,21 @@ Use this approach if you prefer to install and wire up the component yourself in
 
 <SourceCode toShow='sheet' />
 
-Add the stacking and backdrop keyframes to your global CSS:
+Add the backdrop and stacking animations to your global CSS. `@theme static` keeps their keyframes available for React Aria’s swipe and stack animations.
 
 ```css
-@keyframes sheet-stack {
-  from { transform: translate(0, 0) scale(1); }
-  to {
-    transform: translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95);
-  }
-}
+@theme static {
+  --animate-sheet-backdrop: sheet-backdrop 300ms linear both;
+  --animate-sheet-scale-back: sheet-scale-back 300ms ease-out both;
 
-@keyframes sheet-backdrop {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  @keyframes sheet-backdrop {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes sheet-scale-back {
+    to { transform: translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95); }
+  }
 }
 
 @supports not (animation-timeline: view()) {
@@ -47,6 +49,9 @@ Add the stacking and backdrop keyframes to your global CSS:
 }
 ```
 
+`sheet-backdrop` animates the backdrop opacity from `0` to `1`. React Aria uses it through `swipeAnimation` to keep the fade synchronized with the sheet’s movement.
+
+`sheet-scale-back` scales the sheet behind to `0.95` and offsets it by `8px` toward the opposite edge. `Sheet` sets `--sheet-stack-x` or `--sheet-stack-y` based on its position. The smaller offset keeps the close button behind the front sheet. The `@supports` rule provides the stacked appearance in browsers without view timelines.
 
 ## Anatomy
 ```

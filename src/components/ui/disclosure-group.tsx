@@ -29,7 +29,7 @@ export function DisclosureGroup({ className, ...props }: DisclosureGroupProps) {
           "[--disclosure-radius:var(--radius-lg)]",
           "[--disclosure-collapsed-border:var(--color-border)]",
           "[--disclosure-expanded-border:var(--color-muted-foreground)]/30",
-          "[--disclosure-collapsed-bg:var(--color-bg)]",
+          "[--disclosure-collapsed-bg:var(--color-background)]",
           "[--disclosure-collapsed-foreground:var(--color-muted-foreground)]",
           "[--disclosure-expanded-bg:var(--color-secondary)]/20",
           "[--disclosure-expanded-foreground:var(--color-foreground)]",

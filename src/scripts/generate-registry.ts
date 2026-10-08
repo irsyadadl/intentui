@@ -62,7 +62,7 @@ const customCSS = {
       "-moz-osx-font-smoothing": "grayscale",
       "-webkit-tap-highlight-color": "transparent",
     },
-    body: { "background-color": "var(--bg)", color: "var(--fg)" },
+    body: { "background-color": "var(--background)", color: "var(--foreground)" },
     "::-webkit-scrollbar": { width: "4px" },
     "::-webkit-scrollbar-track": { background: "transparent" },
     "::-webkit-scrollbar-thumb": {
@@ -114,8 +114,12 @@ const makeThemeItem = (name: string, light: Token, dark: Token) => {
     type: "registry:style",
     cssVars: {
       theme: baseTheme,
-      light,
-      dark,
+      light: Object.fromEntries(
+        Object.entries(light).map(([key, value]) => [key.replace(/^--/, ""), value])
+      ),
+      dark: Object.fromEntries(
+        Object.entries(dark).map(([key, value]) => [key.replace(/^--/, ""), value])
+      ),
     },
   }
   if (name === "theme-default") {
@@ -367,6 +371,25 @@ const fileEntryOther = async (
   return { path: rel, type, content, target }
 }
 
+// Include the subtle palette used directly by each component. Dependencies carry their own tokens.
+const subtleCssVars = (code: string) => {
+  const light: Token = {}
+  const dark: Token = {}
+  const theme: Token = {}
+  for (const [variable, value] of Object.entries(defaultLight)) {
+    const token = variable.replace(/^--/, "")
+    if (!token.includes("-subtle") || !new RegExp(`\\b${escapeRegExp(token)}(?![\\w-])`).test(code))
+      continue
+    const darkValue = (defaultDark as Token)[variable]
+    const mapping = (baseTheme as Token)[`color-${token}`]
+    if (!darkValue || !mapping) throw new Error(`Missing subtle theme token: ${token}`)
+    light[token] = value
+    dark[token] = darkValue
+    theme[`color-${token}`] = mapping
+  }
+  return Object.keys(light).length ? { cssVars: { theme, light, dark } } : {}
+}
+
 const buildComponentItem = async (absPath: string) => {
   const name = path.basename(absPath, path.extname(absPath))
   const code = await read(absPath)
@@ -379,6 +402,7 @@ const buildComponentItem = async (absPath: string) => {
     extends: "none",
     name,
     type: "registry:ui",
+    ...subtleCssVars(code),
     title: name,
     description: name,
     dependencies: deps.length ? deps : undefined,
@@ -387,16 +411,19 @@ const buildComponentItem = async (absPath: string) => {
     ...(name === "sheet"
       ? {
           css: {
-            "@keyframes sheet-stack": {
-              from: { transform: "translate(0, 0) scale(1)" },
-              to: {
-                transform:
-                  "translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95)",
+            "@theme static": {
+              "--animate-sheet-backdrop": "sheet-backdrop 300ms linear both",
+              "--animate-sheet-scale-back": "sheet-scale-back 300ms ease-out both",
+              "@keyframes sheet-backdrop": {
+                from: { opacity: "0" },
+                to: { opacity: "1" },
               },
-            },
-            "@keyframes sheet-backdrop": {
-              from: { opacity: "0" },
-              to: { opacity: "1" },
+              "@keyframes sheet-scale-back": {
+                to: {
+                  transform:
+                    "translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95)",
+                },
+              },
             },
             "@supports not (animation-timeline: view())": {
               ".react-aria-sheet[data-has-descendants]": {

@@ -30,13 +30,13 @@ export default function SheetStackingExample() {
           title="Workspace settings"
           description="Set up your workspace and manage how your team collaborates."
         />
-        <SheetBody className="gap-6">
+        <SheetBody className="gap-4">
           <TextField value={workspaceName} onChange={setWorkspaceName}>
             <Label>Workspace name</Label>
             <Input />
           </TextField>
           <SheetTrigger>
-            <Button intent="secondary" className="w-full justify-between">
+            <Button intent="secondary" className="self-start">
               Team access
               <ChevronRightIcon />
             </Button>
@@ -45,7 +45,7 @@ export default function SheetStackingExample() {
                 title="Team access"
                 description="Choose who can join. Close this sheet to return to your workspace."
               />
-              <SheetBody className="gap-6">
+              <SheetBody className="gap-4">
                 <RadioGroup value={access} onChange={setAccess}>
                   <Label>Who can join?</Label>
                   <RadioField value="invite-only">
@@ -56,7 +56,7 @@ export default function SheetStackingExample() {
                   </RadioField>
                 </RadioGroup>
                 <SheetTrigger>
-                  <Button intent="secondary" className="w-full justify-between">
+                  <Button intent="secondary" className="self-start">
                     Member permissions
                     <ChevronRightIcon />
                   </Button>
