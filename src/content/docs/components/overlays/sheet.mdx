@@ -121,7 +121,7 @@ You can customize the close button by using the `SheetClose` component. This exa
 <How toUse="overlays/sheet/sheet-custom-close-example" />
 
 ### Float
-Sheets float by default, with spacing from the screen edges. Set `isFloat={false}` to attach an edge-positioned sheet to the screen edge. A sheet with `position="center"` remains centered in either mode.
+`isFloat` defaults to `false`, so sheets attach to the screen edge. Set `isFloat={true}` to make a sheet float with spacing from the screen edges and rounded corners. Top and bottom sheets retain their maximum width and side borders when not floating. A sheet with `position="center"` remains centered in either mode.
 <How toUse="overlays/sheet/sheet-float-example" />
 
 ### Sticky
@@ -145,7 +145,7 @@ You can use the `SheetBody` component to make the sheet sticky.
     **Sheet** extends the React Aria Components [**`<SheetOverlay>`**](https://react-aria.adobe.com/Sheet#api) component.
   </ApiDescription>
   <ApiParameter name="className" type='string' />
-  <ApiParameter name="isFloat" type='boolean' defaultValue='true' />
+  <ApiParameter name="isFloat" type='boolean' defaultValue='false' />
   <ApiParameter name="overlay" type='Omit<SheetOverlayProps, "children" | "position">' />
   <ApiParameter name="snapPoints" type='Array<number | string>' />
   <ApiParameter name="preventDismissal" type='boolean' defaultValue='false' />
