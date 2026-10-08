@@ -1,5 +1,17 @@
 [
   {
+    "name": "Sheet",
+    "component": "sheet.tsx",
+    "url": "/sheet",
+    "type": "component",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 2,
+    "deletions": 2,
+    "date": "2026-10-08"
+  },
+  {
     "name": "Sheet custom close example",
     "component": "sheet-custom-close-example.tsx",
     "url": "/sheet",
@@ -21,18 +33,6 @@
     "description": null,
     "additions": 1,
     "deletions": 1,
-    "date": "2026-10-08"
-  },
-  {
-    "name": "Sheet",
-    "component": "sheet.tsx",
-    "url": "/sheet",
-    "type": "component",
-    "category": "overlays",
-    "kind": "improvement",
-    "description": null,
-    "additions": 11,
-    "deletions": 22,
     "date": "2026-10-08"
   },
   {

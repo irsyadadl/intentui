@@ -33,9 +33,9 @@ interface SheetContentProps
 }
 
 const positionVariants = {
-  top: "[--sheet-stack-y:8px] w-full max-w-[800px] rounded-b-2xl border-b data-[float=true]:mx-2 data-[float=true]:mt-2 data-[float=true]:w-[calc(100%-1rem)] data-[float=true]:border-b-0",
+  top: "[--sheet-stack-y:8px] w-full max-w-[800px] rounded-b-4xl border-b data-[float=false]:border-x data-[float=true]:mx-2 data-[float=true]:mt-2 data-[float=true]:w-[calc(100%-1rem)] data-[float=true]:border-b-0",
   bottom:
-    "[--sheet-stack-y:-8px] w-full max-w-[800px] rounded-t-2xl border-t data-[float=true]:mx-2 data-[float=true]:mb-2 data-[float=true]:w-[calc(100%-1rem)] data-[float=true]:border-t-0",
+    "[--sheet-stack-y:-8px] w-full max-w-[800px] rounded-t-4xl border-t data-[float=false]:border-x data-[float=true]:mx-2 data-[float=true]:mb-2 data-[float=true]:w-[calc(100%-1rem)] data-[float=true]:border-t-0",
   left: "[--sheet-stack-x:8px] h-dvh w-3/4 border-r sm:max-w-80 data-[float=true]:my-2 data-[float=true]:ml-2 data-[float=true]:h-[calc(100dvh-1rem)] data-[float=true]:border-r-0",
   right:
     "[--sheet-stack-x:-8px] h-dvh w-3/4 border-l sm:max-w-80 data-[float=true]:my-2 data-[float=true]:mr-2 data-[float=true]:h-[calc(100dvh-1rem)] data-[float=true]:border-l-0",
