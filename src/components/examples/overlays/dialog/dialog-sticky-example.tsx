@@ -24,7 +24,7 @@ export default function DialogStickyDemo() {
           </DialogDescription>
         </DialogHeader>
         <DialogBody>
-          <div className="prose prose-zinc dark:prose-invert prose-h3:text-sm/6 prose-h4:text-sm/6 prose-p:text-muted-foreground">
+          <div className="typeset">
             <p>
               By accessing or using our services, you agree to be bound by these terms. If you do
               not agree to these terms, please refrain from using our services.

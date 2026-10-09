@@ -54,50 +54,55 @@ const Dialog = ({
       data-slot="dialog-overlay"
       isDismissable={isDismissable}
       className={cx(
-        "fixed start-0 top-0 z-50 h-(--visual-viewport-height,100vh) w-screen",
+        "absolute top-0 left-0 z-50 h-[max(var(--page-height),100dvh)] w-[max(var(--page-width),100vw)] overflow-clip",
         "bg-background/15 backdrop-blur-[1px] motion-reduce:backdrop-blur-none",
-        "grid grid-rows-[1fr_auto] justify-items-center sm:grid-rows-[1fr_auto_3fr]",
         "entering:fade-in entering:animate-in entering:duration-300 entering:ease-out",
         "exiting:fade-out exiting:animate-out exiting:ease-in",
-        size === "fullscreen" ? "md:p-3" : "md:p-4",
         overlay?.className
       )}
       {...props}
     >
-      <Modal
-        data-slot="dialog-content"
-        className={cx(
-          "row-start-2 w-full text-start align-middle",
-          "[--visual-viewport-vertical-padding:16px]",
-          size === "fullscreen"
-            ? "**:data-[slot=dialog-body]:min-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding)-var(--dialog-header-height)-var(--dialog-footer-height))] sm:[--visual-viewport-vertical-padding:16px]"
-            : "sm:[--visual-viewport-vertical-padding:32px]",
-          "relative overflow-hidden bg-overlay text-overlay-foreground",
-          "inset-shadow-xs rounded-t-2xl ring ring-muted-foreground/25 drop-shadow-xl sm:rounded-2xl dark:ring-border",
-          sizes[size],
-          "entering:slide-in-from-bottom sm:entering:zoom-in-95 sm:entering:slide-in-from-bottom-0 entering:animate-in entering:duration-300 entering:ease-out",
-          "exiting:slide-out-to-bottom sm:exiting:zoom-out-95 sm:exiting:slide-out-to-bottom-0 exiting:animate-out exiting:ease-in",
-          className
+      <div
+        className={cn(
+          "sticky top-0 flex h-(--visual-viewport-height,100dvh) w-(--visual-viewport-width,100vw) flex-col items-center justify-end sm:grid sm:grid-rows-[1fr_auto_3fr] sm:justify-normal sm:justify-items-center",
+          size === "fullscreen" ? "md:p-3" : "md:p-4"
         )}
       >
-        <PrimitiveDialog
-          aria-label={props["aria-label"] ?? undefined}
-          aria-labelledby={props["aria-labelledby"]}
-          data-slot="dialog"
-          role={role}
-          className={cn(
-            "peer/dialog group/dialog relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-hidden outline-hidden [--gutter:--spacing(6)] sm:[--gutter:--spacing(8)]",
+        <Modal
+          data-slot="dialog-content"
+          className={cx(
+            "row-start-2 w-full text-start align-middle",
+            "[--visual-viewport-vertical-padding:16px]",
+            size === "fullscreen"
+              ? "**:data-[slot=dialog-body]:min-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding)-var(--dialog-header-height)-var(--dialog-footer-height))] sm:[--visual-viewport-vertical-padding:16px]"
+              : "sm:[--visual-viewport-vertical-padding:32px]",
+            "relative overflow-hidden bg-overlay text-overlay-foreground",
+            "inset-shadow-xs rounded-t-2xl ring ring-muted-foreground/25 drop-shadow-xl sm:rounded-2xl dark:ring-border",
+            sizes[size],
+            "entering:slide-in-from-bottom sm:entering:zoom-in-95 sm:entering:slide-in-from-bottom-0 entering:animate-in entering:duration-300 entering:ease-out",
+            "exiting:slide-out-to-bottom sm:exiting:zoom-out-95 sm:exiting:slide-out-to-bottom-0 exiting:animate-out exiting:ease-in",
             className
           )}
         >
-          {(values) => (
-            <>
-              {typeof children === "function" ? children(values) : children}
-              {closeButton && <DialogCloseIcon isDismissable={isDismissable} />}
-            </>
-          )}
-        </PrimitiveDialog>
-      </Modal>
+          <PrimitiveDialog
+            aria-label={props["aria-label"] ?? undefined}
+            aria-labelledby={props["aria-labelledby"]}
+            data-slot="dialog"
+            role={role}
+            className={cn(
+              "peer/dialog group/dialog relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-hidden outline-hidden [--gutter:--spacing(6)] sm:[--gutter:--spacing(8)]",
+              className
+            )}
+          >
+            {(values) => (
+              <>
+                {typeof children === "function" ? children(values) : children}
+                {closeButton && <DialogCloseIcon isDismissable={isDismissable} />}
+              </>
+            )}
+          </PrimitiveDialog>
+        </Modal>
+      </div>
     </ModalOverlay>
   )
 }
