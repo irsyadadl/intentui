@@ -2322,7 +2322,21 @@
           "type": "registry:ui"
         }
       ],
-      "type": "registry:ui"
+      "type": "registry:ui",
+      "cssVars": {
+        "theme": {
+          "color-overlay": "var(--overlay)",
+          "color-overlay-foreground": "var(--overlay-foreground)"
+        },
+        "light": {
+          "overlay": "oklch(1 0 0)",
+          "overlay-foreground": "oklch(0.141 0.005 285.823)"
+        },
+        "dark": {
+          "overlay": "oklch(0.210 0.006 285.885)",
+          "overlay-foreground": "oklch(0.985 0 0)"
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2571,7 +2585,21 @@
           "type": "registry:ui"
         }
       ],
-      "type": "registry:ui"
+      "type": "registry:ui",
+      "cssVars": {
+        "theme": {
+          "color-overlay": "var(--overlay)",
+          "color-overlay-foreground": "var(--overlay-foreground)"
+        },
+        "light": {
+          "overlay": "oklch(1 0 0)",
+          "overlay-foreground": "oklch(0.141 0.005 285.823)"
+        },
+        "dark": {
+          "overlay": "oklch(0.210 0.006 285.885)",
+          "overlay-foreground": "oklch(0.985 0 0)"
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2734,7 +2762,21 @@
           "type": "registry:ui"
         }
       ],
-      "type": "registry:ui"
+      "type": "registry:ui",
+      "cssVars": {
+        "theme": {
+          "color-overlay": "var(--overlay)",
+          "color-overlay-foreground": "var(--overlay-foreground)"
+        },
+        "light": {
+          "overlay": "oklch(1 0 0)",
+          "overlay-foreground": "oklch(0.141 0.005 285.823)"
+        },
+        "dark": {
+          "overlay": "oklch(0.210 0.006 285.885)",
+          "overlay-foreground": "oklch(0.985 0 0)"
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3284,7 +3326,21 @@
           "type": "registry:ui"
         }
       ],
-      "type": "registry:ui"
+      "type": "registry:ui",
+      "cssVars": {
+        "theme": {
+          "color-overlay": "var(--overlay)",
+          "color-overlay-foreground": "var(--overlay-foreground)"
+        },
+        "light": {
+          "overlay": "oklch(1 0 0)",
+          "overlay-foreground": "oklch(0.141 0.005 285.823)"
+        },
+        "dark": {
+          "overlay": "oklch(0.210 0.006 285.885)",
+          "overlay-foreground": "oklch(0.985 0 0)"
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3563,7 +3619,21 @@
           }
         }
       },
-      "type": "registry:ui"
+      "type": "registry:ui",
+      "cssVars": {
+        "theme": {
+          "color-overlay": "var(--overlay)",
+          "color-overlay-foreground": "var(--overlay-foreground)"
+        },
+        "light": {
+          "overlay": "oklch(1 0 0)",
+          "overlay-foreground": "oklch(0.141 0.005 285.823)"
+        },
+        "dark": {
+          "overlay": "oklch(0.210 0.006 285.885)",
+          "overlay-foreground": "oklch(0.985 0 0)"
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3884,6 +3954,8 @@
       ],
       "cssVars": {
         "theme": {
+          "color-overlay": "var(--overlay)",
+          "color-overlay-foreground": "var(--overlay-foreground)",
           "color-success-subtle": "var(--success-subtle)",
           "color-success-subtle-foreground": "var(--success-subtle-foreground)",
           "color-info-subtle": "var(--info-subtle)",
@@ -3894,6 +3966,8 @@
           "color-danger-subtle-foreground": "var(--danger-subtle-foreground)"
         },
         "light": {
+          "overlay": "oklch(1 0 0)",
+          "overlay-foreground": "oklch(0.141 0.005 285.823)",
           "success-subtle": "oklch(0.696 0.17 162.48 / 0.15)",
           "success-subtle-foreground": "oklch(0.508 0.118 165.612)",
           "info-subtle": "oklch(0.685 0.169 237.323 / 0.15)",
@@ -3904,6 +3978,8 @@
           "danger-subtle-foreground": "oklch(0.505 0.213 27.518)"
         },
         "dark": {
+          "overlay": "oklch(0.210 0.006 285.885)",
+          "overlay-foreground": "oklch(0.985 0 0)",
           "success-subtle": "oklch(0.696 0.17 162.48 / 0.1)",
           "success-subtle-foreground": "oklch(0.765 0.177 163.223)",
           "info-subtle": "oklch(0.685 0.169 237.323 / 0.1)",
@@ -3965,7 +4041,18 @@
           "type": "registry:ui"
         }
       ],
-      "type": "registry:ui"
+      "type": "registry:ui",
+      "cssVars": {
+        "theme": {
+          "color-overlay": "var(--overlay)"
+        },
+        "light": {
+          "overlay": "oklch(1 0 0)"
+        },
+        "dark": {
+          "overlay": "oklch(0.210 0.006 285.885)"
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3980,7 +4067,21 @@
           "type": "registry:ui"
         }
       ],
-      "type": "registry:ui"
+      "type": "registry:ui",
+      "cssVars": {
+        "theme": {
+          "color-overlay": "var(--overlay)",
+          "color-overlay-foreground": "var(--overlay-foreground)"
+        },
+        "light": {
+          "overlay": "oklch(1 0 0)",
+          "overlay-foreground": "oklch(0.141 0.005 285.823)"
+        },
+        "dark": {
+          "overlay": "oklch(0.210 0.006 285.885)",
+          "overlay-foreground": "oklch(0.985 0 0)"
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",

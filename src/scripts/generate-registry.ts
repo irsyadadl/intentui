@@ -371,18 +371,22 @@ const fileEntryOther = async (
   return { path: rel, type, content, target }
 }
 
-// Include the subtle palette used directly by each component. Dependencies carry their own tokens.
-const subtleCssVars = (code: string) => {
+// Include subtle and overlay tokens used directly by each component. Dependencies carry their own tokens.
+const componentCssVars = (code: string) => {
   const light: Token = {}
   const dark: Token = {}
   const theme: Token = {}
   for (const [variable, value] of Object.entries(defaultLight)) {
     const token = variable.replace(/^--/, "")
-    if (!token.includes("-subtle") || !new RegExp(`\\b${escapeRegExp(token)}(?![\\w-])`).test(code))
-      continue
+    const isComponentToken =
+      token.includes("-subtle") || token === "overlay" || token === "overlay-foreground"
+    const tokenPattern = token.startsWith("overlay")
+      ? `(?:\\b(?:bg|text|border|ring|outline|fill|stroke|shadow|from|via|to)-|--(?:color-)?)${escapeRegExp(token)}(?![\\w-])`
+      : `\\b${escapeRegExp(token)}(?![\\w-])`
+    if (!isComponentToken || !new RegExp(tokenPattern).test(code)) continue
     const darkValue = (defaultDark as Token)[variable]
     const mapping = (baseTheme as Token)[`color-${token}`]
-    if (!darkValue || !mapping) throw new Error(`Missing subtle theme token: ${token}`)
+    if (!darkValue || !mapping) throw new Error(`Missing component theme token: ${token}`)
     light[token] = value
     dark[token] = darkValue
     theme[`color-${token}`] = mapping
@@ -402,7 +406,7 @@ const buildComponentItem = async (absPath: string) => {
     extends: "none",
     name,
     type: "registry:ui",
-    ...subtleCssVars(code),
+    ...componentCssVars(code),
     title: name,
     description: name,
     dependencies: deps.length ? deps : undefined,
