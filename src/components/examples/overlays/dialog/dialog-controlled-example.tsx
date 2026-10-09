@@ -15,12 +15,12 @@ export default function DialogControlledDemo() {
   const [open, setOpen] = useState(false)
   return (
     <>
-      <Button onPress={() => setOpen(true)} intent="primary">
+      <Button onPress={() => setOpen(true)} intent="outline">
         Subscribe
       </Button>
       <Dialog isOpen={open} onOpenChange={setOpen}>
         <DialogHeader>
-          <DialogTitle>Subscribe to Our Newsletter</DialogTitle>
+          <DialogTitle>Subscribe to our newsletter</DialogTitle>
           <DialogDescription>
             Get the latest news and updates right to your inbox.
           </DialogDescription>

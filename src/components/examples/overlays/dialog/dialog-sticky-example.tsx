@@ -15,7 +15,7 @@ import {
 export default function DialogStickyDemo() {
   return (
     <DialogTrigger>
-      <Button>Read</Button>
+      <Button intent="outline">Read</Button>
       <Dialog size="2xl">
         <DialogHeader>
           <DialogTitle>Terms of Use</DialogTitle>

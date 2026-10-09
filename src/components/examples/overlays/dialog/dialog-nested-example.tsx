@@ -24,7 +24,9 @@ export default function DialogNestedDemo() {
 
   return (
     <>
-      <Button onPress={() => setIsRegistrationDialogOpen(true)}>Register</Button>
+      <Button intent="outline" onPress={() => setIsRegistrationDialogOpen(true)}>
+        Register
+      </Button>
 
       <Dialog
         isOpen={isRegistrationDialogOpen}
