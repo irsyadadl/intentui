@@ -12,6 +12,12 @@ Compare local v3 wrappers against their upstream ancestor, then compare the corr
 
 Classify pristine versus customized wrappers. Replay local customizations onto target source, using a reviewed three-way comparison when useful. A conflict-free merge is not proof that APIs or behavior are correct. Do not use bulk shadcn overwrite. Keep mixed versions buildable by preserving old wrappers for remaining consumers or using explicitly named temporary local targets; remove them only when no consumers remain.
 
+## Install missing target components
+
+Inspect the consuming project's `components.json` before choosing a registry namespace. If `registries` contains `@irsyad`, install missing target components through `@irsyad`, including public components, even when `@intentui` is also present. For example, a Modal migration requiring an absent Dialog uses `npx shadcn@latest add @irsyad/dialog`. Use `@intentui/dialog` only when `@irsyad` is absent and the configured public registry supports the v4 target. Verify the selected registry's target version before installation.
+
+Use the registry CLI for missing components and inspect its dependency closure for existing customized files before applying. Preserve configured URLs, headers and Bearer placeholders. Do not add or switch to `@intentui` when `@irsyad` is configured, and do not fall back to it after an authentication or entitlement failure; report the blocker. Never use bulk overwrite to upgrade existing wrappers; compare them with target source and replay local customizations instead. Audit mode reports the required installs without running them.
+
 ## Preview and increment
 
 Show proposed file/import/composition/CSS changes and behaviors requiring review. This preview does not require a new approval when the requested migration already authorizes those changes. Unrequested full-app changes or replacement of unrelated licensed products require separate authorization.
