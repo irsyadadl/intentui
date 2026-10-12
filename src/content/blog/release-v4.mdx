@@ -11,6 +11,26 @@ Intent UI v4 brings a more consistent way to compose overlays and menus. The tri
 
 This release includes breaking changes. If you're moving from v3, update both your imports and JSX structure, along with your theme tokens and custom styles.
 
+## Upgrade with Agent Skills
+
+Intent UI now includes official Agent Skills to help you develop components, use premium resources, and upgrade an existing application. Install them from the main repository:
+
+```bash
+npx skills add irsyadadl/intentui
+```
+
+Choose the skills you need in the CLI:
+
+- **`intentui`** helps create, install, review, and debug components. It detects v3 or v4 from your installed source and follows the matching APIs and theme tokens.
+- **`intentui-design`** helps discover and integrate purchased Design Intent UI resources through the authenticated `@irsyad` registry.
+- **`intentui-migrate`** helps audit and migrate v3 components and themes to v4. It can handle one feature or an explicitly requested application-wide upgrade, preserving local customizations and checking imports, dependencies, and behavior.
+
+To plan an upgrade, ask your agent: "Audit my Intent UI v3 project for a v4 upgrade without modifying files." When you're ready, ask it to migrate a specific feature or the application. Ordinary component development does not trigger an automatic upgrade.
+
+The migration skill covers the overlay and theme changes described below. Review its proposed changes and verify keyboard navigation, focus restoration, dismissal, and touch interactions after migrating.
+
+See [Working with AI](/docs/getting-started/ai#skills) for skill setup and registry integration.
+
 ## Removed components
 
 `Drawer` and `Modal` have been removed in v4, along with their component files, documentation pages, examples, and registry entries. Update existing imports and CLI installation commands to use their replacements.
