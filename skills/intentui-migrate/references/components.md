@@ -14,6 +14,18 @@ The mappings and complete before/after TSX examples below are self-contained for
 
 Modal child aliases generally map prefix `Modal` → `Dialog` (Header, Title, Description, Body, Footer, Close). `ModalTrigger` was a button alias, whereas v4 DialogTrigger is a container: replace old button usage with Button inside DialogTrigger. Do not rename that alias mechanically.
 
+## Replacing v3 button-like triggers
+
+Apply this rule to every migrated use of `ModalTrigger`, `DialogTrigger`, `SheetTrigger`, `MenuTrigger`, `PopoverTrigger`, or `TooltipTrigger` that renders a button in the installed v3 source. Resolve aliased imports and local re-exports too: the component's implementation determines its role, not its name alone.
+
+- Replace the old button element with `Button` imported from the exact subpath `react-aria-components/Button`. Do not import the replacement from `@/components/ui/button`, another configured UI alias, or the React Aria root barrel. The Intent UI Button can introduce default styling that the old trigger did not have.
+- Compose the React Aria Button with the appropriate v4 trigger wrapper and overlay. A v4 `MenuTrigger` or `DialogTrigger` is a wrapper, not the clickable button; never put the old button children/props directly on that wrapper.
+- Move button attributes, `className`, `style`, `isDisabled`, `onPress`, accessible names, refs and render-function children to the React Aria Button. Keep overlay open state on the wrapper. Preserve existing styles and interaction handlers.
+- React Aria Button does not accept Intent UI styling props such as `intent` or `size`. If a customized old trigger supports them, resolve their styling through the project's existing button style helper/classes and apply it to the React Aria Button; do not forward unsupported props or silently discard their appearance.
+- If the file also uses an existing Intent UI Button, keep that import for those existing buttons and alias the new primitive: `import { Button as AriaButton } from "react-aria-components/Button"`. Use `<AriaButton>` only for the replaced trigger. Remove obsolete trigger imports and update affected button types to `ButtonProps` from the same React Aria subpath.
+
+Examples below that already use an Intent UI Button in v3 preserve it in v4. That is different from replacing an old button-like trigger: a v3 `<MenuTrigger>` must become the React Aria Button shown in the Menu example. Apply the same replacement rule to old button-like triggers in the other families even when their examples use an existing UI Button.
+
 ## Modal before (v3)
 
 ```tsx
@@ -138,7 +150,7 @@ export function Actions() {
 ## Menu after (v4)
 
 ```tsx
-import { Button } from "@/components/ui/button"
+import { Button } from "react-aria-components/Button"
 import { MenuTrigger, Menu, MenuItem } from "@/components/ui/menu"
 
 export function Actions() {
