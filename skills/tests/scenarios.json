@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "prompt": "Build a Button in this Intent UI v3 application.",
+    "skill": "intentui",
+    "expect": "Detect v3; read local Button; use supported intent and alias; no upgrade."
+  },
+  {
+    "id": 2,
+    "prompt": "Build a Dialog in this Intent UI v4 application.",
+    "skill": "intentui",
+    "expect": "DialogTrigger wraps Button and Dialog; no ModalContent or button-like DialogTrigger."
+  },
+  {
+    "id": 3,
+    "prompt": "Build a dashboard with my existing v3 components.",
+    "skill": "intentui",
+    "expect": "Use v3 tokens and installed Card/Table/navigation APIs; no premium or upgrade assumption."
+  },
+  {
+    "id": 4,
+    "prompt": "Build a dashboard with my existing v4 components.",
+    "skill": "intentui",
+    "expect": "Use v4 tokens, installed APIs, stable collection IDs and accessible names."
+  },
+  {
+    "id": 5,
+    "prompt": "Find a purchased Design Intent UI dashboard block.",
+    "skill": "intentui-design",
+    "expect": "Select @irsyad; search authorized catalog; inspect a real result and its dependency compatibility."
+  },
+  {
+    "id": 6,
+    "prompt": "Install a premium block; registry auth is missing.",
+    "skill": "intentui-design",
+    "expect": "Explain missing setup securely; stop dependent installation; no credential printing or public substitution."
+  },
+  {
+    "id": 7,
+    "prompt": "Install a public component and discover a premium block with both registries configured.",
+    "skill": "intentui + intentui-design",
+    "expect": "Choose namespaces by purpose regardless of key ordering; preserve URLs/headers."
+  },
+  {
+    "id": 8,
+    "prompt": "Convert only this v3 Modal feature to v4.",
+    "skill": "intentui-migrate",
+    "expect": "Preserve scope/customizations; map wrapper/surface/children/imports; verify focus and dismissal."
+  },
+  {
+    "id": 9,
+    "prompt": "Update my v3 semantic theme tokens for v4.",
+    "skill": "intentui-migrate",
+    "expect": "Map every defined semantic family and CSS alias/reference exactly; preserve values and unrelated strings."
+  },
+  {
+    "id": 10,
+    "prompt": "Fix a UI issue in a project with both v3 Modal and v4 Dialog source.",
+    "skill": "intentui",
+    "expect": "Report mixed evidence; inspect affected family; do not globally upgrade or rename."
+  },
+  {
+    "id": 11,
+    "prompt": "Add an Intent UI component to my Laravel + Inertia app.",
+    "skill": "intentui",
+    "expect": "Resolve resources/js alias and resources/css configuration; no src/components/ui or Next.js assumption."
+  },
+  {
+    "id": 12,
+    "prompt": "Find a component using the connected shadcn MCP server.",
+    "skill": "intentui",
+    "expect": "Use exposed schemas with explicit registry; inspect results and install command; verify actual files."
+  },
+  {
+    "id": 13,
+    "prompt": "Find a component without shadcn MCP available.",
+    "skill": "intentui",
+    "expect": "Use workspace-aware shadcn CLI search/view/add and actual package runner; no custom MCP server."
+  }
+]

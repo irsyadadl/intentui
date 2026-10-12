@@ -27,35 +27,27 @@ If you work with AI and use Intent UI, you should consider using the React Aria 
 
 ## Skills
 
-We provide a dedicated skill for Intent UI. To install it, run the command below.
+Intent UI provides three independently installable Agent Skills in the main repository:
 
-<PackageCommand command="npx skills add intentui/skills" />
+| Skill | Use it for |
+| --- | --- |
+| `intentui` | Creating, installing, reviewing, and debugging components; detects v3 and v4 from installed source |
+| `intentui-design` | Purchased Design Intent UI blocks, patterns, kits, templates, and authenticated registry workflows |
+| `intentui-migrate` | Explicit v3-to-v4 migration or a read-only upgrade audit |
 
-This skill enforces [Intent UI](https://intentui.com) conventions when writing or reviewing React and TSX code. You can see a preview of it in action [here](https://x.com/irsyad/status/2030649800560083204).
+The skills are maintained on `4.x`. Until they are available on the repository's default branch, install with the explicit ref:
 
-### What it does
+<PackageCommand command="npx skills add https://github.com/irsyadadl/intentui/tree/4.x --skill intentui intentui-design intentui-migrate" />
 
-The **intentui** skill helps keep your code aligned with Intent UI best practices by:
+Once published on the default branch, use `npx skills add irsyadadl/intentui`. The CLI may offer skill and agent selections. Use `--skill intentui` to choose only the component skill, and `npx skills update` to update installed skills.
 
-* using components from `src/components/ui/` instead of raw HTML elements
-* using semantic design tokens like `text-muted-foreground` and `bg-primary` instead of raw Tailwind utility colors like `text-blue-500` or `bg-red-600`
-* applying Heroicons correctly without redundant `data-slot="icon"` attributes or manual icon sizing inside UI components
-* following the proper form structure with `Fieldset`, `Legend`, `FieldError`, and `Description`
-* installing missing components from the registry through the shadcn CLI
+The component skill resolves your application's aliases and framework paths, reads actual component APIs, and loads only relevant rules. It preserves local customizations and never upgrades ordinary component work implicitly. Version-specific overlays and semantic colors live inside the same skill.
 
+Public components use `@intentui`. Commercial resources use `@irsyad` with the documented Bearer environment-variable configuration. Keep tokens private and follow the [Design setup](https://design.intentui.com/docs/getting-started); not every kit or template is a registry item.
 
-### Structure
+The existing shadcn MCP server supplies registry discovery, search, item inspection, examples, and installation commands. Skills supply conventions and workflows. When MCP is unavailable, the skills use the project's shadcn CLI runner. No separate Intent UI MCP server is required.
 
-```
-intentui/
-├── SKILL.md              # Main skill definition
-└── rules/
-    ├── styling.md        # Semantic colors, cx/cn, size-* shorthand, intent prop
-    ├── icons.md          # Heroicons rules, 25 components that control icon sizing
-    ├── forms.md          # Fieldset, Legend, TextField, FieldError, Description patterns
-    ├── components.md     # HTML → Intent UI component mapping, Text/TextLink/Strong/Code
-    └── cli.md            # Search & install missing components from the registry
-```
+See the [skill guide](https://github.com/irsyadadl/intentui/blob/4.x/skills/README.md) for installation, authentication, compatibility, migration, and contribution instructions.
 
 ## Markdown files
 
