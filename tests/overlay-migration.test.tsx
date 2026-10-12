@@ -1,6 +1,7 @@
 import userEvent from "@testing-library/user-event"
 import { describe, expect, it } from "vitest"
 import { render, screen, waitFor } from "./utils/render"
+import DialogTriggeredByMenuDemo from "@/components/examples/overlays/dialog/dialog-triggered-by-menu-example"
 import DialogDemo from "@/components/examples/overlays/dialog/dialog-example"
 import AlertDialogDemo from "@/components/examples/overlays/dialog/alert-dialog-example"
 import DialogControlledDemo from "@/components/examples/overlays/dialog/dialog-controlled-example"
@@ -32,6 +33,19 @@ describe("overlay migration", () => {
     expect(await screen.findByRole("dialog", { name: "Rename project" })).toBeVisible()
     expect(screen.getAllByRole("dialog")).toHaveLength(1)
     await user.click(screen.getByRole("button", { name: "Save changes" }))
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument())
+    await waitFor(() => expect(trigger).toHaveFocus())
+  })
+
+  it("opens a Dialog from a menu and returns focus to the menu trigger on cancel", async () => {
+    const user = userEvent.setup()
+    render(<DialogTriggeredByMenuDemo />)
+    const trigger = screen.getByRole("button", { name: "Actions..." })
+    await user.click(trigger)
+    await user.click(await screen.findByRole("menuitem", { name: "Delete" }))
+    expect(await screen.findByRole("dialog", { name: "Delete user" })).toBeVisible()
+    expect(screen.getAllByRole("dialog")).toHaveLength(1)
+    await user.click(screen.getByRole("button", { name: "Cancel" }))
     await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument())
     await waitFor(() => expect(trigger).toHaveFocus())
   })

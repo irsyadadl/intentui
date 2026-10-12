@@ -1,5 +1,17 @@
 [
   {
+    "name": "Popover trigger example",
+    "component": "popover-trigger-example.tsx",
+    "url": "/popover",
+    "type": "example",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 4,
+    "deletions": 8,
+    "date": "2026-10-12"
+  },
+  {
     "name": "Preview custom trigger",
     "component": "preview-custom-trigger.tsx",
     "url": "/preview",

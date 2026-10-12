@@ -97,6 +97,7 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
             </span>
           </Button>
           <Sheet
+            isFloat
             position="right"
             className="w-[min(22rem,90vw)] sm:max-w-88 **:data-[slot=dialog]:h-full **:data-[slot=dialog]:max-h-full [--visual-viewport-vertical-padding:0px]"
           >
@@ -131,7 +132,7 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
                 ))}
             </Aside>
             <SheetFooter className="p-2 border-t bg-background/60">
-              <ul className="rounded-lg mt-2 p-2 bg-overlay border">
+              <ul className="rounded-sm p-2 bg-overlay border">
                 <AsideLink href={app.links.twitter} target="_blank" onPress={() => setOpen(false)}>
                   <BrandXIcon /> Twitter
                 </AsideLink>

@@ -54,7 +54,7 @@ const Dialog = ({
       data-slot="dialog-overlay"
       isDismissable={isDismissable}
       className={cx(
-        "absolute top-0 left-0 z-50 h-[max(var(--page-height),100dvh)] w-[max(var(--page-width),100vw)] overflow-clip",
+        "fixed top-0 left-0 z-50 h-(--visual-viewport-height,100dvh) w-(--visual-viewport-width,100vw) overflow-clip sm:absolute sm:h-[max(var(--page-height),100dvh)] sm:w-[max(var(--page-width),100vw)]",
         "bg-background/15 backdrop-blur-[1px] motion-reduce:backdrop-blur-none",
         "entering:fade-in entering:animate-in entering:duration-300 entering:ease-out",
         "exiting:fade-out exiting:animate-out exiting:ease-in",

@@ -1,7 +1,6 @@
 "use client"
 
 import { Avatar } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
 import {
   Popover,
   PopoverDescription,
@@ -10,18 +9,15 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { Pressable } from "react-aria-components/Pressable"
+import { Button } from "@/components/ui/button"
 
 export default function PopoverCustomTriggerDemo() {
   return (
     <PopoverTrigger>
-      <Button
-        aria-label="Open account details"
-        intent="plain"
-        size="sq-md"
-        className="rounded-full"
-      >
-        <Avatar alt="cobain" src="https://intentui.com/images/avatar/cobain.jpg" />
-      </Button>
+      <Pressable>
+        <Avatar role="button" alt="cobain" src="https://intentui.com/images/avatar/cobain.jpg" />
+      </Pressable>
       <Popover aria-labelledby="" aria-label="Account details" className="min-w-72">
         <PopoverHeader>
           <PopoverTitle>Email</PopoverTitle>
