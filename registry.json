@@ -6871,7 +6871,11 @@
       "title": "Popover Trigger",
       "description": "popover-trigger-example",
       "dependencies": ["react-aria-components"],
-      "registryDependencies": ["http://localhost:3000/r/avatar", "http://localhost:3000/r/popover"],
+      "registryDependencies": [
+        "http://localhost:3000/r/avatar",
+        "http://localhost:3000/r/popover",
+        "http://localhost:3000/r/button"
+      ],
       "files": [
         {
           "path": "src/components/examples/overlays/popover/popover-trigger-example.tsx",

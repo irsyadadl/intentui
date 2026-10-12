@@ -1,5 +1,17 @@
 [
   {
+    "name": "Dialog",
+    "component": "dialog.tsx",
+    "url": "/dialog",
+    "type": "component",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 2,
+    "deletions": 2,
+    "date": "2026-10-12"
+  },
+  {
     "name": "Popover trigger example",
     "component": "popover-trigger-example.tsx",
     "url": "/popover",
