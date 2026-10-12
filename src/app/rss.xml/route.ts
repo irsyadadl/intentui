@@ -1,12 +1,17 @@
 import { generateRegistryRssFeed, type UrlResolverByItem } from "@wandry/analytics-sdk"
-import type { NextRequest } from "next/server"
 import { docs } from "#site/content"
 import { app } from "@/config/app"
+import { generateStaticRss } from "@/lib/static-rss"
 
-export const revalidate = 3600
+export const dynamic = "force-static"
 
-export async function GET(request: NextRequest) {
-  const baseUrl = new URL(request.url).origin
+export async function GET() {
+  if (process.env.CLOUDFLARE_PAGES_BUILD === "1") {
+    return new Response(await generateStaticRss(docs), {
+      headers: { "Content-Type": "application/rss+xml; charset=utf-8" },
+    })
+  }
+  const baseUrl = app.url
 
   const rssXml = await generateRegistryRssFeed({
     baseUrl,

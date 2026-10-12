@@ -99,8 +99,8 @@ export function Footer() {
                   Accessible React component library to copy, customize, and own your UI. This
                   project's crafted by <TextLink href={app.author.url}>{app.author.name}</TextLink>.
                   Peep the Source Code on <TextLink href={app.repo.url}>GitHub</TextLink>. Hosted on{" "}
-                  <TextLink href="https://vercel.com?ref=intentui.com" target="_blank">
-                    Vercel
+                  <TextLink href="https://www.cloudflare.com/" target="_blank">
+                    Cloudflare
                   </TextLink>
                   . The source code's got the{" "}
                   <Link href={`${app.repo.url}/blob/main/LICENSE`}>MIT</Link> license.

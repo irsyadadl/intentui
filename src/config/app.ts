@@ -1,6 +1,6 @@
 export const app = {
   name: "Intent UI",
-  url: "https://intentui.com",
+  url: "https://3x.intentui.com",
   description:
     "Intent UI helps developers copy and paste fully accessible React components, customize them with Tailwind, and ship production ready UIs in minutes.",
   author: {

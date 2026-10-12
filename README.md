@@ -5,6 +5,8 @@ Intent UI is a chill set of React components, built on top of [React Aria Compon
 
 ## Documentation
 
+For this `3.x` branch, see [the Cloudflare Pages deployment guide](./CLOUDFLARE.md).
+
 Swing by [intentui.com](https://intentui.com/docs/getting-started/introduction) to peep the docs and get the lowdown on getting started!
 
 ## Blocks & Templates

@@ -1,0 +1,6 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "intentui-3x",
+  "pages_build_output_dir": "./out",
+  "compatibility_date": "2026-10-01",
+}

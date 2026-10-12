@@ -1,6 +1,21 @@
 import { notFound, redirect } from "next/navigation"
 import { docs } from "#site/content"
 
+export function generateStaticParams() {
+  return Array.from(
+    new Set(
+      docs.map((doc) =>
+        doc.info.path
+          .split("/")
+          .at(-1)
+          ?.replace(/\.mdx$/, "")
+      )
+    )
+  )
+    .filter((slug): slug is string => Boolean(slug))
+    .map((slug) => ({ slug }))
+}
+
 interface PageProps {
   params: Promise<{ slug: string }>
 }

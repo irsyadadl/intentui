@@ -1,4 +1,5 @@
 export function ogImage(params: { title: string; description?: string }): string {
+  if (process.env.CLOUDFLARE_PAGES_BUILD === "1") return "/images/opengraph-image.png"
   const title = params.title.trim()
   const normalizedTitle = title ? title[0].toUpperCase() + title.slice(1).toLowerCase() : ""
 

@@ -14,6 +14,24 @@ const typeToCategoryMap: Record<string, string> = {
   "registry:theme": "theme",
 }
 
+export const dynamic = "force-static"
+
+export async function generateStaticParams() {
+  const dir = path.join(process.cwd(), "public", "r")
+  const params: { category: string; slug: string }[] = []
+  for (const file of await readdir(dir)) {
+    if (!file.endsWith(".json")) continue
+    const item = JSON.parse(await readFile(path.join(dir, file), "utf8"))
+    const category = typeToCategoryMap[item.type]
+    if (!category || typeof item.name !== "string") continue
+    const slug = item.name.startsWith(`${category}-`)
+      ? item.name.slice(category.length + 1)
+      : item.name
+    params.push({ category, slug })
+  }
+  return params
+}
+
 export async function GET(
   _req: Request,
   context: { params: Promise<{ category: string; slug: string }> }

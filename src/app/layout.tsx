@@ -9,6 +9,7 @@ import localFont from "next/font/local"
 import { headers } from "next/headers"
 import { Providers } from "@/components/providers"
 import { Toast } from "@/components/ui/toast"
+import { VersionNotice } from "@/components/version-notice"
 
 export const metadata: Metadata = {
   metadataBase: new URL(app.url),
@@ -101,7 +102,8 @@ interface Props {
 }
 
 export default async function RootLayout({ children }: Readonly<Props>) {
-  const acceptLanguage = (await headers()).get("accept-language")
+  const acceptLanguage =
+    process.env.CLOUDFLARE_PAGES_BUILD === "1" ? null : (await headers()).get("accept-language")
   const lang = acceptLanguage?.split(/[,;]/)[0] || "en-US"
 
   const structuredData = {
@@ -149,11 +151,12 @@ export default async function RootLayout({ children }: Readonly<Props>) {
         <JsonLd data={structuredData} />
         <meta name="theme-color" content={META_THEME_COLORS.light} />
       </head>
-      <body className="min-h-svh font-sans antialiased">
+      <body className="min-h-svh pb-24 font-sans antialiased sm:pb-16">
         <Providers lang={lang}>
           <AppBootstrap />
           <Toast />
           <main>{children}</main>
+          <VersionNotice />
         </Providers>
         <Analytics />
       </body>

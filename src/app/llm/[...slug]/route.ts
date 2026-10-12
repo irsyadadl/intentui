@@ -4,6 +4,7 @@ import { processMdxForLLMs } from "@/lib/llm"
 import { source } from "@/lib/source"
 
 export const revalidate = false
+export const dynamic = "force-static"
 
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ slug: string[] }> }) {
   const slug = (await params).slug

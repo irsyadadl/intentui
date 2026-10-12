@@ -11,6 +11,10 @@ import { ogImage } from "@/lib/og"
 import { PageContainer } from "@/components/page-container"
 import { Header, HeaderDescription, HeaderInner, HeaderTitle } from "@/components/header"
 
+export function generateStaticParams() {
+  return blog.map((article) => ({ slug: article.info.path.replace(/\.mdx$/, "").split("/") }))
+}
+
 export default async function Page(props: DocPageProps) {
   const { slug } = await props.params
   const article = blog.find((i) => i.info.path.replace(".mdx", "") === slug[0])

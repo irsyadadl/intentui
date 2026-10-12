@@ -191,3 +191,14 @@ export function IconsList({ searchParams }: SearchParamsProps) {
     </IconSearchProvider>
   )
 }
+
+export function IconsListFromUrl() {
+  const params = useSearchParams()
+  const type = params.get("t")
+  const searchParams = {
+    query: params.get("query") || "",
+    t: type === "solid" || type === "regular" ? type : undefined,
+  } satisfies SearchParamsProps["searchParams"]
+
+  return <IconsList searchParams={searchParams} />
+}

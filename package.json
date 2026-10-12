@@ -23,6 +23,8 @@
     "release": "npm run gr && npm run build:search",
     "dev": "next dev --turbopack",
     "build": "_FUMADOCS_MDX=1 next build --webpack",
+    "build:cloudflare": "NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-https://3x.intentui.com} CLOUDFLARE_PAGES_BUILD=1 npm run build && node --import tsx src/scripts/prepare-cloudflare-pages.ts",
+    "deploy:cloudflare": "npm run build:cloudflare && wrangler pages deploy out --branch=3.x",
     "format": "oxlint --fix && oxfmt .",
     "start": "next start",
     "preview": "npm run build && next start",
@@ -94,7 +96,8 @@
     "tailwindcss": "^4.3.0",
     "tsx": "^4.21.0",
     "typescript": "^6.0.3",
-    "vitest": "^5.0.1"
+    "vitest": "^5.0.1",
+    "wrangler": "^4.149.0"
   },
   "overrides": {
     "shadcn": {

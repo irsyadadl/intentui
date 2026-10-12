@@ -4,7 +4,7 @@ import { JsonLd } from "@/components/json-ld"
 import { Loader } from "@/components/ui/loader"
 import { app } from "@/config/app"
 import { createMetadata } from "@/lib/metadata"
-import { IconsList } from "./partials/icons-list"
+import { IconsListFromUrl } from "./partials/icons-list"
 
 export const metadata = createMetadata({
   title: "Icons",
@@ -24,16 +24,7 @@ export const metadata = createMetadata({
   ],
 })
 
-interface Props {
-  searchParams: Promise<{
-    query?: string
-    t?: "solid" | "regular"
-  }>
-}
-
-export default async function Page({ searchParams }: Props) {
-  const { query, t } = await searchParams
-
+export default function Page() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -63,7 +54,7 @@ export default async function Page({ searchParams }: Props) {
             </div>
           }
         >
-          <IconsList searchParams={{ query, t }} />
+          <IconsListFromUrl />
         </Suspense>
       </>
     </>

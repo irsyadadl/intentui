@@ -1,4 +1,8 @@
 import { ImageResponse } from "next/og"
+import { readFile } from "node:fs/promises"
+import path from "node:path"
+
+export const revalidate = false
 
 async function loadAssets(): Promise<
   { name: string; data: Buffer; weight: 400 | 500; style: "normal" }[]
@@ -25,18 +29,27 @@ async function loadAssets(): Promise<
 }
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url)
-  const title = searchParams.get("title")
-  const description = searchParams.get("description")
+  const searchParams =
+    process.env.CLOUDFLARE_PAGES_BUILD === "1" ? null : new URL(request.url).searchParams
+  const title = searchParams?.get("title") || "Intent UI"
+  const description =
+    searchParams?.get("description") || "Accessible React components, styled with Tailwind CSS."
 
   const fonts = await loadAssets()
+  const backgroundImage =
+    process.env.CLOUDFLARE_PAGES_BUILD === "1"
+      ? `data:image/png;base64,${(await readFile(path.join(process.cwd(), "public/images/og-background.png"))).toString("base64")}`
+      : new URL(
+          "/images/og-background.png",
+          process.env.NEXT_PUBLIC_APP_URL || "https://3x.intentui.com"
+        ).toString()
 
   return new ImageResponse(
     <div
       tw="flex h-full w-full bg-zinc-900 text-white"
       style={{
         fontFamily: "Inter",
-        backgroundImage: `url(${new URL("/images/og-background.png", process.env.NEXT_PUBLIC_APP_URL).toString()})`,
+        backgroundImage: `url(${backgroundImage})`,
       }}
     >
       <div tw="flex absolute flex-row top-0 left-32 top-32 text-white">

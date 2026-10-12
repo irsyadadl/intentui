@@ -33,6 +33,8 @@ src/components-search.json
 src/generated
 # next.js
 /.next/
+/.wrangler/
+.dev.vars*
 /out/
 # production
 /build

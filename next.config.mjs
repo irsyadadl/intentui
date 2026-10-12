@@ -1,7 +1,9 @@
 import { createMDX } from "fumadocs-mdx/next"
 const withMDX = createMDX()
+const isStaticExport = process.env.CLOUDFLARE_PAGES_BUILD === "1"
 /** @type {import("next").NextConfig} */
 const config = {
+  ...(isStaticExport && { output: "export", images: { unoptimized: true } }),
   reactCompiler: true,
   devIndicators: false,
   outputFileTracingIncludes: {
@@ -22,6 +24,7 @@ const config = {
     return config
   },
   async rewrites() {
+    if (isStaticExport) return []
     return [
       { source: "/r/:slug", destination: "/r/:slug.json" },
       { source: "/r/hooks/:slug", destination: "/r/:slug.json" },
@@ -33,6 +36,7 @@ const config = {
     ]
   },
   async redirects() {
+    if (isStaticExport) return []
     return [
       {
         source: "/radio",
@@ -96,6 +100,11 @@ const config = {
       },
     ]
   },
+}
+
+if (isStaticExport) {
+  delete config.rewrites
+  delete config.redirects
 }
 
 export default withMDX(config)
