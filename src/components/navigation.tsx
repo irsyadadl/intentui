@@ -109,7 +109,10 @@ export function Navigation() {
                       latest
                     </Badge>
                   </MenuItem>
-                  <MenuItem href={`${app.url}/docs/getting-started/introduction`} className="group">
+                  <MenuItem
+                    href="https://3x.intentui.com/docs/getting-started/introduction"
+                    className="group"
+                  >
                     3.x
                   </MenuItem>
                   <MenuItem href="https://2x.intentui.com">2.x</MenuItem>
