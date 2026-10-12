@@ -10,7 +10,7 @@ Three independently installable skills for Intent UI source-based development:
 
 ## Install
 
-From the published repository default branch:
+Install from the Intent UI repository:
 
 ```bash
 npx skills add irsyadadl/intentui
@@ -24,13 +24,7 @@ npx skills add irsyadadl/intentui --skill intentui
 npx skills add irsyadadl/intentui --list
 ```
 
-This implementation is maintained on **4.x** by request. While the default branch remains 3.x and lacks these new skills, install from the explicit branch URL:
-
-```bash
-npx skills add https://github.com/irsyadadl/intentui/tree/4.x --skill intentui intentui-design intentui-migrate
-```
-
-The bare repository command discovers these three only after they are published on the default branch or the repository's default branch changes. A skill's Git branch does not determine the application's Intent UI version; the primary skill checks installed source and CSS. Ordinary development never upgrades implicitly.
+The command uses the repository's default branch. A skill's Git branch does not determine the application's Intent UI version; the primary skill checks installed source and CSS. Ordinary development never upgrades implicitly.
 
 ## Registries and authentication
 

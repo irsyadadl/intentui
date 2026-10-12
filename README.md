@@ -9,7 +9,7 @@ Swing by [intentui.com](https://intentui.com/docs/getting-started/introduction) 
 
 ## Agent Skills
 
-Official component, premium design, and v3-to-v4 migration workflows are in [skills/](skills/README.md). Use the documented `4.x` installation ref until the skills are available on the repository default branch.
+Official component, premium design, and v3-to-v4 migration workflows are in [skills/](skills/README.md). Install them with `npx skills add irsyadadl/intentui`.
 
 ## Blocks & Templates
 

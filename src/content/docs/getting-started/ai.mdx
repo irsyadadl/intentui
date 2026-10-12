@@ -35,11 +35,11 @@ Intent UI provides three independently installable Agent Skills in the main repo
 | `intentui-design` | Purchased Design Intent UI blocks, patterns, kits, templates, and authenticated registry workflows |
 | `intentui-migrate` | Explicit v3-to-v4 migration or a read-only upgrade audit |
 
-The skills are maintained on `4.x`. Until they are available on the repository's default branch, install with the explicit ref:
+Install the skills from the Intent UI repository:
 
-<PackageCommand command="npx skills add https://github.com/irsyadadl/intentui/tree/4.x --skill intentui intentui-design intentui-migrate" />
+<PackageCommand command="npx skills add irsyadadl/intentui" />
 
-Once published on the default branch, use `npx skills add irsyadadl/intentui`. The CLI may offer skill and agent selections. Use `--skill intentui` to choose only the component skill, and `npx skills update` to update installed skills.
+The CLI lets you select the skills and agents to install. Use `--skill intentui` to choose only the component skill, and `npx skills update` to update installed skills.
 
 The component skill resolves your application's aliases and framework paths, reads actual component APIs, and loads only relevant rules. It preserves local customizations and never upgrades ordinary component work implicitly. Version-specific overlays and semantic colors live inside the same skill.
 
