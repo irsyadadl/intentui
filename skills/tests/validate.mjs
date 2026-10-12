@@ -18,7 +18,11 @@ import {
   discoveryPlan,
 } from "../intentui-design/scripts/inspect-registry.mjs"
 
-import { auditPayload, auditLive } from "../intentui-design/scripts/audit-registry.mjs"
+import {
+  auditPayload,
+  auditLive,
+  resolveDependency,
+} from "../intentui-design/scripts/audit-registry.mjs"
 import {
   loadTools,
   transformModal,
@@ -577,6 +581,16 @@ try {
     assert.equal(bad.externalEdges[0].dependency, "@intentui/button")
     assert.ok(bad.compatibilitySignals.includes("ModalContent"))
     assert.equal(bad.resolution, "unverified-external-namespace")
+    assert.deepEqual(
+      auditPayload({ name: "stale", files: [{ content: "const Surface = TooltipContent" }] })
+        .compatibilitySignals,
+      ["TooltipContent"]
+    )
+    assert.deepEqual(
+      auditPayload({ name: "safe", files: [{ content: "const Surface = MyTooltipContent" }] })
+        .compatibilitySignals,
+      []
+    )
   })
   await (async () => {
     const only = { registries: { "@irsyad": registryConfig.registries["@irsyad"] } }
@@ -608,11 +622,14 @@ try {
       "fixture-block",
       fixture
     )
-    assert.equal(result.status, "same-origin-payload-closure-inspected")
+    assert.equal(result.status, "dependency-payload-closure-inspected")
     assert.equal(result.installed, false)
     assert.equal(result.mode, "mock")
     assert.equal(result.accessEvidence.mode, "mock")
-    assert.equal(result.externalEdges.length, 0)
+    assert.deepEqual(
+      result.externalEdges.map((edge) => edge.status),
+      ["payload-inspected"]
+    )
     assert.deepEqual(
       result.items.map((item) => item.item),
       ["button", "dialog", "table", "fixture-block"]
@@ -622,6 +639,104 @@ try {
     checks++
     process.stdout.write(
       "PASS mock live audit: unified closure, no auth request, sanitized metadata\n"
+    )
+  })()
+  await (async () => {
+    const config = {
+      style: "new-york",
+      tailwind: { config: "" },
+      registries: {
+        "@irsyad": registryConfig.registries["@irsyad"],
+        "@external": {
+          url: "https://external.test/r/{name}.json",
+          headers: { Authorization: "Bearer ${EXTERNAL_TOKEN}" },
+          params: { version: "${VERSION}" },
+        },
+        "@public": "https://public.test/{name}.json",
+        "@unavailable": {
+          url: "https://missing.test/{name}",
+          headers: { Authorization: "Bearer ${MISSING_TOKEN}" },
+        },
+      },
+    }
+    const environment = {
+      REGISTRY_TOKEN: "mock-secret",
+      EXTERNAL_TOKEN: "external-secret",
+      VERSION: "v4",
+    }
+    assert.equal(
+      resolveDependency("button", config).url,
+      "https://ui.shadcn.com/r/styles/new-york-v4/button.json"
+    )
+    assert.equal(
+      resolveDependency("@shadcn/button", config).url,
+      resolveDependency("button", config).url
+    )
+    assert.equal(resolveDependency("@public/card", config).url, "https://public.test/card.json")
+    assert.equal(resolveDependency("./local.json", config).status, "unsupported-dependency-address")
+    assert.equal(
+      resolveDependency("acme/ui/button", config).status,
+      "unsupported-dependency-address"
+    )
+    const requests = []
+    const fixture = async (address, options) => {
+      const url = new URL(address)
+      requests.push(address)
+      assert.equal(options.redirect, "error")
+      const own = url.origin === "https://design.intentui.com"
+      assert.deepEqual(
+        options.headers,
+        own && !url.pathname.endsWith("/raw-child")
+          ? { Authorization: "Bearer mock-secret", "X-Project": "fixture" }
+          : url.hostname === "external.test"
+            ? { Authorization: "Bearer external-secret" }
+            : {}
+      )
+      if (url.pathname.endsWith("/registry")) return { ok: true, json: async () => ({ items: [] }) }
+      const name = url.pathname.split("/").at(-1)
+      if (url.hostname === "external.test") assert.equal(url.searchParams.get("version"), "v4")
+      const dependencies =
+        own && name === "button"
+          ? [
+              "button",
+              "@shadcn/button",
+              "https://design.intentui.com/r/raw-child",
+              "@external/card",
+              "@public/card",
+              "@unknown/card",
+              "@unavailable/card",
+              "https://unconfigured.test/r/card.json?token=do-not-print",
+            ]
+          : url.hostname === "external.test"
+            ? ["@external/card", "@irsyad/button"]
+            : []
+      return { ok: true, json: async () => ({ name, registryDependencies: dependencies }) }
+    }
+    const result = await auditLive(config, environment, undefined, fixture)
+    assert.equal(result.status, "dependency-resolution-unverified")
+    assert.equal(requests.filter((url) => url.includes("ui.shadcn.com")).length, 1)
+    assert.equal(requests.filter((url) => url.includes("external.test")).length, 1)
+    assert.equal(requests.filter((url) => url.endsWith("/raw-child")).length, 1)
+    assert.ok(!requests.some((url) => /missing.test|unconfigured.test/.test(url)))
+    assert.deepEqual(
+      result.externalEdges
+        .filter((edge) => edge.status !== "payload-inspected")
+        .map((edge) => edge.status),
+      [
+        "namespace-not-configured",
+        "registry-configuration-unavailable",
+        "external-url-requires-separate-inspection",
+      ]
+    )
+    assert.ok(!/mock-secret|external-secret|do-not-print/.test(JSON.stringify(result)))
+    const denied = await auditLive(config, environment, undefined, async () => ({
+      ok: false,
+      status: 401,
+    }))
+    assert.equal(denied.status, "authentication-failed-stop")
+    checks++
+    process.stdout.write(
+      "PASS registry dependency resolution: shadcn bare names, scoped credentials, external namespaces, cycles and unresolved edges\n"
     )
   })()
   check("codemods: pristine/customized, preview, idempotence, scopes and unsafe shapes", () => {
@@ -637,6 +752,27 @@ try {
         migrated.code.includes("Keep my content")
     )
     assert.equal(transformModal(migrated.code, "feature.tsx", tools).code, migrated.code)
+    assert.equal(
+      migrated.code,
+      original
+        .replaceAll("ModalContent", "Dialog")
+        .replaceAll("ModalTitle", "DialogTitle")
+        .replaceAll("Modal", "DialogTrigger")
+        .replace("/modal", "/dialog")
+    )
+    const styled =
+      original
+        .replaceAll('"', "'")
+        .replaceAll("; ", ";\r\n")
+        .replace("export function", "// Keep this comment\r\nexport function") + "\r\n"
+    assert.equal(
+      transformModal(styled, "feature.tsx", tools).code,
+      styled
+        .replaceAll("ModalContent", "Dialog")
+        .replaceAll("ModalTitle", "DialogTitle")
+        .replaceAll("Modal", "DialogTrigger")
+        .replace("/modal", "/dialog")
+    )
     for (const unsafe of [
       original.replace(
         '<Button intent="outline">My action</Button>',
@@ -658,8 +794,13 @@ try {
       .replaceAll("</Modal>", "</OldModal>")
       .replaceAll("<ModalContent ", "<OldSurface ")
       .replaceAll("</ModalContent>", "</OldSurface>")
-    assert.ok(
-      transformModal(alias, "feature.tsx", tools).code.includes("DialogTrigger as OldModal")
+    assert.equal(
+      transformModal(alias, "feature.tsx", tools).code,
+      alias
+        .replace("Modal as OldModal", "DialogTrigger as OldModal")
+        .replace("ModalContent as OldSurface", "Dialog as OldSurface")
+        .replaceAll("ModalTitle", "DialogTitle")
+        .replace("/modal", "/dialog")
     )
     const jsx =
       'export const Demo = () => <div className="hover:text-muted-fg/70 bg-bg">bg-bg unrelated</div>'
@@ -694,10 +835,31 @@ try {
     fs.writeFileSync(path.join(project, "components.json"), JSON.stringify(registryConfig))
     fs.writeFileSync(path.join(project, ".env"), "DO_NOT_PRINT=fixture-secret")
     const protectedBytes = fs.readFileSync(path.join(project, "components.json"), "utf8")
-    migrateFiles(project, ["feature.tsx"], ["modal"])
+    const preview = migrateFiles(project, ["feature.tsx"], ["modal"])
+    assert.ok(
+      preview[0].diff.includes("--- a/feature.tsx") && preview[0].diff.includes("+++ b/feature.tsx")
+    )
+    assert.ok(
+      preview[0].diff.includes("-" + original) && preview[0].diff.includes("+" + migrated.code)
+    )
+    const cliPreview = JSON.parse(
+      execFileSync(
+        process.execPath,
+        [
+          path.join(skillRoot, "intentui-migrate/scripts/migrate.mjs"),
+          "--project",
+          project,
+          "--modal",
+          "feature.tsx",
+        ],
+        { encoding: "utf8" }
+      )
+    )
+    assert.equal(cliPreview[0].diff, preview[0].diff)
     assert.equal(fs.readFileSync(path.join(project, "feature.tsx"), "utf8"), original)
     migrateFiles(project, ["feature.tsx"], ["modal"], true)
     assert.equal(fs.readFileSync(path.join(project, "feature.tsx"), "utf8"), migrated.code)
+    assert.equal(migrateFiles(project, ["feature.tsx"], ["modal"])[0].diff, "")
     assert.equal(fs.readFileSync(path.join(project, "components.json"), "utf8"), protectedBytes)
     assert.throws(() => migrateFiles(project, [".env"], ["tokens"], true))
     assert.throws(() => migrateFiles(project, ["components.json"], ["tokens"], true))

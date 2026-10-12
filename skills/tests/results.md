@@ -26,68 +26,45 @@ Updated the existing three skills on 4.x. The public installation command remain
 
 v3: Tooltip → focusable trigger + TooltipContent. Current v4: TooltipTrigger → focusable trigger + Tooltip. Timing/open state belongs to TooltipTrigger; positioning/offset/arrow/inverse belongs to Tooltip. Current v4 removes TooltipContent. Rules, migration before/after TSX, payload audit and source/type checks were updated. No component-library Tooltip implementation was edited by this work.
 
+## Review on 2026-10-12
+
+Kept the three independent skills and Design's v4-only unified @irsyad registry policy.
+
+- Registry dependencies now distinguish built-in shadcn bare names from @irsyad names, resolve configured external namespaces, expand registry-specific URLs/styles/parameters/environment references, and keep headers scoped to their own registry. Resolved URL deduplication handles aliases and cycles. Unconfigured namespaces, unsupported local/GitHub addresses and direct URLs outside the configured @irsyad origin are reported as unresolved; no namespace is silently added or rewritten.
+- Migration dry-run includes unified code diffs with three context lines. Git is required for changed-file previews. AST-guided text edits preserve unrelated TSX formatting, quotes, comments and line endings; aliases, customization, protected files and idempotence remain covered.
+- Regression checks cover actual CLI preview output, aliases, source preservation, bare shadcn names, scoped external credentials, missing configuration/environment, cycles and sanitized unresolved edges. Stale API matching uses identifier boundaries.
+
 ## Validation status
 
-Before the latest Tooltip/source-test edits, `node skills/tests/validate.mjs` passed 17 groups and 30 API examples, and `node skills/tests/mcp-smoke.mjs` passed. A Skills CLI check was started. These earlier results do not verify the final edited state.
+All checks passed against the final reviewed files:
 
-At the developer's request, final validation is left for the developer to run:
+| Check                                                                                                                         | Result                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `node skills/tests/validate.mjs`                                                                                              | 20 groups, including v3/v4 source-backed API typechecks and codemod output                                           |
+| `node skills/tests/mcp-smoke.mjs`                                                                                             | Six actual shadcn MCP registry tools, exposed search schema, local namespace discovery and installation command      |
+| `node skills/tests/skills-cli-smoke.mjs`                                                                                      | Skills CLI 1.7.2: all three together and independently; helper/reference bytes preserved; temporary projects removed |
+| `npx oxlint skills/intentui/scripts skills/intentui-design/scripts skills/intentui-migrate/scripts skills/tests/*.mjs`        | Passed                                                                                                               |
+| `npm run lint`                                                                                                                | Passed across the repository                                                                                         |
+| `npx oxfmt --check skills/intentui/scripts skills/intentui-design/scripts skills/intentui-migrate/scripts skills/tests/*.mjs` | Passed                                                                                                               |
+| `npx oxfmt --check .`                                                                                                         | Passed across the repository                                                                                         |
+| `git diff --check`                                                                                                            | Passed                                                                                                               |
 
-```bash
-node skills/tests/validate.mjs
-node skills/tests/mcp-smoke.mjs
-node skills/tests/skills-cli-smoke.mjs
-npx oxlint skills/intentui/scripts skills/intentui-design/scripts skills/intentui-migrate/scripts skills/tests/*.mjs
-npx oxfmt --check skills/intentui/scripts skills/intentui-design/scripts skills/intentui-migrate/scripts skills/tests/*.mjs
-git diff --check
-```
-
-Final source/Tooltip/codemod/mock traversal changes are pending these checks. No final passing result, real-agent evaluation, browser interaction test or production build is claimed. Synthetic tests cover registry precedence, token security, API flags and dependency traversal only. Existing shadcn MCP is used; no custom server was created.
+The Skills CLI test ran with npm network access. No live premium authentication/install, real-agent/browser evaluation or production build is claimed. Mock traversal remains separate from live evidence; existing shadcn MCP is used, with no custom server.
 
 ## Premium integration limits and follow-up
 
 Registry token values were never printed. No REGISTRY_TOKEN/IRSYAD_TOKEN was available in the inspected process/configured local env assignments, so authenticated Button/Dialog/Table/premium-block installation and published dependency resolution could not be verified. No licensed source is bundled.
 
-The optional `audit-registry.mjs --live PROJECT ACTUAL_CATALOG_BLOCK` inspects configured-origin payloads/recursive dependencies with secure process-environment auth and emits metadata only. An external @intentui edge is flagged for actual CLI resolution verification, not automatically declared broken or rewritten. Single-registry installation is not claimed until the real dependency closure and authorized CLI installation succeed.
+The optional `audit-registry.mjs --live PROJECT ACTUAL_CATALOG_BLOCK` inspects recursive dependencies from @irsyad, built-in shadcn and explicitly configured namespaces with registry-scoped process-environment auth and emits metadata only. Unknown namespaces and unconfigured external URLs require separate resolution verification; they are not declared broken or rewritten. Single-registry installation is not claimed until the real dependency closure and authorized CLI installation succeed.
 
 External Design docs already show @irsyad alone but still contain an @irsyad/modal example; review their v4 guidance separately. The commercial application/infrastructure is outside this task and was not edited. Other concurrent component/library changes in the working tree were left intact.
 
-## Affected files
+## Files changed in this review
 
-- `skills/README.md`
-- `skills/intentui-design/SKILL.md`
-- `skills/intentui-design/references/authentication.md`
-- `skills/intentui-design/references/blocks.md`
-- `skills/intentui-design/references/compatibility.md`
-- `skills/intentui-design/references/composition.md`
-- `skills/intentui-design/references/patterns.md`
-- `skills/intentui-design/references/registry.md`
-- `skills/intentui-design/references/templates.md`
-- `skills/intentui-design/references/ui-kits.md`
 - `skills/intentui-design/scripts/audit-registry.mjs`
-- `skills/intentui-design/scripts/inspect-registry.mjs`
-- `skills/intentui-migrate/SKILL.md`
-- `skills/intentui-migrate/references/automation.md`
-- `skills/intentui-migrate/references/breaking-changes.md`
-- `skills/intentui-migrate/references/components.md`
-- `skills/intentui-migrate/references/migration.md`
-- `skills/intentui-migrate/references/themes.md`
-- `skills/intentui-migrate/references/verification.md`
+- `skills/intentui-design/references/registry.md`
 - `skills/intentui-migrate/scripts/migrate.mjs`
-- `skills/intentui-migrate/scripts/token-map.json`
-- `skills/intentui/SKILL.md`
-- `skills/intentui/rules/component-families.md`
-- `skills/intentui/rules/components.md`
-- `skills/intentui/rules/composition.md`
-- `skills/intentui/rules/overlays.md`
-- `skills/intentui/rules/registry.md`
-- `skills/intentui/rules/v4/overlays.md`
-- `skills/intentui/rules/version-detection.md`
-- `skills/intentui/scripts/inspect-project.mjs`
-- `skills/tests/README.md`
-- `skills/tests/mcp-smoke.mjs`
-- `skills/tests/results.md`
-- `skills/tests/scenarios.json`
-- `skills/tests/sources.md`
+- `skills/intentui-migrate/references/automation.md`
 - `skills/tests/validate.mjs`
-- `src/content/blog/release-v4.mdx`
-- `src/content/docs/getting-started/ai.mdx`
+- `skills/tests/README.md`
+- `skills/tests/results.md`

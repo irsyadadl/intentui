@@ -1,5 +1,7 @@
 import fs from "node:fs"
 import path from "node:path"
+import os from "node:os"
+import { spawnSync } from "node:child_process"
 import { createRequire } from "node:module"
 import { fileURLToPath } from "node:url"
 
@@ -185,6 +187,13 @@ export function transformModal(code, file, tools) {
     !ts.isNamedImports(bindings)
   )
     return unsupported("Default/namespace/type modal import requires manual review")
+  if (
+    code.slice(
+      declaration.moduleSpecifier.getStart(ast) + 1,
+      declaration.moduleSpecifier.end - 1
+    ) !== declaration.moduleSpecifier.text
+  )
+    return unsupported("Escaped modal module path requires manual review")
   const aliases = new Map()
   let wrapper, surface
   for (const item of bindings.elements) {
@@ -291,55 +300,70 @@ export function transformModal(code, file, tools) {
   validate(ast)
   if (!wrappers || wrappers !== surfaces || reason)
     return unsupported(reason ?? "Unpaired ModalContent requires manual review")
-  const transformation = ts.transform(ast, [
-    (context) => {
-      function visitor(node) {
-        if (node === declaration) {
-          const elements = bindings.elements.map((item) => {
-            const info = aliases.get(item.name.text)
-            return ts.factory.createImportSpecifier(
-              false,
-              info.target !== mappings[info.imported]
-                ? ts.factory.createIdentifier(mappings[info.imported])
-                : undefined,
-              ts.factory.createIdentifier(info.target)
-            )
-          })
-          return ts.factory.updateImportDeclaration(
-            node,
-            node.modifiers,
-            ts.factory.createImportClause(
-              false,
-              undefined,
-              ts.factory.createNamedImports(elements)
-            ),
-            ts.factory.createStringLiteral(
-              node.moduleSpecifier.text.replace(/\/modal$/, "/dialog")
-            ),
-            node.attributes
-          )
-        }
-        if (ts.isIdentifier(node) && aliases.has(node.text)) {
-          const parent = node.parent
-          if (
-            ((ts.isJsxOpeningElement(parent) ||
-              ts.isJsxClosingElement(parent) ||
-              ts.isJsxSelfClosingElement(parent)) &&
-              parent.tagName === node) ||
-            ts.isTypeQueryNode(parent)
-          )
-            return ts.factory.createIdentifier(aliases.get(node.text).target)
-        }
-        return ts.visitEachChild(node, visitor, context)
+  const edits = []
+  for (const item of bindings.elements) {
+    const imported = item.propertyName ?? item.name
+    edits.push({ start: imported.getStart(ast), end: imported.end, value: mappings[imported.text] })
+  }
+  const module = declaration.moduleSpecifier
+  edits.push({ start: module.end - 1 - "modal".length, end: module.end - 1, value: "dialog" })
+  function rename(node) {
+    if (ts.isIdentifier(node) && aliases.has(node.text)) {
+      const parent = node.parent
+      if (
+        ((ts.isJsxOpeningElement(parent) ||
+          ts.isJsxClosingElement(parent) ||
+          ts.isJsxSelfClosingElement(parent)) &&
+          parent.tagName === node) ||
+        ts.isTypeQueryNode(parent)
+      ) {
+        edits.push({
+          start: node.getStart(ast),
+          end: node.end,
+          value: aliases.get(node.text).target,
+        })
       }
-      return (node) => ts.visitNode(node, visitor)
-    },
-  ])
-  const result = ts
-    .createPrinter({ newLine: ts.NewLineKind.LineFeed })
-    .printFile(transformation.transformed[0])
-  transformation.dispose()
+    }
+    ts.forEachChild(node, rename)
+  }
+  rename(ast)
+  let result = code
+  for (const edit of edits.sort((a, b) => b.start - a.start))
+    result = result.slice(0, edit.start) + edit.value + result.slice(edit.end)
   return { code: result, count: wrappers, skipped: [] }
+}
+
+function codeDiff(original, code, relative) {
+  if (original === code) return ""
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), "intentui-migration-diff-"))
+  try {
+    fs.writeFileSync(path.join(temp, "before"), original)
+    fs.writeFileSync(path.join(temp, "after"), code)
+    const result = spawnSync(
+      "git",
+      [
+        "diff",
+        "--no-index",
+        "--no-color",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--text",
+        "--unified=3",
+        "--",
+        "before",
+        "after",
+      ],
+      { cwd: temp, encoding: "utf8", maxBuffer: 10 * 1024 * 1024 }
+    )
+    if (result.error || result.status !== 1)
+      throw new Error("Unable to generate migration diff; Git is required")
+    return result.stdout
+      .replace(/^diff --git a\/before b\/after$/m, () => `diff --git a/${relative} b/${relative}`)
+      .replace(/^--- a\/before$/m, () => `--- a/${relative}`)
+      .replace(/^\+\+\+ b\/after$/m, () => `+++ b/${relative}`)
+  } finally {
+    fs.rmSync(temp, { recursive: true, force: true })
+  }
 }
 
 export function migrateFiles(project, files, modes, write = false) {
@@ -372,7 +396,15 @@ export function migrateFiles(project, files, modes, write = false) {
       count += result.count
       skipped.push(...result.skipped)
     }
-    plan.push({ file, relative, original, code, count, skipped })
+    plan.push({
+      file,
+      relative,
+      original,
+      code,
+      count,
+      skipped,
+      diff: codeDiff(original, code, relative),
+    })
   }
   if (write) {
     for (const item of plan)
@@ -380,12 +412,13 @@ export function migrateFiles(project, files, modes, write = false) {
         throw new Error("A file changed after preview; no writes performed")
     for (const item of plan) if (item.code !== item.original) fs.writeFileSync(item.file, item.code)
   }
-  return plan.map(({ relative, original, code, count, skipped }) => ({
+  return plan.map(({ relative, original, code, count, skipped, diff }) => ({
     file: relative,
     changed: original !== code,
     transformations: count,
     skipped,
     action: write ? "applied" : "dry-run",
+    diff,
     preview: modes.map((mode) =>
       mode === "modal"
         ? "Modal wrapper/content/imports → DialogTrigger/Dialog/dialog module"
