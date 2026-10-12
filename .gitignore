@@ -12,6 +12,7 @@ ignore
 /.claude
 /.agents
 /.ai
+/.junie
 skills-lock.json
 /.github/skills
 /.codex
