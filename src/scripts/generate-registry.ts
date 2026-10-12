@@ -401,12 +401,13 @@ const buildComponentItem = async (absPath: string) => {
   const deps = topLevelPackages(specs)
   const regDeps = await findInternalDepsForFile(absPath, specs)
   const files: FileOut[] = [await fileEntryOther(absPath, "registry:ui")]
+  const cssVars = componentCssVars(code).cssVars
   const raw = {
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
     extends: "none",
     name,
     type: "registry:ui",
-    ...componentCssVars(code),
+    cssVars,
     title: name,
     description: name,
     dependencies: deps.length ? deps : undefined,
@@ -414,19 +415,23 @@ const buildComponentItem = async (absPath: string) => {
     files,
     ...(name === "sheet"
       ? {
+          cssVars: {
+            ...cssVars,
+            theme: {
+              ...cssVars?.theme,
+              "animate-sheet-backdrop": "sheet-backdrop 300ms linear both",
+              "animate-sheet-scale-back": "sheet-scale-back 300ms ease-out both",
+            },
+          },
           css: {
-            "@theme inline": {
-              "--animate-sheet-backdrop": "sheet-backdrop 300ms linear both",
-              "--animate-sheet-scale-back": "sheet-scale-back 300ms ease-out both",
-              "@keyframes sheet-backdrop": {
-                from: { opacity: "0" },
-                to: { opacity: "1" },
-              },
-              "@keyframes sheet-scale-back": {
-                to: {
-                  transform:
-                    "translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95)",
-                },
+            "@keyframes sheet-backdrop": {
+              from: { opacity: "0" },
+              to: { opacity: "1" },
+            },
+            "@keyframes sheet-scale-back": {
+              to: {
+                transform:
+                  "translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95)",
               },
             },
             "@supports not (animation-timeline: view())": {
