@@ -103,11 +103,20 @@ export function Navigation() {
                   <ChevronDownIcon />
                 </Button>
                 <MenuContent placement="bottom end">
-                  <MenuItem href={`${app.url}/docs/getting-started/introduction`} className="group">
-                    3.x{" "}
+                  <MenuItem
+                    href={`https://intentui.com/docs/getting-started/introduction`}
+                    className="group"
+                  >
+                    4.x{" "}
                     <Badge intent="primary" isCircle={false} className="ml-auto">
                       latest
                     </Badge>
+                  </MenuItem>
+                  <MenuItem
+                    href={`https://3x.intentui.com/docs/getting-started/introduction`}
+                    className="group"
+                  >
+                    3.x
                   </MenuItem>
                   <MenuItem href="https://2x.intentui.com">2.x</MenuItem>
                   <MenuItem href="https://github.com/irsyadadl/intentui/tree/1.x" className="group">
