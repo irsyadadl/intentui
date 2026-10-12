@@ -1,5 +1,53 @@
 [
   {
+    "name": "Preview custom trigger",
+    "component": "preview-custom-trigger.tsx",
+    "url": "/preview",
+    "type": "example",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 9,
+    "deletions": 9,
+    "date": "2026-10-12"
+  },
+  {
+    "name": "Preview example",
+    "component": "preview-example.tsx",
+    "url": "/preview",
+    "type": "example",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 9,
+    "deletions": 9,
+    "date": "2026-10-12"
+  },
+  {
+    "name": "Preview no delay example",
+    "component": "preview-no-delay-example.tsx",
+    "url": "/preview",
+    "type": "example",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 9,
+    "deletions": 9,
+    "date": "2026-10-12"
+  },
+  {
+    "name": "Preview",
+    "component": "preview.tsx",
+    "url": "/preview",
+    "type": "component",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 3,
+    "deletions": 3,
+    "date": "2026-10-12"
+  },
+  {
     "name": "Tooltip delay example",
     "component": "tooltip-delay-example.tsx",
     "url": "/tooltip",

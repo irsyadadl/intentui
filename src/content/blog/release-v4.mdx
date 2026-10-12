@@ -40,6 +40,8 @@ In v3, names like `Modal` and `Menu` referred to the wrapper, while `ModalConten
 | Menu content | `MenuContent` | `Menu` |
 | Tooltip wrapper | `Tooltip` | `TooltipTrigger` |
 | Tooltip content | `TooltipContent` | `Tooltip` |
+| Preview wrapper | `Preview` | `PreviewTrigger` |
+| Preview content | `PreviewContent` | `Preview` |
 | Popover wrapper | `Popover` | `PopoverTrigger` |
 | Popover content | `PopoverContent` | `Popover` |
 | Context menu wrapper | `ContextMenu` | `MenuTrigger trigger="contextMenu"` |
@@ -81,7 +83,7 @@ import {
 **After (v4)**
 
 ```tsx
-import { Button } from "@/components/ui/button"
+import { Button } from "react-aria-components/Button"
 import {
   Dialog,
   DialogHeader,
@@ -90,7 +92,7 @@ import {
 } from "@/components/ui/dialog"
 
 <DialogTrigger>
-  <Button intent="outline">Rename project</Button>
+  <Button>Rename project</Button>
   <Dialog size="lg">
     <DialogHeader>
       <DialogTitle>Rename project</DialogTitle>
@@ -145,7 +147,7 @@ import {
 **After (v4)**
 
 ```tsx
-import { Button } from "@/components/ui/button"
+import { Button } from "react-aria-components/Button"
 import {
   Sheet,
   SheetHeader,
@@ -154,7 +156,7 @@ import {
 } from "@/components/ui/sheet"
 
 <SheetTrigger>
-  <Button intent="outline">Edit settings</Button>
+  <Button>Edit settings</Button>
   <Sheet position="right">
     <SheetHeader>
       <SheetTitle>Settings</SheetTitle>
@@ -190,7 +192,7 @@ Read the [Sheet documentation](/docs/components/overlays/sheet) for position and
 </Popover>
 
 // After
-import { Button } from "@/components/ui/button"
+import { Button } from "react-aria-components/Button"
 import { Popover, PopoverHeader, PopoverTitle, PopoverTrigger } from "@/components/ui/popover"
 
 <PopoverTrigger>
@@ -226,11 +228,11 @@ import { Menu, MenuContent, MenuItem, MenuTrigger } from "@/components/ui/menu"
 **After (v4)**
 
 ```tsx
-import { Button } from "@/components/ui/button"
+import { Button } from "react-aria-components/Button"
 import { Menu, MenuItem, MenuTrigger } from "@/components/ui/menu"
 
 <MenuTrigger>
-  <Button intent="outline">Actions</Button>
+  <Button>Actions</Button>
   <Menu placement="bottom start">
     <MenuItem id="edit">Edit</MenuItem>
     <MenuItem id="delete" intent="danger">Delete</MenuItem>
@@ -252,7 +254,7 @@ Context menu uses `MenuTrigger` with `trigger="contextMenu"`. Import the compone
 ```tsx
 // Before
 <ContextMenu>
-  <Button intent="outline">Right-click here</Button>
+  <Button>Right-click here</Button>
   <ContextMenuContent>
     <ContextMenuItem id="edit">Edit</ContextMenuItem>
   </ContextMenuContent>
@@ -262,7 +264,7 @@ Context menu uses `MenuTrigger` with `trigger="contextMenu"`. Import the compone
 import { Menu, MenuItem, MenuTrigger } from "@/components/ui/menu"
 
 <MenuTrigger trigger="contextMenu">
-  <Button intent="outline">Right-click here</Button>
+  <Button>Right-click here</Button>
   <Menu>
     <MenuItem id="edit">Edit</MenuItem>
   </Menu>
@@ -291,11 +293,11 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 **After (v4)**
 
 ```tsx
-import { Button } from "@/components/ui/button"
+import { Button } from "react-aria-components/Button"
 import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip"
 
 <TooltipTrigger delay={0}>
-  <Button intent="outline">Duplicate</Button>
+  <Button>Duplicate</Button>
   <Tooltip placement="top" inverse>
     Duplicate project
   </Tooltip>
@@ -307,6 +309,35 @@ Move timing and state props such as `delay`, `closeDelay`, `isOpen`, `defaultOpe
 For TypeScript imports, rename `TooltipContentProps` to `TooltipProps`. The old wrapper's `TooltipProps` type now describes the content; infer wrapper props with `React.ComponentProps<typeof TooltipTrigger>`.
 
 Read the [Tooltip documentation](/docs/components/overlays/tooltip) for placement, appearance, and delay examples.
+
+### Preview
+
+`PreviewTrigger` now wraps a focusable link or button and `Preview`, which renders the popover content. Rename the old `Preview` wrapper to `PreviewTrigger` and `PreviewContent` to `Preview`.
+
+```tsx
+import { Link } from "@/components/ui/link"
+import { Preview, PreviewTrigger } from "@/components/ui/preview"
+
+// Before (v3)
+<Preview delay={0}>
+  <Link href="#">View issue</Link>
+  <PreviewContent>
+    <p>Issue details</p>
+  </PreviewContent>
+</Preview>
+
+// After (v4)
+<PreviewTrigger delay={0}>
+  <Link href="#">View issue</Link>
+  <Preview>
+    <p>Issue details</p>
+  </Preview>
+</PreviewTrigger>
+```
+
+Keep `delay`, `closeDelay`, and `isDisabled` on `PreviewTrigger`. Move content props such as `placement`, `arrow`, and `className` from `PreviewContent` to `Preview`. Custom triggers can still use React Aria's `Focusable` component.
+
+Read the [Preview documentation](/docs/components/overlays/preview) for complete examples.
 
 ## Theme and styling
 
@@ -461,6 +492,7 @@ See [Working with AI](/docs/getting-started/ai#skills) for skill setup and regis
 - Rename `ModalContent` to `Dialog` and import it from `@/components/ui/dialog`. Rename `SheetContent`, `PopoverContent`, `MenuContent`, and `ContextMenuContent` to their component names.
 - Rename `SheetContentProps` to `SheetProps` and `PopoverContentProps` to `PopoverProps` in custom wrappers.
 - Migrate tooltips to `TooltipTrigger` with a `Button` and `Tooltip`. Rename `TooltipContentProps` to `TooltipProps`, and move timing and state props to `TooltipTrigger`.
+- Rename the `Preview` wrapper to `PreviewTrigger` and `PreviewContent` to `Preview`. Keep timing and disabled props on the wrapper.
 - Change `Sheet`'s `side` prop to `position`.
 - Use the local `DialogTrigger` as a wrapper around a button and `Dialog`. Update custom overlay composition to avoid nesting overlay surfaces.
 - Update abbreviated theme tokens and utility classes in custom components and styles.

@@ -1,4 +1,4 @@
-import { Preview, PreviewContent } from "@/components/ui/preview"
+import { PreviewTrigger, Preview } from "@/components/ui/preview"
 import { Button } from "@/components/ui/button"
 import { Link } from "@/components/ui/link"
 import { Text } from "@/components/ui/text"
@@ -7,11 +7,11 @@ export default function Basic() {
   return (
     <div>
       Deployment is currently blocked by{" "}
-      <Preview>
+      <PreviewTrigger>
         <Link href="#" className="text-primary-subtle-foreground">
           #1842
         </Link>
-        <PreviewContent>
+        <Preview>
           <div className="space-y-1">
             <div className="font-medium">Authentication redirect loop after session expiration</div>
             <Text>
@@ -25,14 +25,14 @@ export default function Basic() {
               Assign to me
             </Button>
           </div>
-        </PreviewContent>
-      </Preview>{" "}
+        </Preview>
+      </PreviewTrigger>{" "}
       and{" "}
-      <Preview>
+      <PreviewTrigger>
         <Link href="#" className="text-primary-subtle-foreground">
           #1917
         </Link>
-        <PreviewContent>
+        <Preview>
           <div className="space-y-1">
             <div className="font-medium">
               Duplicate webhook deliveries during deployment retries
@@ -48,8 +48,8 @@ export default function Basic() {
               View checks
             </Button>
           </div>
-        </PreviewContent>
-      </Preview>
+        </Preview>
+      </PreviewTrigger>
       .
     </div>
   )

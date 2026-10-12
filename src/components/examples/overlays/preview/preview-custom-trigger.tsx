@@ -1,4 +1,4 @@
-import { Preview, PreviewContent } from "@/components/ui/preview"
+import { PreviewTrigger, Preview } from "@/components/ui/preview"
 import { Button } from "@/components/ui/button"
 import { Text } from "@/components/ui/text"
 import { Focusable } from "react-aria-components"
@@ -7,13 +7,13 @@ export default function Basic() {
   return (
     <div>
       Deployment is currently blocked by{" "}
-      <Preview>
+      <PreviewTrigger>
         <Focusable>
           <span role="link" className="underline">
             #1842
           </span>
         </Focusable>
-        <PreviewContent>
+        <Preview>
           <div className="space-y-1">
             <div className="font-medium">Authentication redirect loop after session expiration</div>
             <Text>
@@ -27,16 +27,16 @@ export default function Basic() {
               Assign to me
             </Button>
           </div>
-        </PreviewContent>
-      </Preview>{" "}
+        </Preview>
+      </PreviewTrigger>{" "}
       and{" "}
-      <Preview>
+      <PreviewTrigger>
         <Focusable>
           <span role="link" className="underline">
             #1917
           </span>
         </Focusable>
-        <PreviewContent>
+        <Preview>
           <div className="space-y-1">
             <div className="font-medium">
               Duplicate webhook deliveries during deployment retries
@@ -52,8 +52,8 @@ export default function Basic() {
               View checks
             </Button>
           </div>
-        </PreviewContent>
-      </Preview>
+        </Preview>
+      </PreviewTrigger>
       .
     </div>
   )

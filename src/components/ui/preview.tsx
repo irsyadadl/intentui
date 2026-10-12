@@ -2,9 +2,9 @@ import { PreviewTrigger as PreviewTriggerPrimitive } from "react-aria-components
 import { Popover, type PopoverProps } from "@/components/ui/popover"
 import { cx } from "@/lib/primitive"
 
-const Preview = PreviewTriggerPrimitive
-const PreviewContent = ({ className, ...props }: PopoverProps) => {
+const PreviewTrigger = PreviewTriggerPrimitive
+const Preview = ({ className, ...props }: PopoverProps) => {
   return <Popover className={cx("p-4 max-w-xs", className)} {...props} />
 }
 
-export { Preview, PreviewContent }
+export { PreviewTrigger, Preview }
