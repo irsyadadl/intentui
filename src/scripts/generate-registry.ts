@@ -415,7 +415,7 @@ const buildComponentItem = async (absPath: string) => {
     ...(name === "sheet"
       ? {
           css: {
-            "@theme static": {
+            "@theme inline": {
               "--animate-sheet-backdrop": "sheet-backdrop 300ms linear both",
               "--animate-sheet-scale-back": "sheet-scale-back 300ms ease-out both",
               "@keyframes sheet-backdrop": {

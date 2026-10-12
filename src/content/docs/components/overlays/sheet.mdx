@@ -25,26 +25,38 @@ Use this approach if you prefer to install and wire up the component yourself in
 
 <SourceCode toShow='sheet' />
 
-Add the backdrop and stacking animations to your global CSS. `@theme static` keeps their keyframes available for React Aria’s swipe and stack animations.
+Add the backdrop and stacking animations to your global CSS using `@theme inline`. The CLI adds this CSS automatically.
 
 ```css
-@theme static {
+@theme inline {
   --animate-sheet-backdrop: sheet-backdrop 300ms linear both;
   --animate-sheet-scale-back: sheet-scale-back 300ms ease-out both;
 
   @keyframes sheet-backdrop {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes sheet-scale-back {
-    to { transform: translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95); }
+    to {
+      transform: translate(
+        var(--sheet-stack-x, 0px),
+        var(--sheet-stack-y, 0px)
+      ) scale(0.95);
+    }
   }
 }
 
 @supports not (animation-timeline: view()) {
   .react-aria-sheet[data-has-descendants] {
-    transform: translate(var(--sheet-stack-x, 0px), var(--sheet-stack-y, 0px)) scale(0.95);
+    transform: translate(
+      var(--sheet-stack-x, 0px),
+      var(--sheet-stack-y, 0px)
+    ) scale(0.95);
   }
 }
 ```
