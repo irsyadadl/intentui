@@ -1,6 +1,5 @@
 "use client"
 
-import { Button } from "react-aria-components/Button"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import type { TooltipProps as TooltipPrimitiveProps } from "react-aria-components/Tooltip"
 import {
@@ -42,22 +41,15 @@ const tooltipStyles = tv({
   },
 })
 
-type TooltipProps = React.ComponentProps<typeof TooltipTriggerPrimitive>
-const Tooltip = (props: TooltipProps) => <TooltipTriggerPrimitive {...props} />
+const TooltipTrigger = TooltipTriggerPrimitive
 
-interface TooltipContentProps
+interface TooltipProps
   extends Omit<TooltipPrimitiveProps, "children">, VariantProps<typeof tooltipStyles> {
   arrow?: boolean
   children?: React.ReactNode
 }
 
-const TooltipContent = ({
-  offset = 10,
-  arrow = true,
-  inverse,
-  children,
-  ...props
-}: TooltipContentProps) => {
+const Tooltip = ({ offset = 10, arrow = true, inverse, children, ...props }: TooltipProps) => {
   return (
     <TooltipPrimitive
       {...props}
@@ -92,7 +84,5 @@ const TooltipContent = ({
   )
 }
 
-const TooltipTrigger = Button
-
-export type { TooltipContentProps, TooltipProps }
-export { Tooltip, TooltipContent, TooltipTrigger }
+export type { TooltipProps }
+export { TooltipTrigger, Tooltip }

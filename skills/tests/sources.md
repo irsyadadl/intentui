@@ -31,3 +31,9 @@ Research performed on 2026-10-12. Component APIs and tokens were verified agains
 | blanket use client and replace all HTML                                          | framework-aware client boundary and semantic layout markup allowed                      |
 
 These are maintained workflow instructions, not copies of all upstream manuals. Static/fixture checks cannot prove real agent adherence, interactive behavior, or licensed access. See [test procedure](README.md).
+
+## Unified v4 update
+
+The product policy supplied by the maintainer now establishes Design Intent UI as v4-only and @irsyad as the authenticated superset. Old purpose-only separation rules are superseded: prefer @irsyad for public components too in a licensed v4 project. Public-only and v3 component workflows retain compatible @intentui source. Preserve both entries if they exist; never add duplicates or silently fall back after auth failure.
+
+Current local v4 Tooltip source was inspected during this update: exports TooltipTrigger/Tooltip/TooltipProps, removes TooltipContent, and moves timing/state to the trigger wrapper. v3 retains its original Tooltip/TooltipContent composition. Tests now read current local v4 source instead of treating an old v4 snapshot as current. No commercial payload was verified live because registry credentials were unavailable. External Design getting-started documentation already shows @irsyad alone, but still includes an @irsyad/modal example requiring a v4 documentation review outside this repository.

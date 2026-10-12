@@ -60,3 +60,5 @@ Do not replace arbitrary `bg`/`fg` substrings in identifiers, data, URLs, prose,
 [3.x CSS](https://github.com/irsyadadl/intentui/blob/3.x/src/stubs/installation/main.css.stub), [4.x CSS](https://github.com/irsyadadl/intentui/blob/4.x/src/stubs/installation/main.css.stub).
 
 Audited theme variants under `src/styles/themes/` contain the same color families or subsets. In v4 those files still expose `--color-bg: var(--background)`; if the consuming application copied that variant, update the alias to `--color-background` without renaming its already-correct `--background` variable. This is a theme inconsistency to inspect, not justification to overwrite custom CSS.
+
+For narrow AST-aware updates of static className strings and CSS variables, use [automation](automation.md). Other class builders/dynamic templates require manual review; no arbitrary substring replacement is performed.

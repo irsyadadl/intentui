@@ -13,3 +13,5 @@ Check changed features manually or with existing interaction tests:
 - Premium blocks: preserve @irsyad configuration/headers and licensed customizations; identify remaining v3 dependencies.
 
 Report files modified; migrated component families; CSS/token changes; dependency changes; check commands and pass/fail/baseline results; remaining issues; and manual checks still required. Distinguish typechecked examples, static validation, fixture tests, agent evaluations, and actual authenticated installs. Never report a mocked premium response as live authentication success.
+
+After codemods, verify idempotence and review skipped shapes before claiming completion. Confirm components.json/authentication files are byte-for-byte unchanged when outside the requested migration. Optional live premium dependency/installation tests must be reported separately from mock HTTP, CLI commands and agent fixture evaluations.

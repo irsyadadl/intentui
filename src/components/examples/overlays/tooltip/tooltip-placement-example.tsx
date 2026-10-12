@@ -2,22 +2,22 @@
 
 import type { TooltipProps } from "react-aria-components/Tooltip"
 import { Button } from "@/components/ui/button"
-import { Tooltip, TooltipContent } from "@/components/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip"
 
 type Placement = Pick<TooltipProps, "placement">["placement"]
 const placements: Placement[] = ["bottom", "top", "left", "start", "right", "end"]
-export default function TooltipPlacementDemo() {
+export default function TooltipPlacementExample() {
   return (
     <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6 **:[button]:w-full">
       {placements.map((placement, idx) => (
-        <Tooltip key={idx}>
+        <TooltipTrigger key={idx}>
           <Button className="mx-auto" size="sm" intent="outline">
             {placement}
           </Button>
-          <TooltipContent placement={placement}>
+          <Tooltip placement={placement}>
             Tooltip shown at <strong>{placement}</strong>.
-          </TooltipContent>
-        </Tooltip>
+          </Tooltip>
+        </TooltipTrigger>
       ))}
     </div>
   )

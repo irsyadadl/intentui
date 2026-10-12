@@ -31,7 +31,7 @@ import { useIsMobile } from "@/hooks/use-mobile"
 import { cx } from "@/lib/primitive"
 import { Button } from "./button"
 import { Link } from "./link"
-import { Tooltip, TooltipContent } from "./tooltip"
+import { Tooltip, TooltipTrigger } from "./tooltip"
 
 const SIDEBAR_WIDTH = "17rem"
 const SIDEBAR_WIDTH_DOCK = "3.25rem"
@@ -412,7 +412,7 @@ interface SidebarItemProps extends Omit<React.ComponentProps<typeof Link>, "chil
     | ((
         values: LinkRenderProps & { defaultChildren: React.ReactNode; isCollapsed: boolean }
       ) => React.ReactNode)
-  tooltip?: string | React.ComponentProps<typeof TooltipContent>
+  tooltip?: string | React.ComponentProps<typeof Tooltip>
 }
 
 const SidebarItem = ({
@@ -471,9 +471,9 @@ const SidebarItem = ({
   }
 
   return (
-    <Tooltip delay={0}>
+    <TooltipTrigger delay={0}>
       {link}
-      <TooltipContent
+      <Tooltip
         className="**:data-[slot=sidebar-label-mask]:hidden **:[svg]:hidden"
         inverse
         placement="right"
@@ -481,7 +481,7 @@ const SidebarItem = ({
         hidden={!isCollapsed || isMobile || !tooltip}
         {...tooltip}
       />
-    </Tooltip>
+    </TooltipTrigger>
   )
 }
 

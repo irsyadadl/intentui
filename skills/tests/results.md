@@ -1,104 +1,93 @@
-# Implementation results
+# Skill improvement results
 
-Completed locally on **4.x** on 2026-10-12. No commit or remote publication was performed. The default branch was not changed.
+Updated the existing three skills on 4.x. The public installation command remains `npx skills add irsyadadl/intentui`; no repository settings changed.
 
-## Deliverables
+## Seven improvements
 
-| Skill            | Coverage                                                                                                                                                                                                                                          |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| intentui         | One entry point for v3/v4; source/CSS version evidence; mixed projects; existing APIs/imports; forms, collections, semantic colors, icons, overlays; public registry; shadcn MCP and CLI; Next.js, Vite, SPA, Inertia and monorepo path workflows |
-| intentui-design  | Separate commercial workflow; @irsyad selection; environment Bearer authentication; sanitized missing/401/403 failures; blocks, patterns, kits, templates and starter-kit workflow distinctions; dependency/version checks; license preservation  |
-| intentui-migrate | Explicit audit/component/full scope; local customization/upstream comparison; Modal/Dialog, Sheet, Menu, Context Menu, Popover and removed exports; dependency closure; exact semantic token migration; behavioral verification and reporting     |
+1. Component decisions cover actions/content/forms/navigation/overlays/collections/feedback/charts/layout/loading/search, using verified upstream exports and local source.
+2. Premium discovery derives functional concepts, searches real candidates, compares requirements/dependencies and distinguishes custom work from official resources.
+3. Page composition covers analytics, settings, marketing and commerce, including routes/data, responsive behavior, hierarchy, spacing, accessible interaction and feedback states.
+4. Migration adds two narrow executable codemods: exact semantic tokens/CSS variables and unambiguous Modal consumers. Dry-run is default; unsupported/colliding/shadowed/custom trigger shapes are skipped, registry/secrets are protected, and custom content/styles are retained. Complex Sheet/Menu/Context Menu/Popover/Tooltip conversions remain manual.
+5. Realistic scenarios now include v3/v4, Sheet/Tooltip, customized migration, premium-only public components, v3 commercial guards and intent-based discovery. Deterministic scenarios are not reported as real-agent/browser evaluations.
+6. Entry points remain concise with on-demand family/composition/automation references. Project evidence is reused until invalidated, and each skill is independently installable.
+7. Maintenance checks actual v3 Git/current v4 working-tree exports and types, all semantic aliases and codemod output. Current Tooltip exports/composition are explicitly covered so old v4 snapshots cannot mask API changes.
 
-The root README and `src/content/docs/getting-started/ai.mdx` were updated. All other new files are shown below (40 files). Existing unrelated skill links were preserved. Component implementations, registry data, dependency manifests, and the commercial application were not changed by this implementation. During final review, an unrelated formatting-only diff appeared in registry.json; its parsed JSON matches HEAD, and it was left intact rather than reverting an unrecognized change.
+## Registry policy
 
-## Final skills tree
+- Public-only: @intentui for public compatible components.
+- Licensed v4: @irsyad for public components and premium resources; no @intentui requirement.
+- Both configured in v4: prefer @irsyad independent of key order; preserve existing entries/URLs/headers.
+- Missing/expired commercial auth: explain and stop that workflow, no silent fallback.
+- v3/mixed: Design is v4-only; inspect incompatibilities and suggest a separately requested migration, never upgrade/downgrade automatically.
 
-```text
-skills/
-├── intentui/
-│   ├── rules/
-│   │   ├── v3/
-│   │   │   ├── components.md
-│   │   │   ├── overlays.md
-│   │   │   └── styling.md
-│   │   ├── v4/
-│   │   │   ├── components.md
-│   │   │   ├── overlays.md
-│   │   │   └── styling.md
-│   │   ├── collections.md
-│   │   ├── components.md
-│   │   ├── forms.md
-│   │   ├── icons.md
-│   │   ├── overlays.md
-│   │   ├── registry.md
-│   │   ├── styling.md
-│   │   └── version-detection.md
-│   ├── scripts/
-│   │   └── inspect-project.mjs
-│   └── SKILL.md
-├── intentui-design/
-│   ├── references/
-│   │   ├── authentication.md
-│   │   ├── blocks.md
-│   │   ├── compatibility.md
-│   │   ├── patterns.md
-│   │   ├── registry.md
-│   │   ├── templates.md
-│   │   └── ui-kits.md
-│   ├── scripts/
-│   │   └── inspect-registry.mjs
-│   └── SKILL.md
-├── intentui-migrate/
-│   ├── references/
-│   │   ├── breaking-changes.md
-│   │   ├── components.md
-│   │   ├── migration.md
-│   │   ├── themes.md
-│   │   └── verification.md
-│   └── SKILL.md
-├── tests/
-│   ├── README.md
-│   ├── mcp-smoke.mjs
-│   ├── results.md
-│   ├── scenarios.json
-│   ├── skills-cli-smoke.mjs
-│   ├── sources.md
-│   ├── token-map.json
-│   └── validate.mjs
-├── README.md
-└── next-best-practices → ../.agents/skills/next-best-practices (existing; preserved)
+[Setup examples](../README.md) show independent public and premium configurations. The inspector separates configuration, token presence and supplied verified-live access evidence. Mock access evidence never counts as live proof.
+
+## Latest Tooltip correction
+
+v3: Tooltip → focusable trigger + TooltipContent. Current v4: TooltipTrigger → focusable trigger + Tooltip. Timing/open state belongs to TooltipTrigger; positioning/offset/arrow/inverse belongs to Tooltip. Current v4 removes TooltipContent. Rules, migration before/after TSX, payload audit and source/type checks were updated. No component-library Tooltip implementation was edited by this work.
+
+## Validation status
+
+Before the latest Tooltip/source-test edits, `node skills/tests/validate.mjs` passed 17 groups and 30 API examples, and `node skills/tests/mcp-smoke.mjs` passed. A Skills CLI check was started. These earlier results do not verify the final edited state.
+
+At the developer's request, final validation is left for the developer to run:
+
+```bash
+node skills/tests/validate.mjs
+node skills/tests/mcp-smoke.mjs
+node skills/tests/skills-cli-smoke.mjs
+npx oxlint skills/intentui/scripts skills/intentui-design/scripts skills/intentui-migrate/scripts skills/tests/*.mjs
+npx oxfmt --check skills/intentui/scripts skills/intentui-design/scripts skills/intentui-migrate/scripts skills/tests/*.mjs
+git diff --check
 ```
 
-## Legacy rules migrated
+Final source/Tooltip/codemod/mock traversal changes are pending these checks. No final passing result, real-agent evaluation, browser interaction test or production build is claimed. Synthetic tests cover registry precedence, token security, API flags and dependency traversal only. Existing shadcn MCP is used; no custom server was created.
 
-Retained local-component preference, semantic tokens, intent props, accessible form groups/validation, stable collection IDs/selection, valid v3 overlay composition and registry discovery. Corrected Sheet's position/default/API, removed unverified Drawer assumptions, separated v4 overlays/colors, allowed the actual cn package, resolved project aliases, selected registries by purpose, used relative progressive references, and removed blanket map/HTML/client-boundary restrictions. [Detailed provenance and correction table](sources.md).
+## Premium integration limits and follow-up
 
-The canonical installation CSS mapping covers **48 semantic color aliases**, including unchanged families and all foreground/subtle/card/navbar/sidebar/chart families. Theme variants were also audited: v4 retains `--color-bg: var(--background)` in those files. This caveat is documented separately; the library CSS remains untouched.
+Registry token values were never printed. No REGISTRY_TOKEN/IRSYAD_TOKEN was available in the inspected process/configured local env assignments, so authenticated Button/Dialog/Table/premium-block installation and published dependency resolution could not be verified. No licensed source is bundled.
 
-## Validation commands and results
+The optional `audit-registry.mjs --live PROJECT ACTUAL_CATALOG_BLOCK` inspects configured-origin payloads/recursive dependencies with secure process-environment auth and emits metadata only. An external @intentui edge is flagged for actual CLI resolution verification, not automatically declared broken or rewritten. Single-registry installation is not claimed until the real dependency closure and authorized CLI installation succeed.
 
-| Command/check                                                                                                                   | Result                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `node skills/tests/validate.mjs`                                                                                                | 14 validation groups passed; all 13 required scenario categories covered by deterministic decisions/API fixtures                       |
-| Source-backed TypeScript in validator                                                                                           | 15 complete TSX examples per version, 30 total; real pinned branch implementations and installed dependencies, no mock component types |
-| `node skills/tests/mcp-smoke.mjs`                                                                                               | Existing shadcn MCP launched; six registry capabilities/schema, namespace discovery and add-command generation passed                  |
-| `node skills/tests/skills-cli-smoke.mjs`                                                                                        | Skills CLI 1.7.2 discovered root skills/ export; installed all three together and individually; every reference/helper matched source  |
-| `npx skills add /absolute/path/to/intentui/skills --list`                                                                       | Actual CLI found exactly the three new skills                                                                                          |
-| `npx skills add /absolute/path/to/intentui/skills --skill intentui intentui-design intentui-migrate --agent codex --copy --yes` | Actual install succeeded in /tmp fixture project                                                                                       |
-| `quick_validate.py skills/<name>`                                                                                               | All three passed with temporary PyYAML dependency (`PYTHONPATH=/tmp/intentui-skill-validator`)                                         |
-| `./node_modules/.bin/oxlint` on both helpers and three test scripts                                                             | Passed                                                                                                                                 |
-| `./node_modules/.bin/oxfmt --check` on those five scripts                                                                       | Passed                                                                                                                                 |
-| `@mdx-js/mdx` compile of updated AI documentation                                                                               | Passed                                                                                                                                 |
-| `git diff --check`                                                                                                              | Passed                                                                                                                                 |
+External Design docs already show @irsyad alone but still contain an @irsyad/modal example; review their v4 guidance separately. The commercial application/infrastructure is outside this task and was not edited. Other concurrent component/library changes in the working tree were left intact.
 
-Full commands and evaluation fixture guidance are in [tests README](README.md). Temporary package tests use repository-export fixtures, not another published skills repository. Generated test workspaces are removed; no personal/global skills were installed.
+## Affected files
 
-## Limits
-
-- No live premium authentication or installation was attempted. Synthetic credentials test safe decisions only; MCP command generation is not an install.
-- Real agent adherence and browser/touch/focus interactions were not evaluated; realistic prompts and expected outcomes are included in scenarios.json for forward evaluation.
-- API snapshots are the recorded 3.x/4.x commits in sources.md. Typechecks share the currently installed dependency graph; historical/customized React Aria implementations still require inspection.
-- The optional inspectors handle documented source shapes, standard TypeScript path configuration and process-environment presence. Bundler aliases, package exports, imported theme chains and atypical/custom wrappers may require manual inspection. CLI dotenv and MCP environments may differ.
-- Remote GitHub installation remains pending publication. On 4.x, use `npx skills add https://github.com/irsyadadl/intentui/tree/4.x`; the bare `irsyadadl/intentui` command uses the current default branch, which must contain these skills before it discovers them. Local CLI discovery/install is verified; remote availability is not claimed.
-- No full application build was run: this change adds workflows/docs/helpers, and the repository prebuild regenerates registry artifacts outside the requested scope. TSX API compatibility, MDX syntax, helper behavior and packaging were checked directly.
+- `skills/README.md`
+- `skills/intentui-design/SKILL.md`
+- `skills/intentui-design/references/authentication.md`
+- `skills/intentui-design/references/blocks.md`
+- `skills/intentui-design/references/compatibility.md`
+- `skills/intentui-design/references/composition.md`
+- `skills/intentui-design/references/patterns.md`
+- `skills/intentui-design/references/registry.md`
+- `skills/intentui-design/references/templates.md`
+- `skills/intentui-design/references/ui-kits.md`
+- `skills/intentui-design/scripts/audit-registry.mjs`
+- `skills/intentui-design/scripts/inspect-registry.mjs`
+- `skills/intentui-migrate/SKILL.md`
+- `skills/intentui-migrate/references/automation.md`
+- `skills/intentui-migrate/references/breaking-changes.md`
+- `skills/intentui-migrate/references/components.md`
+- `skills/intentui-migrate/references/migration.md`
+- `skills/intentui-migrate/references/themes.md`
+- `skills/intentui-migrate/references/verification.md`
+- `skills/intentui-migrate/scripts/migrate.mjs`
+- `skills/intentui-migrate/scripts/token-map.json`
+- `skills/intentui/SKILL.md`
+- `skills/intentui/rules/component-families.md`
+- `skills/intentui/rules/components.md`
+- `skills/intentui/rules/composition.md`
+- `skills/intentui/rules/overlays.md`
+- `skills/intentui/rules/registry.md`
+- `skills/intentui/rules/v4/overlays.md`
+- `skills/intentui/rules/version-detection.md`
+- `skills/intentui/scripts/inspect-project.mjs`
+- `skills/tests/README.md`
+- `skills/tests/mcp-smoke.mjs`
+- `skills/tests/results.md`
+- `skills/tests/scenarios.json`
+- `skills/tests/sources.md`
+- `skills/tests/validate.mjs`
+- `src/content/blog/release-v4.mdx`
+- `src/content/docs/getting-started/ai.mdx`

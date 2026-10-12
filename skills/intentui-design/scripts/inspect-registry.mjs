@@ -2,39 +2,69 @@ import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
-export function inspectRegistry(config, purpose = "premium", environment = {}) {
+export function inspectRegistry(config, purpose = "premium", environment = {}, options = {}) {
   if (!["premium", "public"].includes(purpose)) throw new Error("Purpose must be premium or public")
-  const namespace = purpose === "premium" ? "@irsyad" : "@intentui"
+  const version = options.version ?? "unknown"
+  const premiumConfigured = Object.hasOwn(config.registries ?? {}, "@irsyad")
+  const namespace =
+    purpose === "premium" ||
+    (version === "v4" && premiumConfigured) ||
+    (premiumConfigured && !config.registries?.["@intentui"])
+      ? "@irsyad"
+      : "@intentui"
+  const base = {
+    namespace,
+    selectedPurpose: purpose,
+    registryPurpose: namespace === "@irsyad" ? "unified-v4" : "public",
+    version,
+    configured: false,
+    authenticationPresent: false,
+    access: "unverified",
+    authenticated: false,
+  }
   const registry = config.registries?.[namespace]
-  if (!registry)
-    return { namespace, status: "missing-registry", configured: false, authenticated: false }
+  if (!registry) return { ...base, status: "missing-registry" }
   const url = typeof registry === "string" ? registry : registry.url
   if (typeof url !== "string" || !url.includes("{name}"))
-    return { namespace, status: "incomplete-registry-url", configured: false, authenticated: false }
-  if (purpose === "public")
-    return { namespace, status: "configured", configured: true, authenticated: false }
-  const header = typeof registry === "object" ? registry.headers?.Authorization : null
+    return { ...base, status: "incomplete-registry-url" }
+  base.configured = true
+  if (namespace === "@irsyad" && version !== "v4")
+    return { ...base, status: version === "v3" ? "requires-v4" : "inspect-v4-dependencies" }
+  if (namespace === "@intentui") return { ...base, status: "configured" }
+  const header =
+    typeof registry === "object"
+      ? Object.entries(registry.headers ?? {}).find(
+          ([name]) => name.toLowerCase() === "authorization"
+        )?.[1]
+      : null
   const match =
     typeof header === "string" ? /^Bearer\s+\$\{([A-Za-z_][A-Za-z0-9_]*)\}$/.exec(header) : null
   if (!match)
-    return {
-      namespace,
-      status: header ? "unsafe-or-unsupported-auth" : "missing-auth-header",
-      configured: true,
-      authenticated: false,
-    }
+    return { ...base, status: header ? "unsafe-or-unsupported-auth" : "missing-auth-header" }
   const variable = match[1]
-  if (/^(NEXT_PUBLIC_|VITE_)/.test(variable))
-    return { namespace, status: "frontend-secret-variable", configured: true, authenticated: false }
+  if (/^(NEXT_PUBLIC_|VITE_)/.test(variable)) return { ...base, status: "frontend-secret-variable" }
   const available =
     typeof environment[variable] === "string" && environment[variable].trim().length > 0
+  const verified = options.verifiedAccess
+  const accessVerified =
+    available &&
+    verified?.mode === "live" &&
+    verified.namespace === namespace &&
+    verified.statusCode >= 200 &&
+    verified.statusCode < 300 &&
+    ["catalog", "item"].includes(verified.operation)
   return {
-    namespace,
-    status: available ? "ready-to-verify-access" : "variable-unavailable-in-process",
+    ...base,
+    status: accessVerified
+      ? "access-verified"
+      : available
+        ? "ready-to-verify-access"
+        : "variable-unavailable-in-process",
     variable,
-    configured: true,
     variableAvailable: available,
-    authenticated: false,
+    authenticationPresent: available,
+    access: accessVerified ? "verified-live" : "unverified",
+    authenticated: accessVerified,
   }
 }
 
@@ -80,8 +110,13 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       )
     )
     process.stdout.write(
-      JSON.stringify(inspectRegistry(config, process.argv[3] ?? "premium", process.env), null, 2) +
-        "\n"
+      JSON.stringify(
+        inspectRegistry(config, process.argv[3] ?? "premium", process.env, {
+          version: process.argv[4] ?? "unknown",
+        }),
+        null,
+        2
+      ) + "\n"
     )
   } catch {
     process.stderr.write(

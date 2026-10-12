@@ -19,7 +19,6 @@ fs.writeFileSync(
     tailwind: { config: "", css: "app.css", baseColor: "zinc", cssVariables: true },
     aliases: { components: "@/components", utils: "@/lib/utils", ui: "@/components/ui" },
     registries: {
-      "@intentui": "https://intentui.com/r/{name}",
       "@irsyad": {
         url: "https://design.intentui.com/r/{name}",
         headers: { Authorization: "Bearer ${REGISTRY_TOKEN}" },
@@ -58,16 +57,14 @@ try {
     .filter((block) => block.type === "text")
     .map((block) => block.text)
     .join("\n")
-  assert.ok(text.includes("@intentui") && text.includes("@irsyad"))
+  assert.ok(text.includes("@irsyad") && !text.includes("@intentui"))
   const command = await client.callTool({
     name: "get_add_command_for_items",
-    arguments: { items: ["@intentui/button"] },
+    arguments: { items: ["@irsyad/button"] },
   })
   assert.ok(!command.isError)
   assert.ok(
-    command.content.some(
-      (block) => block.type === "text" && block.text.includes("@intentui/button")
-    )
+    command.content.some((block) => block.type === "text" && block.text.includes("@irsyad/button"))
   )
   process.stdout.write(
     "PASS actual shadcn MCP: six registry tools, search schema, local namespace discovery, installation command. No registry fetch or premium install.\n"

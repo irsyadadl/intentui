@@ -236,25 +236,27 @@ export default function PopoverDemo() {
 
 ## Tooltip
 
-Source: [4.x example](https://github.com/irsyadadl/intentui/blob/4.x/src/components/examples/overlays/tooltip/tooltip-example.tsx). Resolve these example aliases to the consuming project.
+Current v4 source exports `TooltipTrigger`, `Tooltip`, and `TooltipProps`; it does not export `TooltipContent`. `TooltipTrigger` is the React Aria trigger wrapper, and `Tooltip` renders the floating content. Put `delay`, `closeDelay`, `isDisabled`, `isOpen`, `defaultOpen`, and `onOpenChange` on TooltipTrigger. Put `placement`, `offset`, `arrow`, `inverse`, and content className on Tooltip. Defaults in the installed implementation: offset=10, arrow=true, inverse=false.
+
+Use a focusable trigger, with an accessible name for icon-only actions. Tooltips supply supplemental descriptions, not essential interactive content. Check hover/focus timing and Escape behavior. Source: [current v4 Tooltip](https://github.com/irsyadadl/intentui/blob/4.x/src/components/ui/tooltip.tsx); inspect installed exports because earlier v4 snapshots used the old API.
 
 ```tsx
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Tooltip, TooltipContent } from "@/components/ui/tooltip"
+import { TooltipTrigger, Tooltip } from "@/components/ui/tooltip"
 
-export default function TooltipDemo() {
+export default function TooltipExample() {
   return (
-    <Tooltip>
+    <TooltipTrigger>
       <Button intent="outline">Duplicate</Button>
-      <TooltipContent>
+      <Tooltip>
         <strong className="font-semibold">Duplicate project</strong>
         <p className="mt-1 max-w-2xs text-pretty text-muted-foreground text-sm">
           This will create a copy of the current project including all files and settings.
         </p>
-      </TooltipContent>
-    </Tooltip>
+      </Tooltip>
+    </TooltipTrigger>
   )
 }
 ```

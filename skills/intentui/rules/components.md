@@ -9,3 +9,5 @@ Generated React files use TypeScript/TSX without source comments. Preserve local
 Read [v3 components](v3/components.md) or [v4 components](v4/components.md) after [version detection](version-detection.md). For forms and collections use [forms](forms.md) and [collections](collections.md). For overlays use [overlays](overlays.md).
 
 Dashboard workflow: inspect existing Sidebar/Navbar/Card/Chart/Table APIs, compose a named page with accessible collections and semantic tokens, and integrate with the application's route/layout. A request for a public dashboard does not imply a premium purchase or version upgrade.
+
+For decisions across actions, content, forms, navigation, overlays, collections, feedback, charts, layout, loading and search, read [component families](component-families.md). For a complete page read [composition](composition.md). Load neither for a small task whose component is already established.

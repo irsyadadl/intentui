@@ -19,3 +19,5 @@ Show proposed file/import/composition/CSS changes and behaviors requiring review
 Apply imports and JSX according to [component mappings](components.md), migrate exact semantic tokens using [themes](themes.md), and review [breaking changes](breaking-changes.md). Update necessary dependencies with the existing package manager and lockfile. Preserve custom light/dark values, aliases, route conventions, registry URLs and Bearer placeholders. For premium blocks inspect entitlement and dependencies; change only licensed resources within the requested migration scope and report blocks requiring manual conversion.
 
 Run [verification](verification.md) after each meaningful group. Report scope, changed files/components, tokens, dependency changes, tests, baseline failures, remaining issues, and manual checks. Never call a partially migrated project fully upgraded.
+
+Design Intent UI is v4-only and @irsyad contains public components too. During an upgrade preserve its existing URL/headers without adding @intentui or removing existing namespaces. Review each licensed resource for remaining old APIs; policy alone does not prove payload correctness.

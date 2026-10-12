@@ -2,15 +2,15 @@
 
 The mappings and complete before/after TSX examples below are self-contained for independent installation. Verify customized APIs against the source links at the end.
 
-| Family       | v3 imports/composition                                                      | v4 imports/composition                                                                           | Prop/type/export change                                                                                                                | Safety and behavior                                                                                                                      |
-| ------------ | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Modal        | `modal`: Modal → Button + ModalContent, ModalHeader/Title/Body/Footer/Close | `dialog`: DialogTrigger → Button + Dialog, DialogHeader/Title/Body/Footer/Close                  | modal module removed; surface interface becomes exported DialogProps (v3 ModalContentProps was internal); move surface props to Dialog | structural conversion; preserve title/role/dismissal/open state/focus; customized source needs review                                    |
-| Inner Dialog | `dialog`: Dialog around primitive content; DialogTrigger is a button        | `dialog`: Dialog includes modal overlay; DialogTrigger is a container                            | DialogProps now includes overlay/sizing props; old trigger button props belong on a Button                                             | not a safe global rename; check nested overlays and popovers                                                                             |
-| Sheet        | Sheet → Button + SheetContent                                               | SheetTrigger → Button + Sheet                                                                    | SheetContent/SheetContentProps removed; SheetProps replaces surface type; `position`, not `side`                                       | isFloat default changes true → false; preserve explicitly if desired; gestures/snap points/focus need review                             |
-| Menu         | Menu → button-like MenuTrigger + MenuContent                                | MenuTrigger → Button + Menu                                                                      | MenuContent/MenuContentProps/menuContentStyles removed; MenuProps/menuStyles replace them; old MenuTriggerProps removed                | move button props/onPress to Button, open state to wrapper, collection/action/selection props to Menu; keyboard/submenus require testing |
-| Context Menu | context-menu: ContextMenu + ContextMenuContent/Item/etc.                    | menu: MenuTrigger trigger="contextMenu" + Menu/MenuItem/etc.                                     | entire context-menu module removed; ContextMenuSub maps to MenuSubMenu                                                                 | trigger must support contextual interaction; preserve offsets via Menu popover; test keyboard/right-click/long press                     |
-| Popover      | Popover → Button + PopoverContent; PopoverTrigger button alias              | Popover is the floating surface, controlled trigger ref/state or verified React Aria composition | PopoverContent/PopoverContentProps/PopoverTrigger removed; PopoverProps includes surface arrow/ref options                             | old outer Popover cannot be replaced blindly; do not put the new modal Dialog inside it as an inner primitive                            |
-| Tooltip      | Tooltip → trigger + TooltipContent                                          | same composition                                                                                 | semantic color variables updated                                                                                                       | retain delay, focusable trigger and description; verify source for local changes                                                         |
+| Family       | v3 imports/composition                                                      | v4 imports/composition                                                                           | Prop/type/export change                                                                                                                | Safety and behavior                                                                                                                                |
+| ------------ | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Modal        | `modal`: Modal → Button + ModalContent, ModalHeader/Title/Body/Footer/Close | `dialog`: DialogTrigger → Button + Dialog, DialogHeader/Title/Body/Footer/Close                  | modal module removed; surface interface becomes exported DialogProps (v3 ModalContentProps was internal); move surface props to Dialog | structural conversion; preserve title/role/dismissal/open state/focus; customized source needs review                                              |
+| Inner Dialog | `dialog`: Dialog around primitive content; DialogTrigger is a button        | `dialog`: Dialog includes modal overlay; DialogTrigger is a container                            | DialogProps now includes overlay/sizing props; old trigger button props belong on a Button                                             | not a safe global rename; check nested overlays and popovers                                                                                       |
+| Sheet        | Sheet → Button + SheetContent                                               | SheetTrigger → Button + Sheet                                                                    | SheetContent/SheetContentProps removed; SheetProps replaces surface type; `position`, not `side`                                       | isFloat default changes true → false; preserve explicitly if desired; gestures/snap points/focus need review                                       |
+| Menu         | Menu → button-like MenuTrigger + MenuContent                                | MenuTrigger → Button + Menu                                                                      | MenuContent/MenuContentProps/menuContentStyles removed; MenuProps/menuStyles replace them; old MenuTriggerProps removed                | move button props/onPress to Button, open state to wrapper, collection/action/selection props to Menu; keyboard/submenus require testing           |
+| Context Menu | context-menu: ContextMenu + ContextMenuContent/Item/etc.                    | menu: MenuTrigger trigger="contextMenu" + Menu/MenuItem/etc.                                     | entire context-menu module removed; ContextMenuSub maps to MenuSubMenu                                                                 | trigger must support contextual interaction; preserve offsets via Menu popover; test keyboard/right-click/long press                               |
+| Popover      | Popover → Button + PopoverContent; PopoverTrigger button alias              | Popover is the floating surface, controlled trigger ref/state or verified React Aria composition | PopoverContent/PopoverContentProps/PopoverTrigger removed; PopoverProps includes surface arrow/ref options                             | old outer Popover cannot be replaced blindly; do not put the new modal Dialog inside it as an inner primitive                                      |
+| Tooltip      | tooltip: Tooltip → trigger + TooltipContent                                 | tooltip: TooltipTrigger → trigger + Tooltip                                                      | TooltipContent removed; TooltipProps is the content type                                                                               | Move timing/open-state props to TooltipTrigger; positioning/appearance to Tooltip; preserve focusable/nameable trigger and test hover/focus/Escape |
 
 Modal child aliases generally map prefix `Modal` → `Dialog` (Header, Title, Description, Body, Footer, Close). `ModalTrigger` was a button alias, whereas v4 DialogTrigger is a container: replace old button usage with Button inside DialogTrigger. Do not rename that alias mechanically.
 
@@ -259,3 +259,41 @@ export function Details() {
 Use the installed Popover implementation's content semantics. Explicitly test accessible role, focus entry/return and dismissal for controlled floating content; typechecking does not prove these interactions. Preserve placement/arrow/offset and the actual trigger element.
 
 Sources: [v3 modal](https://github.com/irsyadadl/intentui/blob/3.x/src/components/ui/modal.tsx), [v4 dialog](https://github.com/irsyadadl/intentui/blob/4.x/src/components/ui/dialog.tsx), [v3 sheet](https://github.com/irsyadadl/intentui/blob/3.x/src/components/ui/sheet.tsx), [v4 sheet](https://github.com/irsyadadl/intentui/blob/4.x/src/components/ui/sheet.tsx), [v4 menu](https://github.com/irsyadadl/intentui/blob/4.x/src/components/ui/menu.tsx), [v4 popover](https://github.com/irsyadadl/intentui/blob/4.x/src/components/ui/popover.tsx).
+
+## Tooltip before (v3)
+
+```tsx
+import { Button } from "@/components/ui/button"
+import { Tooltip, TooltipContent } from "@/components/ui/tooltip"
+
+export function DuplicateHint() {
+  return (
+    <Tooltip delay={0}>
+      <Button intent="outline">Duplicate</Button>
+      <TooltipContent placement="top" arrow>
+        Duplicate project
+      </TooltipContent>
+    </Tooltip>
+  )
+}
+```
+
+## Tooltip after (v4)
+
+```tsx
+import { Button } from "@/components/ui/button"
+import { TooltipTrigger, Tooltip } from "@/components/ui/tooltip"
+
+export function DuplicateHint() {
+  return (
+    <TooltipTrigger delay={0}>
+      <Button intent="outline">Duplicate</Button>
+      <Tooltip placement="top" arrow>
+        Duplicate project
+      </Tooltip>
+    </TooltipTrigger>
+  )
+}
+```
+
+Change wrapper and surface imports/JSX together. Wrapper state/timing remains on TooltipTrigger; placement/arrow/inverse/offset remains on the Tooltip surface. Earlier v4 copies may still expose TooltipContent: read installed source first. A local customized Tooltip must preserve behavior and styles; this change is manual, not included in the Modal codemod. Inspect dependent wrappers such as Sidebar and Tracker for old usage. Never globally replace every Tooltip identifier.

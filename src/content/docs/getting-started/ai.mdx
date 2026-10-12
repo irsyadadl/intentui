@@ -32,7 +32,7 @@ Intent UI provides three independently installable Agent Skills in the main repo
 | Skill | Use it for |
 | --- | --- |
 | `intentui` | Creating, installing, reviewing, and debugging components; detects v3 and v4 from installed source |
-| `intentui-design` | Purchased Design Intent UI blocks, patterns, kits, templates, and authenticated registry workflows |
+| `intentui-design` | v4-only purchased resources and the unified authenticated registry |
 | `intentui-migrate` | Explicit v3-to-v4 migration or a read-only upgrade audit |
 
 Install the skills from the Intent UI repository:
@@ -43,7 +43,24 @@ The CLI lets you select the skills and agents to install. Use `--skill intentui`
 
 The component skill resolves your application's aliases and framework paths, reads actual component APIs, and loads only relevant rules. It preserves local customizations and never upgrades ordinary component work implicitly. Version-specific overlays and semantic colors live inside the same skill.
 
-Public components use `@intentui`. Commercial resources use `@irsyad` with the documented Bearer environment-variable configuration. Keep tokens private and follow the [Design setup](https://design.intentui.com/docs/getting-started); not every kit or template is a registry item.
+### Design Intent UI registry
+
+Design Intent UI targets v4 and includes the public components and premium resources in one authenticated registry. Licensed v4 users need only `@irsyad`, including when installing Button, Dialog, or Table:
+
+```json
+{
+  "registries": {
+    "@irsyad": {
+      "url": "https://design.intentui.com/r/{name}",
+      "headers": { "Authorization": "Bearer ${REGISTRY_TOKEN}" }
+    }
+  }
+}
+```
+
+Public-only users can keep the `@intentui` setup above. Both registries may coexist, but v4 Design workflows prefer `@irsyad`; adding a duplicate public entry is unnecessary. Existing configuration and headers are preserved. Keep tokens private and follow the [Design setup](https://design.intentui.com/docs/getting-started). A configured token does not prove access, and not every kit or template is a registry item.
+
+Design resources require v4. For an older project, request an audit or migration with `intentui-migrate`; ordinary component work never upgrades automatically. The migration skill includes dry-run codemods for semantic tokens and simple Modal consumers, while complex overlay changes remain source-aware migrations.
 
 The existing shadcn MCP server supplies registry discovery, search, item inspection, examples, and installation commands. Skills supply conventions and workflows. When MCP is unavailable, the skills use the project's shadcn CLI runner. No separate Intent UI MCP server is required.
 

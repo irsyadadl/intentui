@@ -99,7 +99,19 @@ export function resolveUIDirectory(projectRoot, config) {
 
 export function detectVersion({ files = {}, css = "", requestedVersion } = {}) {
   const evidence = []
+  const compatibilityWarnings = []
   for (const [file, content] of Object.entries(files)) {
+    if (/\b(?:const|function)\s+TooltipContent\b/.test(content))
+      compatibilityWarnings.push({
+        file,
+        signal:
+          "Legacy TooltipContent API; also found in early v4 copies, inspect installed composition",
+      })
+    if (
+      /\bconst\s+TooltipTrigger\s*=\s*TooltipTriggerPrimitive\b/.test(content) &&
+      /\b(?:const|function)\s+Tooltip\b/.test(content)
+    )
+      evidence.push({ file, version: "v4", signal: "TooltipTrigger wrapper and Tooltip surface" })
     if (/\b(?:const|function)\s+ModalContent\b/.test(content))
       evidence.push({ file, version: "v3", signal: "ModalContent implementation" })
     if (/\b(?:const|function)\s+SheetContent\b/.test(content))
@@ -131,6 +143,7 @@ export function detectVersion({ files = {}, css = "", requestedVersion } = {}) {
   return {
     version,
     evidence,
+    compatibilityWarnings,
     requestedVersion: requestedVersion ?? null,
     targetMismatch: !!requestedVersion && version !== requestedVersion,
     inspectionRequired: version === "mixed" || version === "unknown",
@@ -142,13 +155,13 @@ export function inspectProject(projectRoot) {
   const config = parseJsonc(fs.readFileSync(path.join(root, "components.json"), "utf8"))
   const uiDirectory = resolveUIDirectory(root, config)
   const files = {}
-  for (const name of ["modal", "dialog", "sheet", "menu", "popover"]) {
+  for (const name of ["modal", "dialog", "sheet", "menu", "popover", "tooltip"]) {
     const file = path.join(uiDirectory, `${name}.tsx`)
     if (fs.existsSync(file)) files[path.relative(root, file)] = fs.readFileSync(file, "utf8")
   }
   const cssPath = config.tailwind?.css ? path.resolve(root, config.tailwind.css) : null
   const css = cssPath && fs.existsSync(cssPath) ? fs.readFileSync(cssPath, "utf8") : ""
-  return { uiDirectory, cssPath, ...detectVersion({ files, css }) }
+  return { uiDirectory, cssPath, commercialTarget: "v4", ...detectVersion({ files, css }) }
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

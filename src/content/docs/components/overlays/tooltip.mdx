@@ -20,37 +20,33 @@ Use this approach if you prefer to install and wire up the component yourself in
 <SourceCode toShow='tooltip'/>
 
 ## Anatomy
-```
-import { IconBrandX } from "@heroicons/react"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
+```tsx
+import { Button } from "@/components/ui/button"
+import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip"
 ```
 
+```tsx
+<TooltipTrigger>
+  <Button intent="outline">Follow me</Button>
+  <Tooltip>Follow me on X @irsyadadl</Tooltip>
+</TooltipTrigger>
 ```
-<Tooltip>
-  <TooltipTrigger aria-label="Follow My Twitter">
-    <IconBrandX />
-  </TooltipTrigger>
-  <TooltipContent>Follow me on X @irsyadadl</TooltipContent>
-</Tooltip>
-```
+
+`TooltipTrigger` wraps a focusable trigger, such as `Button`, and the `Tooltip` content. Set timing and open-state props on `TooltipTrigger`, and placement and appearance props on `Tooltip`.
 
 
 ## Examples
 
 ### Placement
-By default, the tooltip appears at the top, but you can change its position by using the `placement` prop.
+By default, the tooltip appears at the top, but you can change its position by setting the `placement` prop on `Tooltip`.
 <How isCenter={false} toUse="overlays/tooltip/tooltip-placement-example" />
 
-### Intent
-Tooltip has two intents: `default` and `inverse`. You can change the intent by using the `intent` prop.
+### Inverse
+Set `inverse` on `Tooltip` to use a foreground background with contrasting text. By default, `inverse` is `false`.
 <How toUse="overlays/tooltip/tooltip-intent-example" />
 
 ### Without arrow
-You can remove the arrow from the tooltip by setting the `arrow` prop to `false`.
+You can remove the arrow from the tooltip by setting `arrow={false}` on `Tooltip`.
 <How toUse="overlays/tooltip/tooltip-without-arrow-example" />
 
 ### Directions
@@ -67,37 +63,34 @@ The list above shows the primary directions, but you can also use more specific 
 | `end`             | `end`, `end top`, `end bottom`                                        |
 
 ### Delay
-Tooltip rolls out the welcome mat after you hover for 1.5 secs. Wanna speed it up or slow it down? Just slide in a `delay` prop. Peep these [guidelines](https://spectrum.adobe.com/page/tooltip/#Immediate-or-delayed-appearance) for the scoop.
+Set `delay` on `TooltipTrigger` to control how long to wait before showing the tooltip, in milliseconds. Use `delay={0}` to show it immediately. Set `closeDelay` on `TooltipTrigger` to control the delay before hiding it.
 <How toUse="overlays/tooltip/tooltip-delay-example" />
 
 ## Component API
-
-### Tooltip
-
-<ApiParameters>
-  <ApiDescription>
-    **Tooltip** extends the React Aria Components [**`<TooltipTrigger>`**](https://react-aria.adobe.com/Tooltip#api) component.
-  </ApiDescription>
-</ApiParameters>
 
 ### TooltipTrigger
 
 <ApiParameters>
   <ApiDescription>
-    **TooltipTrigger** extends the React Aria Components [**`<Button>`**](https://react-aria.adobe.com/Button#api) component.
+    **TooltipTrigger** uses the React Aria Components **`<TooltipTrigger>`** component to manage the tooltip's trigger, timing, and open state.
   </ApiDescription>
+  <ApiReference>
+    See the [React Aria TooltipTrigger API](https://react-aria.adobe.com/Tooltip#api) for all supported props, including `delay`, `closeDelay`, `isDisabled`, `isOpen`, `defaultOpen`, and `onOpenChange`.
+  </ApiReference>
 </ApiParameters>
 
-### TooltipContent
+### Tooltip
 
 <ApiParameters>
   <ApiDescription>
-    **TooltipContent** extends the React Aria Components [**`<Tooltip>`**](https://react-aria.adobe.com/Tooltip#api) component.
+    **Tooltip** extends the React Aria Components **`<Tooltip>`** component and renders the tooltip content.
   </ApiDescription>
   <ApiParameter name="arrow" type='boolean' defaultValue='true' />
-  <ApiParameter name="className" type='string' />
-  <ApiParameter name="inverse" type='true | false' defaultValue='false' />
+  <ApiParameter name="inverse" type='boolean' defaultValue='false' />
+  <ApiParameter name="offset" type='number' defaultValue='10' />
+  <ApiParameter name="className" type='string | ((values: TooltipRenderProps) => string)' />
+  <ApiParameter name="children" type='React.ReactNode' />
   <ApiReference>
-    See the [React Aria](https://react-aria.adobe.com/Tooltip#api) for the full API reference.
+    See the [React Aria Tooltip API](https://react-aria.adobe.com/Tooltip#api) for positioning and other supported props.
   </ApiReference>
 </ApiParameters>

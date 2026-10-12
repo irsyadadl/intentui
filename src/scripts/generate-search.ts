@@ -6,7 +6,7 @@ const sectionOrder = ["prologue", "getting-started", "dark-mode", "components"]
 
 const rawStatusMap: Record<"new" | "updated" | "beta" | "alpha", string[]> = {
   new: [],
-  updated: ["sheet", "sidebar"],
+  updated: ["sidebar", "tooltip", "tracker"],
   beta: [],
   alpha: [],
 }

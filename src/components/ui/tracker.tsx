@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Pressable } from "react-aria-components/Pressable"
 import { twJoin, cn } from "cn"
-import { Tooltip, TooltipContent } from "./tooltip"
+import { TooltipTrigger, Tooltip } from "./tooltip"
 
 interface TrackerBlockProps {
   key?: string | number
@@ -32,7 +32,7 @@ const Block = ({
       />
     </div>
   ) : (
-    <Tooltip isOpen={open} onOpenChange={setOpen} delay={0} closeDelay={0}>
+    <TooltipTrigger isOpen={open} onOpenChange={setOpen} delay={0} closeDelay={0}>
       <Pressable onPress={() => setOpen(true)}>
         <div
           role="button"
@@ -49,16 +49,10 @@ const Block = ({
           />
         </div>
       </Pressable>
-      <TooltipContent
-        arrow={false}
-        offset={10}
-        placement="top"
-        inverse
-        className="px-2 py-1.5 text-xs"
-      >
+      <Tooltip arrow={false} offset={10} placement="top" inverse className="px-2 py-1.5 text-xs">
         {tooltip}
-      </TooltipContent>
-    </Tooltip>
+      </Tooltip>
+    </TooltipTrigger>
   )
 }
 

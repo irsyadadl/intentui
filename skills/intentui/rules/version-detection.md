@@ -24,3 +24,5 @@ Authoritative branches: [3.x](https://github.com/irsyadadl/intentui/tree/3.x/src
 ## Optional read-only helper
 
 Run `node <installed-skill>/scripts/inspect-project.mjs <consuming-workspace>` for source-shape and CSS evidence without printing component bodies. It resolves aliases.ui through TypeScript paths/relative aliases and simple extends chains. It requires two corroborating signals, reports mixed/unknown, and never edits files. Bundler aliases, package exports, imported theme CSS, and historical/customized shapes still require manual inspection. The result is evidence, not a mandate to upgrade.
+
+Retain source evidence and resolved paths during the task; repeat a full scan only after changes invalidate it. Design Intent UI is v4-only: a detected v3/mixed project needs a separate compatibility/migration decision before any @irsyad installation. General v3 development remains supported through compatible public source.

@@ -6485,6 +6485,7 @@
       "name": "tooltip-without-arrow-example",
       "title": "Tooltip Without Arrow",
       "description": "tooltip-without-arrow-example",
+      "dependencies": ["react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/badge",
         "http://localhost:3000/r/field",

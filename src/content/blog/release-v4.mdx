@@ -22,7 +22,7 @@ npx skills add irsyadadl/intentui
 Choose the skills you need in the CLI:
 
 - **`intentui`** helps create, install, review, and debug components. It detects v3 or v4 from your installed source and follows the matching APIs and theme tokens.
-- **`intentui-design`** helps discover and integrate purchased Design Intent UI resources through the authenticated `@irsyad` registry.
+- **`intentui-design`** helps discover and integrate purchased Design Intent UI resources for v4. The authenticated `@irsyad` registry includes public components and premium resources, so licensed users need only this registry.
 - **`intentui-migrate`** helps audit and migrate v3 components and themes to v4. It can handle one feature or an explicitly requested application-wide upgrade, preserving local customizations and checking imports, dependencies, and behavior.
 
 To plan an upgrade, ask your agent: "Audit my Intent UI v3 project for a v4 upgrade without modifying files." When you're ready, ask it to migrate a specific feature or the application. Ordinary component development does not trigger an automatic upgrade.
@@ -56,12 +56,14 @@ In v3, names like `Modal` and `Menu` referred to the wrapper, while `ModalConten
 | Sheet content | `SheetContent` | `Sheet` |
 | Menu wrapper | `Menu` | `MenuTrigger` |
 | Menu content | `MenuContent` | `Menu` |
+| Tooltip wrapper | `Tooltip` | `TooltipTrigger` |
+| Tooltip content | `TooltipContent` | `Tooltip` |
 | Popover state | `Popover` | `isOpen`, `onOpenChange`, and `triggerRef` |
 | Popover content | `PopoverContent` | `Popover` |
 | Context menu wrapper | `ContextMenu` | `MenuTrigger trigger="contextMenu"` |
 | Context menu content | `ContextMenuContent` | `Menu` |
 
-The old `ModalTrigger`, `SheetTrigger`, `PopoverTrigger`, and `MenuTrigger` button components are no longer used as buttons. Use `Button` inside the new trigger wrapper for dialogs, sheets, and menus. For popovers, use a custom button with controlled state and a trigger ref. Move button props such as `intent`, `className`, and `isDisabled` to that button.
+The old `ModalTrigger`, `SheetTrigger`, `PopoverTrigger`, `MenuTrigger`, and `TooltipTrigger` button components are no longer used as buttons. Use `Button` inside the new trigger wrapper for dialogs, sheets, menus, and tooltips. For popovers, use a custom button with controlled state and a trigger ref. Move button props such as `intent`, `className`, and `isDisabled` to that button.
 
 ## Dialog
 
@@ -227,6 +229,43 @@ Move content props such as `items`, `selectionMode`, `selectedKeys`, and `onActi
 For custom menu styling and TypeScript imports, `menuContentStyles` becomes `menuStyles`, and `MenuContentProps` becomes `MenuProps`. The local button type `MenuTriggerProps` has been removed; use `ButtonProps` for your button or infer wrapper props with `React.ComponentProps<typeof MenuTrigger>`.
 
 Read the [Menu documentation](/docs/components/collections/menu) for selection, sections, and submenus.
+
+## Tooltip
+
+`TooltipTrigger` now wraps a focusable button and `Tooltip`, which renders the content. The old `TooltipContent` export has been removed, and `TooltipTrigger` no longer renders a button.
+
+**Before (v3)**
+
+```tsx
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+
+<Tooltip delay={0}>
+  <TooltipTrigger>Duplicate</TooltipTrigger>
+  <TooltipContent placement="top" inverse>
+    Duplicate project
+  </TooltipContent>
+</Tooltip>
+```
+
+**After (v4)**
+
+```tsx
+import { Button } from "@/components/ui/button"
+import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip"
+
+<TooltipTrigger delay={0}>
+  <Button intent="outline">Duplicate</Button>
+  <Tooltip placement="top" inverse>
+    Duplicate project
+  </Tooltip>
+</TooltipTrigger>
+```
+
+Move timing and state props such as `delay`, `closeDelay`, `isOpen`, `defaultOpen`, and `onOpenChange` from the old `Tooltip` wrapper to `TooltipTrigger`. Move button props to `Button`, and content props such as `placement`, `offset`, `arrow`, `inverse`, and `className` from `TooltipContent` to `Tooltip`.
+
+For TypeScript imports, rename `TooltipContentProps` to `TooltipProps`. The old wrapper's `TooltipProps` type now describes the content; infer wrapper props with `React.ComponentProps<typeof TooltipTrigger>`.
+
+Read the [Tooltip documentation](/docs/components/overlays/tooltip) for placement, appearance, and delay examples.
 
 ## Popover and context menu
 
@@ -411,10 +450,11 @@ Only the token names change here. Tailwind utility prefixes such as `bg-` stay t
 - Update your local component source and theme CSS together, preserving any customizations.
 - Replace removed `Drawer` imports and installations with `Sheet`, and removed `Modal` imports and installations with `Dialog`.
 - Remove local `PopoverTrigger` imports and use a custom trigger with controlled state and a trigger ref.
-- Replace the old overlay wrappers with `DialogTrigger`, `SheetTrigger`, `MenuTrigger` as appropriate. Set `trigger="contextMenu"` for context menus. Use controlled state and a trigger ref for popovers.
+- Replace the old overlay wrappers with `DialogTrigger`, `SheetTrigger`, `MenuTrigger`, or `TooltipTrigger` as appropriate. Set `trigger="contextMenu"` for context menus. Use controlled state and a trigger ref for popovers.
 - Replace opening button components with `Button` inside the trigger wrapper.
 - Rename `ModalContent` to `Dialog` and import it from `@/components/ui/dialog`. Rename `SheetContent`, `PopoverContent`, `MenuContent`, and `ContextMenuContent` to their component names.
 - Rename `SheetContentProps` to `SheetProps` and `PopoverContentProps` to `PopoverProps` in custom wrappers.
+- Migrate tooltips to `TooltipTrigger` with a `Button` and `Tooltip`. Rename `TooltipContentProps` to `TooltipProps`, and move timing and state props to `TooltipTrigger`.
 - Change `Sheet`'s `side` prop to `position`.
 - Use the local `DialogTrigger` as a wrapper around a button and `Dialog`. Update custom overlay composition to avoid nesting overlay surfaces.
 - Update abbreviated theme tokens and utility classes in custom components and styles.

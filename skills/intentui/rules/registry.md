@@ -1,16 +1,21 @@
 # Public registry and shadcn tooling
 
-Read `components.json` and resolve the consuming workspace. The documented public namespace is `@intentui`, with `https://intentui.com/r/{name}`. Preserve an existing URL, including any project-specific version pin. Never select the first registry key: `@irsyad` is the commercial workflow. Do not fetch premium resources for ordinary public components.
+Read `components.json` in the consuming workspace. Public-only users use `@intentui` (`https://intentui.com/r/{name}`). **Design Intent UI's authenticated `@irsyad` registry is a v4-only superset containing public components and premium resources.** A licensed v4 project needs only @irsyad, including for Button, Dialog and Table.
 
-A missing public namespace can be configured as part of authorized installation, merging this entry into existing registries:
+Select after inspecting the relevant installed APIs and theme:
 
-```json
-{
-  "registries": {
-    "@intentui": "https://intentui.com/r/{name}"
-  }
-}
-```
+| Project configuration   | Selection                                                                                           |
+| ----------------------- | --------------------------------------------------------------------------------------------------- |
+| @intentui only          | @intentui for public components                                                                     |
+| @irsyad only, v4        | @irsyad for public components and premium resources                                                 |
+| both, v4                | prefer @irsyad regardless of key order                                                              |
+| v3 + @intentui          | retain compatible public v3 workflow; inspect live payload version                                  |
+| v3 + @irsyad request    | stop: Design requires v4; offer a separately requested migration                                    |
+| mixed/unknown + @irsyad | inspect affected component/dependency closure; do not install until v4 compatibility is established |
+
+Do not require or add @intentui alongside configured @irsyad. Do not add duplicates or delete existing entries automatically. Preserve custom URLs and every header. A missing/expired token does not authorize a silent registry switch; explain the access problem. Public-only tasks do not need commercial authentication documentation. A v4 project using @irsyad does need its Bearer setup even when the requested component is public.
+
+Before installing, inspect recursive registryDependencies. If a payload refers to @intentui and cannot resolve with @irsyad alone, report the item and dependency edge as an upstream registry issue, not a reason to automatically add a second namespace. Do not claim single-registry installation before its dependency closure succeeds. For commercial setup/verification use the Design skill if installed, otherwise the [official setup](https://design.intentui.com/docs/getting-started).
 
 The live public endpoint is not proof of v3/v4 compatibility. Inspect exports, files, dependencies, and CSS before adding. If the live item differs from the installed version, consult the appropriate upstream branch and documented registry configuration; do not invent a version URL or silently upgrade. Search item names before using them. The branch name used to install an agent skill does not select a component registry version.
 
@@ -44,3 +49,5 @@ npx shadcn@latest add @intentui/button
 Run in the consuming workspace or use `--cwd` when supported. Inspect the selected item before add. Review conflicting local files and dependency changes; do not use blanket `--overwrite`/`-o`. Preserve customizations, verify installation output, then typecheck/lint/build as available.
 
 Sources: [Intent UI AI](https://intentui.com/docs/getting-started/ai), [shadcn CLI](https://ui.shadcn.com/docs/cli), [MCP](https://ui.shadcn.com/docs/registry/mcp), [authentication](https://ui.shadcn.com/docs/registry/authentication).
+
+For a licensed v4 project substitute the selected @irsyad namespace in search/view/add, including public components. Never substitute one namespace in a returned dependency URL blindly.

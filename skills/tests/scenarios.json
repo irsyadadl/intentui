@@ -27,7 +27,7 @@
     "id": 5,
     "prompt": "Find a purchased Design Intent UI dashboard block.",
     "skill": "intentui-design",
-    "expect": "Select @irsyad; search authorized catalog; inspect a real result and its dependency compatibility."
+    "expect": "Derive functional search concepts, select @irsyad, compare actual authorized candidates, inspect recursive dependencies and v4 compatibility."
   },
   {
     "id": 6,
@@ -39,7 +39,7 @@
     "id": 7,
     "prompt": "Install a public component and discover a premium block with both registries configured.",
     "skill": "intentui + intentui-design",
-    "expect": "Choose namespaces by purpose regardless of key ordering; preserve URLs/headers."
+    "expect": "Public-only selects @intentui; v4 licensed projects select @irsyad for components and premium items regardless of order; preserve config and headers."
   },
   {
     "id": 8,
@@ -76,5 +76,41 @@
     "prompt": "Find a component without shadcn MCP available.",
     "skill": "intentui",
     "expect": "Use workspace-aware shadcn CLI search/view/add and actual package runner; no custom MCP server."
+  },
+  {
+    "id": 14,
+    "prompt": "Build a Tooltip in my v4 application.",
+    "skill": "intentui",
+    "expect": "Use TooltipTrigger with Button and Tooltip; timing/state on wrapper, appearance on content; no TooltipContent import."
+  },
+  {
+    "id": 15,
+    "prompt": "Build a v4 Sheet with preserved floating appearance.",
+    "skill": "intentui",
+    "expect": "Use SheetTrigger with Button and Sheet position; accessible title, explicit isFloat when required."
+  },
+  {
+    "id": 16,
+    "prompt": "Migrate this customized v3 Modal without changing its content or auth configuration.",
+    "skill": "intentui-migrate",
+    "expect": "Dry-run, preserve content/styles/aliases/config; skip ambiguous spreads/shadowing; typecheck after applying."
+  },
+  {
+    "id": 17,
+    "prompt": "Install a public Button through my only configured @irsyad registry in v4.",
+    "skill": "intentui",
+    "expect": "Do not add @intentui; verify auth and dependency closure before claiming installation."
+  },
+  {
+    "id": 18,
+    "prompt": "Use purchased Design blocks in my v3 application.",
+    "skill": "intentui-design",
+    "expect": "Explain v4 requirement; offer separate migration; no downgrade or automatic upgrade."
+  },
+  {
+    "id": 19,
+    "prompt": "Build an analytics SaaS dashboard with billing using Design Intent UI.",
+    "skill": "intentui-design",
+    "expect": "Search analytics/dashboard/billing/statistics/charts/tables; compare real candidates; compose required functionality with responsive and loading/error states."
   }
 ]

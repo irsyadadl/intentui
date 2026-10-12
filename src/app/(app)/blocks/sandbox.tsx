@@ -9,7 +9,7 @@ import { CodeHighlighter } from "@/components/docs/code-highlighter"
 import { BrandReactjsIcon } from "@/components/icons/brand-reactjs-icon"
 import { ShadcnuiLogo } from "@/components/icons/shadcn-logo"
 import { Heading } from "@/components/ui/heading"
-import { Tooltip, TooltipContent } from "@/components/ui/tooltip"
+import { TooltipTrigger, Tooltip } from "@/components/ui/tooltip"
 import { useClipboard } from "@/hooks/use-clipboard"
 import { cx } from "@/lib/primitive"
 
@@ -138,7 +138,7 @@ function RegistryItemViewer({ imgSrc, item }: { imgSrc?: SandboxImageSrc; item: 
               {item.title.replaceAll("-", " ")}
             </Heading>
 
-            <Tooltip delay={0}>
+            <TooltipTrigger delay={0}>
               <Button
                 onPress={() => {
                   copy(`npx shadcn@latest add @intentui/block/${item.title}`)
@@ -148,8 +148,8 @@ function RegistryItemViewer({ imgSrc, item }: { imgSrc?: SandboxImageSrc; item: 
                 {copied ? <CheckIcon className="size-4" /> : <ShadcnuiLogo className="size-4" />}
                 @intentui/block/{item.title}
               </Button>
-              <TooltipContent className="rounded-full">Click to copy</TooltipContent>
-            </Tooltip>
+              <Tooltip className="rounded-full">Click to copy</Tooltip>
+            </TooltipTrigger>
           </header>
           <TabList className="flex w-full gap-x-1 md:w-auto">
             <SourceTab id="preview">Preview</SourceTab>

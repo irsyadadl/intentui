@@ -2,18 +2,19 @@
 
 import { Badge } from "@/components/ui/badge"
 import { Description } from "@/components/ui/field"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip"
+import { Button } from "react-aria-components/Button"
 
-export default function TooltipWithoutArrowDemo() {
+export default function TooltipWithoutArrowExample() {
   return (
-    <Tooltip>
-      <TooltipTrigger aria-label="Fresh drop alert">
+    <TooltipTrigger>
+      <Button aria-label="Fresh drop alert">
         <Badge isCircle>New</Badge>
-      </TooltipTrigger>
-      <TooltipContent arrow={false}>
+      </Button>
+      <Tooltip arrow={false}>
         <strong className="font-semibold">Fresh drop alert</strong> <br />
         <Description>Scope the newest addition to our stash.</Description>
-      </TooltipContent>
-    </Tooltip>
+      </Tooltip>
+    </TooltipTrigger>
   )
 }
