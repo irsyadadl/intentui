@@ -1,6 +1,5 @@
 "use client"
 
-import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
   PopoverBody,
@@ -9,28 +8,14 @@ import {
   PopoverFooter,
   PopoverHeader,
   PopoverTitle,
+  PopoverTrigger,
 } from "@/components/ui/popover"
 
 export default function PopoverDemo() {
-  const [isOpen, setIsOpen] = useState(false)
-  const triggerRef = useRef<HTMLButtonElement>(null)
   return (
-    <>
-      <Button
-        ref={triggerRef}
-        aria-haspopup="dialog"
-        aria-expanded={isOpen}
-        onPress={() => setIsOpen(true)}
-        intent="outline"
-      >
-        What’s this?
-      </Button>
-      <Popover
-        aria-label="Project details"
-        triggerRef={triggerRef}
-        isOpen={isOpen}
-        onOpenChange={setIsOpen}
-      >
+    <PopoverTrigger>
+      <Button intent="outline">What’s this?</Button>
+      <Popover aria-labelledby="" aria-label="Project details">
         <PopoverHeader>
           <PopoverTitle>This is the title of the popover.</PopoverTitle>
           <PopoverDescription>This is the description of the popover.</PopoverDescription>
@@ -38,6 +23,6 @@ export default function PopoverDemo() {
         <PopoverBody>This is the body of the popover.</PopoverBody>
         <PopoverFooter>This is the footer of the popover.</PopoverFooter>
       </Popover>
-    </>
+    </PopoverTrigger>
   )
 }

@@ -26,12 +26,11 @@ Use this approach if you prefer to install and wire up the component yourself in
 
 ## Anatomy
 
-Use your own button as the trigger. Keep a ref to that button and pass it to `Popover` with `isOpen` and `onOpenChange`. The popover manages focus, Escape, and outside-click dismissal.
+`PopoverTrigger` wraps a `Button` and `Popover`. It manages the trigger interaction and open state, so you do not need to pass a button ref or manage state for an uncontrolled popover. `PopoverTrigger` is an alias of `DialogTrigger`.
 
 ```tsx
 "use client"
 
-import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
   Popover,
@@ -40,44 +39,36 @@ import {
   PopoverFooter,
   PopoverHeader,
   PopoverTitle,
+  PopoverTrigger,
 } from "@/components/ui/popover"
 
 export function Example() {
-  const [isOpen, setIsOpen] = useState(false)
-  const triggerRef = useRef<HTMLButtonElement>(null)
-
   return (
-    <>
-      <Button
-        ref={triggerRef}
-        aria-haspopup="dialog"
-        aria-expanded={isOpen}
-        onPress={() => setIsOpen(true)}
-      >
-        Open popover
-      </Button>
-      <Popover aria-label="Project details" triggerRef={triggerRef} isOpen={isOpen} onOpenChange={setIsOpen}>
+    <PopoverTrigger>
+      <Button>Open popover</Button>
+      <Popover aria-labelledby="" aria-label="Project details">
         <PopoverHeader>
           <PopoverTitle>Project details</PopoverTitle>
           <PopoverDescription>Review your project before continuing.</PopoverDescription>
         </PopoverHeader>
         <PopoverBody>Popover body</PopoverBody>
         <PopoverFooter>
-          <Button intent="plain" onPress={() => setIsOpen(false)}>Close</Button>
-          <Button onPress={() => setIsOpen(false)}>Confirm</Button>
+          Review your project details before continuing.
         </PopoverFooter>
       </Popover>
-    </>
+    </PopoverTrigger>
   )
 }
 ```
+
+`PopoverTrigger` labels the popover from its opening button by default. To provide a separate `aria-label`, clear the inherited label with `aria-labelledby=""` as shown above.
 
 `Popover` provides the dialog semantics itself. Do not wrap its content in the Intent UI `Dialog`, which creates a separate overlay.
 
 ## Examples
 
 ### Controlled
-You can control the popover programmatically.
+Pass `isOpen` and `onOpenChange` to `PopoverTrigger` to control the popover programmatically. Placement and appearance props stay on `Popover`.
 <How toUse="overlays/popover/popover-controlled-example" />
 
 ### Overlay arrow
@@ -106,11 +97,22 @@ Use a button with `onPress={() => setIsOpen(false)}` to close a controlled popov
 
 ### Custom trigger
 
-Use any accessible button that forwards its ref. For an avatar trigger, place `Avatar` inside `Button`, add an `aria-label`, and pass the button ref to `Popover`. Include `aria-haspopup="dialog"` and `aria-expanded={isOpen}` on the trigger.
+Place your custom button inside `PopoverTrigger`. For an avatar trigger, put `Avatar` inside `Button` and give the button an `aria-label`. The wrapper handles the trigger ref and ARIA state.
 
 <How toUse="overlays/popover/popover-trigger-example" />
 
 ## Component API
+
+### PopoverTrigger
+
+<ApiParameters>
+  <ApiDescription>
+    **PopoverTrigger** is an alias of the Intent UI **DialogTrigger**, which uses React Aria Components **DialogTrigger**. It wraps the opening button and popover.
+  </ApiDescription>
+  <ApiParameter name="isOpen" type="boolean" />
+  <ApiParameter name="defaultOpen" type="boolean" />
+  <ApiParameter name="onOpenChange" type="(isOpen: boolean) => void" />
+</ApiParameters>
 
 ### Popover
 
@@ -176,7 +178,7 @@ Use any accessible button that forwards its ref. For an avatar trigger, place `A
 
 <ApiParameters>
   <ApiDescription>
-    For controlled popovers, use a **Button** that calls `setIsOpen(false)`. **PopoverClose** uses the `close` slot and requires a React Aria `DialogTrigger` context. It extends the Intent UI [**`<DialogClose>`**](/docs/components/overlays/dialog#dialogclose) component.
+    **PopoverClose** is an alias of **DialogClose** and uses the `close` slot. That slot requires a content-only React Aria **Dialog** inside the popover; **PopoverTrigger** alone does not provide it. With the default composition shown above, use a controlled **PopoverTrigger** and a **Button** that calls `setIsOpen(false)` to close the popover. It extends the Intent UI [**`<DialogClose>`**](/docs/components/overlays/dialog#dialogclose) component.
   </ApiDescription>
   <ApiParameter name="className" type='string' />
   <ApiParameter

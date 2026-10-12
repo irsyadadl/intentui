@@ -13,7 +13,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogTrigger,
 } from "./dialog"
+
+const PopoverTrigger = DialogTrigger
 
 const PopoverTitle = DialogTitle
 const PopoverHeader = DialogHeader
@@ -71,6 +74,7 @@ const PopoverDescription = DialogDescription
 
 export type { PopoverProps }
 export {
+  PopoverTrigger,
   PopoverBody,
   PopoverClose,
   Popover,

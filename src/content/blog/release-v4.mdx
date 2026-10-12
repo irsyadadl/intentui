@@ -11,27 +11,9 @@ Intent UI v4 brings a more consistent way to compose overlays and menus. The tri
 
 This release includes breaking changes. If you're moving from v3, update both your imports and JSX structure, along with your theme tokens and custom styles.
 
-## Upgrade with Agent Skills
+## Component changes
 
-Intent UI now includes official Agent Skills to help you develop components, use premium resources, and upgrade an existing application. Install them from the main repository:
-
-```bash
-npx skills add irsyadadl/intentui
-```
-
-Choose the skills you need in the CLI:
-
-- **`intentui`** helps create, install, review, and debug components. It detects v3 or v4 from your installed source and follows the matching APIs and theme tokens.
-- **`intentui-design`** helps discover and integrate purchased Design Intent UI resources for v4. The authenticated `@irsyad` registry includes public components and premium resources, so licensed users need only this registry.
-- **`intentui-migrate`** helps audit and migrate v3 components and themes to v4. It can handle one feature or an explicitly requested application-wide upgrade, preserving local customizations and checking imports, dependencies, and behavior.
-
-To plan an upgrade, ask your agent: "Audit my Intent UI v3 project for a v4 upgrade without modifying files." When you're ready, ask it to migrate a specific feature or the application. Ordinary component development does not trigger an automatic upgrade.
-
-The migration skill covers the overlay and theme changes described below. Review its proposed changes and verify keyboard navigation, focus restoration, dismissal, and touch interactions after migrating.
-
-See [Working with AI](/docs/getting-started/ai#skills) for skill setup and registry integration.
-
-## Removed components
+### Removed components
 
 `Drawer` and `Modal` have been removed in v4, along with their component files, documentation pages, examples, and registry entries. Update existing imports and CLI installation commands to use their replacements.
 
@@ -42,9 +24,9 @@ See [Working with AI](/docs/getting-started/ai#skills) for skill setup and regis
 
 `Dialog` now includes its backdrop and overlay surface. If you previously used the Intent UI `Dialog` as a content primitive inside another overlay, remove that wrapper or import the content-only `Dialog` from `react-aria-components/Dialog`.
 
-The local `PopoverTrigger` export has also been removed. Use a custom button with `triggerRef`, `isOpen`, and `onOpenChange` as shown in the [Popover documentation](/docs/components/overlays/popover#anatomy).
+`PopoverTrigger` now wraps a `Button` and `Popover` as shown in the [Popover documentation](/docs/components/overlays/popover#anatomy). It is an alias of `DialogTrigger`.
 
-## A consistent composition pattern
+### A consistent composition pattern
 
 In v3, names like `Modal` and `Menu` referred to the wrapper, while `ModalContent` and `MenuContent` rendered the content. In v4, the wrapper uses the `Trigger` suffix, and the content uses the component name directly.
 
@@ -58,14 +40,20 @@ In v3, names like `Modal` and `Menu` referred to the wrapper, while `ModalConten
 | Menu content | `MenuContent` | `Menu` |
 | Tooltip wrapper | `Tooltip` | `TooltipTrigger` |
 | Tooltip content | `TooltipContent` | `Tooltip` |
-| Popover state | `Popover` | `isOpen`, `onOpenChange`, and `triggerRef` |
+| Popover wrapper | `Popover` | `PopoverTrigger` |
 | Popover content | `PopoverContent` | `Popover` |
 | Context menu wrapper | `ContextMenu` | `MenuTrigger trigger="contextMenu"` |
 | Context menu content | `ContextMenuContent` | `Menu` |
 
-The old `ModalTrigger`, `SheetTrigger`, `PopoverTrigger`, `MenuTrigger`, and `TooltipTrigger` button components are no longer used as buttons. Use `Button` inside the new trigger wrapper for dialogs, sheets, menus, and tooltips. For popovers, use a custom button with controlled state and a trigger ref. Move button props such as `intent`, `className`, and `isDisabled` to that button.
+The old `ModalTrigger`, `SheetTrigger`, `PopoverTrigger`, `MenuTrigger`, and `TooltipTrigger` button components are no longer used as buttons. Use `Button` inside the new trigger wrapper for dialogs, sheets, popovers, menus, and tooltips. Move button props such as `intent`, `className`, and `isDisabled` to that button.
 
-## Dialog
+### Composing overlay content
+
+The Intent UI `Dialog` now includes its backdrop and modal surface. Use it directly for centered dialogs. `Sheet` and `Popover` provide their own overlay surfaces and share the `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogBody`, and `DialogFooter` building blocks.
+
+Do not place the Intent UI `Dialog` inside a `Sheet` or `Popover`. For custom overlays that need only the accessible content primitive, import `Dialog` from `react-aria-components/Dialog`.
+
+### Dialog
 
 `DialogTrigger` now wraps the opening button and `Dialog`. The Intent UI `Modal` component has been removed; import `Dialog` from `@/components/ui/dialog`. Props that previously belonged to `ModalContent`, such as `size`, `role`, `isDismissable`, and `closeButton`, now belong to `Dialog`.
 
@@ -129,7 +117,7 @@ If you're controlling an overlay through its trigger wrapper, keep `isOpen` and 
 
 Read the [Dialog documentation](/docs/components/overlays/dialog) for complete examples.
 
-## Sheet
+### Sheet
 
 Sheets follow the same structure: `SheetTrigger` wraps a `Button` and `Sheet`. The `side` prop is now called `position`.
 
@@ -185,13 +173,39 @@ Use `start` or `end` when the sheet should follow the locale's reading direction
 
 Read the [Sheet documentation](/docs/components/overlays/sheet) for position and controlled examples.
 
-## Composing overlay content
+### Popover
+`PopoverTrigger` wraps the opening button and `Popover`. Move state props such as `isOpen`, `defaultOpen`, and `onOpenChange` to `PopoverTrigger`, and move content props to `Popover`. Update the imports from `@/components/ui/popover` along with the JSX.
 
-The Intent UI `Dialog` now includes its backdrop and modal surface. Use it directly for centered dialogs. `Sheet` and `Popover` provide their own overlay surfaces and share the `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogBody`, and `DialogFooter` building blocks.
+**Popover: v3 → v4**
 
-Do not place the Intent UI `Dialog` inside a `Sheet` or `Popover`. For custom overlays that need only the accessible content primitive, import `Dialog` from `react-aria-components/Dialog`.
+```tsx
+// Before
+<Popover>
+  <Button>Details</Button>
+  <PopoverContent>
+    <PopoverHeader>
+      <PopoverTitle>Project details</PopoverTitle>
+    </PopoverHeader>
+  </PopoverContent>
+</Popover>
 
-## Menu
+// After
+import { Button } from "@/components/ui/button"
+import { Popover, PopoverHeader, PopoverTitle, PopoverTrigger } from "@/components/ui/popover"
+
+<PopoverTrigger>
+  <Button>Details</Button>
+  <Popover>
+    <PopoverHeader>
+      <PopoverTitle>Project details</PopoverTitle>
+    </PopoverHeader>
+  </Popover>
+</PopoverTrigger>
+```
+
+Read the [Popover documentation](/docs/components/overlays/popover) for full examples.
+
+### Menu
 
 `MenuTrigger` now manages the menu interaction, and `Menu` renders the menu and its popover. Replace the old trigger button with `Button`.
 
@@ -230,7 +244,34 @@ For custom menu styling and TypeScript imports, `menuContentStyles` becomes `men
 
 Read the [Menu documentation](/docs/components/collections/menu) for selection, sections, and submenus.
 
-## Tooltip
+### Context menu
+Context menu uses `MenuTrigger` with `trigger="contextMenu"`. Import the components from `@/components/ui/menu`.
+
+**Context menu: v3 → v4**
+
+```tsx
+// Before
+<ContextMenu>
+  <Button intent="outline">Right-click here</Button>
+  <ContextMenuContent>
+    <ContextMenuItem id="edit">Edit</ContextMenuItem>
+  </ContextMenuContent>
+</ContextMenu>
+
+// After
+import { Menu, MenuItem, MenuTrigger } from "@/components/ui/menu"
+
+<MenuTrigger trigger="contextMenu">
+  <Button intent="outline">Right-click here</Button>
+  <Menu>
+    <MenuItem id="edit">Edit</MenuItem>
+  </Menu>
+</MenuTrigger>
+```
+
+Read the [Context Menu documentation](/docs/components/controls/context-menu) for full examples.
+
+### Tooltip
 
 `TooltipTrigger` now wraps a focusable button and `Tooltip`, which renders the content. The old `TooltipContent` export has been removed, and `TooltipTrigger` no longer renders a button.
 
@@ -267,64 +308,9 @@ For TypeScript imports, rename `TooltipContentProps` to `TooltipProps`. The old 
 
 Read the [Tooltip documentation](/docs/components/overlays/tooltip) for placement, appearance, and delay examples.
 
-## Popover and context menu
+## Theme and styling
 
-Popover uses a custom trigger with controlled state. Context menu uses `MenuTrigger` with `trigger="contextMenu"`.
-
-**Popover: v3 → v4**
-
-```tsx
-// Before
-<Popover>
-  <Button>Details</Button>
-  <PopoverContent>
-    <PopoverHeader>
-      <PopoverTitle>Project details</PopoverTitle>
-    </PopoverHeader>
-  </PopoverContent>
-</Popover>
-
-// After (inside a component)
-const [isOpen, setIsOpen] = useState(false)
-const triggerRef = useRef<HTMLButtonElement>(null)
-
-<>
-  <Button ref={triggerRef} aria-haspopup="dialog" aria-expanded={isOpen} onPress={() => setIsOpen(true)}>
-    Details
-  </Button>
-  <Popover triggerRef={triggerRef} isOpen={isOpen} onOpenChange={setIsOpen}>
-    <PopoverHeader>
-      <PopoverTitle>Project details</PopoverTitle>
-    </PopoverHeader>
-  </Popover>
-</>
-```
-
-**Context menu: v3 → v4**
-
-```tsx
-// Before
-<ContextMenu>
-  <Button intent="outline">Right-click here</Button>
-  <ContextMenuContent>
-    <ContextMenuItem id="edit">Edit</ContextMenuItem>
-  </ContextMenuContent>
-</ContextMenu>
-
-// After
-import { Menu, MenuItem, MenuTrigger } from "@/components/ui/menu"
-
-<MenuTrigger trigger="contextMenu">
-  <Button intent="outline">Right-click here</Button>
-  <Menu>
-    <MenuItem id="edit">Edit</MenuItem>
-  </Menu>
-</MenuTrigger>
-```
-
-Update the imports from `@/components/ui/popover` and `@/components/ui/menu` along with the JSX. See the [Popover](/docs/components/overlays/popover) and [Context Menu](/docs/components/controls/context-menu) documentation for full examples.
-
-## Card spacing
+### Card spacing
 
 Card now uses `--card-spacing` instead of `--gutter` for its padding and gaps. Rename custom spacing overrides on `Card` and styles that read the card's spacing.
 
@@ -351,7 +337,7 @@ The default remains `--spacing(6)`. Table still uses `--gutter`; when a table si
 
 See [Card](/docs/components/surfaces/card#spacing) for spacing customization.
 
-## Explicit theme token names
+### Explicit theme token names
 
 Theme tokens now use `background` and `foreground` instead of the abbreviated `bg` and `fg` names. Update your CSS variables, Tailwind theme mappings, and utility classes together, including dark mode overrides.
 
@@ -379,7 +365,7 @@ Theme tokens now use `background` and `foreground` instead of the abbreviated `b
 
 The same `-fg` to `-foreground` rename applies to the other semantic foreground tokens, including card, secondary, accent, status colors, navbar, and sidebar. Tailwind mappings such as `--color-primary-fg` also become `--color-primary-foreground`.
 
-### CSS variables and Tailwind mappings
+#### CSS variables and Tailwind mappings
 
 Rename both the variable definitions and every `var(...)` reference. Keep your existing color values when migrating a customized theme. The following is a minimal example; apply the same changes to the rest of your theme and its `.dark` overrides.
 
@@ -427,7 +413,7 @@ body {
 
 Status foreground tokens follow the same rule: `--success-fg`, `--danger-fg`, and `--warning-fg` become `--success-foreground`, `--danger-foreground`, and `--warning-foreground`. Their subtle variants also change, including `--info-subtle-fg` → `--info-subtle-foreground`.
 
-### Utility classes
+#### Utility classes
 
 The Tailwind mappings generate the new utility names. Update variants and opacity modifiers too: `dark:bg-bg` becomes `dark:bg-background`, and `text-fg/80` becomes `text-foreground/80`.
 
@@ -445,12 +431,32 @@ The Tailwind mappings generate the new utility names. Update variants and opacit
 
 Only the token names change here. Tailwind utility prefixes such as `bg-` stay the same: `bg-primary` still uses the primary background token.
 
+## Upgrade with Agent Skills
+
+Intent UI now includes official Agent Skills to help you develop components, use premium resources, and upgrade an existing application. Install them from the main repository:
+
+```bash
+npx skills add irsyadadl/intentui
+```
+
+Choose the skills you need in the CLI:
+
+- **`intentui`** helps create, install, review, and debug components. It detects v3 or v4 from your installed source and follows the matching APIs and theme tokens.
+- **`intentui-design`** helps discover and integrate purchased Design Intent UI resources for v4. The authenticated `@irsyad` registry includes public components and premium resources, so licensed users need only this registry.
+- **`intentui-migrate`** helps audit and migrate v3 components and themes to v4. It can handle one feature or an explicitly requested application-wide upgrade, preserving local customizations and checking imports, dependencies, and behavior.
+
+To plan an upgrade, ask your agent: "Audit my Intent UI v3 project for a v4 upgrade without modifying files." When you're ready, ask it to migrate a specific feature or the application. Ordinary component development does not trigger an automatic upgrade.
+
+The migration skill covers the component and theme changes described above. Review its proposed changes and verify keyboard navigation, focus restoration, dismissal, and touch interactions after migrating.
+
+See [Working with AI](/docs/getting-started/ai#skills) for skill setup and registry integration.
+
 ## Migration checklist
 
 - Update your local component source and theme CSS together, preserving any customizations.
 - Replace removed `Drawer` imports and installations with `Sheet`, and removed `Modal` imports and installations with `Dialog`.
-- Remove local `PopoverTrigger` imports and use a custom trigger with controlled state and a trigger ref.
-- Replace the old overlay wrappers with `DialogTrigger`, `SheetTrigger`, `MenuTrigger`, or `TooltipTrigger` as appropriate. Set `trigger="contextMenu"` for context menus. Use controlled state and a trigger ref for popovers.
+- Use `PopoverTrigger` as the wrapper around a `Button` and `Popover`, and move controlled state props to the wrapper.
+- Replace the old overlay wrappers with `DialogTrigger`, `SheetTrigger`, `PopoverTrigger`, `MenuTrigger`, or `TooltipTrigger` as appropriate. Set `trigger="contextMenu"` for context menus.
 - Replace opening button components with `Button` inside the trigger wrapper.
 - Rename `ModalContent` to `Dialog` and import it from `@/components/ui/dialog`. Rename `SheetContent`, `PopoverContent`, `MenuContent`, and `ContextMenuContent` to their component names.
 - Rename `SheetContentProps` to `SheetProps` and `PopoverContentProps` to `PopoverProps` in custom wrappers.

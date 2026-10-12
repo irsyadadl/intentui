@@ -2,7 +2,7 @@
 
 import { TrashIcon } from "@heroicons/react/24/outline"
 import { CheckCircleIcon } from "@heroicons/react/24/solid"
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Loader } from "@/components/ui/loader"
 import {
@@ -11,13 +11,13 @@ import {
   PopoverFooter,
   PopoverHeader,
   PopoverTitle,
+  PopoverTrigger,
 } from "@/components/ui/popover"
 import { wait } from "@/lib/utils"
 
 export default function PopoverControlledDemo() {
   const [isOpen, setIsOpen] = useState(false)
   const [loading, setLoading] = useState<"idle" | "loading" | "success">("idle")
-  const triggerRef = useRef(null)
 
   const deleteAccount = async () => {
     setLoading("loading")
@@ -29,17 +29,9 @@ export default function PopoverControlledDemo() {
     setIsOpen(false)
   }
   return (
-    <>
-      <Button ref={triggerRef} onPress={() => setIsOpen(true)} intent="danger">
-        Delete Account
-      </Button>
-      <Popover
-        aria-label="Confirm deletion"
-        triggerRef={triggerRef}
-        isOpen={isOpen}
-        onOpenChange={setIsOpen}
-        className="sm:max-w-sm"
-      >
+    <PopoverTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
+      <Button intent="danger">Delete Account</Button>
+      <Popover aria-labelledby="" aria-label="Confirm deletion" className="sm:max-w-sm">
         <PopoverHeader>
           <PopoverTitle>Confirm Deletion</PopoverTitle>
           <PopoverDescription>
@@ -74,6 +66,6 @@ export default function PopoverControlledDemo() {
           </Button>
         </PopoverFooter>
       </Popover>
-    </>
+    </PopoverTrigger>
   )
 }

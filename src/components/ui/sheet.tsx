@@ -60,6 +60,7 @@ const Sheet = ({
       {...props}
       {...overlay}
       position={position}
+
       snapPoints={snapPoints}
       preventDismissal={preventDismissal}
       className={cx("z-50", overlay?.className)}
@@ -73,6 +74,8 @@ const Sheet = ({
         overscrollPadding={isFloat ? false : (props.overscrollPadding ?? true)}
         stackAnimation="sheet-scale-back"
         data-float={isFloat}
+
+        data-slot="sheet"
         className={cx(
           "react-aria-sheet relative box-content shrink-0 origin-top transition-transform motion-reduce:transition-none [--sheet-gap:0px] data-[float=true]:[--sheet-gap:16px] border-foreground/20 bg-overlay text-overlay-foreground shadow-lg dark:border-border",
           "data-[float=true]:rounded-lg data-[float=true]:ring data-[float=true]:ring-foreground/5 dark:data-[float=true]:ring-border",
@@ -87,8 +90,8 @@ const Sheet = ({
           />
         )}
         <SheetContentPrimitive
-          data-slot="dialog"
-          className="peer/dialog group/dialog relative flex max-h-[calc(var(--visual-viewport-height)-var(--sheet-gap))] flex-col overflow-hidden outline-hidden [--gutter:--spacing(6)]"
+          data-slot="sheet-cintent"
+          className="relative flex max-h-[calc(var(--visual-viewport-height)-var(--sheet-gap))] flex-col overflow-hidden outline-hidden [--gutter:--spacing(6)]"
         >
           {children}
         </SheetContentPrimitive>

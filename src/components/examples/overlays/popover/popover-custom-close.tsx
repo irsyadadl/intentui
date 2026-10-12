@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { Form } from "react-aria-components/Form"
 import { Button } from "@/components/ui/button"
 import { Checkbox, CheckboxField } from "@/components/ui/checkbox"
@@ -14,29 +14,16 @@ import {
   PopoverFooter,
   PopoverHeader,
   PopoverTitle,
+  PopoverTrigger,
 } from "@/components/ui/popover"
 import { TextField } from "@/components/ui/text-field"
 
 export default function PopoverCustomClose() {
   const [isOpen, setIsOpen] = useState(false)
-  const triggerRef = useRef<HTMLButtonElement>(null)
   return (
-    <>
-      <Button
-        ref={triggerRef}
-        aria-haspopup="dialog"
-        aria-expanded={isOpen}
-        onPress={() => setIsOpen(true)}
-      >
-        Login
-      </Button>
-      <Popover
-        aria-label="Login"
-        triggerRef={triggerRef}
-        isOpen={isOpen}
-        onOpenChange={setIsOpen}
-        className="w-full min-w-96"
-      >
+    <PopoverTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
+      <Button>Login</Button>
+      <Popover aria-labelledby="" aria-label="Login" className="w-full min-w-96">
         <PopoverHeader>
           <PopoverTitle>Login</PopoverTitle>
           <PopoverDescription>Enter your credentials to sign in.</PopoverDescription>
@@ -80,6 +67,6 @@ export default function PopoverCustomClose() {
           </PopoverFooter>
         </Form>
       </Popover>
-    </>
+    </PopoverTrigger>
   )
 }

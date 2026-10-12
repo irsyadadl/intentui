@@ -4,6 +4,7 @@ import { render, screen, waitFor } from "./utils/render"
 import DialogDemo from "@/components/examples/overlays/dialog/dialog-example"
 import AlertDialogDemo from "@/components/examples/overlays/dialog/alert-dialog-example"
 import DialogControlledDemo from "@/components/examples/overlays/dialog/dialog-controlled-example"
+import PopoverControlledDemo from "@/components/examples/overlays/popover/popover-controlled-example"
 import PopoverCustomClose from "@/components/examples/overlays/popover/popover-custom-close"
 import PopoverTriggerDemo from "@/components/examples/overlays/popover/popover-trigger-example"
 import SheetDemo from "@/components/examples/overlays/sheet/sheet-example"
@@ -74,6 +75,21 @@ describe("overlay migration", () => {
     expect(await screen.findByRole("dialog", { name: "Login" })).toBeVisible()
     expect(screen.getAllByRole("dialog")).toHaveLength(1)
     await user.click(screen.getByRole("button", { name: "Cancel" }))
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument())
+  })
+
+  it("closes and reopens a controlled Popover and restores focus", async () => {
+    const user = userEvent.setup()
+    render(<PopoverControlledDemo />)
+    const trigger = screen.getByRole("button", { name: "Delete Account" })
+    await user.click(trigger)
+    expect(await screen.findByRole("dialog", { name: "Confirm deletion" })).toBeVisible()
+    await user.click(screen.getByRole("button", { name: "Cancel" }))
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument())
+    await waitFor(() => expect(trigger).toHaveFocus())
+    await user.click(trigger)
+    expect(await screen.findByRole("dialog", { name: "Confirm deletion" })).toBeVisible()
+    await user.keyboard("{Escape}")
     await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument())
   })
 
