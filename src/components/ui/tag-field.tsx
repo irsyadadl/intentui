@@ -8,7 +8,7 @@ import { FieldError } from "@/components/ui/field"
 import { Tag, TagGroup, TagList } from "@/components/ui/tag-group"
 import { TextField } from "@/components/ui/text-field"
 
-interface TagInputProps extends Pick<
+export interface TagInputProps extends Pick<
   TextFieldProps,
   "isDisabled" | "isReadOnly" | "children" | "aria-label" | "aria-labelledby"
 > {

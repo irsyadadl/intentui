@@ -3,12 +3,12 @@
 import { ProgressBar, type ProgressBarProps } from "react-aria-components/ProgressBar"
 import { cn } from "cn"
 
-interface ProgressCircleProps extends Omit<ProgressBarProps, "className"> {
+export interface ProgressCircleProps extends Omit<ProgressBarProps, "className"> {
   className?: string
   ref?: React.RefObject<HTMLDivElement>
 }
 
-const ProgressCircle = ({ className, ref, ...props }: ProgressCircleProps) => {
+export function ProgressCircle({ className, ref, ...props }: ProgressCircleProps) {
   const c = "50%"
   const r = "calc(50% - 2px)"
   return (
@@ -54,6 +54,3 @@ const ProgressCircle = ({ className, ref, ...props }: ProgressCircleProps) => {
     </ProgressBar>
   )
 }
-
-export type { ProgressCircleProps }
-export { ProgressCircle }

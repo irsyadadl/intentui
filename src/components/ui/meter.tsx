@@ -9,13 +9,13 @@ import {
 import { cn } from "cn"
 import { cx } from "@/lib/primitive"
 
-interface MeterRenderProps extends PrimitiveMeterRenderProps {
+export interface MeterRenderProps extends PrimitiveMeterRenderProps {
   color?: string
 }
 
 const MeterContext = createContext<MeterRenderProps | null>(null)
 
-interface MeterProps extends PrimitiveMeterProps, Pick<MeterRenderProps, "color"> {}
+export interface MeterProps extends PrimitiveMeterProps, Pick<MeterRenderProps, "color"> {}
 
 export function Meter({ className, children, color, ...props }: MeterProps) {
   return (

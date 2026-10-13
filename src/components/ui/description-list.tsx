@@ -1,6 +1,6 @@
 import { cn } from "cn"
 
-const DescriptionList = ({ className, ref, ...props }: React.ComponentProps<"dl">) => {
+export function DescriptionList({ className, ref, ...props }: React.ComponentProps<"dl">) {
   return (
     <dl
       ref={ref}
@@ -13,7 +13,7 @@ const DescriptionList = ({ className, ref, ...props }: React.ComponentProps<"dl"
   )
 }
 
-const DescriptionTerm = ({ className, ref, ...props }: React.ComponentProps<"dt">) => {
+export function DescriptionTerm({ className, ref, ...props }: React.ComponentProps<"dt">) {
   return (
     <dt
       ref={ref}
@@ -26,7 +26,7 @@ const DescriptionTerm = ({ className, ref, ...props }: React.ComponentProps<"dt"
   )
 }
 
-const DescriptionDetails = ({ className, ...props }: React.ComponentProps<"dd">) => {
+export function DescriptionDetails({ className, ...props }: React.ComponentProps<"dd">) {
   return (
     <dd
       {...props}
@@ -38,5 +38,3 @@ const DescriptionDetails = ({ className, ...props }: React.ComponentProps<"dd">)
     />
   )
 }
-
-export { DescriptionDetails, DescriptionList, DescriptionTerm }

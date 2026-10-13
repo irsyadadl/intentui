@@ -31,19 +31,22 @@ const showMoreStyles = tv({
   },
 })
 
-interface ShowMoreProps extends Omit<React.ComponentProps<typeof ToggleButton>, "className"> {
+export interface ShowMoreProps extends Omit<
+  React.ComponentProps<typeof ToggleButton>,
+  "className"
+> {
   className?: string
   orientation?: "horizontal" | "vertical"
   as?: "text" | "button"
   text?: string
 }
 
-const ShowMore = ({
+export function ShowMore({
   as = "button",
   orientation = "horizontal",
   className,
   ...props
-}: ShowMoreProps) => {
+}: ShowMoreProps) {
   return (
     <div className={showMoreStyles({ orientation, className })}>
       {as === "button" ? (
@@ -59,6 +62,3 @@ const ShowMore = ({
     </div>
   )
 }
-
-export type { ShowMoreProps }
-export { ShowMore }

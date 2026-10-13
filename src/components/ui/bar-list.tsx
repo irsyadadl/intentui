@@ -5,14 +5,14 @@ import { Button } from "react-aria-components/Button"
 import { twJoin, cn } from "cn"
 import { Link } from "./link"
 
-type Bar<T> = T & {
+export type Bar<T> = T & {
   key?: string
   href?: string
   value: number
   name: string
 }
 
-interface BarListProps<T = unknown> extends React.ComponentProps<"div"> {
+export interface BarListProps<T = unknown> extends React.ComponentProps<"div"> {
   data: Bar<T>[]
   valueFormatter?: (value: number) => string
   onValueChange?: (payload: Bar<T>) => void

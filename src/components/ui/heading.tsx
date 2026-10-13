@@ -1,14 +1,14 @@
 import { cn } from "cn"
 
-type HeadingType = { level?: 1 | 2 | 3 | 4 } & React.ComponentPropsWithoutRef<
+export type HeadingType = { level?: 1 | 2 | 3 | 4 } & React.ComponentPropsWithoutRef<
   "h1" | "h2" | "h3" | "h4"
 >
 
-interface HeadingProps extends HeadingType {
+export interface HeadingProps extends HeadingType {
   className?: string | undefined
 }
 
-const Heading = ({ className, level = 1, ...props }: HeadingProps) => {
+export function Heading({ className, level = 1, ...props }: HeadingProps) {
   const Element: `h${typeof level}` = `h${level}`
   return (
     <Element
@@ -24,6 +24,3 @@ const Heading = ({ className, level = 1, ...props }: HeadingProps) => {
     />
   )
 }
-
-export type { HeadingProps }
-export { Heading }

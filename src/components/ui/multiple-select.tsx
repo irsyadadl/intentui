@@ -12,12 +12,12 @@ import { Popover } from "./popover"
 import { SearchField, SearchInput } from "./search-field"
 import { Tag, TagGroup, TagList } from "./tag-group"
 
-interface OptionBase {
+export interface OptionBase {
   id: string | number
   name: string
 }
 
-interface MultipleSelectProps<T extends OptionBase> extends Omit<
+export interface MultipleSelectProps<T extends OptionBase> extends Omit<
   SelectProps<T, "multiple">,
   "selectionMode" | "children"
 > {
@@ -30,17 +30,17 @@ interface MultipleSelectProps<T extends OptionBase> extends Omit<
   onSearchChange?: (value: string) => void
 }
 
-interface MultipleSelectContentProps<T extends OptionBase> {
+export interface MultipleSelectContentProps<T extends OptionBase> {
   items: Iterable<T>
   children: (item: T) => React.ReactNode
 }
 
-function MultipleSelectContent<T extends OptionBase>(_props: MultipleSelectContentProps<T>) {
+export function MultipleSelectContent<T extends OptionBase>(_props: MultipleSelectContentProps<T>) {
   return null
 }
 ;(MultipleSelectContent as any).displayName = "MultipleSelectContent"
 
-function MultipleSelect<T extends OptionBase>({
+export function MultipleSelect<T extends OptionBase>({
   placeholder = "No selected items",
   className,
   children,
@@ -153,6 +153,4 @@ function MultipleSelect<T extends OptionBase>({
   )
 }
 
-const MultipleSelectItem = ListBoxItem
-
-export { MultipleSelect, MultipleSelectContent, MultipleSelectItem }
+export const MultipleSelectItem = ListBoxItem

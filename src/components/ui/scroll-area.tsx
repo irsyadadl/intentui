@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef } from "react"
 import { twJoin, cn } from "cn"
 
-type ScrollAreaOrientation = "vertical" | "horizontal" | "both"
+export type ScrollAreaOrientation = "vertical" | "horizontal" | "both"
 
 export interface ScrollAreaProps extends React.ComponentPropsWithRef<"div"> {
   scrollFade?: boolean

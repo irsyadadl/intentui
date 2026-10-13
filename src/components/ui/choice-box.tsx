@@ -51,19 +51,19 @@ const ChoiceBoxContext = createContext<{ columns?: number; gap?: number; isReadO
 
 const useChoiceBoxContext = () => use(ChoiceBoxContext)
 
-interface ChoiceBoxProps<T extends object>
+export interface ChoiceBoxProps<T extends object>
   extends GridListProps<T>, VariantProps<typeof choiceBoxStyles> {
   isReadOnly?: boolean
 }
 
-const ChoiceBox = <T extends object>({
+export function ChoiceBox<T extends object>({
   columns = 1,
   gap = 0,
   className,
   selectionMode = "single",
   isReadOnly,
   ...props
-}: ChoiceBoxProps<T>) => {
+}: ChoiceBoxProps<T>) {
   return (
     <ChoiceBoxContext value={{ columns, gap, isReadOnly }}>
       <GridList
@@ -125,18 +125,19 @@ const choiceBoxItemStyles = tv({
   },
 })
 
-interface ChoiceBoxItemProps extends GridListItemProps, VariantProps<typeof choiceBoxItemStyles> {
+export interface ChoiceBoxItemProps
+  extends GridListItemProps, VariantProps<typeof choiceBoxItemStyles> {
   label?: string
   description?: string
 }
 
-const ChoiceBoxItem = ({
+export function ChoiceBoxItem({
   className,
   label,
   description,
   children,
   ...props
-}: ChoiceBoxItemProps) => {
+}: ChoiceBoxItemProps) {
   const textValue = typeof children === "string" ? children : undefined
   const { columns, isReadOnly } = useChoiceBoxContext()
   return (
@@ -192,11 +193,11 @@ const ChoiceBoxItem = ({
   )
 }
 
-interface ChoiceBoxLabelProps extends TextProps {
+export interface ChoiceBoxLabelProps extends TextProps {
   ref?: React.Ref<HTMLDivElement>
 }
 
-const ChoiceBoxLabel = ({ className, ref, ...props }: ChoiceBoxLabelProps) => {
+export function ChoiceBoxLabel({ className, ref, ...props }: ChoiceBoxLabelProps) {
   return (
     <Text
       data-slot="label"
@@ -213,9 +214,9 @@ const ChoiceBoxLabel = ({ className, ref, ...props }: ChoiceBoxLabelProps) => {
   )
 }
 
-type ChoiceBoxDescriptionProps = ChoiceBoxLabelProps
+export type ChoiceBoxDescriptionProps = ChoiceBoxLabelProps
 
-const ChoiceBoxDescription = ({ className, ref, ...props }: ChoiceBoxDescriptionProps) => {
+export function ChoiceBoxDescription({ className, ref, ...props }: ChoiceBoxDescriptionProps) {
   return (
     <Text
       slot="description"
@@ -232,6 +233,3 @@ const ChoiceBoxDescription = ({ className, ref, ...props }: ChoiceBoxDescription
     />
   )
 }
-
-export type { ChoiceBoxItemProps, ChoiceBoxProps }
-export { ChoiceBox, ChoiceBoxDescription, ChoiceBoxItem, ChoiceBoxLabel }

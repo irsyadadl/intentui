@@ -17,7 +17,7 @@ import { twJoin, cn } from "cn"
 import { cx } from "@/lib/primitive"
 import { Checkbox, CheckboxField } from "./checkbox"
 
-const Tree = <T extends object>({ className, ...props }: TreeProps<T>) => {
+export function Tree<T extends object>({ className, ...props }: TreeProps<T>) {
   return (
     <TreePrimitive
       className={cx(
@@ -32,7 +32,7 @@ const Tree = <T extends object>({ className, ...props }: TreeProps<T>) => {
   )
 }
 
-const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) => {
+export function TreeItem<T extends object>({ className, ...props }: TreeItemProps<T>) {
   return (
     <TreeItemPrimitive
       className={cx(
@@ -53,11 +53,11 @@ const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) =
   )
 }
 
-interface TreeContentProps extends TreeItemContentProps {
+export interface TreeContentProps extends TreeItemContentProps {
   className?: string
 }
 
-const TreeContent = ({ className, children, ...props }: TreeContentProps) => {
+export function TreeContent({ className, children, ...props }: TreeContentProps) {
   return (
     <TreeItemContent {...props}>
       {(values) => (
@@ -96,11 +96,11 @@ const TreeContent = ({ className, children, ...props }: TreeContentProps) => {
   )
 }
 
-const TreeIndicator = ({
+export function TreeIndicator({
   values,
 }: {
   values: Pick<TreeItemContentRenderProps, "isDisabled" | "isExpanded">
-}) => {
+}) {
   return (
     <Button
       slot="chevron"
@@ -122,4 +122,3 @@ const TreeIndicator = ({
 }
 
 export type { TreeItemProps, TreeProps }
-export { Tree, TreeContent, TreeIndicator, TreeItem }

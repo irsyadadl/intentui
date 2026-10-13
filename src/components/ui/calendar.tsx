@@ -20,11 +20,11 @@ import { cn } from "cn"
 import { Button } from "./button"
 import { Select, SelectContent, SelectItem, SelectLabel, SelectTrigger } from "./select"
 
-interface CalendarProps<T extends DateValue> extends CalendarPrimitiveProps<T> {
+export interface CalendarProps<T extends DateValue> extends CalendarPrimitiveProps<T> {
   className?: string
 }
 
-const Calendar = <T extends DateValue>({ className, ...props }: CalendarProps<T>) => {
+export function Calendar<T extends DateValue>({ className, ...props }: CalendarProps<T>) {
   return (
     <CalendarPrimitive data-slot="calendar" {...props}>
       <CalendarHeader />
@@ -55,7 +55,7 @@ const Calendar = <T extends DateValue>({ className, ...props }: CalendarProps<T>
   )
 }
 
-const CalendarHeader = ({ className, ...props }: React.ComponentProps<"header">) => {
+export function CalendarHeader({ className, ...props }: React.ComponentProps<"header">) {
   const { direction } = useLocale()
   return (
     <header
@@ -118,7 +118,7 @@ const CalendarHeader = ({ className, ...props }: React.ComponentProps<"header">)
   )
 }
 
-const CalendarGridHeader = () => {
+export function CalendarGridHeader() {
   return (
     <CalendarGridHeaderPrimitive>
       {(day) => (
@@ -129,6 +129,3 @@ const CalendarGridHeader = () => {
     </CalendarGridHeaderPrimitive>
   )
 }
-
-export type { CalendarProps }
-export { Calendar, CalendarGridHeader, CalendarHeader }

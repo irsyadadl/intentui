@@ -16,19 +16,19 @@ import {
   DialogTrigger,
 } from "./dialog"
 
-const PopoverTrigger = DialogTrigger
+export const PopoverTrigger = DialogTrigger
 
-const PopoverTitle = DialogTitle
-const PopoverHeader = DialogHeader
-const PopoverBody = DialogBody
-const PopoverFooter = DialogFooter
+export const PopoverTitle = DialogTitle
+export const PopoverHeader = DialogHeader
+export const PopoverBody = DialogBody
+export const PopoverFooter = DialogFooter
 
-interface PopoverProps extends PopoverPrimitiveProps {
+export interface PopoverProps extends PopoverPrimitiveProps {
   arrow?: boolean
   ref?: React.Ref<HTMLDivElement>
 }
 
-const Popover = ({ children, arrow = false, className, ref, ...props }: PopoverProps) => {
+export function Popover({ children, arrow = false, className, ref, ...props }: PopoverProps) {
   const offset = props.offset ?? (arrow ? 12 : 8)
   return (
     <PopoverPrimitive
@@ -69,17 +69,5 @@ const Popover = ({ children, arrow = false, className, ref, ...props }: PopoverP
   )
 }
 
-const PopoverClose = DialogClose
-const PopoverDescription = DialogDescription
-
-export type { PopoverProps }
-export {
-  PopoverTrigger,
-  PopoverBody,
-  PopoverClose,
-  Popover,
-  PopoverDescription,
-  PopoverFooter,
-  PopoverHeader,
-  PopoverTitle,
-}
+export const PopoverClose = DialogClose
+export const PopoverDescription = DialogDescription

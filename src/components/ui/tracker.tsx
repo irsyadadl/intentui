@@ -5,7 +5,7 @@ import { Pressable } from "react-aria-components/Pressable"
 import { twJoin, cn } from "cn"
 import { TooltipTrigger, Tooltip } from "./tooltip"
 
-interface TrackerBlockProps {
+export interface TrackerBlockProps {
   key?: string | number
   color?: string
   tooltip?: string
@@ -13,12 +13,12 @@ interface TrackerBlockProps {
   disabledTooltip?: boolean
 }
 
-const Block = ({
+function Block({
   color,
   tooltip,
   disabledTooltip,
   defaultBackgroundColor = "bg-secondary",
-}: TrackerBlockProps) => {
+}: TrackerBlockProps) {
   const [open, setOpen] = useState(false)
 
   return disabledTooltip ? (
@@ -56,19 +56,19 @@ const Block = ({
   )
 }
 
-interface TrackerProps
+export interface TrackerProps
   extends React.ComponentProps<"div">, Pick<TrackerBlockProps, "disabledTooltip"> {
   data: TrackerBlockProps[]
   defaultBackgroundColor?: string
 }
 
-const Tracker = ({
+export function Tracker({
   data = [],
   disabledTooltip = false,
   className,
   ref,
   ...props
-}: TrackerProps) => {
+}: TrackerProps) {
   return (
     <div ref={ref} className={cn("group flex h-8 w-full items-center", className)} {...props}>
       {data.map((props, index) => (
@@ -77,5 +77,3 @@ const Tracker = ({
     </div>
   )
 }
-
-export { Tracker, type TrackerBlockProps }

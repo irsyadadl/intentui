@@ -7,15 +7,17 @@ import { Tab, TabList, type TabListProps, TabPanel, TabPanels, Tabs } from "@/co
 import { useClipboard } from "@/hooks/use-clipboard"
 import { cx } from "@/lib/primitive"
 
-export const Snippet = ({ className, ...props }: TabsProps) => (
-  <Tabs
-    className={cx(
-      "not-typeset group w-full gap-0 overflow-hidden rounded-md border bg-background",
-      className
-    )}
-    {...props}
-  />
-)
+export function Snippet({ className, ...props }: TabsProps) {
+  return (
+    <Tabs
+      className={cx(
+        "not-typeset group w-full gap-0 overflow-hidden rounded-md border bg-background",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
 export function SnippetTabsList<T extends object>({ className, ...props }: TabListProps<T>) {
   const { orientation } = useSlottedContext(TabsContext)!
@@ -32,9 +34,9 @@ export function SnippetTabsList<T extends object>({ className, ...props }: TabLi
   )
 }
 
-export const SnippetTab = ({ className, ...props }: React.ComponentProps<typeof Tab>) => (
-  <Tab className={cx("gap-1.5", className)} {...props} />
-)
+export function SnippetTab({ className, ...props }: React.ComponentProps<typeof Tab>) {
+  return <Tab className={cx("gap-1.5", className)} {...props} />
+}
 
 export const SnippetTabPanels = TabPanels
 

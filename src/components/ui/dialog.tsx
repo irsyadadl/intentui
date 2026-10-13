@@ -8,7 +8,6 @@ import {
   type DialogProps as DialogPrimitiveProps,
 } from "react-aria-components/Dialog"
 import { Heading, type HeadingProps } from "react-aria-components/Heading"
-import type { TextProps } from "react-aria-components/Text"
 import { cn } from "cn"
 import { cx } from "@/lib/primitive"
 import { Button, type ButtonProps } from "./button"
@@ -30,7 +29,7 @@ const sizes = {
   fullscreen: "",
 }
 
-interface DialogProps
+export interface DialogProps
   extends
     Omit<ModalOverlayProps, "children">,
     Pick<DialogPrimitiveProps, "aria-label" | "aria-labelledby" | "role" | "children"> {
@@ -38,7 +37,7 @@ interface DialogProps
   closeButton?: boolean
   overlay?: Pick<ModalOverlayProps, "className">
 }
-const Dialog = ({
+export function Dialog({
   className,
   isDismissable: isDismissableInternal,
   children,
@@ -47,7 +46,7 @@ const Dialog = ({
   role = "dialog",
   closeButton = true,
   ...props
-}: DialogProps) => {
+}: DialogProps) {
   const isDismissable = isDismissableInternal ?? role !== "alertdialog"
   return (
     <ModalOverlay
@@ -107,12 +106,12 @@ const Dialog = ({
   )
 }
 
-interface DialogHeaderProps extends Omit<React.ComponentProps<"div">, "title"> {
+export interface DialogHeaderProps extends Omit<React.ComponentProps<"div">, "title"> {
   title?: string
   description?: string
 }
 
-const DialogHeader = ({ className, ...props }: DialogHeaderProps) => {
+export function DialogHeader({ className, ...props }: DialogHeaderProps) {
   return (
     <div
       data-slot="dialog-header"
@@ -132,48 +131,48 @@ const DialogHeader = ({ className, ...props }: DialogHeaderProps) => {
   )
 }
 
-interface DialogTitleProps extends HeadingProps {
-  ref?: React.Ref<HTMLHeadingElement>
+export function DialogTitle({ className, ...props }: HeadingProps) {
+  return (
+    <Heading
+      slot="title"
+      className={cn(
+        "text-balance font-semibold text-foreground text-lg/6 sm:text-base/6",
+        className
+      )}
+      {...props}
+    />
+  )
 }
-const DialogTitle = ({ className, ref, ...props }: DialogTitleProps) => (
-  <Heading
-    slot="title"
-    ref={ref}
-    className={cn("text-balance font-semibold text-foreground text-lg/6 sm:text-base/6", className)}
-    {...props}
-  />
-)
 
-interface DialogDescriptionProps extends TextProps {
-  ref?: React.Ref<HTMLDivElement>
+export function DialogDescription({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <p
+      data-slot="description"
+      className={cn(
+        "text-pretty text-base/6 text-muted-foreground group-disabled:opacity-50 sm:text-sm/6",
+        className
+      )}
+      {...props}
+    />
+  )
 }
-const DialogDescription = ({ className, ref, ...props }: DialogDescriptionProps) => (
-  <p
-    data-slot="description"
-    className={cn(
-      "text-pretty text-base/6 text-muted-foreground group-disabled:opacity-50 sm:text-sm/6",
-      className
-    )}
-    ref={ref}
-    {...props}
-  />
-)
 
-interface DialogBodyProps extends React.ComponentProps<"div"> {}
-const DialogBody = ({ className, ...props }: DialogBodyProps) => (
-  <div
-    data-slot="dialog-body"
-    className={cn(
-      "isolate flex min-h-0 flex-1 flex-col overflow-auto px-(--gutter) py-1",
-      "**:data-[slot=dialog-footer]:px-0 **:data-[slot=dialog-footer]:pt-0",
-      className
-    )}
-    {...props}
-  />
-)
+export function DialogBody({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="dialog-body"
+      className={cn(
+        "isolate flex min-h-0 flex-1 flex-col overflow-auto px-(--gutter) py-1",
+        "**:data-[slot=dialog-footer]:px-0 **:data-[slot=dialog-footer]:pt-0",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
-interface DialogFooterProps extends React.ComponentProps<"div"> {}
-const DialogFooter = ({ className, ...props }: DialogFooterProps) => {
+export interface DialogFooterProps extends React.ComponentProps<"div"> {}
+export function DialogFooter({ className, ...props }: DialogFooterProps) {
   return (
     <div
       data-slot="dialog-footer"
@@ -186,16 +185,16 @@ const DialogFooter = ({ className, ...props }: DialogFooterProps) => {
   )
 }
 
-const DialogClose = ({ intent = "plain", ref, ...props }: ButtonProps) => {
+export function DialogClose({ intent = "plain", ref, ...props }: ButtonProps) {
   return <Button slot="close" ref={ref} intent={intent} {...props} />
 }
 
-interface CloseButtonIndicatorProps extends Omit<ButtonProps, "children"> {
+export interface CloseButtonIndicatorProps extends Omit<ButtonProps, "children"> {
   className?: string
   isDismissable?: boolean | undefined
 }
 
-const DialogCloseIcon = ({ className, ...props }: CloseButtonIndicatorProps) => {
+export function DialogCloseIcon({ className, ...props }: CloseButtonIndicatorProps) {
   return props.isDismissable ? (
     <PrimitiveButton
       aria-label="Close dialog"
@@ -208,24 +207,4 @@ const DialogCloseIcon = ({ className, ...props }: CloseButtonIndicatorProps) => 
       <XMarkIcon className="size-4" />
     </PrimitiveButton>
   ) : null
-}
-
-export type {
-  CloseButtonIndicatorProps,
-  DialogProps,
-  DialogBodyProps,
-  DialogDescriptionProps,
-  DialogFooterProps,
-  DialogHeaderProps,
-  DialogTitleProps,
-}
-export {
-  Dialog,
-  DialogBody,
-  DialogClose,
-  DialogCloseIcon,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
 }

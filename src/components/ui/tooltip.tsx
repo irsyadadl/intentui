@@ -41,15 +41,15 @@ const tooltipStyles = tv({
   },
 })
 
-const TooltipTrigger = TooltipTriggerPrimitive
+export const TooltipTrigger = TooltipTriggerPrimitive
 
-interface TooltipProps
+export interface TooltipProps
   extends Omit<TooltipPrimitiveProps, "children">, VariantProps<typeof tooltipStyles> {
   arrow?: boolean
   children?: React.ReactNode
 }
 
-const Tooltip = ({ offset = 10, arrow = true, inverse, children, ...props }: TooltipProps) => {
+export function Tooltip({ offset = 10, arrow = true, inverse, children, ...props }: TooltipProps) {
   return (
     <TooltipPrimitive
       {...props}
@@ -83,6 +83,3 @@ const Tooltip = ({ offset = 10, arrow = true, inverse, children, ...props }: Too
     </TooltipPrimitive>
   )
 }
-
-export type { TooltipProps }
-export { TooltipTrigger, Tooltip }

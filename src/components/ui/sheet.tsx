@@ -20,7 +20,7 @@ import {
 } from "./dialog"
 import { type DialogProps } from "react-aria-components/Dialog"
 
-const SheetTrigger = SheetTriggerPrimitive
+export const SheetTrigger = SheetTriggerPrimitive
 
 const positionVariants = {
   top: "[--sheet-stack-y:8px] w-full max-w-[800px] rounded-b-4xl border-b data-[float=false]:border-x data-[float=true]:mx-2 data-[float=true]:mt-2 data-[float=true]:w-[calc(100%-1rem)] data-[float=true]:border-b-0",
@@ -35,7 +35,7 @@ const positionVariants = {
   center: "w-[calc(100%-2rem)] max-w-lg rounded-2xl border data-[float=true]:border-0",
 }
 
-interface SheetProps
+export interface SheetProps
   extends
     Omit<SheetOverlayProps, "children">,
     Pick<SheetPrimitiveProps, "swipeAnimation" | "swipeAnimationRange"> {
@@ -45,7 +45,7 @@ interface SheetProps
   overscrollPadding?: boolean
 }
 
-const Sheet = ({
+export function Sheet({
   className,
   position = "bottom",
   isFloat = false,
@@ -54,7 +54,7 @@ const Sheet = ({
   snapPoints,
   preventDismissal,
   ...props
-}: SheetProps) => {
+}: SheetProps) {
   return (
     <SheetOverlay
       {...props}
@@ -100,21 +100,9 @@ const Sheet = ({
   )
 }
 
-const SheetFooter = DialogFooter
-const SheetHeader = DialogHeader
-const SheetTitle = DialogTitle
-const SheetDescription = DialogDescription
-const SheetBody = DialogBody
-const SheetClose = DialogClose
-
-export type { SheetProps }
-export {
-  Sheet,
-  SheetBody,
-  SheetClose,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-}
+export const SheetFooter = DialogFooter
+export const SheetHeader = DialogHeader
+export const SheetTitle = DialogTitle
+export const SheetDescription = DialogDescription
+export const SheetBody = DialogBody
+export const SheetClose = DialogClose

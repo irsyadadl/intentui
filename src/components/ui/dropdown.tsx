@@ -12,7 +12,7 @@ import { twJoin, cn } from "cn"
 import { tv } from "tailwind-variants"
 import { Keyboard } from "./keyboard"
 
-const dropdownSectionStyles = tv({
+export const dropdownSectionStyles = tv({
   slots: {
     section: "col-span-full grid grid-cols-[auto_1fr]",
     header:
@@ -22,15 +22,15 @@ const dropdownSectionStyles = tv({
 
 const { section, header } = dropdownSectionStyles()
 
-interface DropdownSectionProps<T> extends ListBoxSectionProps<T> {
+export interface DropdownSectionProps<T> extends ListBoxSectionProps<T> {
   title?: string
 }
 
-const DropdownSection = <T extends object>({
+export function DropdownSection<T extends object>({
   className,
   children,
   ...props
-}: DropdownSectionProps<T>) => {
+}: DropdownSectionProps<T>) {
   return (
     <ListBoxSection className={section({ className })}>
       {"title" in props && <Header className={header()}>{props.title}</Header>}
@@ -39,7 +39,7 @@ const DropdownSection = <T extends object>({
   )
 }
 
-const dropdownItemStyles = tv({
+export const dropdownItemStyles = tv({
   base: [
     "min-w-0 [--me-icon:--spacing(2.5)] sm:[--me-icon:--spacing(2)]",
     "col-span-full grid grid-cols-[auto_1fr_1.5rem_0.5rem_auto] px-3 py-2 supports-[grid-template-columns:subgrid]:grid-cols-subgrid sm:px-2.5 sm:py-1.5",
@@ -100,11 +100,11 @@ const dropdownItemStyles = tv({
   },
 })
 
-interface DropdownItemProps extends ListBoxItemProps {
+export interface DropdownItemProps extends ListBoxItemProps {
   intent?: "danger" | "warning"
 }
 
-const DropdownItem = ({ className, children, intent, ...props }: DropdownItemProps) => {
+export function DropdownItem({ className, children, intent, ...props }: DropdownItemProps) {
   const textValue = typeof children === "string" ? children : undefined
   return (
     <ListBoxItemPrimitive
@@ -133,27 +133,33 @@ const DropdownItem = ({ className, children, intent, ...props }: DropdownItemPro
   )
 }
 
-const DropdownLabel = ({ className, ...props }: TextProps) => (
-  <Text slot="label" className={cn("col-start-2 [&:has(+svg)]:pe-6", className)} {...props} />
-)
+export function DropdownLabel({ className, ...props }: TextProps) {
+  return (
+    <Text slot="label" className={cn("col-start-2 [&:has(+svg)]:pe-6", className)} {...props} />
+  )
+}
 
-const DropdownDescription = ({ className, ...props }: TextProps) => (
-  <Text
-    slot="description"
-    className={cn("col-start-2 font-normal text-muted-foreground text-sm", className)}
-    {...props}
-  />
-)
+export function DropdownDescription({ className, ...props }: TextProps) {
+  return (
+    <Text
+      slot="description"
+      className={cn("col-start-2 font-normal text-muted-foreground text-sm", className)}
+      {...props}
+    />
+  )
+}
 
-const DropdownSeparator = ({ className, ...props }: Omit<SeparatorProps, "orientation">) => (
-  <Separator
-    orientation="horizontal"
-    className={cn("col-span-full -mx-1 h-px bg-foreground/10", className)}
-    {...props}
-  />
-)
+export function DropdownSeparator({ className, ...props }: Omit<SeparatorProps, "orientation">) {
+  return (
+    <Separator
+      orientation="horizontal"
+      className={cn("col-span-full -mx-1 h-px bg-foreground/10", className)}
+      {...props}
+    />
+  )
+}
 
-const DropdownKeyboard = ({ className, ...props }: React.ComponentProps<typeof Keyboard>) => {
+export function DropdownKeyboard({ className, ...props }: React.ComponentProps<typeof Keyboard>) {
   return (
     <Keyboard
       className={cn(
@@ -169,14 +175,3 @@ const DropdownKeyboard = ({ className, ...props }: React.ComponentProps<typeof K
  * Note: This is not exposed component, but it's used in other components to render dropdowns.
  * @internal
  */
-export type { DropdownItemProps, DropdownSectionProps }
-export {
-  DropdownDescription,
-  DropdownItem,
-  DropdownKeyboard,
-  DropdownLabel,
-  DropdownSection,
-  DropdownSeparator,
-  dropdownItemStyles,
-  dropdownSectionStyles,
-}
