@@ -227,6 +227,9 @@ const Sidebar = ({
           className="entering:blur-in exiting:blur-out w-(--sidebar-width) [--sidebar-width:18rem] has-data-[slot=calendar]:[--sidebar-width:23rem]"
           position={side}
         >
+          <Heading slot="title" className="sr-only">
+            Sidebar
+          </Heading>
           {children}
           {closeButton && <DialogCloseIcon isDismissable />}
         </Sheet>
