@@ -1,14 +1,38 @@
 [
   {
+    "name": "Bar list controlled example",
+    "component": "bar-list-controlled-example.tsx",
+    "url": null,
+    "type": "example",
+    "category": "visualizations",
+    "kind": "improvement",
+    "description": null,
+    "additions": 0,
+    "deletions": 31,
+    "date": "2026-10-13"
+  },
+  {
+    "name": "Bar list example",
+    "component": "bar-list-example.tsx",
+    "url": null,
+    "type": "example",
+    "category": "visualizations",
+    "kind": "improvement",
+    "description": null,
+    "additions": 0,
+    "deletions": 39,
+    "date": "2026-10-13"
+  },
+  {
     "name": "Bar list",
     "component": "bar-list.tsx",
     "url": "/bar-list",
     "type": "component",
-    "category": "visualizations",
+    "category": "unknown",
     "kind": "improvement",
     "description": null,
-    "additions": 2,
-    "deletions": 2,
+    "additions": 0,
+    "deletions": 118,
     "date": "2026-10-13"
   },
   {

@@ -2195,22 +2195,6 @@
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "extends": "none",
-      "name": "bar-list",
-      "title": "bar-list",
-      "description": "bar-list",
-      "dependencies": ["react-aria-components", "cn"],
-      "registryDependencies": ["http://localhost:3000/r/link"],
-      "files": [
-        {
-          "path": "src/components/ui/bar-list.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "type": "registry:ui"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
       "name": "breadcrumbs",
       "title": "breadcrumbs",
       "description": "breadcrumbs",
@@ -4679,38 +4663,6 @@
           "path": "src/components/examples/visualizations/leaderboard/leaderboard-percentage-example.tsx",
           "type": "registry:page",
           "target": "app/leaderboard-percentage-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "bar-list-controlled-example",
-      "title": "Bar List Controlled",
-      "description": "bar-list-controlled-example",
-      "registryDependencies": ["http://localhost:3000/r/bar-list", "http://localhost:3000/r/card"],
-      "files": [
-        {
-          "path": "src/components/examples/visualizations/bar-list/bar-list-controlled-example.tsx",
-          "type": "registry:page",
-          "target": "app/bar-list-controlled-example/page.tsx"
-        }
-      ],
-      "type": "registry:page"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "extends": "none",
-      "name": "bar-list-example",
-      "title": "Bar List",
-      "description": "bar-list-example",
-      "registryDependencies": ["http://localhost:3000/r/bar-list", "http://localhost:3000/r/card"],
-      "files": [
-        {
-          "path": "src/components/examples/visualizations/bar-list/bar-list-example.tsx",
-          "type": "registry:page",
-          "target": "app/bar-list-example/page.tsx"
         }
       ],
       "type": "registry:page"
@@ -13208,7 +13160,6 @@
         "http://localhost:3000/r/ui/avatar",
         "http://localhost:3000/r/ui/badge",
         "http://localhost:3000/r/ui/bar-chart",
-        "http://localhost:3000/r/ui/bar-list",
         "http://localhost:3000/r/ui/breadcrumbs",
         "http://localhost:3000/r/ui/button",
         "http://localhost:3000/r/ui/button-group",
