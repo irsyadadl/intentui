@@ -1,6 +1,6 @@
 # v4 components
 
-Use the installed source and the [4.x examples](https://github.com/irsyadadl/intentui/tree/4.x/src/components/examples) to verify composition. Shared Button usage:
+Use the relevant official v4 `.md` docs discovered through [llms.txt](https://intentui.com/llms.txt), then installed source to verify composition. The [4.x examples](https://github.com/irsyadadl/intentui/tree/4.x/src/components/examples) are fallback provenance under the entry point's source priority. Shared Button usage:
 
 ```tsx
 import { Button } from "@/components/ui/button"
