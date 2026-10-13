@@ -1,7 +1,7 @@
 ---
 title: Release 4.0.0
-description: Intent UI v4 introduces clearer overlay composition, new sheet positions, and explicit theme token names. Here's what changed and how to migrate from v3.
-published: 2026-10-07
+description: Intent UI v4 introduces clearer overlay composition, new sheet positions, and explicit theme token names, along with Intent UI Editor. Here's what changed and how to migrate from v3.
+published: 2026-10-13
 author: irsyadadl
 ---
 
@@ -466,6 +466,16 @@ The Tailwind mappings generate the new utility names. Update variants and opacit
 ```
 
 Only the token names change here. Tailwind utility prefixes such as `bg-` stay the same: `bg-primary` still uses the primary background token.
+
+## Intent UI Editor
+
+Intent UI v4 also introduces **Intent UI Editor**, created by [@htmujahid](https://x.com/htmujahid) and available at [**intentui.com/editor**](https://intentui.com/editor).
+
+Install it in your project with the shadcn CLI:
+
+<PackageCommand command="npx shadcn@latest add @intentui/editor"/>
+
+Read the [quick start guide](https://editor.intentui.com/docs/getting-started/quick-start) to get started.
 
 ## Upgrade with Agent Skills
 

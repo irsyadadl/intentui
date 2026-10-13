@@ -2,6 +2,7 @@ import { Blocks } from "@/app/(home)/partials/blocks"
 import { Components } from "@/app/(home)/partials/components"
 import { Cta } from "@/app/(home)/partials/cta"
 import { DesignIntentui } from "@/app/(home)/partials/design-intentui"
+import { Editor } from "@/app/(home)/partials/editor"
 import { StarterKit } from "@/app/(home)/partials/starter-kit"
 import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
@@ -41,6 +42,7 @@ export default function Page() {
       </div>
 
       <StarterKit />
+      <Editor />
       <DesignIntentui />
       <div className="border-page border-t">
         <>

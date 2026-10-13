@@ -22,10 +22,11 @@ const config = {
     return config
   },
   async rewrites() {
-    return [    
+    return [
       ...["/r/editor", "/r/editor.json"].map((source) => ({
         source,
-        destination: "https://raw.githubusercontent.com/intentui/editor/refs/heads/main/public/r/editor.json",
+        destination:
+          "https://raw.githubusercontent.com/intentui/editor/refs/heads/main/public/r/editor.json",
       })),
       { source: "/r/:slug", destination: "/r/:slug.json" },
       { source: "/r/hooks/:slug", destination: "/r/:slug.json" },
@@ -38,6 +39,11 @@ const config = {
   },
   async redirects() {
     return [
+      {
+        source: "/editor",
+        destination: "https://editor.intentui.com",
+        permanent: true,
+      },
       {
         source: "/radio",
         destination: "/docs/components/forms/radio-group",
