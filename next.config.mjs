@@ -22,7 +22,11 @@ const config = {
     return config
   },
   async rewrites() {
-    return [
+    return [    
+      ...["/r/editor", "/r/editor.json"].map((source) => ({
+        source,
+        destination: "https://raw.githubusercontent.com/intentui/editor/refs/heads/main/public/r/editor.json",
+      })),
       { source: "/r/:slug", destination: "/r/:slug.json" },
       { source: "/r/hooks/:slug", destination: "/r/:slug.json" },
       { source: "/r/lib/:slug", destination: "/r/:slug.json" },
