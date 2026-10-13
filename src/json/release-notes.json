@@ -1,5 +1,41 @@
 [
   {
+    "name": "Menu with arrow example",
+    "component": "menu-with-arrow-example.tsx",
+    "url": "/menu",
+    "type": "example",
+    "category": "collections",
+    "kind": "improvement",
+    "description": null,
+    "additions": 5,
+    "deletions": 5,
+    "date": "2026-10-13"
+  },
+  {
+    "name": "Menu with icon example",
+    "component": "menu-with-icon-example.tsx",
+    "url": "/menu",
+    "type": "example",
+    "category": "collections",
+    "kind": "improvement",
+    "description": null,
+    "additions": 20,
+    "deletions": 25,
+    "date": "2026-10-13"
+  },
+  {
+    "name": "Menu",
+    "component": "menu.tsx",
+    "url": "/menu",
+    "type": "component",
+    "category": "collections",
+    "kind": "improvement",
+    "description": null,
+    "additions": 29,
+    "deletions": 47,
+    "date": "2026-10-13"
+  },
+  {
     "name": "Dialog",
     "component": "dialog.tsx",
     "url": "/dialog",

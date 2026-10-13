@@ -3657,6 +3657,7 @@
       "description": "sidebar",
       "dependencies": ["@heroicons/react", "react-aria-components", "cn"],
       "registryDependencies": [
+        "http://localhost:3000/r/dialog",
         "http://localhost:3000/r/sheet",
         "http://localhost:3000/r/tree",
         "http://localhost:3000/r/use-mobile",
@@ -11310,7 +11311,7 @@
       "name": "menu-with-icon-example",
       "title": "Menu With Icon",
       "description": "menu-with-icon-example",
-      "dependencies": ["react-aria-components", "@heroicons/react"],
+      "dependencies": ["@heroicons/react", "react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/avatar", "http://localhost:3000/r/menu"],
       "files": [
         {

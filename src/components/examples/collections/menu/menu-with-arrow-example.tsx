@@ -35,26 +35,26 @@ export default function MenuWithArrowDemo() {
           </MenuHeader>
         </MenuSection>
         <MenuItem>
-          <Cog6ToothIcon className="size-6" aria-hidden="true" />
+          <Cog6ToothIcon />
           <MenuLabel>Settings</MenuLabel>
         </MenuItem>
         <MenuItem href="#">
-          <PlusIcon className="size-6" aria-hidden="true" />
+          <PlusIcon />
           <MenuLabel>Create Team</MenuLabel>
         </MenuItem>
         <MenuItem href="#">
-          <HashtagIcon className="size-6" aria-hidden="true" />
+          <HashtagIcon />
           <MenuLabel>Command Menu</MenuLabel>
           <MenuShortcut>⌘K</MenuShortcut>
         </MenuItem>
         <MenuSeparator />
         <MenuItem href="#">
-          <LifebuoyIcon className="size-6" aria-hidden="true" />
+          <LifebuoyIcon />
           <MenuLabel>Contact Support</MenuLabel>
         </MenuItem>
         <MenuSeparator />
         <MenuItem>
-          <ArrowLeftStartOnRectangleIcon className="size-6" aria-hidden="true" />
+          <ArrowLeftStartOnRectangleIcon />
           <MenuLabel>Log out</MenuLabel>
         </MenuItem>
       </Menu>

@@ -19,7 +19,7 @@ const tocStyles = tv({
       },
       blog: {
         root: "w-86 shrink-0",
-        nav: "h-full w-86",
+        nav: "max-h-[calc(100dvh-6.5rem)] w-86 overscroll-y-contain",
       },
     },
   },
