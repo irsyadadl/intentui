@@ -8,7 +8,7 @@ import { createMetadata } from "@/lib/metadata"
 export const metadata = createMetadata({
   title: "Sponsor",
   description:
-    "Your support funds ongoing development, maintenance, and new components, helping Intent UI stay sustainable so I can keep building and supporting the community.",
+    "Your support helps keep Intent UI growing with new components, ongoing improvements, and maintenance.",
   path: "/sponsor",
   keywords: [
     "sponsor",
