@@ -458,7 +458,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       JSON.stringify(migrateFiles(project, files, modes, args.includes("--write")), null, 2) + "\n"
     )
   } catch (error) {
-    process.stderr.write(error.message + "\n")
+    process.stderr.write(`${error.message}\n`)
     process.exitCode = 1
   }
 }
