@@ -1,34 +1,76 @@
 ---
 title: "Installation"
-description: Install the necessary packages and set up your project. This tool automates the process, streamlining your setup and ensuring a smooth development experience.
+description: "Set up Intent UI, add your first component with the shadcn CLI, or copy the source into your project manually."
 order: 2
 published: true
 ---
 
-## Framework guides
-You can choose from a list of frameworks to get started with Intent.
+## Before you start
+
+Start with a React project that has **Tailwind CSS v4** configured and its global stylesheet imported. If you need to set up a project first, choose a framework guide below.
+
 <FrameworkGuides/>
 
 ## Installation via CLI
-Before executing the command, ensure that **tailwind** is installed. If not, follow the instructions [here](https://tailwindcss.com/docs/installation) for installation.
 
-### Initial setup
-Begin by executing this command:
+Intent UI uses the [shadcn CLI](https://ui.shadcn.com/docs/cli) to add component source files and their dependencies to your project. Run the commands below from your project directory.
+
+### Initialize your project
+
+For a project without a `components.json` file, initialize the configuration with the default Intent UI theme:
 
 <PackageCommand command="npx shadcn@latest init @intentui/theme-default"/>
 
-If you see this output:
+If your project already has a `components.json` file, add the theme to your existing setup instead:
 
+<PackageCommand command="npx shadcn@latest add @intentui/theme-default"/>
+
+The theme adds the CSS variables and styling dependencies used by Intent UI components. Check that the stylesheet configured in `components.json` is imported by your application.
+
+### Add your first component
+
+Add a button:
+
+<PackageCommand command="npx shadcn@latest add @intentui/button"/>
+
+The CLI copies the component and its required utilities into your project and installs their dependencies.
+
+### Use the component
+
+Import the button into a page or component:
+
+```tsx
+import { Button } from "@/components/ui/button"
+
+export default function Example() {
+  return <Button>Get started</Button>
+}
 ```
-✖ Preflight checks.
 
-A components.json file already exists at /Users/irsyad/code/acmes.
-To start over, remove the components.json file and run init again
-```
+This example uses the `@/components/ui` alias. If you configured a different component location in `components.json`, adjust the import to match.
 
-No problem: just run `npx shadcn@latest init @intentui/theme-default` again and it should complete successfully. See the related issue: [https://github.com/irsyadadl/intentui/issues/518](https://github.com/irsyadadl/intentui/issues/518).
+Start your development server and open the page to see your button. You can now edit its source, change its styles, or add more components.
 
-Here are more theme options you can choose from:
+### Add more components
+
+You can add several components in one command:
+
+<PackageCommand command="npx shadcn@latest add @intentui/select @intentui/text-field"/>
+
+To add every available component, use `@intentui/all`:
+
+<PackageCommand command="npx shadcn@latest add @intentui/all"/>
+
+### Replace existing components
+
+Use `-o` when you want to replace an existing component with the version from the registry. This overwrites the file, including any local changes.
+
+<PackageCommand command="npx shadcn@latest add @intentui/text-field -o"/>
+
+## Choose a theme
+
+The default theme is a starting point. To use another theme, add one of the following to your initialized project. Choose one command; you do not need to run them all.
+
 ```bash
 npx shadcn@latest add @intentui/theme-blue
 npx shadcn@latest add @intentui/theme-sky
@@ -43,112 +85,69 @@ npx shadcn@latest add @intentui/theme-lime
 npx shadcn@latest add @intentui/theme-cyan
 ```
 
-We use [shadcn CLI](https://ui.shadcn.com/docs/cli) to manage the installation of Intent UI components.
+You can also customize the theme variables in your global stylesheet to match your design.
 
-<PackageCommand command="npx shadcn@latest add @intentui/combo-box"/>
+## Manual installation
 
-Sometimes, you may want to add components individually, such as `select` and `text-field`. You can easily do this by using the following command:
-<PackageCommand command="npx shadcn@latest add @intentui/select @intentui/text-field"/>
+If you prefer to copy the source yourself, start with the React and Tailwind CSS v4 setup described above.
 
-### Add all components
-To add all components at once, use `@intentui/all`. This will install every available component in Intent UI in a single step.
-<PackageCommand command="npx shadcn@latest add @intentui/all"/>
+### Install the styling dependencies
 
-### Overwrite
-You can override the existing components by using the `-o` flag. This will overwrite the existing files with the new ones.
+Install React Aria Components, the React Aria Tailwind plugin, Tailwind Variants, the `cn` class-name utility, and the animation styles:
 
-<PackageCommand command="npx shadcn@latest add @intentui/text-field -o"/>
+<PackageCommand command="npm i react-aria-components tailwindcss-react-aria-components tailwind-variants cn tw-animate-css"/>
 
+Some components require additional packages. Install the dependencies used by the components you copy. For components that import Heroicons, install:
 
-## Formatter
-Intent UI utilizes the <NewTab href='https://biomejs.dev/'>Biome</NewTab> formatter for code formatting. To use the Biome formatter with Intent components, we recommend the following configuration:
+<PackageCommand command="npm i @heroicons/react"/>
+
+### Add the stylesheet and utility
+
+Copy the CSS into your global stylesheet and the `cx` utility into `lib/primitive.ts`. The utility combines class names and supports React Aria render props.
 
 <CodeBlock
   source={{
-      'biome.json': 'installation/biome.json',
+    'app/globals.css': 'installation/main.css',
+    'lib/primitive.ts': 'installation/primitive.ts',
   }} />
 
-## Manual installation
-To begin setting up the design system, start by installing these packages:
+The stylesheet path depends on your framework. Import it from your application's entry point or root layout, and make sure your `@/` alias resolves to the directory containing `lib` and `components`.
 
-<PackageCommand command="npm i react-aria-components tailwindcss-react-aria-components"/>
+### Copy a component
 
-Next, add **Tailwind Variant**, **Tailwind Merge**, and for utility functions:
+Open the documentation for the component you want and copy its source into your UI directory. Copy any local components, utilities, or hooks it imports as well, and adjust import paths to match your project.
 
-<PackageCommand command="npm i tailwind-variants cn"/>
+For example, the button uses `lib/primitive.ts`. Once both files are in place, you can use the button example above.
 
-Following that, include the **Tailwind Animate** for managing animations and **Intent Icons** for icons:
+### Add hooks as needed
 
-<PackageCommand command="npm i @heroicons/react tw-animate-css"/>
-
-### Style and primitive
-After installing the required packages, you can copy the CSS below into your global CSS file and move the primitives to your UI folder. Primitives serve as utilities for managing states, including `focusRing`, `focusStyles`, and `focusButtonStyles`.
+If a component imports `@/hooks/use-mobile`, copy this hook into your project:
 
 <CodeBlock
-    source={{
-        'app/globals.css': 'installation/main.css',
-        'lib/primitive.ts': 'installation/primitive.ts',
-    }} />
+  source={{
+    'hooks/use-mobile.ts': 'hooks/use-mobile.ts',
+  }} />
 
-### Hooks
+With CLI installation, required registry dependencies are added automatically.
 
-Hooks are only used in specific components like the **Navbar**, **Sidebar**, **Popover**, and **Command Menu**. If you're using the **Intent CLI**, it will handle this automatically; otherwise, download the file below.
+## Fonts
 
-<CodeBlock
-    source={{
-        'hooks/use-mobile.ts': 'hooks/use-mobile.ts',
-    }} />
+Fonts are optional. You can keep your application's font or configure your own. The provided stylesheet references `--font-inter` for its sans-serif font and falls back to system fonts.
 
-### Fonts
-This is currently using the [Inter font](https://rsms.me/inter/). If you want to use a different font, you can define your font-family in your JS or CSS file.
+To use a local Inter font with CSS, add the font file to your public assets and define it in your global stylesheet:
 
-### Stylesheet
-When you're working with a stylesheet, you can define your `@font-face` in your css file.
-
-```
+```css
 @font-face {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("InterVariable.woff2") format("woff2");
+  src: url("/fonts/InterVariable.woff2") format("woff2");
 }
-```
 
-### Next.js
-If you're using Next.js, you don't even need CSS files. Just define your font in your layout file.
-
-```
-import localFont from 'next/font/local'
-
-const fontSans = localFont({
-  src: [{path: './fonts/Inter.woff2'}],
-  variable: '--font-sans'
-})
-```
-
-Then, apply the `fontSans` to the `body` tag like this:
-
-```tsx
-<body
-  className={`font-sans antialiased ${fontSans.variable}`}
-/>
-```
-
-Then, you can use the variable in your main css file like this:
-
-```css
 @theme {
-  --font-sans: var(--font-inter-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-  "Segoe UI Symbol", "Noto Color Emoji";
-  --font-mono: var(--font-geist-mono), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-  "Segoe UI Symbol", "Noto Color Emoji";
-
-  // Your other variables
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 ```
 
-For more information, refer to the [Tailwind documentation](https://tailwindcss.com/docs/font-family#customizing-the-default-font) and [Next.js documentation](https://nextjs.org/docs/app/building-your-application/optimizing/fonts).
-
-## IntelliSense
-If you want your development environment to be more intelligent, you can follow instructions here at [Tailwind Variants](https://www.tailwind-variants.org/docs/getting-started#intellisense-setup-optional).
+If your framework provides font loading, you can use that instead and connect its font variable to `--font-sans` in your theme.

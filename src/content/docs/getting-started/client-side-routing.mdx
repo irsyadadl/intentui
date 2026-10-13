@@ -1,213 +1,166 @@
 ---
 title: "Client Side Routing"
-description: React Aria components like Link, Menu, and Tabs can behave as real navigation links via `href`, while also supporting attributes like target and download.
+description: "Connect Intent UI links and navigation items to your router using React Aria's render prop or TanStack Router's createLink."
 order: 3
 published: true
 ---
 
 ## Introduction
 
-React Aria Components such as [Link](/docs/components/navigation/link), [Menu](/docs/components/collections/menu), and [Tabs](/docs/components/navigation/tabs) can render items as links when an `href` prop is provided. This allows them to behave like native anchor elements and support standard attributes such as `target` and `download`.
+Intent UI components use React Aria for accessible link behavior. Components such as [Link](/docs/components/navigation/link), [MenuItem](/docs/components/collections/menu), and [Tab](/docs/components/navigation/tabs) accept an `href` to render a navigation link.
 
-By default, links are rendered as an `<a>` element. To integrate with a framework-specific routing component, use the `render` prop.
+By default, links with an `href` use browser navigation. Use the `render` prop to pass React Aria's DOM props to your router's link component for client-side navigation. Intent UI still provides the styles, and React Aria still manages interactions and accessibility.
 
-```
-<Link
-  {...props}
-  render={props => <YourRouterLink {...props} />}
-/>
-```
-
-And for `MenuItem`.
-
-```
-<MenuItem
-  {...props}
-  render={(domProps) =>
-    "href" in domProps ? <YourRouterLink {...domProps} /> : <div {...domProps} />
-  }
-/>
-```
-
-## Laravel and Inertia.js
-
-When using Laravel with Inertia.js, you can render the `Link` component as an Inertia `Link`.
-
-```
-import { Link as InertiaLink, type InertiaLinkProps } from "@inertiajs/react"
-import {
-  Link as LinkPrimitive,
-  type LinkProps as LinkPrimitiveProps,
-} from "react-aria-components/Link"
-import { cx } from "@/lib/primitive"
-
-export interface LinkProps extends LinkPrimitiveProps, Omit<InertiaLinkProps, keyof LinkPrimitiveProps> {
-  ref?: React.RefObject<HTMLAnchorElement>
-}
-
-export function Link({ className, ref, ...props }: LinkProps) {
-  return (
-    <LinkPrimitive
-      ref={ref}
-      className={...}
-      render={(domProps) =>
-        "href" in domProps ? (
-          <InertiaLink {...(props as InertiaLinkProps)} {...(domProps as InertiaLinkProps)} />
-        ) : (
-          <div {...domProps} />
-        )
-      }
-      {...props}
-    />
-  )
-}
-```
+The examples below use the components already installed in your project. You do not need to replace their styles or rebuild them from React Aria primitives.
 
 ## Next.js
 
-When using Next.js, render React Aria links through Next.js’s `Link` component. React Aria manages accessibility, interactions, and styling, while Next.js handles client-side navigation.
+Pass the DOM props to `next/link`. For a `Link` without an `href`, preserve React Aria's default `span` element.
 
 ```tsx
 "use client"
 
 import NextLink from "next/link"
-import {
-  Link as LinkPrimitive,
-  type LinkProps as LinkPrimitiveProps,
-} from "react-aria-components/Link"
-import { cx } from "@/lib/primitive"
+import { Link } from "@/components/ui/link"
 
-export interface LinkProps extends LinkPrimitiveProps {
-  ref?: React.RefObject<HTMLAnchorElement>
-}
-
-export function Link({ className, ref, ...props }: LinkProps) {
+export default function Example() {
   return (
-    <LinkPrimitive
-      ref={ref}
-      className={...}
-      render={(domProps) =>
-        "href" in domProps ? <NextLink {...domProps} /> : <span {...domProps} />
-      }
-      {...props}
-    />
-  )
-}
-```
-
-Use the same pattern for components such as `MenuItem`. Render items with an `href` through Next.js’s `Link`, and use a `div` when the item is not a link.
-
-```tsx
-<MenuItem
-  {...props}
-  render={(domProps) =>
-    "href" in domProps ? <NextLink {...domProps} /> : <div {...domProps} />
-  }
-/>
-```
-
-## TanStack Router
-
-When using TanStack Router, wrap your link component with `createLink`. This allows the component to integrate with TanStack Router’s navigation system while still preserving React Aria behavior.
-
-```
-import { createLink } from "@tanstack/react-router"
-
-const InternalLink = ({ className, ref, ...props }: LinkProps) => {
-  return (
-    <LinkPrimitive
-      ref={ref}
-      className={cx(
-        [
-          "font-medium text-(--text)",
-          "outline-0 outline-offset-2 focus-visible:outline-2 focus-visible:outline-ring forced-colors:outline-[Highlight]",
-          "disabled:cursor-default disabled:opacity-50 forced-colors:disabled:text-[GrayText]",
-          "href" in props && "cursor-pointer",
-        ],
-        className,
-      )}
-      {...props}
-    />
-  )
-}
-
-export const Link = createLink(InternalLink)
-```
-
-If the link is also used through `MenuItem`, update `MenuItem` in `ui/menu.tsx` using the same pattern.
-
-```
-import { createLink } from "@tanstack/react-router"
-
-const InternalMenuItem = ({
-  className,
-  intent,
-  children,
-  ...props
-}: MenuItemProps) => {
-  return (
-    <MenuItemPrimitive
-      className={cx(
-        [
-          "group flex cursor-default items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-hidden",
-          "focus:bg-accent focus:text-accent-fg",
-          "disabled:pointer-events-none disabled:opacity-50",
-        ],
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </MenuItemPrimitive>
-  )
-}
-
-export const MenuItem = createLink(InternalMenuItem)
-```
-
-For more details, refer to the [TanStack Router documentation](https://tanstack.com/router/latest/docs/guide/custom-link#react-aria-components-example) on creating custom links with TanStack Router and React Aria Components.
-
-## React Router
-
-When using React Router, render the React Aria `Link` through React Router’s `Link` component. React Aria still controls the accessible behavior and styling, while React Router handles client-side navigation through the `to` prop.
-
-```tsx
-"use client"
-
-import { Link as ReactRouterLink } from "react-router"
-import {
-  Link as LinkPrimitive,
-  type LinkProps as LinkPrimitiveProps,
-} from "react-aria-components/Link"
-
-import { cx } from "~/lib/primitive"
-
-export interface LinkProps extends LinkPrimitiveProps {
-  ref?: React.RefObject<HTMLAnchorElement>
-}
-
-export function Link({ className, ref, ...props }: LinkProps) {
-  return (
-    <LinkPrimitive
-      ref={ref}
-      className={cx(
-        "font-medium text-(--text)",
-        "outline-0 outline-offset-2 focus-visible:outline-2 focus-visible:outline-ring forced-colors:outline-[Highlight]",
-        "disabled:cursor-default disabled:opacity-50 forced-colors:disabled:text-[GrayText]",
-        "href" in props && "cursor-pointer",
-        className,
-      )}
+    <Link
+      href="/about"
       render={(domProps) =>
         "href" in domProps ? (
-          <ReactRouterLink {...domProps} to={domProps.href} />
+          <NextLink {...domProps} />
         ) : (
           <span {...domProps} />
         )
       }
-      {...props}
-    />
+    >
+      About
+    </Link>
   )
 }
 ```
 
-This lets you keep using the same `href` API across React Aria components, while React Router receives the value as `to` and performs client-side navigation.
+Next.js handles navigation and prefetching through its `Link` component. Keep passing the DOM props through so the ref, event handlers, accessibility attributes, and children reach the rendered element.
+
+## Laravel and Inertia.js
+
+Render navigation links through Inertia's `Link`. This example uses its default GET navigation behavior.
+
+```tsx
+import { Link as InertiaLink } from "@inertiajs/react"
+import { Link } from "@/components/ui/link"
+
+export default function Example() {
+  return (
+    <Link
+      href="/dashboard"
+      render={(domProps) =>
+        "href" in domProps ? (
+          <InertiaLink {...domProps} />
+        ) : (
+          <span {...domProps} />
+        )
+      }
+    >
+      Dashboard
+    </Link>
+  )
+}
+```
+
+For actions that submit data, use a button or form rather than a navigation link. See the [Inertia links documentation](https://inertiajs.com/docs/v2/the-basics/links) for its navigation options.
+
+## React Router
+
+React Router uses `to` for the destination. Extract `href` from React Aria's DOM props and pass it as `to`, forwarding the remaining props to the router's `Link`.
+
+```tsx
+import { Link as ReactRouterLink } from "react-router"
+import { Link } from "@/components/ui/link"
+
+export default function Example() {
+  return (
+    <Link
+      href="/about"
+      render={(domProps) => {
+        if ("href" in domProps) {
+          const { href, ...rest } = domProps
+          return <ReactRouterLink {...rest} to={href} />
+        }
+
+        return <span {...domProps} />
+      }}
+    >
+      About
+    </Link>
+  )
+}
+```
+
+Render this component inside your application's React Router context. Intent UI continues to use `href`, while React Router receives `to`.
+
+## TanStack Router
+
+TanStack Router provides `createLink` to integrate custom link components with its typed navigation and preloading. Wrap the installed Intent UI component and use `to` for the destination.
+
+```tsx
+import { createLink } from "@tanstack/react-router"
+import { Link as IntentLink } from "@/components/ui/link"
+
+export const Link = createLink(IntentLink)
+
+export default function Example() {
+  return (
+    <Link to="/about" preload="intent">
+      About
+    </Link>
+  )
+}
+```
+
+Use a destination that exists in your route tree. TanStack Router checks route paths and parameters against your registered router types.
+
+Wrap other components used as navigation links in the same way. For example, create a separate link version of `MenuItem`, keeping the original for actions:
+
+```tsx
+import { createLink } from "@tanstack/react-router"
+import { MenuItem } from "@/components/ui/menu"
+
+export const MenuItemLink = createLink(MenuItem)
+```
+
+Use `MenuItemLink` inside a menu with `to` instead of `href`. This keeps the existing component styles and `intent` variants.
+
+See the [TanStack Router custom link guide](https://tanstack.com/router/latest/docs/guide/custom-link#react-aria-components-example) for more details.
+
+## Menu items and tabs
+
+For routers that use the `render` prop, apply the same pattern to each navigation item. For example, this Next.js menu item can be placed inside your existing menu:
+
+```tsx
+import NextLink from "next/link"
+import { MenuItem } from "@/components/ui/menu"
+
+export function AboutMenuItem() {
+  return (
+    <MenuItem
+      id="about"
+      href="/about"
+      render={(domProps) =>
+        "href" in domProps ? (
+          <NextLink {...domProps} />
+        ) : (
+          <div {...domProps} />
+        )
+      }
+    >
+      About
+    </MenuItem>
+  )
+}
+```
+
+Use `span` as the fallback for `Link`, and `div` for `MenuItem` and `Tab`. Items without an `href` should keep their normal action or selection behavior.
+
+For more on passing DOM props to custom components, see the [React Aria customization guide](https://react-aria.adobe.com/customization).
