@@ -14,7 +14,7 @@ export function Footer() {
         Footer
       </h2>
       <div>
-        <div className="border-page py-16 xl:border-l border-b xl:px-20">
+        <div className="border-page py-16 xl:border-l border-b xl:px-14">
           <div className="grid gap-6 grid-cols-2 xl:grid-cols-4">
             <div>
               <div className="font-medium text-base text-foreground">Resources</div>
