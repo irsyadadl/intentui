@@ -1,10 +1,11 @@
 "use client"
 
-import { BookOpenIcon, CubeIcon } from "@heroicons/react/24/outline"
+import { ArrowRightIcon, BookOpenIcon, CubeIcon } from "@heroicons/react/24/outline"
 import { PageContainer } from "@/components/page-container"
 import { buttonStyles } from "@/components/ui/button"
 import { Link } from "@/components/ui/link"
 import { app } from "@/config/app"
+import { Badge } from "@/components/ui/badge"
 
 export function Hero() {
   return (
@@ -12,6 +13,12 @@ export function Hero() {
       <PageContainer>
         <div className="border-page pt-6 pb-6 sm:border-x sm:p-6 sm:pt-32">
           <div className="text-left">
+            <Link href="/blog/release-v4" className="group">
+              <Badge className="border-primary-subtle-foreground/20">
+                Introducing Intent UI v4
+                <ArrowRightIcon />
+              </Badge>
+            </Link>
             <h1 className="mt-4 mb-4 max-w-3xl pb-1 font-medium text-3xl text-foreground tracking-tight lg:mb-6 lg:text-5xl/14">
               Accessible React components to copy, customize, and make your own.
             </h1>
