@@ -18,11 +18,16 @@ const ToolbarContext = createContext<ToolbarProps>({
   isCircle: false,
 })
 
-interface ToolbarProps extends ToolbarPrimitiveProps {
+export interface ToolbarProps extends ToolbarPrimitiveProps {
   isCircle?: boolean
 }
 
-const Toolbar = ({ orientation = "horizontal", isCircle, className, ...props }: ToolbarProps) => {
+export function Toolbar({
+  orientation = "horizontal",
+  isCircle,
+  className,
+  ...props
+}: ToolbarProps) {
   return (
     <ToolbarContext value={{ orientation, isCircle }}>
       <ToolbarPrimitive
@@ -45,8 +50,8 @@ const Toolbar = ({ orientation = "horizontal", isCircle, className, ...props }: 
 
 const ToolbarGroupContext = createContext<{ isDisabled?: boolean; isCircle?: boolean }>({})
 
-interface ToolbarGroupProps extends GroupProps {}
-const ToolbarGroup = ({ isDisabled, className, ...props }: ToolbarGroupProps) => {
+export interface ToolbarGroupProps extends GroupProps {}
+export function ToolbarGroup({ isDisabled, className, ...props }: ToolbarGroupProps) {
   return (
     <ToolbarGroupContext value={{ isDisabled }}>
       <Group
@@ -62,9 +67,9 @@ const ToolbarGroup = ({ isDisabled, className, ...props }: ToolbarGroupProps) =>
   )
 }
 
-interface ToggleItemProps extends ToggleProps {}
+export interface ToggleItemProps extends ToggleProps {}
 
-const ToolbarItem = ({
+export function ToolbarItem({
   isDisabled,
   isCircle,
   size = "sm",
@@ -72,7 +77,7 @@ const ToolbarItem = ({
   ref,
   className,
   ...props
-}: ToggleItemProps) => {
+}: ToggleItemProps) {
   const context = use(ToolbarGroupContext)
   const { isCircle: contextCircle } = use(ToolbarContext)
   const effectiveIsDisabled = isDisabled || context.isDisabled
@@ -92,8 +97,8 @@ const ToolbarItem = ({
     />
   )
 }
-type ToolbarSeparatorProps = SeparatorProps
-const ToolbarSeparator = ({ className, ...props }: ToolbarSeparatorProps) => {
+export type ToolbarSeparatorProps = SeparatorProps
+export function ToolbarSeparator({ className, ...props }: ToolbarSeparatorProps) {
   const { orientation } = use(ToolbarContext)
   const reverseOrientation = orientation === "vertical" ? "horizontal" : "vertical"
   return (
@@ -104,6 +109,3 @@ const ToolbarSeparator = ({ className, ...props }: ToolbarSeparatorProps) => {
     />
   )
 }
-
-export type { ToggleItemProps, ToolbarGroupProps, ToolbarProps, ToolbarSeparatorProps }
-export { Toolbar, ToolbarGroup, ToolbarItem, ToolbarSeparator }

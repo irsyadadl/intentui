@@ -11,17 +11,17 @@ import { Input, InputGroup } from "@/components/ui/input"
 import { cx } from "@/lib/primitive"
 import { fieldStyles } from "./field"
 
-const NumberField = ({ className, ...props }: NumberFieldProps) => {
+export function NumberField({ className, ...props }: NumberFieldProps) {
   return (
     <NumberFieldPrimitive {...props} data-slot="control" className={cx(fieldStyles(), className)} />
   )
 }
 
-interface InputProps extends PrimitiveInputProps {
+export interface InputProps extends PrimitiveInputProps {
   ref?: React.RefObject<HTMLInputElement>
 }
 
-function NumberInput({ className, ...props }: InputProps) {
+export function NumberInput({ className, ...props }: InputProps) {
   return (
     <InputGroup className="[--input-gutter-end:--spacing(20)]">
       <Input className={cx("tabular-nums", className)} {...props} />
@@ -38,12 +38,12 @@ function NumberInput({ className, ...props }: InputProps) {
   )
 }
 
-interface StepperButtonProps extends ButtonProps {
+export interface StepperButtonProps extends ButtonProps {
   slot: "increment" | "decrement"
   className?: string
 }
 
-const StepperButton = ({ slot, className, ...props }: StepperButtonProps) => {
+function StepperButton({ slot, className, ...props }: StepperButtonProps) {
   return (
     <Button
       className={cx(
@@ -66,4 +66,3 @@ const StepperButton = ({ slot, className, ...props }: StepperButtonProps) => {
 }
 
 export type { NumberFieldProps }
-export { NumberField, NumberInput }

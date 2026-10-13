@@ -11,9 +11,9 @@ import { cn } from "cn"
 import { tv } from "tailwind-variants"
 import { cx } from "@/lib/primitive"
 
-type ToggleSize = "xs" | "sm" | "md" | "lg" | "sq-xs" | "sq-sm" | "sq-md" | "sq-lg"
+export type ToggleSize = "xs" | "sm" | "md" | "lg" | "sq-xs" | "sq-sm" | "sq-md" | "sq-lg"
 
-interface ToggleGroupContextValue extends Pick<
+export interface ToggleGroupContextValue extends Pick<
   ToggleButtonGroupProps,
   "selectionMode" | "orientation"
 > {
@@ -28,19 +28,19 @@ const ToggleGroupContext = createContext<ToggleGroupContextValue>({
 
 const useToggleGroupContext = () => use(ToggleGroupContext)
 
-interface ToggleGroupProps extends ToggleButtonGroupProps {
+export interface ToggleGroupProps extends ToggleButtonGroupProps {
   size?: ToggleSize
   isCircle?: boolean
 }
 
-const ToggleGroup = ({
+export function ToggleGroup({
   size = "md",
   orientation = "horizontal",
   selectionMode = "single",
   isCircle,
   className,
   ...props
-}: ToggleGroupProps) => {
+}: ToggleGroupProps) {
   return (
     <ToggleGroupContext.Provider value={{ size, selectionMode, orientation }}>
       <ToggleButtonGroup
@@ -73,7 +73,7 @@ const ToggleGroup = ({
   )
 }
 
-interface ToggleGroupItemProps extends ToggleButtonProps {
+export interface ToggleGroupItemProps extends ToggleButtonProps {
   size?: ToggleSize
 }
 
@@ -164,7 +164,7 @@ const toggleGroupItemStyles = tv({
   ],
 })
 
-const ToggleGroupItem = ({ className, ...props }: ToggleGroupItemProps) => {
+export function ToggleGroupItem({ className, ...props }: ToggleGroupItemProps) {
   const { size, selectionMode, orientation } = useToggleGroupContext()
 
   return (
@@ -185,6 +185,3 @@ const ToggleGroupItem = ({ className, ...props }: ToggleGroupItemProps) => {
     />
   )
 }
-
-export type { ToggleGroupItemProps, ToggleGroupProps }
-export { ToggleGroup, ToggleGroupItem }

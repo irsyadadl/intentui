@@ -6,7 +6,7 @@ import {
 } from "react-aria-components/TextArea"
 import { cx } from "@/lib/primitive"
 
-interface TextAreaProps extends TextAreaPrimitiveProps {
+export interface TextAreaProps extends TextAreaPrimitiveProps {
   ref?: React.Ref<HTMLTextAreaElement>
 }
 export function Textarea({ className, ref, ...props }: TextAreaProps) {

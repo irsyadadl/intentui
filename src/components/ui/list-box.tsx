@@ -21,18 +21,24 @@ import {
   type DropdownSectionProps,
 } from "./dropdown"
 
-const ListBox = <T extends object>({ className, ...props }: ListBoxProps<T>) => (
-  <ListBoxPrimitive
-    {...props}
-    data-slot="list-box"
-    className={cx(
-      "scrollbar-thin grid max-h-96 w-full min-w-56 scroll-py-1 grid-cols-[auto_1fr] flex-col gap-y-1 overflow-y-auto overscroll-contain rounded-xl border bg-background p-1 outline-hidden has-data-[slot=drag-icon]:grid-cols-[auto_auto_1fr] *:[[role='group']+[role=group]]:mt-4 *:[[role='group']+[role=separator]]:mt-1",
-      className
-    )}
-  />
-)
+export function ListBox<T extends object>({ className, ...props }: ListBoxProps<T>) {
+  return (
+    <ListBoxPrimitive
+      {...props}
+      data-slot="list-box"
+      className={cx(
+        "scrollbar-thin grid max-h-96 w-full min-w-56 scroll-py-1 grid-cols-[auto_1fr] flex-col gap-y-1 overflow-y-auto overscroll-contain rounded-xl border bg-background p-1 outline-hidden has-data-[slot=drag-icon]:grid-cols-[auto_auto_1fr] *:[[role='group']+[role=group]]:mt-4 *:[[role='group']+[role=separator]]:mt-1",
+        className
+      )}
+    />
+  )
+}
 
-const ListBoxItem = <T extends object>({ children, className, ...props }: ListBoxItemProps<T>) => {
+export function ListBoxItem<T extends object>({
+  children,
+  className,
+  ...props
+}: ListBoxItemProps<T>) {
   const textValue = typeof children === "string" ? children : undefined
   return (
     <ListBoxItemPrimitive
@@ -111,7 +117,7 @@ const ListBoxItem = <T extends object>({ children, className, ...props }: ListBo
   )
 }
 
-const ListBoxSection = <T extends object>({ className, ...props }: DropdownSectionProps<T>) => {
+export function ListBoxSection<T extends object>({ className, ...props }: DropdownSectionProps<T>) {
   return (
     <DropdownSection
       className={cn("gap-y-1 *:data-[slot=list-box-item]:last:-mb-1.5", className)}
@@ -120,8 +126,7 @@ const ListBoxSection = <T extends object>({ className, ...props }: DropdownSecti
   )
 }
 
-const ListBoxLabel = DropdownLabel
-const ListBoxDescription = DropdownDescription
+export const ListBoxLabel = DropdownLabel
+export const ListBoxDescription = DropdownDescription
 
 export type { ListBoxItemProps, ListBoxSectionProps }
-export { ListBox, ListBoxDescription, ListBoxItem, ListBoxLabel, ListBoxSection }

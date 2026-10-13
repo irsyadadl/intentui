@@ -134,7 +134,6 @@
 ### Visualizations
 - [Area Chart](https://intentui.com/docs/components/visualizations/area-chart.md)
 - [Bar Chart](https://intentui.com/docs/components/visualizations/bar-chart.md)
-- [Bar List](https://intentui.com/docs/components/visualizations/bar-list.md)
 - [Chart](https://intentui.com/docs/components/visualizations/chart.md)
 - [Leaderboard](https://intentui.com/docs/components/visualizations/leaderboard.md)
 - [Line Chart](https://intentui.com/docs/components/visualizations/line-chart.md)

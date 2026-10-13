@@ -57,7 +57,7 @@ export function LeaderboardContent({ className, ...props }: React.ComponentProps
   )
 }
 
-interface LeaderboardItemProps extends ProgressBarProps {
+export interface LeaderboardItemProps extends ProgressBarProps {
   onAction?: () => void
 }
 

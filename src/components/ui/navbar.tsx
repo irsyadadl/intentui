@@ -11,7 +11,7 @@ import { Button, type ButtonProps } from "./button"
 import { Separator } from "./separator"
 import { Sheet, SheetBody, SheetTrigger } from "./sheet"
 
-interface NavbarContextProps {
+export interface NavbarContextProps {
   open: boolean
   setOpen: (open: boolean) => void
   isMobile: boolean
@@ -20,7 +20,7 @@ interface NavbarContextProps {
 
 const NavbarContext = createContext<NavbarContextProps | null>(null)
 
-const useNavbar = () => {
+export function useNavbar() {
   const context = use(NavbarContext)
   if (!context) {
     throw new Error("useNavbar must be used within a NavbarProvider.")
@@ -29,19 +29,19 @@ const useNavbar = () => {
   return context
 }
 
-interface NavbarProviderProps extends React.ComponentProps<"div"> {
+export interface NavbarProviderProps extends React.ComponentProps<"div"> {
   defaultOpen?: boolean
   isOpen?: boolean
   onOpenChange?: (open: boolean) => void
 }
 
-const NavbarProvider = ({
+export function NavbarProvider({
   isOpen: openProp,
   onOpenChange: setOpenProp,
   defaultOpen = false,
   className,
   ...props
-}: NavbarProviderProps) => {
+}: NavbarProviderProps) {
   const [openInternal, setOpenInternal] = useState(defaultOpen)
   const open = openProp ?? openInternal
 
@@ -90,27 +90,27 @@ const NavbarProvider = ({
   )
 }
 
-type Intent = "default" | "float" | "inset"
-type Placement = "top" | "bottom"
-type Side = "left" | "right"
+export type Intent = "default" | "float" | "inset"
+export type Placement = "top" | "bottom"
+export type Side = "left" | "right"
 
-interface StickyWithPlacement extends React.ComponentProps<"div"> {
+export interface StickyWithPlacement extends React.ComponentProps<"div"> {
   isSticky: true
   placement?: Placement
   side?: Side
   intent?: Intent
 }
 
-interface NonStickyWithoutPlacement extends React.ComponentProps<"div"> {
+export interface NonStickyWithoutPlacement extends React.ComponentProps<"div"> {
   isSticky?: false
   placement?: never
   side?: Side
   intent?: Intent
 }
 
-type NavbarProps = StickyWithPlacement | NonStickyWithoutPlacement
+export type NavbarProps = StickyWithPlacement | NonStickyWithoutPlacement
 
-const Navbar = ({
+export function Navbar({
   children,
   isSticky,
   placement = "top",
@@ -119,7 +119,7 @@ const Navbar = ({
   className,
   ref,
   ...props
-}: NavbarProps) => {
+}: NavbarProps) {
   const { isMobile, open, setOpen } = useNavbar()
   if (isMobile) {
     return (
@@ -182,7 +182,7 @@ const Navbar = ({
   )
 }
 
-const NavbarSection = ({ className, ...props }: React.ComponentProps<"div">) => {
+export function NavbarSection({ className, ...props }: React.ComponentProps<"div">) {
   const id = useId()
   return (
     <LayoutGroup id={id}>
@@ -200,11 +200,11 @@ const NavbarSection = ({ className, ...props }: React.ComponentProps<"div">) => 
   )
 }
 
-interface NavbarItemProps extends LinkProps {
+export interface NavbarItemProps extends LinkProps {
   isCurrent?: boolean
 }
 
-const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => {
+export function NavbarItem({ className, isCurrent, ...props }: NavbarItemProps) {
   return (
     <Link
       data-slot="navbar-item"
@@ -250,23 +250,23 @@ const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => {
   )
 }
 
-const NavbarSpacer = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
+export function NavbarSpacer({ className, ref, ...props }: React.ComponentProps<"div">) {
   return <div ref={ref} className={cn("-ms-4 flex-1", className)} {...props} />
 }
 
-const NavbarStart = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
+export function NavbarStart({ className, ref, ...props }: React.ComponentProps<"div">) {
   return <div ref={ref} className={cn("relative p-2 py-4 md:p-0.5", className)} {...props} />
 }
 
-const NavbarGap = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
+export function NavbarGap({ className, ref, ...props }: React.ComponentProps<"div">) {
   return <div ref={ref} className={cn("mx-2", className)} {...props} />
 }
 
-const NavbarSeparator = ({ className, ...props }: React.ComponentProps<typeof Separator>) => {
+export function NavbarSeparator({ className, ...props }: React.ComponentProps<typeof Separator>) {
   return <Separator orientation="vertical" className={cn("h-5", className)} {...props} />
 }
 
-const NavbarMobile = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
+export function NavbarMobile({ className, ref, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       ref={ref}
@@ -285,7 +285,7 @@ const NavbarMobile = ({ className, ref, ...props }: React.ComponentProps<"div">)
   )
 }
 
-const NavbarInset = ({ className, ref, children, ...props }: React.ComponentProps<"div">) => {
+export function NavbarInset({ className, ref, children, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       ref={ref}
@@ -300,11 +300,11 @@ const NavbarInset = ({ className, ref, children, ...props }: React.ComponentProp
   )
 }
 
-interface NavbarTriggerProps extends ButtonProps {
+export interface NavbarTriggerProps extends ButtonProps {
   ref?: React.RefObject<HTMLButtonElement>
 }
 
-const NavbarTrigger = ({ className, onPress, ref, ...props }: NavbarTriggerProps) => {
+export function NavbarTrigger({ className, onPress, ref, ...props }: NavbarTriggerProps) {
   const { toggleNavbar } = useNavbar()
   return (
     <Button
@@ -326,7 +326,7 @@ const NavbarTrigger = ({ className, onPress, ref, ...props }: NavbarTriggerProps
   )
 }
 
-const NavbarLabel = ({ className, ...props }: React.ComponentProps<"span">) => {
+export function NavbarLabel({ className, ...props }: React.ComponentProps<"span">) {
   return (
     <span
       data-slot="navbar-label"
@@ -334,21 +334,4 @@ const NavbarLabel = ({ className, ...props }: React.ComponentProps<"span">) => {
       {...props}
     />
   )
-}
-
-export type { NavbarItemProps, NavbarProps, NavbarProviderProps, NavbarTriggerProps }
-export {
-  Navbar,
-  NavbarGap,
-  NavbarInset,
-  NavbarItem,
-  NavbarLabel,
-  NavbarMobile,
-  NavbarProvider,
-  NavbarSection,
-  NavbarSeparator,
-  NavbarSpacer,
-  NavbarStart,
-  NavbarTrigger,
-  useNavbar,
 }

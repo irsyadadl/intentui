@@ -42,7 +42,7 @@ const SIDEBAR_WIDTH_DOCK = "3.25rem"
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
 
-type SidebarContextProps = {
+export type SidebarContextProps = {
   state: "expanded" | "collapsed"
   open: boolean
   setOpen: (open: boolean) => void
@@ -54,7 +54,7 @@ type SidebarContextProps = {
 
 const SidebarContext = createContext<SidebarContextProps | null>(null)
 
-const useSidebar = () => {
+export function useSidebar() {
   const context = use(SidebarContext)
   if (!context) {
     throw new Error("useSidebar must be used within a SidebarProvider.")
@@ -63,14 +63,14 @@ const useSidebar = () => {
   return context
 }
 
-interface SidebarProviderProps extends React.ComponentProps<"div"> {
+export interface SidebarProviderProps extends React.ComponentProps<"div"> {
   defaultOpen?: boolean
   isOpen?: boolean
   shortcut?: string
   onOpenChange?: (open: boolean) => void
 }
 
-const SidebarProvider = ({
+export function SidebarProvider({
   defaultOpen = true,
   isOpen: openProp,
   onOpenChange: setOpenProp,
@@ -80,7 +80,7 @@ const SidebarProvider = ({
   shortcut = "b",
   ref,
   ...props
-}: SidebarProviderProps) => {
+}: SidebarProviderProps) {
   const [openMobile, setOpenMobile] = useState(false)
 
   const [internalOpenState, setInternalOpenState] = useState(defaultOpen)
@@ -178,14 +178,14 @@ const SidebarProvider = ({
   )
 }
 
-interface SidebarProps extends React.ComponentProps<"div"> {
+export interface SidebarProps extends React.ComponentProps<"div"> {
   intent?: "default" | "float" | "inset"
   collapsible?: "hidden" | "dock" | "none"
   side?: "left" | "right"
   closeButton?: boolean
 }
 
-const Sidebar = ({
+export function Sidebar({
   children,
   closeButton = true,
   collapsible = "hidden",
@@ -193,7 +193,7 @@ const Sidebar = ({
   intent = "default",
   className,
   ...props
-}: SidebarProps) => {
+}: SidebarProps) {
   const { isMobile, state, isOpenOnMobile, setIsOpenOnMobile } = useSidebar()
   if (collapsible === "none") {
     return (
@@ -292,7 +292,7 @@ const Sidebar = ({
   )
 }
 
-const SidebarHeader = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
+export function SidebarHeader({ className, ref, ...props }: React.ComponentProps<"div">) {
   const { state } = useSidebar()
   return (
     <div
@@ -309,7 +309,7 @@ const SidebarHeader = ({ className, ref, ...props }: React.ComponentProps<"div">
   )
 }
 
-const SidebarFooter = ({ className, ...props }: React.ComponentProps<"div">) => {
+export function SidebarFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sidebar-footer"
@@ -323,7 +323,7 @@ const SidebarFooter = ({ className, ...props }: React.ComponentProps<"div">) => 
   )
 }
 
-const SidebarContent = ({ className, ...props }: React.ComponentProps<"div">) => {
+export function SidebarContent({ className, ...props }: React.ComponentProps<"div">) {
   const { state } = useSidebar()
   const [isAtBottom, setIsAtBottom] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -365,7 +365,7 @@ const SidebarContent = ({ className, ...props }: React.ComponentProps<"div">) =>
   )
 }
 
-const SidebarSectionGroup = ({ className, ...props }: React.ComponentProps<"section">) => {
+export function SidebarSectionGroup({ className, ...props }: React.ComponentProps<"section">) {
   const { state, isMobile } = useSidebar()
   const collapsed = state === "collapsed" && !isMobile
   return (
@@ -381,11 +381,11 @@ const SidebarSectionGroup = ({ className, ...props }: React.ComponentProps<"sect
   )
 }
 
-interface SidebarSectionProps extends React.ComponentProps<"div"> {
+export interface SidebarSectionProps extends React.ComponentProps<"div"> {
   label?: string
 }
 
-const SidebarSection = ({ className, ...props }: SidebarSectionProps) => {
+export function SidebarSection({ className, ...props }: SidebarSectionProps) {
   const { state } = useSidebar()
   return (
     <div
@@ -412,7 +412,7 @@ const SidebarSection = ({ className, ...props }: SidebarSectionProps) => {
   )
 }
 
-interface SidebarItemProps extends Omit<React.ComponentProps<typeof Link>, "children"> {
+export interface SidebarItemProps extends Omit<React.ComponentProps<typeof Link>, "children"> {
   isCurrent?: boolean
   children?:
     | React.ReactNode
@@ -422,14 +422,14 @@ interface SidebarItemProps extends Omit<React.ComponentProps<typeof Link>, "chil
   tooltip?: string | React.ComponentProps<typeof Tooltip>
 }
 
-const SidebarItem = ({
+export function SidebarItem({
   isCurrent,
   tooltip,
   children,
   className,
   ref,
   ...props
-}: SidebarItemProps) => {
+}: SidebarItemProps) {
   const { state, isMobile } = useSidebar()
   const isCollapsed = state === "collapsed" && !isMobile
   const link = (
@@ -492,7 +492,7 @@ const SidebarItem = ({
   )
 }
 
-function SidebarBadge({ className, ...props }: React.ComponentProps<"span">) {
+export function SidebarBadge({ className, ...props }: React.ComponentProps<"span">) {
   const { state, isMobile } = useSidebar()
 
   if (state === "collapsed" && !isMobile) {
@@ -517,11 +517,11 @@ function SidebarBadge({ className, ...props }: React.ComponentProps<"span">) {
   )
 }
 
-interface SidebarLinkProps extends LinkProps {
+export interface SidebarLinkProps extends LinkProps {
   ref?: React.RefObject<HTMLAnchorElement>
 }
 
-const SidebarLink = ({ className, ref, ...props }: SidebarLinkProps) => {
+export function SidebarLink({ className, ref, ...props }: SidebarLinkProps) {
   return (
     <Link
       ref={ref}
@@ -535,7 +535,7 @@ const SidebarLink = ({ className, ref, ...props }: SidebarLinkProps) => {
   )
 }
 
-const SidebarInset = ({ className, ref, ...props }: React.ComponentProps<"main">) => {
+export function SidebarInset({ className, ref, ...props }: React.ComponentProps<"main">) {
   return (
     <main
       data-slot="sidebar-inset"
@@ -555,12 +555,12 @@ const SidebarInset = ({ className, ref, ...props }: React.ComponentProps<"main">
   )
 }
 
-type SidebarDisclosureGroupProps = DisclosureGroupProps
-const SidebarDisclosureGroup = ({
+export type SidebarDisclosureGroupProps = DisclosureGroupProps
+export function SidebarDisclosureGroup({
   allowsMultipleExpanded = true,
   className,
   ...props
-}: SidebarDisclosureGroupProps) => {
+}: SidebarDisclosureGroupProps) {
   return (
     <DisclosureGroup
       data-slot="sidebar-disclosure-group"
@@ -574,11 +574,11 @@ const SidebarDisclosureGroup = ({
   )
 }
 
-interface SidebarDisclosureProps extends DisclosureProps {
+export interface SidebarDisclosureProps extends DisclosureProps {
   ref?: React.Ref<HTMLDivElement>
 }
 
-const SidebarDisclosure = ({ className, ref, ...props }: SidebarDisclosureProps) => {
+export function SidebarDisclosure({ className, ref, ...props }: SidebarDisclosureProps) {
   const { state } = useSidebar()
   return (
     <Disclosure
@@ -590,11 +590,15 @@ const SidebarDisclosure = ({ className, ref, ...props }: SidebarDisclosureProps)
   )
 }
 
-interface SidebarDisclosureTriggerProps extends ButtonProps {
+export interface SidebarDisclosureTriggerProps extends ButtonProps {
   ref?: React.Ref<HTMLButtonElement>
 }
 
-const SidebarDisclosureTrigger = ({ className, ref, ...props }: SidebarDisclosureTriggerProps) => {
+export function SidebarDisclosureTrigger({
+  className,
+  ref,
+  ...props
+}: SidebarDisclosureTriggerProps) {
   const { state } = useSidebar()
   return (
     <Heading level={3}>
@@ -637,7 +641,7 @@ const SidebarDisclosureTrigger = ({ className, ref, ...props }: SidebarDisclosur
   )
 }
 
-const SidebarDisclosurePanel = ({ className, ...props }: DisclosurePanelProps) => {
+export function SidebarDisclosurePanel({ className, ...props }: DisclosurePanelProps) {
   return (
     <DisclosurePanel
       data-slot="sidebar-disclosure-panel"
@@ -657,7 +661,7 @@ const SidebarDisclosurePanel = ({ className, ...props }: DisclosurePanelProps) =
   )
 }
 
-const SidebarSeparator = ({ className, ...props }: SidebarSeparatorProps) => {
+export function SidebarSeparator({ className, ...props }: SidebarSeparatorProps) {
   return (
     <Separator
       data-slot="sidebar-separator"
@@ -671,12 +675,12 @@ const SidebarSeparator = ({ className, ...props }: SidebarSeparatorProps) => {
   )
 }
 
-const SidebarTrigger = ({
+export function SidebarTrigger({
   onPress,
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Button>) => {
+}: React.ComponentProps<typeof Button>) {
   const { toggleSidebar } = useSidebar()
   return (
     <Button
@@ -710,7 +714,7 @@ const SidebarTrigger = ({
   )
 }
 
-const SidebarRail = ({ className, ref, ...props }: React.ComponentProps<"button">) => {
+export function SidebarRail({ className, ref, ...props }: React.ComponentProps<"button">) {
   const { toggleSidebar } = useSidebar()
 
   return !props.children ? (
@@ -736,7 +740,7 @@ const SidebarRail = ({ className, ref, ...props }: React.ComponentProps<"button"
   )
 }
 
-function SidebarLabel({ className, ref, ...props }: React.ComponentProps<"span">) {
+export function SidebarLabel({ className, ref, ...props }: React.ComponentProps<"span">) {
   const { state, isMobile } = useSidebar()
   const collapsed = state === "collapsed" && !isMobile
   if (!collapsed) {
@@ -753,11 +757,11 @@ function SidebarLabel({ className, ref, ...props }: React.ComponentProps<"span">
   return null
 }
 
-interface SidebarNavProps extends React.ComponentProps<"nav"> {
+export interface SidebarNavProps extends React.ComponentProps<"nav"> {
   isSticky?: boolean
 }
 
-const SidebarNav = ({ isSticky = false, className, ...props }: SidebarNavProps) => {
+export function SidebarNav({ isSticky = false, className, ...props }: SidebarNavProps) {
   return (
     <nav
       data-slot="sidebar-nav"
@@ -771,14 +775,14 @@ const SidebarNav = ({ isSticky = false, className, ...props }: SidebarNavProps) 
   )
 }
 
-interface SidebarMenuTriggerProps extends ButtonProps {
+export interface SidebarMenuTriggerProps extends ButtonProps {
   alwaysVisible?: boolean
 }
-const SidebarMenuTrigger = ({
+export function SidebarMenuTrigger({
   alwaysVisible = false,
   className,
   ...props
-}: SidebarMenuTriggerProps) => {
+}: SidebarMenuTriggerProps) {
   return (
     <PrimitiveButton
       className={cx(
@@ -795,8 +799,8 @@ const SidebarMenuTrigger = ({
   )
 }
 
-interface SidebarTreeProps<T extends object> extends NavigationTreeProps<T> {}
-function SidebarTree<T extends object>({ className, ...props }: SidebarTreeProps<T>) {
+export interface SidebarTreeProps<T extends object> extends NavigationTreeProps<T> {}
+export function SidebarTree<T extends object>({ className, ...props }: SidebarTreeProps<T>) {
   return (
     <NavigationTree
       className={cx(
@@ -808,7 +812,10 @@ function SidebarTree<T extends object>({ className, ...props }: SidebarTreeProps
   )
 }
 
-function SidebarTreeItem<T extends object>({ className, ...props }: NavigationTreeItemProps<T>) {
+export function SidebarTreeItem<T extends object>({
+  className,
+  ...props
+}: NavigationTreeItemProps<T>) {
   return (
     <NavigationTreeItem
       className={cx(
@@ -821,12 +828,12 @@ function SidebarTreeItem<T extends object>({ className, ...props }: NavigationTr
   )
 }
 
-interface SidebarTreeContentProps extends NavigationTreeItemContentProps {
+export interface SidebarTreeContentProps extends NavigationTreeItemContentProps {
   className?: string
   isCurrent?: boolean
 }
 
-function SidebarTreeContent({ className, isCurrent, children }: SidebarTreeContentProps) {
+export function SidebarTreeContent({ className, isCurrent, children }: SidebarTreeContentProps) {
   return (
     <NavigationTreeItemContent>
       {(values) => (
@@ -871,9 +878,9 @@ function SidebarTreeContent({ className, isCurrent, children }: SidebarTreeConte
   )
 }
 
-interface SidebarTreeLinkProps extends Omit<LinkProps, "href"> {}
+export interface SidebarTreeLinkProps extends Omit<LinkProps, "href"> {}
 
-function SidebarTreeLink({ className, ...props }: SidebarTreeLinkProps) {
+export function SidebarTreeLink({ className, ...props }: SidebarTreeLinkProps) {
   return (
     <Link
       data-slot="sidebar-tree-link"
@@ -886,7 +893,7 @@ function SidebarTreeLink({ className, ...props }: SidebarTreeLinkProps) {
   )
 }
 
-function SidebarTreeLabel({ className, ...props }: React.ComponentProps<"span">) {
+export function SidebarTreeLabel({ className, ...props }: React.ComponentProps<"span">) {
   const { state, isMobile } = useSidebar()
 
   if (state === "collapsed" && !isMobile) {
@@ -902,45 +909,4 @@ function SidebarTreeLabel({ className, ...props }: React.ComponentProps<"span">)
   )
 }
 
-export type {
-  SidebarDisclosureGroupProps,
-  SidebarDisclosureProps,
-  SidebarDisclosureTriggerProps,
-  SidebarItemProps,
-  SidebarLinkProps,
-  SidebarNavProps,
-  SidebarProps,
-  SidebarProviderProps,
-  SidebarSectionProps,
-  SidebarSeparatorProps,
-}
-
-export {
-  Sidebar,
-  SidebarContent,
-  SidebarDisclosure,
-  SidebarDisclosureGroup,
-  SidebarDisclosurePanel,
-  SidebarDisclosureTrigger,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarInset,
-  SidebarBadge,
-  SidebarItem,
-  SidebarLabel,
-  SidebarLink,
-  SidebarMenuTrigger,
-  SidebarNav,
-  SidebarProvider,
-  SidebarRail,
-  SidebarSection,
-  SidebarSectionGroup,
-  SidebarSeparator,
-  SidebarTree,
-  SidebarTreeContent,
-  SidebarTreeItem,
-  SidebarTreeLabel,
-  SidebarTreeLink,
-  SidebarTrigger,
-  useSidebar,
-}
+export type { SidebarSeparatorProps }

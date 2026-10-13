@@ -22,10 +22,10 @@ import {
 import { cn } from "cn"
 import { cx } from "@/lib/primitive"
 
-interface TabsProps extends TabsPrimitiveProps {
+export interface TabsProps extends TabsPrimitiveProps {
   ref?: React.RefObject<HTMLDivElement>
 }
-const Tabs = ({ className, ref, orientation = "horizontal", ...props }: TabsProps) => {
+export function Tabs({ className, ref, orientation = "horizontal", ...props }: TabsProps) {
   return (
     <TabsContext value={{ orientation }}>
       <TabsPrimitive
@@ -41,7 +41,7 @@ const Tabs = ({ className, ref, orientation = "horizontal", ...props }: TabsProp
     </TabsContext>
   )
 }
-interface TabListContextValue {
+export interface TabListContextValue {
   selectionIndicator?: boolean
 }
 const TabListContext = createContext<TabListContextValue | undefined>(undefined)
@@ -54,15 +54,16 @@ export function useTabListContext() {
   return context
 }
 
-interface TabListProps<T extends object> extends TabListPrimitiveProps<T>, TabListContextValue {
+export interface TabListProps<T extends object>
+  extends TabListPrimitiveProps<T>, TabListContextValue {
   ref?: React.RefObject<HTMLDivElement>
 }
-const TabList = <T extends object>({
+export function TabList<T extends object>({
   className,
   selectionIndicator = true,
   ref,
   ...props
-}: TabListProps<T>) => {
+}: TabListProps<T>) {
   return (
     <TabListContext value={{ selectionIndicator }}>
       <TabListPrimitive
@@ -99,7 +100,7 @@ export function TabScrollArea({ className, ...props }: React.ComponentProps<"div
   )
 }
 
-interface TabProps extends TabPrimitiveProps {
+export interface TabProps extends TabPrimitiveProps {
   ref?: React.RefObject<HTMLDivElement>
 }
 
@@ -107,7 +108,7 @@ function subscribeToHydration() {
   return () => {}
 }
 
-function Tab({ className, ref, ...props }: TabProps) {
+export function Tab({ className, ref, ...props }: TabProps) {
   const isHydrated = useSyncExternalStore(
     subscribeToHydration,
     () => true,
@@ -154,15 +155,15 @@ function Tab({ className, ref, ...props }: TabProps) {
   )
 }
 
-interface TabPanelProps extends TabPanelPrimitiveProps {
+export interface TabPanelProps extends TabPanelPrimitiveProps {
   ref?: React.RefObject<HTMLDivElement>
 }
 
-const TabPanels = <T extends object>(props: TabPanelsProps<T>) => {
+export function TabPanels<T extends object>(props: TabPanelsProps<T>) {
   return <PrimitiveTabPanels {...props} />
 }
 
-const TabPanel = ({ className, ref, ...props }: TabPanelProps) => {
+export function TabPanel({ className, ref, ...props }: TabPanelProps) {
   return (
     <TabPanelPrimitive
       {...props}
@@ -172,6 +173,3 @@ const TabPanel = ({ className, ref, ...props }: TabPanelProps) => {
     />
   )
 }
-
-export type { TabListProps, TabPanelProps, TabProps, TabsProps }
-export { Tab, TabList, TabPanel, TabPanels, Tabs }

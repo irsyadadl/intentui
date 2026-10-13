@@ -88,7 +88,6 @@ export const componentOrder: Record<string, readonly string[]> = {
     "radar-chart",
     "radial-bar-chart",
     "leaderboard",
-    "bar-list",
     "tracker",
   ],
 }

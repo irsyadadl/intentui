@@ -15,16 +15,21 @@ This release includes breaking changes. If you're moving from v3, update both yo
 
 ### Removed components
 
-`Drawer` and `Modal` have been removed in v4, along with their component files, documentation pages, examples, and registry entries. Update existing imports and CLI installation commands to use their replacements.
+`Drawer`, `Modal`, and `BarList` have been removed in v4, along with their component files, documentation pages, examples, and registry entries. Update existing imports and CLI installation commands to use their replacements.
 
 | Removed | Replacement | Migration |
 | --- | --- | --- |
 | `Drawer` (`@/components/ui/drawer`, `@intentui/drawer`) | [Sheet](/docs/components/overlays/sheet) | Use `SheetTrigger` with a `Button` and `Sheet`. Choose the opening edge with `position`, and use `SheetHeader`, `SheetBody`, `SheetFooter`, and `SheetClose` for composition. |
 | `Modal` (`@/components/ui/modal`, `@intentui/modal`) | [Dialog](/docs/components/overlays/dialog) | Use `DialogTrigger` with a `Button` and `Dialog`. Rename `ModalHeader`, `ModalTitle`, `ModalDescription`, `ModalBody`, `ModalFooter`, and `ModalClose` to their `Dialog` equivalents. |
+| `BarList` (`@/components/ui/bar-list`, `@intentui/bar-list`) | [Leaderboard](/docs/components/visualizations/leaderboard) | Replace `BarList` with `Leaderboard`, and render each data entry with `LeaderboardItem`, `LeaderboardStart`, and `LeaderboardEnd`. |
 
 `Dialog` now includes its backdrop and overlay surface. If you previously used the Intent UI `Dialog` as a content primitive inside another overlay, remove that wrapper or import the content-only `Dialog` from `react-aria-components/Dialog`.
 
 `PopoverTrigger` now wraps a `Button` and `Popover` as shown in the [Popover documentation](/docs/components/overlays/popover#anatomy). It is an alias of `DialogTrigger`.
+
+### Bar List
+
+`BarList` was deprecated in v3 and has been removed in v4. Use [Leaderboard](/docs/components/visualizations/leaderboard) instead. Update imports from `@/components/ui/bar-list` to `@/components/ui/leaderboard`, and use `@intentui/leaderboard` for CLI installation. Leaderboard uses composable items instead of the `BarList` `data` prop; map your data to `LeaderboardItem` with `LeaderboardStart` and `LeaderboardEnd`.
 
 ### A consistent composition pattern
 
@@ -486,6 +491,7 @@ See [Working with AI](/docs/getting-started/ai#skills) for skill setup and regis
 
 - Update your local component source and theme CSS together, preserving any customizations.
 - Replace removed `Drawer` imports and installations with `Sheet`, and removed `Modal` imports and installations with `Dialog`.
+- Replace removed `BarList` imports and installations with [Leaderboard](/docs/components/visualizations/leaderboard), and map data to its composable items.
 - Use `PopoverTrigger` as the wrapper around a `Button` and `Popover`, and move controlled state props to the wrapper.
 - Replace the old overlay wrappers with `DialogTrigger`, `SheetTrigger`, `PopoverTrigger`, `MenuTrigger`, or `TooltipTrigger` as appropriate. Set `trigger="contextMenu"` for context menus.
 - Replace opening button components with `Button` inside the trigger wrapper.

@@ -7,7 +7,7 @@ import {
 } from "react-aria-components/Input"
 import { cx } from "@/lib/primitive"
 
-interface InputProps extends InputPrimitiveProps {
+export interface InputProps extends InputPrimitiveProps {
   ref?: React.RefObject<HTMLInputElement | null>
 }
 export function Input({ className, ref, ...props }: InputProps) {

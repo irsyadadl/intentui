@@ -19,17 +19,17 @@ import {
 import { fieldStyles } from "./field"
 import { Popover } from "./popover"
 
-interface SelectProps<
+export interface SelectProps<
   T extends object,
   M extends "single" | "multiple" = "single",
 > extends SelectPrimitiveProps<T, M> {
   items?: Iterable<T, M>
 }
 
-const Select = <T extends object, M extends "single" | "multiple" = "single">({
+export function Select<T extends object, M extends "single" | "multiple" = "single">({
   className,
   ...props
-}: SelectProps<T, M>) => {
+}: SelectProps<T, M>) {
   return (
     <SelectPrimitive
       data-slot="control"
@@ -39,7 +39,7 @@ const Select = <T extends object, M extends "single" | "multiple" = "single">({
   )
 }
 
-interface SelectListProps<T extends object> extends Omit<
+export interface SelectListProps<T extends object> extends Omit<
   ListBoxProps<T>,
   "layout" | "orientation"
 > {
@@ -47,12 +47,12 @@ interface SelectListProps<T extends object> extends Omit<
   popover?: Omit<PopoverProps, "children">
 }
 
-const SelectContent = <T extends object>({
+export function SelectContent<T extends object>({
   items,
   className,
   popover,
   ...props
-}: SelectListProps<T>) => {
+}: SelectListProps<T>) {
   return (
     <Popover
       placement={popover?.placement ?? "bottom"}
@@ -76,12 +76,12 @@ const SelectContent = <T extends object>({
   )
 }
 
-interface SelectTriggerProps extends React.ComponentProps<typeof Button> {
+export interface SelectTriggerProps extends React.ComponentProps<typeof Button> {
   prefix?: React.ReactNode
   className?: string
 }
 
-const SelectTrigger = ({ children, className, ...props }: SelectTriggerProps) => {
+export function SelectTrigger({ children, className, ...props }: SelectTriggerProps) {
   return (
     <span data-slot="control" className="relative block w-full">
       <Button
@@ -130,20 +130,8 @@ const SelectTrigger = ({ children, className, ...props }: SelectTriggerProps) =>
   )
 }
 
-const SelectSection = DropdownSection
-const SelectSeparator = DropdownSeparator
-const SelectLabel = DropdownLabel
-const SelectDescription = DropdownDescription
-const SelectItem = DropdownItem
-
-export type { SelectProps, SelectTriggerProps }
-export {
-  Select,
-  SelectContent,
-  SelectDescription,
-  SelectItem,
-  SelectLabel,
-  SelectSection,
-  SelectSeparator,
-  SelectTrigger,
-}
+export const SelectSection = DropdownSection
+export const SelectSeparator = DropdownSeparator
+export const SelectLabel = DropdownLabel
+export const SelectDescription = DropdownDescription
+export const SelectItem = DropdownItem

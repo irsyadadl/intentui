@@ -28,7 +28,7 @@ function parseLabelInput(
   return labelInput || valueFormatter(calculateDefaultLabel(data, valueKey))
 }
 
-interface PieChartProps extends Omit<
+export interface PieChartProps extends Omit<
   BaseChartProps,
   | "hideGridLines"
   | "hideXAxis"
@@ -49,7 +49,7 @@ interface PieChartProps extends Omit<
   pieProps?: Omit<ComponentProps<typeof Pie>, "data" | "dataKey" | "name">
 }
 
-const PieChart = ({
+export function PieChart({
   data = [],
   dataKey,
   colors = DEFAULT_COLORS,
@@ -70,7 +70,7 @@ const PieChart = ({
   valueFormatter = (value: number) => value.toString(),
   pieProps,
   ...props
-}: PieChartProps) => {
+}: PieChartProps) {
   const parsedLabelInput = parseLabelInput(label, valueFormatter, data, dataKey)
 
   return (
@@ -152,6 +152,3 @@ const PieChart = ({
     </Chart>
   )
 }
-
-export type { PieChartProps }
-export { PieChart }

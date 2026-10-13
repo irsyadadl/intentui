@@ -12,11 +12,11 @@ import { cn } from "cn"
 import { Button } from "./button"
 import { fieldStyles } from "./field"
 
-interface ColorPickerProps extends ColorPickerPrimitiveProps {
+export interface ColorPickerProps extends ColorPickerPrimitiveProps {
   className?: string
 }
 
-const ColorPicker = ({ className, ...props }: ColorPickerProps) => {
+export function ColorPicker({ className, ...props }: ColorPickerProps) {
   return (
     <div data-slot="control" className={cn(fieldStyles({ className: "w-fit" }), className)}>
       <ColorPickerPrimitive {...props} />
@@ -30,7 +30,7 @@ declare global {
   }
 }
 
-const EyeDropper = () => {
+export function EyeDropper() {
   const state = use(ColorPickerStateContext)!
 
   if (!window.EyeDropper) {
@@ -52,6 +52,3 @@ const EyeDropper = () => {
     </Button>
   )
 }
-
-export type { ColorPickerProps }
-export { ColorPicker, EyeDropper }

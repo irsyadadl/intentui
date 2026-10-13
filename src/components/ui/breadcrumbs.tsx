@@ -9,15 +9,15 @@ import { cn } from "cn"
 import { cx } from "@/lib/primitive"
 import { Link } from "./link"
 
-type BreadcrumbsContextProps = { separator?: "chevron" | "slash" | boolean }
+export type BreadcrumbsContextProps = { separator?: "chevron" | "slash" | boolean }
 const BreadcrumbsProvider = createContext<BreadcrumbsContextProps>({
   separator: "chevron",
 })
 
-const Breadcrumbs = <T extends object>({
+export function Breadcrumbs<T extends object>({
   className,
   ...props
-}: BreadcrumbsProps<T> & BreadcrumbsContextProps) => {
+}: BreadcrumbsProps<T> & BreadcrumbsContextProps) {
   return (
     <BreadcrumbsProvider value={{ separator: props.separator }}>
       <BreadcrumbsPrimitive {...props} className={cn("flex items-center gap-2", className)} />
@@ -25,13 +25,13 @@ const Breadcrumbs = <T extends object>({
   )
 }
 
-interface BreadcrumbsItemProps extends BreadcrumbProps, BreadcrumbsContextProps {}
+export interface BreadcrumbsItemProps extends BreadcrumbProps, BreadcrumbsContextProps {}
 
-const BreadcrumbsItem = ({
+export function BreadcrumbsItem({
   separator = true,
   className,
   ...props
-}: BreadcrumbsItemProps & Partial<Omit<LinkProps, "className">>) => {
+}: BreadcrumbsItemProps & Partial<Omit<LinkProps, "className">>) {
   const { separator: contextSeparator } = use(BreadcrumbsProvider)
   separator = contextSeparator ?? separator
   const separatorValue = separator === true ? "chevron" : separator
@@ -55,11 +55,7 @@ const BreadcrumbsItem = ({
   )
 }
 
-const Separator = ({
-  separator = "chevron",
-}: {
-  separator?: BreadcrumbsItemProps["separator"]
-}) => {
+function Separator({ separator = "chevron" }: { separator?: BreadcrumbsItemProps["separator"] }) {
   return (
     <span className="*:shrink-0 *:text-muted-foreground *:data-[slot=icon]:size-3.5">
       {separator === "chevron" && <ChevronRightIcon />}
@@ -68,5 +64,4 @@ const Separator = ({
   )
 }
 
-export type { BreadcrumbsItemProps, BreadcrumbsProps }
-export { Breadcrumbs, BreadcrumbsItem }
+export type { BreadcrumbsProps }

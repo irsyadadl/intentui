@@ -24,7 +24,7 @@ import { DropdownKeyboard } from "./dropdown"
 import { Loader } from "./loader"
 import { MenuDescription, MenuItem, MenuLabel, type MenuSectionProps, MenuSeparator } from "./menu"
 
-interface CommandMenuProviderProps {
+export interface CommandMenuProviderProps {
   isPending?: boolean
   escapeButton?: boolean
 }
@@ -51,7 +51,8 @@ const sizes = {
   "3xl": "sm:max-w-3xl",
 }
 
-interface CommandMenuProps extends AutocompleteProps, MenuTriggerProps, CommandMenuProviderProps {
+export interface CommandMenuProps
+  extends AutocompleteProps, MenuTriggerProps, CommandMenuProviderProps {
   isDismissable?: boolean
   "aria-label"?: string
   shortcut?: string
@@ -60,7 +61,7 @@ interface CommandMenuProps extends AutocompleteProps, MenuTriggerProps, CommandM
   overlay?: Pick<ModalOverlayProps, "className">
 }
 
-const CommandMenu = ({
+export function CommandMenu({
   onOpenChange,
   className,
   isDismissable = true,
@@ -70,7 +71,7 @@ const CommandMenu = ({
   size = "lg",
   shortcut,
   ...props
-}: CommandMenuProps) => {
+}: CommandMenuProps) {
   const { contains } = useFilter({ sensitivity: "base" })
   const filter = (textValue: string, inputValue: string) => contains(textValue, inputValue)
   useEffect(() => {
@@ -123,12 +124,12 @@ const CommandMenu = ({
   )
 }
 
-interface CommandMenuSearchProps extends SearchFieldProps {
+export interface CommandMenuSearchProps extends SearchFieldProps {
   placeholder?: string
   className?: string
 }
 
-const CommandMenuSearch = ({ className, placeholder, ...props }: CommandMenuSearchProps) => {
+export function CommandMenuSearch({ className, placeholder, ...props }: CommandMenuSearchProps) {
   const state = use(OverlayTriggerStateContext)!
   const { isPending, escapeButton } = useCommandMenu()
   return (
@@ -162,7 +163,7 @@ const CommandMenuSearch = ({ className, placeholder, ...props }: CommandMenuSear
   )
 }
 
-const CommandMenuList = <T extends object>({ className, ...props }: MenuProps<T>) => {
+export function CommandMenuList<T extends object>({ className, ...props }: MenuProps<T>) {
   return (
     <CollectionRendererContext.Provider value={renderer}>
       <MenuPrimitive
@@ -176,11 +177,11 @@ const CommandMenuList = <T extends object>({ className, ...props }: MenuProps<T>
   )
 }
 
-const CommandMenuSection = <T extends object>({
+export function CommandMenuSection<T extends object>({
   className,
   ref,
   ...props
-}: MenuSectionProps<T>) => {
+}: MenuSectionProps<T>) {
   return (
     <MenuSection
       ref={ref}
@@ -197,7 +198,7 @@ const CommandMenuSection = <T extends object>({
   )
 }
 
-const CommandMenuItem = ({ className, ...props }: React.ComponentProps<typeof MenuItem>) => {
+export function CommandMenuItem({ className, ...props }: React.ComponentProps<typeof MenuItem>) {
   const textValue =
     props.textValue || (typeof props.children === "string" ? props.children : undefined)
   return (
@@ -209,9 +210,9 @@ const CommandMenuItem = ({ className, ...props }: React.ComponentProps<typeof Me
   )
 }
 
-interface CommandMenuDescriptionProps extends React.ComponentProps<typeof MenuDescription> {}
+export interface CommandMenuDescriptionProps extends React.ComponentProps<typeof MenuDescription> {}
 
-const CommandMenuDescription = ({ className, ...props }: CommandMenuDescriptionProps) => {
+export function CommandMenuDescription({ className, ...props }: CommandMenuDescriptionProps) {
   return <MenuDescription className={cn("col-start-3 row-start-1 ms-auto", className)} {...props} />
 }
 
@@ -229,14 +230,14 @@ const renderer: CollectionRenderer = {
   CollectionBranch: DefaultCollectionRenderer.CollectionBranch,
 }
 
-const CommandMenuSeparator = ({
+export function CommandMenuSeparator({
   className,
   ...props
-}: React.ComponentProps<typeof MenuSeparator>) => (
-  <MenuSeparator className={cn("-mx-2", className)} {...props} />
-)
+}: React.ComponentProps<typeof MenuSeparator>) {
+  return <MenuSeparator className={cn("-mx-2", className)} {...props} />
+}
 
-const CommandMenuFooter = ({ className, ...props }: React.ComponentProps<"div">) => {
+export function CommandMenuFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
@@ -249,30 +250,18 @@ const CommandMenuFooter = ({ className, ...props }: React.ComponentProps<"div">)
   )
 }
 
-const CommandMenuLabel = MenuLabel
-const CommandMenuShortcut = ({
+export const CommandMenuLabel = MenuLabel
+export function CommandMenuShortcut({
   className,
   ...props
-}: React.ComponentProps<typeof DropdownKeyboard>) => (
-  <DropdownKeyboard
-    className={cn(
-      "gap-0.5 font-sans text-[10.5px] uppercase *:inset-ring *:inset-ring-muted-foreground/20 *:grid *:size-5.5 *:place-content-center *:rounded-xs *:bg-background",
-      className
-    )}
-    {...props}
-  />
-)
-
-export type { CommandMenuDescriptionProps, CommandMenuProps, CommandMenuSearchProps }
-export {
-  CommandMenu,
-  CommandMenuDescription,
-  CommandMenuFooter,
-  CommandMenuItem,
-  CommandMenuLabel,
-  CommandMenuList,
-  CommandMenuSearch,
-  CommandMenuSection,
-  CommandMenuSeparator,
-  CommandMenuShortcut,
+}: React.ComponentProps<typeof DropdownKeyboard>) {
+  return (
+    <DropdownKeyboard
+      className={cn(
+        "gap-0.5 font-sans text-[10.5px] uppercase *:inset-ring *:inset-ring-muted-foreground/20 *:grid *:size-5.5 *:place-content-center *:rounded-xs *:bg-background",
+        className
+      )}
+      {...props}
+    />
+  )
 }

@@ -32,7 +32,7 @@ komposisi pemakaian nyata, misalnya `CheckboxField` + `Checkbox`, atau
 collections dan selection, menu, dialog/overlay, disclosure, tanggal/waktu,
 slider dan kontrol warna, upload/drop zone, toolbar, navigation, progress,
 serta komponen gabungan seperti MultipleSelect, TagField, CommandMenu,
-Sidebar, Preview, dan Snippet. Untuk Chart, BarList, Leaderboard, dan Tracker,
+Sidebar, Preview, dan Snippet. Untuk Chart, Leaderboard, dan Tracker,
 yang diuji hanya bagian yang memakai React Aria: kontrol legend, tombol baris,
 semantik progress, dan tooltip.
 

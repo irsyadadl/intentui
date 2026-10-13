@@ -13,21 +13,23 @@ import { cn } from "cn"
 import { cx } from "@/lib/primitive"
 import { Checkbox, CheckboxField } from "./checkbox"
 
-const GridList = <T extends object>({ className, ...props }: GridListProps<T>) => (
-  <GridListPrimitive
-    data-slot="grid-list"
-    className={cx(
-      "relative divide-y overflow-hidden rounded-lg border bg-background *:drop-target:border-accent sm:text-sm/6 dark:bg-muted",
-      className
-    )}
-    {...props}
-  />
-)
+export function GridList<T extends object>({ className, ...props }: GridListProps<T>) {
+  return (
+    <GridListPrimitive
+      data-slot="grid-list"
+      className={cx(
+        "relative divide-y overflow-hidden rounded-lg border bg-background *:drop-target:border-accent sm:text-sm/6 dark:bg-muted",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
-const GridListSection = <T extends object>({
+export function GridListSection<T extends object>({
   className,
   ...props
-}: React.ComponentProps<typeof GridListSectionPrimitive<T>>) => {
+}: React.ComponentProps<typeof GridListSectionPrimitive<T>>) {
   return (
     <GridListSectionPrimitive
       data-slot="grid-list-section"
@@ -37,10 +39,10 @@ const GridListSection = <T extends object>({
   )
 }
 
-const GridListHeader = ({
+export function GridListHeader({
   className,
   ...props
-}: React.ComponentProps<typeof GridListHeaderPrimitive>) => {
+}: React.ComponentProps<typeof GridListHeaderPrimitive>) {
   return (
     <GridListHeaderPrimitive
       data-slot="grid-list-header"
@@ -50,7 +52,7 @@ const GridListHeader = ({
   )
 }
 
-const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
+export function GridListItem({ className, children, ...props }: GridListItemProps) {
   const textValue = typeof children === "string" ? children : undefined
   return (
     <GridListItemPrimitive
@@ -117,15 +119,15 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
   )
 }
 
-const GridListEmptyState = ({ ref, className, ...props }: React.ComponentProps<"div">) => (
-  <div ref={ref} className={cn("p-6", className)} {...props} />
-)
+export function GridListEmptyState({ ref, className, ...props }: React.ComponentProps<"div">) {
+  return <div ref={ref} className={cn("p-6", className)} {...props} />
+}
 
-const GridListSpacer = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
+export function GridListSpacer({ className, ref, ...props }: React.ComponentProps<"div">) {
   return <div ref={ref} aria-hidden className={cn("-ms-4 flex-1", className)} {...props} />
 }
 
-const GridListStart = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
+export function GridListStart({ className, ref, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       ref={ref}
@@ -135,32 +137,23 @@ const GridListStart = ({ className, ref, ...props }: React.ComponentProps<"div">
   )
 }
 
-interface GridListTextProps extends TextProps {
+export interface GridListTextProps extends TextProps {
   ref?: React.Ref<HTMLDivElement>
 }
 
-const GridListLabel = ({ className, ref, ...props }: GridListTextProps) => (
-  <Text ref={ref} className={cn("font-medium", className)} {...props} />
-)
+export function GridListLabel({ className, ref, ...props }: GridListTextProps) {
+  return <Text ref={ref} className={cn("font-medium", className)} {...props} />
+}
 
-const GridListDescription = ({ className, ref, ...props }: GridListTextProps) => (
-  <Text
-    slot="description"
-    ref={ref}
-    className={cn("font-normal text-muted-foreground text-sm", className)}
-    {...props}
-  />
-)
+export function GridListDescription({ className, ref, ...props }: GridListTextProps) {
+  return (
+    <Text
+      slot="description"
+      ref={ref}
+      className={cn("font-normal text-muted-foreground text-sm", className)}
+      {...props}
+    />
+  )
+}
 
 export type { GridListItemProps, GridListProps }
-export {
-  GridList,
-  GridListDescription,
-  GridListEmptyState,
-  GridListHeader,
-  GridListItem,
-  GridListLabel,
-  GridListSection,
-  GridListSpacer,
-  GridListStart,
-}
