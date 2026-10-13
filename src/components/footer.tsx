@@ -18,6 +18,7 @@ export const footerNavigation = {
     { name: "Showcase", href: "/showcase" },
     { name: "Blog", href: "/blog" },
     { name: "Sponsor", href: "/sponsor" },
+    { name: "Editor", href: "/editor" },
   ],
 
   templates: [
