@@ -1,9 +1,7 @@
 "use client"
 
-import { Button } from "react-aria-components/Button"
-
 import {
-  ArrowLeftOnRectangleIcon,
+  ArrowRightStartOnRectangleIcon,
   Cog6ToothIcon,
   CommandLineIcon,
   ComputerDesktopIcon,
@@ -11,7 +9,6 @@ import {
   Squares2X2Icon,
   SunIcon,
 } from "@heroicons/react/24/outline"
-import { useTheme } from "@/components/theme-provider"
 import { Avatar } from "@/components/ui/avatar"
 import {
   MenuHeader,
@@ -23,14 +20,18 @@ import {
   Menu,
   MenuTrigger,
 } from "@/components/ui/menu"
+import { Pressable } from "react-aria-components/Pressable"
 
 export default function MenuWithIconDemo() {
-  const { resolvedTheme, setTheme } = useTheme()
   return (
     <MenuTrigger>
-      <Button aria-label="Open Menu">
-        <Avatar alt="kurt cobain" size="lg" src="https://intentui.com/images/avatar/cobain.jpg" />
-      </Button>
+      <Pressable>
+        <Avatar
+          role="button"
+          alt="kurt cobain"
+          src="https://intentui.com/images/avatar/cobain.jpg"
+        />
+      </Pressable>
       <Menu popover={{ placement: "bottom" }} className="min-w-48">
         <MenuHeader separator>
           <span className="block">Kurt Cobain</span>
@@ -39,39 +40,33 @@ export default function MenuWithIconDemo() {
 
         <MenuSection>
           <MenuItem href="#dashboard">
-            <Squares2X2Icon className="size-6" aria-hidden="true" />
+            <Squares2X2Icon />
             <MenuLabel>Dashboard</MenuLabel>
           </MenuItem>
           <MenuItem href="#settings">
-            <Cog6ToothIcon className="size-6" aria-hidden="true" />
+            <Cog6ToothIcon />
             <MenuLabel>Settings</MenuLabel>
           </MenuItem>
         </MenuSection>
         <MenuSeparator />
         <MenuItem>
-          <CommandLineIcon className="size-6" aria-hidden="true" />
+          <CommandLineIcon />
           <MenuLabel>Command Menu</MenuLabel>
         </MenuItem>
         <MenuSubMenu>
           <MenuItem>
-            {resolvedTheme === "light" ? (
-              <SunIcon className="size-6" aria-hidden="true" />
-            ) : resolvedTheme === "dark" ? (
-              <MoonIcon className="size-6" aria-hidden="true" />
-            ) : (
-              <ComputerDesktopIcon className="size-6" aria-hidden="true" />
-            )}
+            <ComputerDesktopIcon />
             <MenuLabel>Switch theme</MenuLabel>
           </MenuItem>
           <Menu>
-            <MenuItem onAction={() => setTheme("system")}>
-              <ComputerDesktopIcon className="size-6" aria-hidden="true" /> System
+            <MenuItem>
+              <ComputerDesktopIcon /> System
             </MenuItem>
-            <MenuItem onAction={() => setTheme("dark")}>
-              <MoonIcon className="size-6" aria-hidden="true" /> Dark
+            <MenuItem>
+              <MoonIcon /> Dark
             </MenuItem>
-            <MenuItem onAction={() => setTheme("light")}>
-              <SunIcon className="size-6" aria-hidden="true" /> Light
+            <MenuItem>
+              <SunIcon /> Light
             </MenuItem>
           </Menu>
         </MenuSubMenu>
@@ -81,7 +76,7 @@ export default function MenuWithIconDemo() {
         </MenuItem>
         <MenuSeparator />
         <MenuItem href="#logout">
-          <ArrowLeftOnRectangleIcon className="size-6" aria-hidden="true" />
+          <ArrowRightStartOnRectangleIcon />
           <MenuLabel>Log out</MenuLabel>
         </MenuItem>
       </Menu>
