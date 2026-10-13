@@ -1,6 +1,6 @@
 # Breaking changes and dependency review
 
-Read [components](components.md) and [themes](themes.md) for verified transformations. Upstream branch source takes precedence over an old catalog or this reference if it changes.
+Read [components](components.md) and [themes](themes.md) for verified transformations. Verify current v4 APIs through llms.txt and the relevant official `.md` docs first, then inspect the selected registry payload for implementation details. Follow the entry point's source priority if these recorded mappings are stale; branch links are fallback provenance.
 
 - Removed modules: `modal.tsx` and `context-menu.tsx`. Update all consumers and type-only imports before removal.
 - Removed/redefined exports: Modal family, MenuContent/MenuContentProps/menuContentStyles/MenuTriggerProps, SheetContent/SheetContentProps, PopoverContent/PopoverContentProps/PopoverTrigger. DialogTrigger, MenuTrigger, Sheet and Popover retain names with changed roles. Do not rely on names alone.

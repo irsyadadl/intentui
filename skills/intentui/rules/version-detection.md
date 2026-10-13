@@ -17,9 +17,9 @@ Next.js may use `app/` or `src/app/`; Vite and SPAs may use `src/`; Laravel + In
 
 Corroborate at least two independent signals when possible. The audited v4 theme variants still contain a legacy `--color-bg: var(--background)` alias; distinguish its v4 variable from `var(--bg)`. One old class, registry URL, `components.json.style`, or `package.json.version` does not prove a version: components are copied source and the repository's package version may lag. Explicit user requirements establish the target, not proof that installed source already matches it.
 
-Inspect source for the component being changed. If CSS and component families disagree, record per-file versions and treat the project as mixed. Use each installed component's own API and tokens; do not globally rename tokens or reinstall all components. If unresolved, inspect upstream branch source and ask only for information necessary to choose safely.
+Inspect source for the component being changed. If CSS and component families disagree, record per-file versions and treat the project as mixed. Use each installed component's own API and tokens; do not globally rename tokens or reinstall all components. If unresolved, consult the relevant v4 docs and selected registry payload under the entry point's source priority; use historical GitHub files only when needed. Ask only for information necessary to choose safely.
 
-Authoritative branches: [3.x](https://github.com/irsyadadl/intentui/tree/3.x/src/components/ui), [4.x](https://github.com/irsyadadl/intentui/tree/4.x/src/components/ui). Read corresponding examples under `src/components/examples/`. Published registry content can change independently: inspect it before installing into an older project.
+Historical source and fallback links (see the entry point's documentation and source priority): [3.x](https://github.com/irsyadadl/intentui/tree/3.x/src/components/ui), [4.x](https://github.com/irsyadadl/intentui/tree/4.x/src/components/ui). Fetch corresponding examples under `src/components/examples/` only when docs do not answer the question. Published registry content can change independently: inspect it before installing into an older project.
 
 ## Optional read-only helper
 
