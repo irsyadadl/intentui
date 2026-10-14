@@ -10,7 +10,7 @@ import {
   Squares2X2Icon,
 } from "@heroicons/react/24/outline"
 import { Avatar } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { Button } from "react-aria-components/Button"
 import { Input, InputGroup } from "@/components/ui/input"
 import {
   MenuHeader,
@@ -35,7 +35,6 @@ export default function AppSidebarNav() {
             <MicrophoneIcon />
           </InputGroup>
         </SearchField>
-        <Button size="sq-sm" className="size-10" intent="plain"></Button>
       </div>
       <div>
         <MenuTrigger>
