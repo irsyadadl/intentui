@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation"
 import { twJoin } from "cn"
 import { Header, HeaderDescription, HeaderInner, HeaderTitle } from "@/components/header"
 import { PageContainer } from "@/components/page-container"
-import { buttonStyles } from "@/components/ui/button"
 import { Link, type LinkProps } from "@/components/ui/link"
+import { tissueButton } from "@/lib/utils"
 
 export function BlocksHeader() {
   return (
@@ -21,7 +21,7 @@ export function BlocksHeader() {
 
           <Link
             href="https://design.intentui.com?utm_source=intentui.com&utm_medium=referral&utm_campaign=blocks"
-            className={buttonStyles({ intent: "secondary" })}
+            className={tissueButton()}
           >
             Explore premium blocks
             <ArrowUpRightIcon />

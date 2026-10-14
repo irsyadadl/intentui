@@ -1,3 +1,5 @@
+import { buttonStyles } from "@/components/ui/button"
+
 export function title(title: string) {
   const minorWords = [
     "and",
@@ -55,4 +57,14 @@ export function slugify(str: string) {
 
 export function wait(number: number) {
   return new Promise((resolve) => setTimeout(resolve, number))
+}
+
+export function tissueButton() {
+  return buttonStyles({
+    intent: "primary",
+    size: "lg",
+    isCircle: true,
+    className:
+      "dark:border-white/10 bg-foreground dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:text-white hover:bg-foreground/90 text-background",
+  })
 }

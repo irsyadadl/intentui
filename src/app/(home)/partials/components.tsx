@@ -1,10 +1,10 @@
 "use client"
 
 import { PageContainer } from "@/components/page-container"
-import { CardHeader } from "@/components/ui/card"
 import { Link } from "@/components/ui/link"
 import menus from "@/components-search.json"
 import type { Component } from "@/types/search"
+import { SectionDescription, SectionHeader, SectionTitle } from "@/components/section-header"
 
 const components = menus[3] as Component
 export function Components() {
@@ -12,17 +12,17 @@ export function Components() {
     <>
       <div className="border-page border-b">
         <PageContainer>
-          <div className="border-page py-6 sm:border-x sm:p-6">
-            <CardHeader
-              className="max-w-lg"
-              title="Components"
-              description="Browse a complete set of UI components, built for flexibility and ready to drop into your project."
-            />
-          </div>
+          <SectionHeader className="bg-background">
+            <SectionTitle>Components</SectionTitle>
+            <SectionDescription>
+              Browse a complete set of UI components, built for flexibility and ready to drop into
+              your project.
+            </SectionDescription>
+          </SectionHeader>
         </PageContainer>
       </div>
       <PageContainer>
-        <div className="border-page py-6 sm:border-x sm:p-6">
+        <div className="border-page py-6 sm:border-x sm:p-6 bg-background">
           <div className="mask-b-from-80% sm:mask-b-from-80% max-h-120 sm:max-h-140">
             <div className="columns-2 gap-6 md:columns-3 lg:columns-4">
               {components?.children?.slice(1, 20).map((item) => (
@@ -54,7 +54,7 @@ export function Components() {
         className="group flex items-center justify-center border-page border-t text-xl"
       >
         <PageContainer className="w-full">
-          <div className="w-full border-page relative border-x p-6 text-center group-hover:bg-muted">
+          <div className="w-full border-page relative bg-background border-x p-6 text-center group-hover:bg-muted">
             View all
           </div>
         </PageContainer>

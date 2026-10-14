@@ -81,7 +81,7 @@ export const footerNavigation = {
 
 export function Footer() {
   return (
-    <footer className="border-page border-t bg-background text-foreground dark:bg-muted/50">
+    <footer className="border-page border-t bg-background text-foreground">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>

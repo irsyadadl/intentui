@@ -4,6 +4,7 @@ import { Link } from "react-aria-components/Link"
 import { cn } from "cn"
 import { PageContainer } from "@/components/page-container"
 import { buttonStyles } from "@/components/ui/button"
+import { tissueButton } from "@/lib/utils"
 
 export function DesignIntentui() {
   return (
@@ -23,10 +24,7 @@ export function DesignIntentui() {
             </p>
             <div className="mt-6 flex flex-col justify-center gap-2 sm:mt-10 sm:flex-row sm:items-center">
               <Link
-                className={buttonStyles({
-                  size: "lg",
-                  isCircle: true,
-                })}
+                className={tissueButton}
                 href="https://design.intentui.com/blocks?utm_source=intentui.com&utm_medium=referral&utm_campaign=cta"
               >
                 Browse blocks
@@ -35,7 +33,7 @@ export function DesignIntentui() {
                 className={buttonStyles({
                   size: "lg",
                   isCircle: true,
-                  intent: "secondary",
+                  intent: "outline",
                 })}
                 href="https://design.intentui.com/templates?utm_source=intentui.com&utm_medium=referral&utm_campaign=cta"
               >
