@@ -2,9 +2,9 @@
 
 import { CheckIcon } from "@heroicons/react/20/solid"
 import { PageContainer } from "@/components/page-container"
-import { buttonStyles } from "@/components/ui/button"
 import { Strong } from "@/components/ui/text"
 import json from "@/json/sponsors.json"
+import { tissueButton } from "@/lib/utils"
 
 interface SponsorPlanPrice {
   amount: number
@@ -28,12 +28,6 @@ interface SponsorPlanItem {
 const plans = json as SponsorPlanItem[]
 const individualPlans = plans.filter((i) => i.type === "individual")
 const companyPlans = plans.filter((i) => i.type !== "individual")
-const sponsorButton = buttonStyles({
-  isCircle: true,
-  intent: "primary",
-  size: "lg",
-  // className: "bg-foreground hover:bg-foreground/90 text-background",
-})
 
 export function SponsorPlan() {
   return (
@@ -61,7 +55,7 @@ export function SponsorPlan() {
                   </div>
                 </div>
 
-                <a href={plan.checkout_url} className={sponsorButton}>
+                <a href={plan.checkout_url} className={tissueButton()}>
                   {plan.id === "o-sponsor"
                     ? "Become a sponsor"
                     : `Become ${plan.name === "Ambassador" ? "an" : "a"} ${plan.name.toLowerCase()}`}
@@ -92,7 +86,7 @@ export function SponsorPlan() {
                   ${plan.price.amount}
                   <span className="ml-1 font-normal text-base text-muted-foreground">/ month</span>
                 </div>
-                <a href={plan.checkout_url} className={sponsorButton}>
+                <a href={plan.checkout_url} className={tissueButton()}>
                   Become {plan.name === "Ambassador" ? "an" : "a"} {plan.name.toLowerCase()}
                 </a>
                 {plan.benefits.length ? (
@@ -117,7 +111,7 @@ export function SponsorPlan() {
               <a
                 target="_blank"
                 href="mailto:partners@intentui.com?subject=Parnert inquiry"
-                className={sponsorButton}
+                className={tissueButton()}
               >
                 Get in touch
               </a>

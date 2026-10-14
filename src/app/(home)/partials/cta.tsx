@@ -2,22 +2,22 @@
 
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline"
 import { PageContainer } from "@/components/page-container"
-import { CardHeader } from "@/components/ui/card"
 import { Link } from "@/components/ui/link"
 import { Strong, Text } from "@/components/ui/text"
+import { SectionDescription, SectionHeader, SectionTitle } from "@/components/section-header"
 
 export function Cta() {
   return (
     <>
       <div className="border-page border-y">
         <PageContainer>
-          <div className="border-page py-6 sm:border-x sm:p-6">
-            <CardHeader
-              className="max-w-lg"
-              title="Ready to get started?"
-              description="Explore the core essentials to help you install, build, and start customizing your project with Intent UI in just a few steps."
-            />
-          </div>
+          <SectionHeader className="bg-background">
+            <SectionTitle>Ready to get started?</SectionTitle>
+            <SectionDescription>
+              Explore the core essentials to help you install, build, and start customizing your
+              project with Intent UI in just a few steps.
+            </SectionDescription>
+          </SectionHeader>
         </PageContainer>
       </div>
       <PageContainer>

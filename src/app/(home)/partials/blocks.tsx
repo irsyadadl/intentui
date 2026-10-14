@@ -9,21 +9,21 @@ import PopoverDemo from "@/components/examples/overlays/popover/popover-example"
 import SheetDemo from "@/components/examples/overlays/sheet/sheet-example"
 import TooltipDemo from "@/components/examples/overlays/tooltip/tooltip-example"
 import { PageContainer } from "@/components/page-container"
-import { CardHeader } from "@/components/ui/card"
 import { Link } from "@/components/ui/link"
+import { SectionDescription, SectionHeader, SectionTitle } from "@/components/section-header"
 
 export function Blocks() {
   return (
     <>
       <div className="border-page border-b">
         <PageContainer>
-          <div className="border-page py-6 sm:border-x sm:p-6">
-            <CardHeader
-              className="max-w-lg"
-              title="Overlays"
-              description="Used to display actions, details, or prompts without navigating away from the current page."
-            />
-          </div>
+          <SectionHeader>
+            <SectionTitle>Overlays</SectionTitle>
+            <SectionDescription>
+              Used to display actions, details, or prompts without navigating away from the current
+              page.
+            </SectionDescription>
+          </SectionHeader>
         </PageContainer>
       </div>
       <PageContainer>
@@ -53,13 +53,13 @@ export function Blocks() {
 
       <div className="-mx-px border-page border-x border-y">
         <PageContainer>
-          <div className="border-page py-6 sm:border-x sm:p-6">
-            <CardHeader
-              className="max-w-lg"
-              title="Control"
-              description="Explore how users can select one, many, or toggle options using checkboxes, radios, and switches."
-            />
-          </div>
+          <SectionHeader>
+            <SectionTitle>Control</SectionTitle>
+            <SectionDescription>
+              Explore how users can select one, many, or toggle options using checkboxes, radios,
+              and switches.
+            </SectionDescription>
+          </SectionHeader>
         </PageContainer>
       </div>
       <PageContainer>
