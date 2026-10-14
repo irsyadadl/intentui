@@ -1,13 +1,12 @@
 "use client"
 
-import { cn } from "cn"
 import { IconBrandTanstack, IconBrandVite } from "@/components/docs/framework-guides"
 import { BrandLaravelIcon } from "@/components/icons/brand-laravel-icon"
 import { BrandNextjsIcon } from "@/components/icons/brand-nextjs-icon"
 import { PageContainer } from "@/components/page-container"
-import { CardHeader } from "@/components/ui/card"
 import { Link } from "@/components/ui/link"
 import { Text } from "@/components/ui/text"
+import { SectionDescription, SectionHeader, SectionTitle } from "@/components/section-header"
 
 export const starterKits = [
   {
@@ -40,15 +39,15 @@ export const starterKits = [
 export function StarterKit() {
   return (
     <>
-      <div className="border-page border-b">
+      <div className="border-page border-y">
         <PageContainer>
-          <div className="border-page py-6 sm:border-x sm:px-6">
-            <CardHeader
-              className="max-w-lg"
-              title="Starter kit"
-              description="A preconfigured project setup that includes everything you need to start building and shipping faster with Intent UI."
-            />
-          </div>
+          <SectionHeader>
+            <SectionTitle>Starter kit</SectionTitle>
+            <SectionDescription>
+              A preconfigured project setup that includes everything you need to start building and
+              shipping faster with Intent UI.
+            </SectionDescription>
+          </SectionHeader>
         </PageContainer>
       </div>
       <PageContainer>
@@ -71,19 +70,5 @@ export function StarterKit() {
         </div>
       </PageContainer>
     </>
-  )
-}
-
-export function Wrapper({
-  slot = "wrapper-card",
-  className,
-  ...props
-}: React.ComponentProps<"div"> & { slot?: string }) {
-  return (
-    <div
-      data-slot={slot}
-      className={cn("relative rounded-md border bg-overlay px-4 py-10 sm:px-6 sm:py-8", className)}
-      {...props}
-    />
   )
 }

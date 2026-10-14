@@ -27,9 +27,9 @@ export function Navigation() {
   return (
     <>
       <CommandPalette setOpen={setOpen} openCmd={open} />
-      <div className="xnw2 sticky top-0 z-40 hidden overflow-hidden bg-background/70 border-page border-b backdrop-blur-3xl lg:block">
+      <div className="xnw2 sticky top-0 z-40 hidden overflow-hidden border-page border-b lg:block">
         <PageContainer>
-          <div className="relative flex items-center justify-between border-page border-x pl-5 pr-3 py-2">
+          <div className="relative flex items-center justify-between border-page border-x bg-background pl-5 pr-3 py-2">
             <div className="flex items-center gap-x-1.5">
               <div className="mx-auto flex items-center">
                 <BrandLogoLink />

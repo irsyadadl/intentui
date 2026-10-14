@@ -82,7 +82,7 @@ export default async function Page(props: DocPageProps) {
               context="blog"
               items={article.toc}
             />
-            <div className="typeset w-full min-w-0 xl:border-l border-page xl:pl-32 xl:pr-84 xl:pt-4 xl:pb-12 typeset-docs">
+            <div className="typeset w-full min-w-0 xl:border-l border-page xl:pl-32 xl:pr-84 xl:py-12 typeset-docs">
               <MDX components={mdxComponents} />
             </div>
           </div>

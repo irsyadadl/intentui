@@ -22,6 +22,7 @@ export function OpenSource() {
           href={app.repo.url}
           className={buttonStyles({
             size: "lg",
+            isCircle: true,
             intent: "outline",
             className: "w-full bg-background text-foreground hover:bg-background/95",
           })}
@@ -34,6 +35,7 @@ export function OpenSource() {
           href="/sponsor"
           className={buttonStyles({
             size: "lg",
+            isCircle: true,
             intent: "outline",
             className: "w-full bg-background text-foreground hover:bg-background/95",
           })}
