@@ -32,7 +32,7 @@ const companyPlans = plans.filter((i) => i.type !== "individual")
 export function SponsorPlan() {
   return (
     <div className="-mb-px [--border:var(--color-muted-foreground)]/18 [--gutter:--spacing(6)]">
-      <div className="border-y border-page bg-muted">
+      <div className="border-y border-page">
         <div className="border-b border-page">
           <PageContainer>
             <div className="border-x border-muted-foreground/30 bg-background p-(--gutter)">
@@ -66,17 +66,15 @@ export function SponsorPlan() {
         </PageContainer>
       </div>
 
-      <div className="bg-muted">
-        <PageContainer>
-          <div className="border-x border-muted-foreground/30 bg-background p-(--gutter)">
-            <h3 className="mt-6 sm:mt-12 font-semibold text-2xl text-foreground tracking-tight">
-              Company
-            </h3>
-          </div>
-        </PageContainer>
-      </div>
+      <PageContainer>
+        <div className="border-x border-muted-foreground/30 bg-background p-(--gutter)">
+          <h3 className="mt-6 sm:mt-12 font-semibold text-2xl text-foreground tracking-tight">
+            Company
+          </h3>
+        </div>
+      </PageContainer>
 
-      <div className="border-y bg-muted">
+      <div className="border-y">
         <PageContainer>
           <div className="grid grid-cols-1 divide-y border-x sm:grid-cols-4 sm:divide-x sm:divide-y-0">
             {companyPlans.map((plan) => (
