@@ -24,10 +24,7 @@ import {
   NavigationTreeItem,
   NavigationTreeItemContent,
 } from "react-aria-components/NavigationTree"
-import {
-  Separator,
-  type SeparatorProps as SidebarSeparatorProps,
-} from "react-aria-components/Separator"
+import { Separator, type SeparatorProps } from "react-aria-components/Separator"
 import { cn } from "cn"
 import { Sheet } from "@/components/ui/sheet"
 import { TreeIndicator } from "@/components/ui/tree"
@@ -661,7 +658,7 @@ export function SidebarDisclosurePanel({ className, ...props }: DisclosurePanelP
   )
 }
 
-export function SidebarSeparator({ className, ...props }: SidebarSeparatorProps) {
+export function SidebarSeparator({ className, ...props }: SeparatorProps) {
   return (
     <Separator
       data-slot="sidebar-separator"
@@ -908,5 +905,3 @@ export function SidebarTreeLabel({ className, ...props }: React.ComponentProps<"
     />
   )
 }
-
-export type { SidebarSeparatorProps }
