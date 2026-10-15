@@ -58,7 +58,7 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
   return (
     <nav
       className={cn(
-        "sticky top-0 z-40 flex items-center bg-background px-2 py-2 lg:hidden",
+        "sticky top-0 z-40 flex items-center bg-background px-3.5 py-2 lg:hidden",
         pathname === "/" && "bg-background",
         className
       )}
@@ -77,7 +77,11 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
       <div className="flex-1" aria-hidden />
       <div className="flex items-center gap-x-0.5">
         <SheetTrigger isOpen={open} onOpenChange={setOpen}>
-          <Button size="sq-sm" intent="plain" className="pressed:bg-transparent outline-hidden">
+          <Button
+            size="sq-sm"
+            intent="plain"
+            className="pressed:bg-transparent outline-hidden -mr-1"
+          >
             <span className="relative flex h-8 w-(--width) items-center justify-center [--width:--spacing(4.5)]">
               <span className="relative size-(--width)">
                 <span
