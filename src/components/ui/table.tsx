@@ -313,11 +313,7 @@ export function TableColumn({ isResizable = false, className, ...props }: TableC
       )}
     >
       {(values) => (
-        <Group
-          role="presentation"
-          tabIndex={-1}
-          className="inline-flex items-center gap-2 **:[svg]:shrink-0"
-        >
+        <Group role="presentation" className="inline-flex items-center gap-2 **:[svg]:shrink-0">
           {typeof props.children === "function" ? props.children(values) : props.children}
           {values.allowsSorting && (
             <span
