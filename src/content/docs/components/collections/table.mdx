@@ -1,6 +1,6 @@
 ---
 title: "Table"
-description: A high-performance, customizable table component for efficiently displaying large datasets, supporting sorting, filtering, and advanced data management features.
+description: "Display tabular data with sorting, selection, column resizing, and drag and drop."
 order: 5
 published: true
 references: ["https://react-aria.adobe.com/Table#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/Table#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/table"/>
 
 ## Composed components
@@ -18,7 +18,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components @heroicons/react cn"/>
 
 <SourceCode toShow='table'/>
@@ -57,14 +57,13 @@ import {
 ## Examples
 
 ### Searchable
-In the latest React Aria release, tables can now be made searchable since Autocomplete supports all collection types, including Table This allows users to filter table rows directly with their input.
+Use `Autocomplete` to filter table rows as users type.
 
-This example comes from a tweet by Devon [here](https://x.com/devongovett/status/1960184396801015971).
+This example is based on [Devon Govett’s table filtering demo](https://x.com/devongovett/status/1960184396801015971).
 <How isCenter={false} withNoPadding toUse="collections/table/table-with-autocomplete-example" />
 
 ### Expandable rows
-Tables can have expandable rows to show additional details. This is useful for displaying more information without clutter
-ing the main table view.
+Use expandable rows to show additional details below a row.
 <How isCenter={false} withNoPadding toUse="collections/table/table-expandable-example" />
 
 ### Bulk actions
@@ -84,7 +83,7 @@ Tables can be made resizable. To enable resizing, set the `allowResize` prop to 
 <How isCenter={false} withNoPadding toUse="collections/table/table-resize-example" />
 
 ### Infinite scrolling
-Tables can handle large datasets efficiently with infinite scrolling. This allows for loading more data as the user scrolls down, improving performance and user experience.
+Load more items as users scroll with infinite scrolling.
 <How isCenter={false} withNoPadding toUse="collections/table/table-infinite-scroll-example" />
 
 ### Links

@@ -1,6 +1,6 @@
 ---
 title: "Bar Chart"
-description: Bar charts are commonly used to compare categorical data by representing each category with bars of varying lengths. They support stacking and formatting.
+description: "Compare values across categories using bars, with support for stacked series."
 order: 3
 published: true
 references: ["https://recharts.github.io/en-US/api/BarChart/"]
@@ -10,7 +10,7 @@ references: ["https://recharts.github.io/en-US/api/BarChart/"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 
 <PackageCommand command="npx shadcn@latest add @intentui/bar-chart"/>
 
@@ -19,7 +19,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i recharts react-aria-components"/>
 
 <SourceCode toShow={'bar-chart'} />
@@ -28,36 +28,36 @@ Use this approach if you prefer to install and wire up the component yourself in
 
 ### Stacked
 
-Stacked bar charts let you compare parts of a whole across categories. Each bar stacks its values to show how they build up.
+Stack series within each bar to compare their contributions across categories.
 
 <How isCenter={false} withNoPadding toUse="visualizations/bar-chart/bar-chart-stacked-example" />
 
 
 ### Custom format
 
-Custom format bar charts let you style the appearance, including bar radius, spacing, and color, for visual alignment with your product.
+Use `valueFormatter` and a tooltip formatter to display numeric values in a custom format.
 
 <How isCenter={false} withNoPadding toUse="visualizations/bar-chart/bar-chart-custom-format-example" />
 
 ### Custom tooltip
 
-Custom tooltips let you enrich the bar hover experience with icons, values, and additional context. Ideal for readable data at a glance.
+Use a custom tooltip to display values, labels, and icons when users hover over a bar.
 
 <How isCenter={false} withNoPadding toUse="visualizations/bar-chart/bar-chart-custom-tooltip-example" />
 
 ### Custom legend
 
-Custom legends help identify bar categories with icons, colors, or labels tailored to your dataset.
+Use a custom legend to identify series with labels, colors, or icons.
 
 <How isCenter={false} withNoPadding toUse="visualizations/bar-chart/bar-chart-custom-legend-example" />
 
 ### Custom colors
-Custom colors allow you to set specific colors for each bar, enhancing visual distinction and brand alignment.
+Set series colors in the chart configuration.
 <How isCenter={false} withNoPadding toUse="visualizations/bar-chart/bar-chart-custom-colors-example" />
 
 ### Controlled
 
-Controlled bar charts let you dynamically manage state. You can filter datasets, toggle views, or update the display based on user interaction.
+Manage chart state to filter data or switch between views.
 
 <How isCenter={false} withNoPadding toUse="visualizations/bar-chart/bar-chart-controlled-example" />
 

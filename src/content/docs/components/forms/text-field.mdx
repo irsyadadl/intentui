@@ -1,6 +1,6 @@
 ---
 title: "Text Field"
-description: A basic input field for entering short text, commonly used for forms, user input, and data entry. It supports validation, prefixes, suffixes, and various states.
+description: "Enter text in a form field with a label, description, and validation."
 order: 2
 published: true
 references: ["https://react-aria.adobe.com/TextField#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/TextField#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 
 <PackageCommand command="npx shadcn@latest add @intentui/text-field"/>
 
@@ -19,7 +19,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components @heroicons/react"/>
 
 <SourceCode toShow='text-field'/>
@@ -58,19 +58,19 @@ When using a text field as a password input, you may want the option to reveal t
 <How minW60 toUse="forms/text-field/text-field-revealable-example" />
 
 ### Validation
-In this example, we’ll ensure it’s treated as a strict requirement.
+Set `isRequired` to require a value when the form is submitted.
 <How minW60 toUse="forms/text-field/text-field-validation-example" />
 
 ### Controlled
-Manage the TextField value through the `value` prop for controlled usage.
+Pass `value` and update it with `onChange` to control the text field.
 <How minW60 toUse="forms/text-field/text-field-controlled-example" />
 
 ### Uncontrolled
-Manage the TextField value through the `defaultValue` prop for uncontrolled usage.
+Use `defaultValue` to set the initial text of an uncontrolled text field.
 <How minW60 toUse="forms/text-field/text-field-uncontrolled-example" />
 
 ### Description
-You can add a description to the text field by using the `description` prop.
+Add `Description` inside `TextField` to provide supporting text.
 <How minW60 toUse="forms/text-field/text-field-description-example" />
 
 ### Readonly

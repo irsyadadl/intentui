@@ -1,6 +1,6 @@
 ---
 title: "Search Field"
-description: A text input designed for searching, often featuring built-in filtering, suggestions, and a clear button. It provides a user-friendly way to perform searches.
+description: "Enter a search query in a text field with a clear button."
 order: 3
 published: true
 references: ["https://react-aria.adobe.com/SearchField#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/SearchField#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/search-field"/>
 
 ## Composed components
@@ -18,7 +18,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components @heroicons/react cn"/>
 
 <SourceCode toShow='search-field'/>
@@ -35,23 +35,23 @@ import { SearchField, SearchInput } from "@/components/ui/search-field"
 ## Examples
 
 ### With label
-You can add a label to the search field by using the `label` prop.
+Add a `Label` inside `SearchField` to provide a visible label.
 <How toUse="forms/search-field/search-field-with-label-example" />
 
 ### Validation
-Add a validation message to the search field by setting the `validationMessage` prop.
+Set `isRequired` and include `FieldError` to display a validation message when the form is submitted without a value.
 <How toUse="forms/search-field/search-field-validation-example" />
 
 ### Description
-You can add a description to the search field by using the `description` prop.
+Add `Description` inside `SearchField` to provide supporting text.
 <How toUse="forms/search-field/search-field-description-example" />
 
 ### Controlled
-Like other fields, the search field can be controlled by managing its value through the `value` prop.
+Pass `value` and update it with `onChange` to control the search query.
 <How toUse="forms/search-field/search-field-controlled-example" />
 
 ### Uncontrolled
-Like other fields, the search field can be controlled by managing its value through the `defaultValue` prop.
+Use `defaultValue` to set the initial value of an uncontrolled field.
 <How toUse="forms/search-field/search-field-uncontrolled-example" />
 
 ### Readonly

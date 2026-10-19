@@ -1,6 +1,6 @@
 ---
 title: "Color Swatch Picker"
-description: A grid-based selection tool that presents a set of predefined colors for easy and consistent color choices, allowing for controlled selection and disabled states.
+description: "Select a color from a collection of swatches."
 order: 5
 published: true
 references: ["https://react-aria.adobe.com/ColorSwatchPicker#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/ColorSwatchPicker#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/color-swatch-picker"/>
 
 ## Composed components
@@ -18,7 +18,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components"/>
 <SourceCode toShow='color-swatch-picker'/>
 
@@ -41,11 +41,11 @@ import {
 ## Examples
 
 ### Controlled
-The color swatch can be managed in a controlled manner.
+Manage the selected swatch from the parent component.
 <How toUse="colors/color-swatch/color-swatch-controlled-example" />
 
 ### Disabled
-While you can disable individual picker items, disabling the entire picker is possible but generally not recommended.
+Set `isDisabled` on individual swatch picker items to prevent their selection.
 <How toUse="colors/color-swatch/color-swatch-picker-item-disabled-example" />
 
 ## Component API

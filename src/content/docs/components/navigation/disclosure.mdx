@@ -1,6 +1,6 @@
 ---
 title: Disclosure
-description: An interactive UI component that expands or collapses content sections, improving accessibility and user experience. It helps organize large information.
+description: "Show or hide a section of content with a trigger."
 order: 5
 published: true
 references: ["https://react-aria.adobe.com/Disclosure#api"]
@@ -10,12 +10,12 @@ references: ["https://react-aria.adobe.com/Disclosure#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/disclosure-group"/>
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components @heroicons/react cn"/>
 
 <SourceCode toShow='disclosure-group'/>
@@ -39,7 +39,7 @@ import { Disclosure, DisclosurePanel, DisclosureTrigger } from "@/components/ui/
 ## Examples
 
 ### Disabled
-You can disable all disclosure by setting the `isDisabled` prop.
+Set `isDisabled` to disable the disclosure.
 <How className="w-full max-w-2xs" toUse="navigation/disclosure-group/disclosure-disabled-example" />
 
 ### Controlled

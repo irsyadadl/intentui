@@ -1,6 +1,6 @@
 ---
 title: "Time Field"
-description: A time-specific input that lets users enter and adjust time values, supporting 12-hour or 24-hour formats. It ensures accurate time selection with validation.
+description: "Enter and edit a time using segmented input in a 12-hour or 24-hour format."
 order: 4
 published: true
 references: ["https://react-aria.adobe.com/TimeField#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/TimeField#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/time-field"/>
 
 ## Composed components
@@ -18,7 +18,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components"/>
 
 <SourceCode toShow='time-field'/>
@@ -30,15 +30,15 @@ Change the hour format in the time field by using the `hourCycle` prop.
 <How toUse="date-and-time/time-field/time-field-hc-example" />
 
 ### Validation
-To ensure the time field is properly filled out, use the `isRequired` prop.
+Set `isRequired` to require a time when the form is submitted.
 <How toUse="date-and-time/time-field/time-field-validation-example" />
 
 ### Controlled
-In a controlled time field, the value is provided as a prop, and the field is not editable by the user.
+Pass `value` and update it with `onChange` to control the time field.
 <How toUse="date-and-time/time-field/time-field-controlled-example" />
 
 ### Readonly
-In a readonly time field, the value is provided as a prop, and the field is not editable by the user.
+Set `isReadOnly` to prevent edits while keeping the time field focusable.
 <How toUse="date-and-time/time-field/time-field-readonly-example" />
 
 ### Disabled

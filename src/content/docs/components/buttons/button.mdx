@@ -1,6 +1,6 @@
 ---
 title: "Button"
-description: Buttons play a crucial role in functionality, whether for submitting a form or navigating to another page. They come in various styles and states.
+description: "Trigger an action, submit a form, or display a pending state."
 order: 1
 published: true
 references: ["https://react-aria.adobe.com/Button#api"]
@@ -10,12 +10,12 @@ references: ["https://react-aria.adobe.com/Button#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/button"/>
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 
 <PackageCommand command="npm i react-aria-components tailwind-variants"/>
 
@@ -52,17 +52,17 @@ import { Cog6ToothIcon } from "@heroicons/react"
 ## Examples
 
 ### Intent
-Buttons come in different intents, each with its own color scheme.
+Use `intent` to choose the button’s color scheme.
 
 <How toUse="buttons/button/button-intent-example" />
 
 ### Shape
-Buttons support various shapes to fit different design needs.
+Use `isCircle` to make the button circular.
 
 <How toUse="buttons/button/button-shape-example" />
 
 ### Size
-Buttons are available in multiple sizes.
+Use `size` to set the button size.
 
 <How toUse="buttons/button/button-size-example" />
 
@@ -72,7 +72,7 @@ You can add icons to buttons, and their color will match the button's color.
 <How toUse="buttons/button/button-icon-example" />
 
 ### Disabled
-A disabled button cannot be interacted with and is visually styled to reflect its state.
+Set `isDisabled` to prevent interaction with the button.
 
 <How toUse="buttons/button/button-disabled-example" />
 
@@ -87,7 +87,7 @@ You can add a loader to indicate ongoing processes.
 <How toUse="buttons/button/button-loader-example" />
 
 ### Link
-Sometimes, you need to use styles from buttons for links. Just use the link and use the `buttonStyles` to the className prop.
+Apply `buttonStyles` to a link’s `className` to style it as a button.
 <How toUse="buttons/button/button-link-example" />
 
 ### Render
@@ -95,7 +95,7 @@ You can render a [Motion](https://motion.dev/) button and drive the animation wi
 <How toUse="buttons/button/button-render-example" />
 
 ## Touch hitbox
-Sometimes you may want to use this button with only an icon. In that case, you can apply the `touch-target` utility class on the `sq-*` size to increase the button’s hitbox for improved accessibility.
+For icon-only buttons, use a `sq-*` size and the `touch-target` utility to increase the interactive area.
 ```css
 @utility touch-target {
   position: relative;

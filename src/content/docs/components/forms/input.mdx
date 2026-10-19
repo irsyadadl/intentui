@@ -1,6 +1,6 @@
 ---
 title: "Input"
-description: "The Input component provides a consistent, accessible, customizable way to capture user data across forms, with labels, validation, and seamless UI integration."
+description: "Enter text in an input with shared styles and optional prefix or suffix content."
 order: 2
 published: true
 references: ["https://react-aria.adobe.com/TextField#api"]
@@ -10,12 +10,12 @@ references: ["https://react-aria.adobe.com/TextField#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/input"/>
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components"/>
 
 <SourceCode toShow='input'/>
@@ -30,24 +30,24 @@ import { Input } from "@/components/ui/input";
 ## Examples
 
 ### Input group
-Sometimes you may want to add a prefix or suffix to an input, and the `InputGroup` makes this easy. If you place an icon inside the group, it works automatically. However, when using a Text component, you need to set the gutter depending on whether the text is on the left or the right. This step is important because otherwise the input will have incorrect padding and appear misaligned.
+Use `InputGroup` to add prefix or suffix content. Icons receive spacing automatically. For `Text` content, set `--input-gutter-start` or `--input-gutter-end` to reserve enough space on the corresponding side.
 
 <How minW60 toUse="forms/input/input-group-example" />
 
 ### Label and description
-Improve the usability of your input fields by adding labels and descriptions. Labels clearly indicate what type of input is expected, while descriptions provide extra guidance or context to help users complete the field accurately.
+Use a label to name the input and a description to provide instructions.
 
 <How minW60 toUse="forms/input/input-label-description-example" />
 
 ### Text field
-In the example above, a label is used, and you need to set the `id` to specify which input the label is associated with. When using a TextField, this is handled automatically for you. There is no need to add extra classes either, since the styling and accessibility setup are already built in.
+For a standalone input, match its `id` to the label’s `htmlFor`. `TextField` associates its label, input, and description automatically.
 
 <How minW60 toUse="forms/input/input-text-field-example" />
 
 You can learn more in the [TextField documentation](/docs/components/forms/text-field).
 
 ### Controlled
-You can use the input as a controlled component by managing its state externally.
+Pass `value` and update it with `onChange` to control the input.
 <How minW60 toUse="forms/input/input-controlled-example" />
 
 ## Component API

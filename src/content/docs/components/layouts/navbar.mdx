@@ -1,6 +1,6 @@
 ---
 title: Navbar
-description: A horizontal navigation bar for primary site links, branding, and interactive elements. It supports multiple intents, collapsible modes, and responsive design.
+description: "Display primary navigation, branding, and actions in a responsive horizontal bar."
 order: 6
 published: true
 references: ["https://react-aria.adobe.com/Link#api"]
@@ -19,7 +19,7 @@ references: ["https://react-aria.adobe.com/Link#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/navbar"/>
 
 ## Composed components
@@ -27,7 +27,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components motion @heroicons/react cn"/>
 
 <SourceCode toShow={'navbar'} />
@@ -98,7 +98,7 @@ import {
 ## Examples
 
 ### Intent
-There are three types of intents: `navbar`, `floating`, and `inset`, each with distinct behaviors.
+The navbar supports three intents: `default`, `float`, and `inset`.
 
 ### Default
 
@@ -119,7 +119,7 @@ The `"float"` intent places a border inside the navbar and adds padding around t
 
 ### Inset
 
-The `inset` intent adds horizontal padding to align the navbar with your main content. You can see it in action in the demo, or [view a live example here](/pre-blocks/navbar/navbar-03).
+The `inset` intent adds horizontal padding to align the navbar with the main content. See [Navbar 03](/pre-blocks/navbar/navbar-03).
 
 ```tsx
 {/* [!code word:inset:1] */}
@@ -253,7 +253,7 @@ Use `NavbarGap` to control the spacing between navigation items. This gives you 
 
 ### Responsive
 
-Use `NavbarMobile` to create a responsive navbar experience. It works inside a `Sheet` and is perfect for mobile-friendly navigation.
+Use `NavbarMobile` inside a `Sheet` to display navigation on small screens.
 
 ```tsx
 <NavbarProvider>
@@ -273,10 +273,10 @@ Use `NavbarMobile` to create a responsive navbar experience. It works inside a `
 ```
 
 ## Using the layout
-There are several ways to use the layout, depending on your framework. Or, if you're not using any framework, you can simply apply the layout component.
+Wrap your page content with the navbar layout. The examples below show standalone, Inertia.js, and Next.js usage.
 
 ### Common usage
-A typical approach is to wrap your content with the layout like this:
+Wrap the page content with the layout component:
 ```
 <AppLayout>
   {/* your main content */}
@@ -298,7 +298,7 @@ When using **Inertia.js** with **Laravel**, the **layout**, **components**, and 
   }} />
 
 ### Next.js
-If you're using Next.js, there's no extra configuration needed. Simply create a page component and ensure it inherits the layout like this:
+For Next.js, render the page within the layout:
 ```bash
 app/
 ├── app-navbar.tsx

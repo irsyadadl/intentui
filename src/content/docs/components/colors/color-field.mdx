@@ -1,6 +1,6 @@
 ---
 title: "Color Field"
-description: A text input for specifying color values, supporting formats like HEX, RGB, and HSL for precise color selection. It includes validation and prefix/suffix options.
+description: "Enter and edit a color value in a text field."
 order: 2
 published: true
 references: ["https://react-aria.adobe.com/ColorField.html"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/ColorField.html"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/color-field"/>
 
 ## Composed components
@@ -18,7 +18,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components"/>
 <SourceCode toShow='color-field'/>
 
@@ -47,7 +47,7 @@ A color field can also have a suffix.
 <How toUse="colors/color-field/color-field-with-suffix-example" />
 
 ### Controlled
-Manage the color field in a controlled manner to automatically update the [ColorSwatch](/docs/components/colors/color-swatch) and display the current color.
+Share the color field’s state with [ColorSwatch](/docs/components/colors/color-swatch) to display the current color.
 <How toUse="colors/color-field/color-field-controlled-example" />
 
 
@@ -56,7 +56,7 @@ You can disable the color field, making it non-interactive.
 <How toUse="colors/color-field/color-field-disabled-example" />
 
 ### Validation
-In this example, we’ll ensure it’s treated as a strict requirement.
+Set `isRequired` to require a value when the form is submitted.
 <How toUse="colors/color-field/color-field-validation-example" />
 
 ## Component API

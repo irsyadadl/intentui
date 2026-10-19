@@ -1,6 +1,6 @@
 ---
 title: "Tree"
-description: A hierarchical UI component that organizes nested items, commonly used for file structures, menus, or category navigation, such as organizational charts.
+description: "Display nested items that users can expand, collapse, and select."
 order: 6
 published: true
 references: ["https://react-aria.adobe.com/Tree#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/Tree#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/tree"/>
 
 ## Composed components
@@ -18,7 +18,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components @heroicons/react cn"/>
 
 <SourceCode toShow='tree' />
@@ -81,7 +81,7 @@ import { Tree, TreeContent, TreeItem } from "@/components/ui/tree"
 ## Examples
 
 ### Multiple selection
-To enable multiple selections, set the `selectionMode` prop to `multiple`. This prop has no default value, so it must be explicitly defined.
+Set `selectionMode="multiple"` to allow multiple selections.
 <How toUse="collections/tree/tree-multiple-example" />
 
 ### Like a folder tree
@@ -89,7 +89,7 @@ A tree can be used to represent a folder structure, allowing users to expand and
 <How toUse="collections/tree/tree-folder-example" />
 
 ### Infinite scrolling
-The tree can handle large datasets efficiently with infinite scrolling. This allows for loading more data as the user navigates through the tree, improving performance and user experience.
+Load more tree items as users scroll with infinite scrolling.
 <How toUse="collections/tree/tree-infinite-scroll-example" />
 
 ### Drag and drop

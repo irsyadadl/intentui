@@ -1,6 +1,6 @@
 ---
 title: "Progress Circle"
-description: A modern circular progress indicator designed for visually representing task completion, downloads, or loading animations. It offers clear progress visualization.
+description: "Display task progress with a circular indicator."
 order: 3
 published: true
 references: ["https://react-aria.adobe.com/ProgressBar#api"]
@@ -10,12 +10,12 @@ references: ["https://react-aria.adobe.com/ProgressBar#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/progress-circle"/>
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components cn"/>
 <SourceCode toShow='progress-circle'/>
 
@@ -33,7 +33,7 @@ You can also make the progress circle indeterminate by setting the `isIndetermin
 <How toUse="statuses/progress-circle/progress-circle-indeterminate-example" />
 
 ### Custom size
-You can customize the size of the progress circle by using className with tailwind classes or style props.
+Set the progress circle’s size with Tailwind CSS classes in `className` or with the `style` prop.
 <How toUse="statuses/progress-circle/progress-circle-custom-size-example" />
 
 ### Controlled
@@ -41,7 +41,7 @@ You can control the progress circle by using the `value` prop.
 <How toUse="statuses/progress-circle/progress-circle-controlled-example" />
 
 ### Combine with button
-The button includes an isPending prop to indicate a pending state, allowing for seamless integration with the progress circle.
+Set `isPending` on the button and use a progress circle to indicate the pending action.
 <How toUse="buttons/button/button-pending-example" />
 
 ### Custom color

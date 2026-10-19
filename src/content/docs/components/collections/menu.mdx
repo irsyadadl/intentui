@@ -1,6 +1,6 @@
 ---
 title: "Menu"
-description: A collapsible menu that reveals actions or navigation options when triggered, not a form input like a select, and designed for quick, contextual choices.
+description: "Display actions or navigation links in a menu opened by a trigger."
 order: 1
 published: true
 references: ["https://react-aria.adobe.com/Menu#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/Menu#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/menu"/>
 
 ## Composed components
@@ -18,7 +18,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components @heroicons/react cn tailwind-variants"/>
 
 <SourceCode toShow='menu' />
@@ -42,7 +42,7 @@ import { Button } from '@/components/ui/button'
 ## Examples
 
 ### Links
-Integrating `MenuItem` with your framework’s link component is straightforward. Learn more in [Client Side Routing](/docs/getting-started/client-side-routing).
+To use `MenuItem` with your router’s link component, see [Client Side Routing](/docs/getting-started/client-side-routing).
 
 
 
@@ -98,7 +98,7 @@ Also, you can disable items directly in `Menu` by using the `disabledKeys` prop.
 ```
 
 ### Menu label
-In the examples above, you might notice that the `MenuLabel` component is used inconsistently. This is because it is not mandatory, but it is considered a best practice. Using `MenuLabel` ensures proper alignment between icons and text, especially when dealing with items that vary. For instance, one item might have an icon while another does not. Adding `MenuLabel` helps create a polished and consistent appearance.
+Use `MenuLabel` to align item text when some items have icons and others do not. It is optional for items without additional content.
 
 
 ### Description

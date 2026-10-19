@@ -1,6 +1,6 @@
 ---
 title: "Textarea"
-description: A multi-line text input field for entering longer content, such as comments, descriptions, or messages. It provides a resizable input area with validation.
+description: "Enter multiple lines of text in a resizable form field."
 order: 4
 published: true
 references: ["https://react-aria.adobe.com/TextField.html#textarea-1"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/TextField.html#textarea-1"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/textarea"/>
 
 ## Composed components
@@ -18,7 +18,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components cn"/>
 
 <SourceCode toShow='textarea'/>
@@ -41,11 +41,11 @@ You can add a description to the textarea by using the `description` prop.
 
 
 ### Controlled
-You can control the textarea value by using the `value` prop.
+Pass `value` and update it with `onChange` to control the textarea.
 <How minW60 toUse="forms/textarea/textarea-controlled-example" />
 
 ### Uncontrolled
-You can control the textarea value by using the `defaultValue` prop.
+Use `defaultValue` to set the initial text of an uncontrolled textarea.
 <How minW60 toUse="forms/textarea/textarea-uncontrolled-example" />
 
 ### Validation
