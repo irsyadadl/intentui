@@ -1,6 +1,6 @@
 ---
 title: Avatar
-description: It’s more than a picture with curved corners. It’s a vibe, subtly revealing secrets. A cheeky peek into depth, grabbing more than just your gaze, adding personality.
+description: "Display a profile image with initials as a fallback."
 order: 1
 published: true
 ---
@@ -9,11 +9,11 @@ published: true
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/avatar"/>
 
 ## Manual installation
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i cn"/>
 <SourceCode toShow='avatar'/>
 
@@ -31,16 +31,16 @@ import { Avatar } from "@/components/ui/avatar"
 ## Examples
 
 ### Fallback
-If the image fails to load, the avatar will fallback to the initials.
+If the image fails to load, the avatar falls back to the provided initials.
 <How toUse="media/avatar/avatar-initials-example" />
 
 ### Shape
-By default, the avatar is a `circle`. You can change it to a square by using the `isSquare` props.
+Avatars are circular by default. Set `isSquare` to use a square shape.
 
 <How toUse="media/avatar/avatar-shape-example" />
 
 ### Size
-By default, the avatar is medium. You can change it to small, large or extra-large by using the `size` prop.
+Use `size` to change the avatar size. The default is `md`.
 
 <How toUse="media/avatar/avatar-size-example" />
 

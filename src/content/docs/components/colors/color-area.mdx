@@ -1,6 +1,6 @@
 ---
 title: "Color Area"
-description: An interactive color selection tool that enables users to pick a color by adjusting both hue and saturation within a 2D space. It supports different color models.
+description: "Adjust two color channels by moving a thumb within a two-dimensional area."
 order: 3
 published: true
 references: ["https://react-aria.adobe.com/ColorArea#api"]
@@ -13,12 +13,12 @@ references: ["https://react-aria.adobe.com/ColorArea#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/color-area"/>
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components"/>
 <SourceCode toShow='color-area'/>
 
@@ -36,19 +36,19 @@ Specify the color channels for the horizontal and vertical axes using the `xChan
 <How toUse="colors/color-area/color-area-channel-example" />
 
 ### Space
-Define the color space for operation, which must align with the xChannel and yChannel. The default is set based on the `color` or `defaultColor` value. Valid types include `rgb`, `hsl`, and `hsb`.
+Set `colorSpace` to `rgb`, `hsl`, or `hsb`. Choose `xChannel` and `yChannel` values that belong to that color space.
 <How toUse="colors/color-area/color-area-space-example" />
 
 ### Controlled
-Control the color area by specifying channels for the horizontal (`xChannel`) and vertical (`yChannel`) axes.
+Pass `value` and update it with `onChange` to control the selected color.
 <How toUse="colors/color-area/color-area-controlled-example" />
 
 ### Disabled
-Disable the color area component. While it's possible to disable the thumb component, it's generally not advisable.
+Set `isDisabled` on the color area to disable interaction.
 <How toUse="colors/color-area/color-area-disabled-example" />
 
 ### Color area with slider
-You can use the color area with the slider to control the color.
+Combine a color area with a slider to adjust different channels of the same color.
 <How toUse="colors/color-area/color-area-with-slider-example" />
 
 ## Component API

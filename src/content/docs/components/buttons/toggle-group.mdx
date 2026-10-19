@@ -1,6 +1,6 @@
 ---
 title: "Toggle Group"
-description: A toggle button group provides an intuitive way for users to switch between multiple options, supporting both single and multi-selection modes, enhancing UI flexibility.
+description: "Group toggle buttons with single or multiple selection."
 order: 3
 published: true
 references: [https://react-aria.adobe.com/ToggleButtonGroup#api]
@@ -10,12 +10,12 @@ references: [https://react-aria.adobe.com/ToggleButtonGroup#api]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/toggle-group"/>
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components tailwind-variants cn"/>
 <SourceCode toShow='toggle-group'/>
 
@@ -55,7 +55,7 @@ The size option also includes a square variant, which is useful when you only wa
 <How toUse="buttons/toggle-group/toggle-group-square-size-example" />
 
 ### Controlled
-You can control the state of the toggle button group by using the `selectedKeys` prop.
+Pass `selectedKeys` and update it with `onSelectionChange` to control the selected toggles.
 <How toUse="buttons/toggle-group/toggle-group-controlled-example" />
 
 ### Disabled
@@ -63,7 +63,7 @@ You can disable an entire toggle group by setting the `isDisabled` prop on the `
 <How toUse="buttons/toggle-group/toggle-group-disabled-example" />
 
 ## Touch hitbox
-Sometimes you may want to use this button with only an icon. In that case, you can apply the `touch-target` utility class on the `sq-*` size to increase the button’s hitbox for improved accessibility.
+For icon-only buttons, use a `sq-*` size and the `touch-target` utility to increase the interactive area.
 ```css
 @utility touch-target {
   position: relative;

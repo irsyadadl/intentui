@@ -1,6 +1,6 @@
 ---
 title: Toast
-description: A non-intrusive, auto-dismissible notification component used to display brief status updates, alerts, or confirmation messages. It improves user awareness.
+description: "Display brief notifications for status updates, errors, and confirmations."
 order: 5
 published: true
 references: ["https://sonner.emilkowal.ski/toast"]
@@ -9,16 +9,16 @@ references: ["https://sonner.emilkowal.ski/toast"]
 <How toUse="statuses/toast/toast-example" />
 
 ## Introduction
-The toast components are built on top of the [Sonner](https://sonner.emilkowalski.ski/) library. Shoutout to [Emil Kowalski](https://github.com/emilkowalski) for creating this amazing library.
+The toast components use [Sonner](https://sonner.emilkowalski.ski/) by [Emil Kowalski](https://github.com/emilkowalski).
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/toast"/>
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i sonner cn"/>
 
 <SourceCode toShow='toast'/>
@@ -36,7 +36,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
   );
 }
 ```
-And next, just use the `toast()` function to show a toast.
+Call `toast()` to display a notification.
 ```
 <Button onPress={() => toast('Someone requested to delete this product')}>
   Delete
@@ -44,15 +44,15 @@ And next, just use the `toast()` function to show a toast.
 ```
 
 ## Next.js
-If you're slapping this toast into your Next.js gig, you're gonna wanna roll with the `next-themes` package to flip the theme on that toast. Peep how you hook it up:
+Use `next-themes` to match the toast theme to your Next.js application:
 
 <PackageCommand command="npm i next-themes"/>
 
-Don't forget to include a theme provider component. Check out the setup [here](/docs/dark-mode/next-js).
+Add a theme provider as described in the [Next.js dark mode guide](/docs/dark-mode/next-js).
 
 ## Inertia.js
 
-When using this toast with Inertia.js, everything will work smoothly if your theme provider is correctly set up. If not, you can find the setup guide [here](/docs/dark-mode/inertia-js).
+For Inertia.js, configure the provider using the [Inertia.js dark mode guide](/docs/dark-mode/inertia-js).
 
 ## Examples
 
@@ -87,7 +87,7 @@ Toast can be expanded to show more content.
 ```
 
 ### Hide icon
-When this toast has status like `success`, `warning` etc, the icon is shown by default. But if you want to disable the icon for a specific toast, you can do it like this.
+Status toasts, such as success and warning messages, display an icon by default. Hide it for an individual toast with these classes:
 ```tsx {2-5}
 toast.success(`Copied ${text} to clipboard`, {
   classNames: {
@@ -97,13 +97,11 @@ toast.success(`Copied ${text} to clipboard`, {
 })
 ```
 
-You can turn it off directly from the component to remove it completely. However, this approach may appear unusual when handling toast promises or loading states.
+Hiding icons globally also hides the indicators used by loading and promise toasts.
 
 ### Don't close automatically
 
-Sometimes, you may not want the toast to close automatically. For example, if you have a toast that waits for a user to click a button, you would not want it to close automatically when the button is clicked.
-
-You can do it like this.
+Set `duration: Infinity` to keep a toast open until the user dismisses it or selects an action.
 
 ```tsx {2}
 toast('Someone requested to delete this product', {

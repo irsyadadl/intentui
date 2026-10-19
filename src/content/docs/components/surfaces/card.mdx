@@ -1,6 +1,6 @@
 ---
 title: "Card"
-description: A flexible UI container that groups related content, actions, and media in a structured and visually appealing layout, enhancing information presentation.
+description: "Group related content, media, and actions in a container."
 published: true
 order: 1
 ---
@@ -9,12 +9,12 @@ order: 1
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/card"/>
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i cn"/>
 <SourceCode toShow='card'/>
 
@@ -57,11 +57,11 @@ Use `--card-spacing` to control the card's vertical padding, the gap between sec
 ## Examples
 
 ### With form
-Sometimes, you may need a card with a form inside.
+Place a form inside the card.
 <How toUse="surfaces/card/card-login-form-example"/>
 
 ### Action
-You can add actions to your card, which will be aligned to the right. This example demonstrates using the menu component, but you can use any component you prefer.
+Add actions to the card header to align them to the right. This example uses a menu.
 <How toUse="surfaces/card/card-action-example"/>
 
 ### With table
@@ -71,7 +71,7 @@ Use `bleed` and set the table's `--gutter` to `var(--card-spacing)` to align its
 For table docs, check out the [Table](/docs/components/collections/table) docs.
 
 ## Section title
-Sometimes, you may only need a card header without wrapping container itself. Of course, you need don't want the default padding, right? So I have prop called `withoutPadding` to help you out.
+Use `CardHeader` on its own with `withoutPadding` to omit the default padding.
 ```
 <CardHeader
   title="List Daemons"

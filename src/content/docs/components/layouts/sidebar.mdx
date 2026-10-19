@@ -1,6 +1,6 @@
 ---
 title: "Sidebar"
-description: A collapsible side panel for navigation or extra content, with multiple intents, behaviors, and customization options to match your layout on any screen size
+description: "Display navigation and supporting content in a collapsible side panel."
 order: 1
 published: true
 references: ["https://react-aria.adobe.com/Link#api"]
@@ -18,19 +18,19 @@ references: ["https://react-aria.adobe.com/Link#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/sidebar"/>
 
 ## Composed components
 <Composed components={['tooltip', 'sheet', 'link', 'button']} />
 
 ## Manual installation
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components @heroicons/react cn"/>
 <SourceCode toShow={'sidebar'}/>
 
 ## CSS variables
-The sidebar just needs one base color to work; the accent is generated from the base, and the primary color is taken from the primary color you already have. Make sure you have set everything up, or head to the [theme page](/themes) to see the colors you can use. Too lazy? Just copy the default color below to your stylesheet.
+The sidebar derives its accent from a base color and uses your theme’s primary color. Add the default variables below to your stylesheet, or choose colors on the [theme page](/themes).
 ```
 @theme inline {
   --color-sidebar: var(--sidebar);
@@ -66,7 +66,7 @@ The sidebar just needs one base color to work; the accent is generated from the 
 }
 ```
 
-Not sure if it's your style, but it's a great starting point. If you’d like to tweak the colors, check out the [theme customization](/themes) page for more options.
+See [theme customization](/themes) to adjust the colors.
 
 ## Examples
 
@@ -112,7 +112,7 @@ When toggled, the sidebar docks to a minimal state, showing only icons. Hovering
 ```
 
 ### Default open
-The sidebar’s initial state can be controlled using the `defaultOpen` prop. For example, you can set `defaultOpen` to `false` and keep the sidebar docked.
+Set `defaultOpen={false}` to start with the sidebar closed. Its closed appearance depends on the `collapsible` mode.
 ```
 <SidebarProvider defaultOpen={false}>
   <Sidebar collapsible="dock" />
@@ -351,7 +351,7 @@ The sidebar has two sides, left and right. You can set the side of the sidebar b
   }} />
 
 ### Put anything
-You can put anything you want in it. You can use the `SidebarContent` component to wrap your content. Let's try to add a range-calendar and search-field to the sidebar. <NewTab href='/pre-blocks/sidebar/sidebar-17'/>
+Wrap custom content in `SidebarContent`. This example adds a range calendar and a search field. <NewTab href='/pre-blocks/sidebar/sidebar-17'/>
 <EditorText
   source={{
     'app-sidebar.tsx': 'pre-blocks/sidebar/sidebar-17/app-sidebar',

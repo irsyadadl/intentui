@@ -1,6 +1,6 @@
 ---
 title: "Toggle"
-description: Toggle is like light switches for your digital digs. Flip 'em on, and they light stuff up; flip 'em off, and it's lights out. Perfect for quick on/off controls.
+description: "Switch a button between selected and unselected states."
 order: 3
 published: true
 references: [https://react-aria.adobe.com/ToggleButton#api]
@@ -10,12 +10,12 @@ references: [https://react-aria.adobe.com/ToggleButton#api]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/toggle"/>
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components tailwind-variants cn"/>
 <SourceCode toShow='toggle'/>
 
@@ -41,12 +41,12 @@ Manage the toggle button's state with the `isSelected` prop.
 
 ### Disabled
 
-Disable a toggle button by setting the `disabled` prop.
+Set `isDisabled` to disable the toggle button.
 
 <How toUse="buttons/toggle/toggle-disabled-example" />
 
 ## Touch hitbox
-Sometimes you may want to use this button with only an icon. In that case, you can apply the `touch-target` utility class on the `sq-*` size to increase the button’s hitbox for improved accessibility.
+For icon-only buttons, use a `sq-*` size and the `touch-target` utility to increase the interactive area.
 ```css
 @utility touch-target {
   position: relative;

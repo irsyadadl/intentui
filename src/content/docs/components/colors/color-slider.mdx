@@ -1,6 +1,6 @@
 ---
 title: "Color Slider"
-description: A horizontal or vertical slider used to adjust individual color properties like hue, saturation, or brightness, including labels, orientations, and controlled modes.
+description: "Adjust a single color channel with a horizontal or vertical slider."
 order: 4
 published: true
 references: ["https://react-aria.adobe.com/ColorSlider#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/ColorSlider#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/color-slider"/>
 
 ## Composed components
@@ -18,7 +18,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components"/>
 <SourceCode toShow='color-slider'/>
 
@@ -32,7 +32,7 @@ import { ColorSlider } from "@/components/ui/color-slider"
 ## Examples
 
 ### With label
-Enhance the color slider by adding a label for clarity and accessibility.
+Add a label to identify the color channel.
 <How minW60 toUse="colors/color-slider/color-slider-with-label-example" />
 
 ### Orientation
@@ -40,7 +40,7 @@ By default, the color slider is horizontal. You can change it to vertical by set
 <How minW60 toUse="colors/color-slider/color-slider-vertical-example" />
 
 ### Controlled
-Take direct control over the color slider's value.
+Pass `value` and update it with `onChange` to control the color slider.
 <How minW60 toUse="colors/color-slider/color-slider-controlled-example" />
 
 ### Disabled

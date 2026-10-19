@@ -1,6 +1,6 @@
 ---
 title: Note
-description: A styled text component for highlighting important information, warnings, or contextual messages within a UI. It improves readability and draws attention.
+description: "Highlight information, warnings, or other contextual messages."
 order: 4
 published: true
 ---
@@ -9,12 +9,12 @@ published: true
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/note"/>
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components @heroicons/react cn"/>
 <SourceCode toShow='note'/>
 
@@ -36,7 +36,7 @@ import { Note } from "@/components/ui/note"
 ## Examples
 
 ### Intent
-By default, the note is displayed with a primary intent. You can change the intent by passing the `intent` prop. This example demonstrates different intents.
+Use `intent` to change the note’s appearance. The default is `primary`.
 <How toUse="statuses/note/note-intent-example" />
 
 ## Component API

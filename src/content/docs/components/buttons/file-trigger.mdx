@@ -1,6 +1,6 @@
 ---
 title: "File Trigger"
-description: File Triggers are your go-to for grabbing files from the file system, acting like a digital fishing rod to hook up goodies from local or cloud storage.
+description: "Open the file picker to select files or folders from a device."
 order: 2
 published: true
 references: ["https://react-aria.adobe.com/FileTrigger#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/FileTrigger#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/file-trigger"/>
 
 ## Composed components
@@ -18,7 +18,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components @heroicons/react tailwind-variants"/>
 <SourceCode toShow='file-trigger'/>
 
@@ -51,7 +51,7 @@ A FileTrigger that allows users to select an avatar from their file system. It i
 
 <Composed components={['avatar', 'drop-zone']}/>
 
-This how you can use the FileTrigger combined with an Avatar component.
+Combine `FileTrigger` with `Avatar` to select a profile image.
 <How toUse="buttons/file-trigger/file-trigger-avatar-example" />
 
 ### Pending
@@ -59,15 +59,15 @@ A FileTrigger can indicate a pending state using the `isPending` prop. This prov
 <How toUse="buttons/file-trigger/file-trigger-pending-example" />
 
 ### Circle
-A FileTrigger that is styled as a circle, providing a unique visual appearance.
+Use a circular trigger button.
 <How toUse="buttons/file-trigger/file-trigger-circle-example" />
 
 ### Controlled
-You can use the `onSelect` prop to snag the selected files.
+Use `onSelect` to receive the selected files.
 <How toUse="buttons/file-trigger/file-trigger-controlled-example" />
 
 ### Disabled
-A FileTrigger that is disabled.
+Set `isDisabled` to prevent file selection.
 <How toUse="buttons/file-trigger/file-trigger-disabled-example" />
 
 ## Component API

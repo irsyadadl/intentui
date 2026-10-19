@@ -1,6 +1,6 @@
 ---
 title: "List Box"
-description: ListBox are designed to present and manage lists of options or data entries, allowing users to view and select from multiple choices efficiently and effectively.
+description: "Display a list of options with single or multiple selection."
 order: 2
 published: true
 references: ["https://react-aria.adobe.com/ListBox#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/ListBox#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/list-box"/>
 
 ## Composed components
@@ -18,7 +18,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components @heroicons/react cn"/>
 
 <SourceCode toShow='list-box'/>
@@ -41,11 +41,11 @@ import { ListBox, ListBoxItem } from "@/components/ui/list-box"
 ## Examples
 
 ### Multiple selection
-To enable multiple selections, set the `selectionMode` prop to `multiple`. This prop has no default value, so it must be explicitly defined.
+Set `selectionMode="multiple"` to allow multiple selections.
 <How toUse="collections/list-box/list-box-multiple-example" />
 
 ### Description
-You can enhance list items by providing additional details using the `Listbox.Description` component.
+Add supporting text with `ListBoxDescription`.
 <How toUse="collections/list-box/list-box-description-example" />
 
 ### Section
@@ -57,11 +57,11 @@ Enable drag-and-drop functionality in the ListBox by using the `dragAndDropHooks
 <How toUse="collections/list-box/list-box-rearrange-example" />
 
 ### Infinite scrolling
-ListBox can handle large datasets efficiently with infinite scrolling. This allows for loading more data as the user scrolls down, improving performance and user experience.
+Load more items as users scroll with infinite scrolling.
 <How toUse="collections/list-box/list-box-infinite-scroll-example" />
 
 ### Controlled
-To enable controlled mode, set the `selectionMode` prop to `single`. This allows you to manage the ListBox selection using the `selectedKey` prop.
+For controlled selection, pass `selectedKeys` and update it with `onSelectionChange`. Set `selectionMode="single"` to allow one selected item.
 <How toUse="collections/list-box/list-box-controlled-example" />
 
 ### Disabled

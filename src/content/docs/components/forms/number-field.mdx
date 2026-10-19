@@ -1,6 +1,6 @@
 ---
 title: "Number Field"
-description: A numeric input field that allows users to enter and edit numbers, with features like validation, step controls, and range limits. It supports min/max values.
+description: "Enter and adjust a number with step controls, validation, and range limits."
 order: 6
 published: true
 references: ["https://react-aria.adobe.com/NumberField#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/NumberField#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 
 <PackageCommand command="npx shadcn@latest add @intentui/number-field"/>
 
@@ -19,7 +19,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 
 <PackageCommand command="npm i react-aria-components @heroicons/react"/>
 
@@ -41,11 +41,11 @@ import { Label, Description, FieldError } from "@/components/ui/field"
 ## Examples
 
 ### Controlled
-You can use the number field as a controlled component by managing its state externally.
+Pass `value` and update it with `onChange` to control the number field.
 <How minW60 toUse="forms/number-field/number-field-controlled-example" />
 
 ### Uncontrolled
-Like other fields, the search field can be controlled by managing its value through the `defaultValue` prop.
+Use `defaultValue` to set the initial value of an uncontrolled field.
 <How toUse="forms/number-field/number-field-uncontrolled-example" />
 
 ### Validation

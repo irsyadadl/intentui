@@ -1,6 +1,6 @@
 ---
 title: "Choice Box"
-description: A larger, more descriptive version of a radio or checkbox, with a generous tap target and room for supporting details, enhancing usability and clarity.
+description: "Present radio or checkbox options as cards with labels, descriptions, and icons."
 order: 8
 published: true
 references: ["https://react-aria.adobe.com/GridList#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/GridList#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/choice-box"/>
 
 ## Composed components
@@ -18,7 +18,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components @heroicons/react cn tailwind-variants"/>
 
 <SourceCode toShow='choice-box' />
@@ -59,7 +59,7 @@ import {
 ## Examples
 
 ### Multiple selection
-By default, it uses single selection mode. To allow multiple selections, set the selectionMode prop to 'multiple'. This enables users to select more than one item at a time.
+Choice boxes use single selection by default. Set `selectionMode="multiple"` to allow multiple selections.
 
 <How toUse="collections/choicebox/choicebox-multiple-selection-example" />
 
@@ -68,15 +68,15 @@ By default, the gap between items is set to `0`, and the `columns` prop is also 
 <How isCenter={false} withNoPadding={true} toUse="collections/choicebox/choicebox-columns-example" />
 
 ### Icons
-You can add icons to the Choicebox items by providing the `icon` prop.
+Add icons to choice box items with the `icon` prop.
 <How toUse="collections/choicebox/choicebox-icon-example" />
 
 ### Controlled
-This component can `function` as either controlled or uncontrolled. For controlled use, provide the `selectedKeys` prop and manage updates with the `onSelectionChange` event handler.
+For controlled selection, pass `selectedKeys` and update it with `onSelectionChange`.
 <How toUse="collections/choicebox/choicebox-controlled-example" />
 
 ### Disabled
-Disable the entire Choicebox by applying the `isDisabled` prop.
+Set `isDisabled` to disable the entire choice box.
 <How withNoPadding={true} toUse="collections/choicebox/choicebox-disabled-example" />
 
 Individual items can also be disabled by specifying their keys in the `disabledKeys` prop.

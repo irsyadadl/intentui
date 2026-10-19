@@ -1,6 +1,6 @@
 ---
 title: "Date Range Picker"
-description: Date range pickers make date based data easier to read and explore, letting users select precise start and end dates for accurate filtering and reporting.
+description: "Select start and end dates using segmented inputs and a calendar popover."
 order: 6
 published: true
 references: ["https://react-aria.adobe.com/DateRangePicker#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/DateRangePicker#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/date-range-picker"/>
 
 ## Composed components
@@ -23,7 +23,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components @heroicons/react cn"/>
 
 <SourceCode toShow='date-range-picker'/>
@@ -31,7 +31,7 @@ Use this approach if you prefer to install and wire up the component yourself in
 ## Examples
 
 ### Validation
-Ensure that the date range picker is properly filled out by using the `isRequired` prop.
+Set `isRequired` to require a date range when the form is submitted.
 <How className="min-w-[17rem]" toUse="date-and-time/date-range-picker/date-range-picker-validation-example" />
 
 ### Custom validation
@@ -39,18 +39,18 @@ Use the `validate` function to implement custom validation rules. It evaluates t
 <How className="min-w-[17rem]" toUse="date-and-time/date-range-picker/date-range-picker-custom-validation-example" />
 
 ### Visible duration
-You can control the duration of the visible date range by using the `visibleDuration` prop. It accepts an object with the following properties:
-* `years`: The number of years to add or subtract.
-* `months`: The number of months to add or subtract.
-* `weeks`: The number of weeks to add or subtract.
-* `days`: The number of days to add or subtract.
+Set `visibleDuration` to choose how much of the calendar is visible. It accepts an object with these duration units:
+* `years`: The number of years to display.
+* `months`: The number of months to display.
+* `weeks`: The number of weeks to display.
+* `days`: The number of days to display.
 
-Learn more about the <NewTab href='https://react-aria.adobe.com/RangeCalendar.html#multi-month'>visible duration</NewTab> in the rac documentation.
+See <NewTab href="https://react-aria.adobe.com/RangeCalendar.html#multi-month">visible duration in React Aria</NewTab> for details.
 
 <How className="min-w-[17rem]" toUse="date-and-time/date-range-picker/date-range-picker-visible-duration-example" />
 
 ### Controlled
-Take control of your date range picker by passing a `value` prop to manage the selected date range.
+Pass `value` and update it with `onChange` to control the selected date range.
 <How className="min-w-[17rem]" toUse="date-and-time/date-range-picker/date-range-picker-controlled-example" />
 
 ### Disabled

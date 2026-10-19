@@ -1,6 +1,6 @@
 ---
 title: "Link"
-description: A navigational element that directs users to internal or external pages, optimized for accessibility, SEO, and seamless user navigation experiences.
+description: "Navigate to an internal or external page."
 order: 1
 published: true
 references: ["https://react-aria.adobe.com/Link#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/Link#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 To install the required package, run the following command:
 
 <PackageCommand command="npm i react-aria-components"/>
@@ -25,17 +25,17 @@ import { Link } from "@/components/ui/link"
 ```
 
 ## Client side routing
-Integrating `Link` with your framework’s link component is straightforward. Learn more in [Client Side Routing](/docs/getting-started/client-side-routing).
+To use `Link` with your router’s link component, see [Client Side Routing](/docs/getting-started/client-side-routing).
 
 
 ## Examples
 
 ### Unstyled
-By default, the link comes unstyled, making it easy to apply custom classes and styles.
+Links are unstyled by default. Apply classes through `className`.
 <How toUse="navigation/link/link-unstyled-example" />
 
 ### Use as button
-If you want to style a link to look like a button, you can do so by applying the `buttonStyles` prop.
+Apply `buttonStyles` to the link’s `className` to style it as a button.
 <How toUse="navigation/link/link-button-example" />
 
 ### Disabled

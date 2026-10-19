@@ -1,6 +1,6 @@
 ---
 title: "Show More"
-description: An expandable UI component that reveals hidden content on demand, optimizing space while maintaining accessibility and improving content management.
+description: "Expand or collapse content on demand."
 order: 4
 published: true
 references: ["https://react-aria.adobe.com/ToggleButton#api"]
@@ -10,12 +10,12 @@ references: ["https://react-aria.adobe.com/ToggleButton#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/show-more"/>
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components tailwind-variants"/>
 <SourceCode toShow='show-more'/>
 
@@ -44,15 +44,15 @@ import { cn } from "cn"
 ## Examples
 
 ### As text
-While the default behavior utilizes a button for interactions, the `ShowMore` component can also be configured to function as a clickable text element.
+Use a text trigger instead of the default button styling.
 <How className="px-6" isCenter={false} toUse="surfaces/show-more/show-more-as-text-example" />
 
 ### Controlled
-Gain fine-grained control over the `ShowMore` component's behavior. This setup ensures you can manage the expanded state externally, ideal for more complex interactions.
+Manage the expanded state from the parent component.
 <How className="px-6" isCenter={false} toUse="surfaces/show-more/show-more-controlled-example" />
 
 ### Orientation
-The default orientation for the `ShowMore` component is horizontal. However, it can easily be adjusted to a vertical layout to suit different design needs.
+Use `orientation="vertical"` for a vertical layout. The default is `horizontal`.
 <How toUse="surfaces/show-more/show-more-orientation-example" />
 
 ## Component API

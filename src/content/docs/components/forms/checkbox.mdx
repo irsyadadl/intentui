@@ -1,6 +1,6 @@
 ---
 title: "Checkbox"
-description: An interactive input that allows users to toggle a selection on or off, often used for settings or multiple-choice selections. It supports indeterminate states.
+description: "Toggle an option on or off, with support for an indeterminate state."
 order: 8
 published: true
 references: ["https://react-aria.adobe.com/Checkbox#api"]
@@ -10,7 +10,7 @@ references: ["https://react-aria.adobe.com/Checkbox#api"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 <PackageCommand command="npx shadcn@latest add @intentui/checkbox"/>
 
 ## Composed components
@@ -18,7 +18,7 @@ Install the component via the CLI in one command.
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i react-aria-components @heroicons/react cn"/>
 
 <SourceCode toShow='checkbox'/>
@@ -43,7 +43,7 @@ The checkbox is in an error state.
 <How toUse="forms/checkbox/checkbox-invalid-example" />
 
 ### Description
-You can add a description to checkbox by adding `Description` component as a child of `CheckboxField`.
+Add `Description` as a child of `CheckboxField` to provide supporting text.
 <How toUse="forms/checkbox/checkbox-description-example" />
 
 ### Indeterminate
@@ -51,11 +51,11 @@ The checkbox is in an indeterminate state.
 <How toUse="forms/checkbox/checkbox-indeterminate-example" />
 
 ### Controlled
-You can control the checkbox value by using the `value` prop.
+Pass `isSelected` and update it with `onChange` to control the checkbox.
 <How minW60 toUse="forms/checkbox/checkbox-controlled-example" />
 
 ### Uncontrolled
-You can control the checkbox value by using the `defaultValue` prop.
+Use `defaultSelected` to set the initial checked state of an uncontrolled checkbox.
 <How toUse="forms/checkbox/checkbox-uncontrolled-example" />
 
 ### Disabled

@@ -1,6 +1,6 @@
 ---
 title: "Chart"
-description: Chart components for visualizing data using area and bar styles with support for custom tooltips, legends, and dynamic control. They are responsive.
+description: "Build responsive charts with shared tooltips, legends, and configuration."
 order: 1
 published: true
 references: ["https://recharts.org"]
@@ -8,13 +8,13 @@ references: ["https://recharts.org"]
 
 ## Installation
 
-Install the component via the CLI in one command.
+Add the component with the CLI.
 
 <PackageCommand command="npx shadcn@latest add @intentui/chart"/>
 
 ## Manual installation
 
-Use this approach if you prefer to install and wire up the component yourself instead of using the CLI.
+Install the dependencies, then copy the component source into your project.
 <PackageCommand command="npm i recharts cn"/>
 
 <SourceCode toShow={'chart'} />
@@ -45,7 +45,7 @@ export function useIsMobile() {
 ## Examples
 
 ### Area
-Area charts are great for showing trends, comparisons, and patterns over time. They keep your data clean and easy to read.
+Use area charts to show trends over time and compare series.
 <How isCenter={false} withNoPadding toUse="visualizations/area-chart/area-chart-example" />
 
 ### Bar
@@ -53,7 +53,7 @@ Bar charts help visualize data comparisons across categories. They are effective
 <How isCenter={false} withNoPadding toUse="visualizations/bar-chart/bar-chart-example" />
 
 ### Pie
-Pie charts are useful for showing how parts contribute to a whole. They are best for displaying proportions and percentages in a visually appealing way.
+Use pie charts to compare categories as proportions of a whole.
 <How isCenter={false} withNoPadding toUse="visualizations/pie-chart/pie-chart-example" />
 
 ### Radar

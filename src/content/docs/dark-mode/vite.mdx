@@ -1,18 +1,18 @@
 ---
 title: Vite
-description: Got a Vite project? Let's flip the switch to dark mode and get that cool, sleek look in a snap. This guide offers step-by-step instructions for seamless integration.
+description: "Set up a theme provider and dark mode switcher in a Vite project."
 order: 1
 published: true
 ---
 
 ## Starter kit
-If you want, you always use the starter kit to get started. You can find it <NewTab href='https://github.com/intentui/vite'>Here</NewTab>.
+Use the <NewTab href="https://github.com/intentui/vite">Vite starter kit</NewTab> for a project with Intent UI configured.
 
 ## Provider and switcher
-First of all, you need to install the `@heroicons/react` package.
+Install `@heroicons/react` for the switcher icons.
 <PackageCommand command="npm i @heroicons/react"/>
 
-After that, we need two files: `theme-provider.tsx` and `theme-switcher.tsx`.
+Create `theme-provider.tsx` and `theme-switcher.tsx`:
 <CodeBlock
     source={{
         'theme-provider.tsx': 'dark-mode/vite/theme-provider.tsx',
@@ -20,7 +20,7 @@ After that, we need two files: `theme-provider.tsx` and `theme-switcher.tsx`.
     }} />
 
 ## Usage
-Then you can wrap your app with the provider. For example if you are using Laravel with Inertia.js, you can put it inside your `app.tsx` like so:
+Wrap `App` with `ThemeProvider` in your Vite entry file:
 
 ```tsx {5} {9-11}
 import React from 'react'
