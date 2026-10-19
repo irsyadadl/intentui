@@ -299,6 +299,9 @@ export function TableColumn({ isResizable = false, className, ...props }: TableC
     <Column
       data-slot="table-column"
       {...props}
+      textValue={
+        props.textValue ?? (typeof props.children === "string" ? props.children : undefined)
+      }
       className={cx(
         [
           "text-start font-medium text-muted-foreground",
