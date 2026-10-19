@@ -2,20 +2,18 @@
 
 import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/20/solid"
 import { createContext, use } from "react"
-import { Button } from "react-aria-components/Button"
+import { Button as PrimitiveButton } from "react-aria-components/Button"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import { Group } from "react-aria-components/Group"
-import type {
-  CellProps,
-  ColumnProps,
-  ColumnResizerProps,
-  TableHeaderProps as HeaderProps,
-  RowProps,
-  TableBodyProps,
-  TableFooterProps,
-  TableProps as TablePrimitiveProps,
-} from "react-aria-components/Table"
 import {
+  type CellProps,
+  type ColumnProps,
+  type ColumnResizerProps,
+  type TableHeaderProps as HeaderProps,
+  type RowProps,
+  type TableBodyProps,
+  type TableFooterProps,
+  type TableProps as TablePrimitiveProps,
   Cell,
   Collection,
   Column,
@@ -48,10 +46,10 @@ const TableContext = createContext<TableProps>({
 
 const useTableContext = () => use(TableContext)
 
-function Root(props: TableProps) {
+export function Root(props: TableProps) {
   return (
     <TablePrimitive
-      className="w-full min-w-full caption-bottom text-sm/6 outline-hidden [--table-selected-bg:var(--color-secondary)]/50"
+      className="w-full min-w-full caption-bottom text-sm/6 outline-hidden [--table-selected-background:var(--color-secondary)]/50"
       {...props}
     />
   )
@@ -92,16 +90,16 @@ export function Table({
   )
 }
 
-function ColumnResizer({ className, ...props }: ColumnResizerProps) {
+export function ColumnResizer({ className, ...props }: ColumnResizerProps) {
   return (
     <ColumnResizerPrimitive
       {...props}
       className={cx(
-        "absolute end-0 top-0 bottom-0 grid w-px &[data-resizable-direction=left]:cursor-e-resize &[data-resizable-direction=right]:cursor-w-resize resizable-both:cursor-ew-resize touch-none place-content-center px-1 [&[data-resizing]>div]:bg-primary",
+        "&[data-resizable-direction=left]:cursor-e-resize &[data-resizable-direction=right]:cursor-w-resize resizable-both:cursor-ew-resize [&[data-resizing]>div]:bg-primary absolute end-0 top-0 bottom-0 grid w-px touch-none place-content-center px-1",
         className
       )}
     >
-      <div className="h-full w-px bg-border py-(--gutter-y)" />
+      <div className="bg-border h-full w-px py-(--gutter-y)" />
     </ColumnResizerPrimitive>
   )
 }
@@ -118,7 +116,7 @@ export function TableBody<T extends object>({ renderEmptyState, ...props }: Tabl
             <div aria-hidden className="relative flex h-72 items-center justify-center md:h-100">
               <div
                 aria-hidden
-                className="absolute top-1/2 m-auto grid size-15 -translate-y-1/2 place-content-center rounded-full border border-border/50 md:size-20"
+                className="border-border/50 absolute top-1/2 m-auto grid size-15 -translate-y-1/2 place-content-center rounded-full border md:size-20"
               >
                 <svg
                   aria-hidden
@@ -138,7 +136,7 @@ export function TableBody<T extends object>({ renderEmptyState, ...props }: Tabl
                 <svg
                   aria-hidden
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute -top-20 size-5 text-muted-foreground/50"
+                  className="text-muted-foreground/50 absolute -top-20 size-5"
                   viewBox="0 0 24 24"
                   fill="none"
                 >
@@ -152,7 +150,7 @@ export function TableBody<T extends object>({ renderEmptyState, ...props }: Tabl
                 <svg
                   aria-hidden
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute -start-10 top-0 size-5 text-muted-foreground/80"
+                  className="text-muted-foreground/80 absolute -start-10 top-0 size-5"
                   viewBox="0 0 24 24"
                   fill="none"
                 >
@@ -167,7 +165,7 @@ export function TableBody<T extends object>({ renderEmptyState, ...props }: Tabl
                 <svg
                   aria-hidden
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute -start-20 top-16 size-5 text-muted-foreground/70"
+                  className="text-muted-foreground/70 absolute -start-20 top-16 size-5"
                   viewBox="0 0 24 24"
                   fill="none"
                 >
@@ -182,7 +180,7 @@ export function TableBody<T extends object>({ renderEmptyState, ...props }: Tabl
                 <svg
                   aria-hidden
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute -end-24 top-16 size-5 text-muted-foreground/50"
+                  className="text-muted-foreground/50 absolute -end-24 top-16 size-5"
                   viewBox="0 0 24 24"
                   fill="none"
                 >
@@ -205,7 +203,7 @@ export function TableBody<T extends object>({ renderEmptyState, ...props }: Tabl
                 <svg
                   aria-hidden
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute start-24 top-0 size-5 text-muted-foreground/80"
+                  className="text-muted-foreground/80 absolute start-24 top-0 size-5"
                   viewBox="0 0 24 24"
                   fill="none"
                 >
@@ -220,7 +218,7 @@ export function TableBody<T extends object>({ renderEmptyState, ...props }: Tabl
                 <svg
                   aria-hidden
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute -end-20 -top-20 size-5 text-muted-foreground/80"
+                  className="text-muted-foreground/80 absolute -end-20 -top-20 size-5"
                   viewBox="0 0 24 24"
                   fill="none"
                 >
@@ -235,7 +233,7 @@ export function TableBody<T extends object>({ renderEmptyState, ...props }: Tabl
                 <svg
                   aria-hidden
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute -start-20 -top-10 size-5 text-muted-foreground/50"
+                  className="text-muted-foreground/50 absolute -start-20 -top-10 size-5"
                   viewBox="0 0 24 24"
                   fill="none"
                 >
@@ -258,24 +256,24 @@ export function TableBody<T extends object>({ renderEmptyState, ...props }: Tabl
                 </svg>
               </div>
               <i
-                className="absolute top-1/2 m-auto size-30 -translate-y-1/2 rounded-full border border-border/40 md:size-40"
+                className="border-border/40 absolute top-1/2 m-auto size-30 -translate-y-1/2 rounded-full border md:size-40"
                 aria-hidden
               />
               <i
-                className="absolute top-1/2 m-auto size-45 -translate-y-1/2 rounded-full border border-border/30 md:size-60"
+                className="border-border/30 absolute top-1/2 m-auto size-45 -translate-y-1/2 rounded-full border md:size-60"
                 aria-hidden
               />
               <i
-                className="absolute top-1/2 m-auto size-60 -translate-y-1/2 rounded-full border border-border/20 md:size-80"
+                className="border-border/20 absolute top-1/2 m-auto size-60 -translate-y-1/2 rounded-full border md:size-80"
                 aria-hidden
               />
               <i
-                className="absolute top-1/2 m-auto size-80 -translate-y-1/2 rounded-full border border-border/10 md:size-100"
+                className="border-border/10 absolute top-1/2 m-auto size-80 -translate-y-1/2 rounded-full border md:size-100"
                 aria-hidden
               />
 
               <div className="absolute top-[65%] space-y-0.5 px-2 text-center">
-                <CardTitle className="font-semibold text-lg">No data found</CardTitle>
+                <CardTitle className="text-lg font-semibold">No data found</CardTitle>
                 <CardDescription>
                   No information is currently available in this section.
                 </CardDescription>
@@ -301,13 +299,13 @@ export function TableColumn({ isResizable = false, className, ...props }: TableC
       {...props}
       className={cx(
         [
-          "text-start font-medium text-muted-foreground",
-          "relative allows-sorting:cursor-default dragging:cursor-grabbing outline-hidden",
+          "text-muted-foreground text-start font-medium",
+          "allows-sorting:cursor-default dragging:cursor-grabbing relative outline-hidden",
           "px-4 py-(--gutter-y)",
           "first:ps-(--gutter,--spacing(2)) last:pe-(--gutter,--spacing(2))",
-          !bleed && "sm:last:pe-1 sm:first:ps-1",
+          !bleed && "sm:first:ps-1 sm:last:pe-1",
           grid && "border-l first:border-l-0",
-          isResizable && "overflow-hidden truncate",
+          isResizable && "truncate overflow-hidden",
         ],
         className
       )}
@@ -322,7 +320,7 @@ export function TableColumn({ isResizable = false, className, ...props }: TableC
           {values.allowsSorting && (
             <span
               className={twJoin(
-                "touch-target grid size-[1.15rem] flex-none shrink-0 place-content-center rounded bg-secondary text-foreground *:[svg]:size-3.5 *:[svg]:shrink-0 *:[svg]:transition-transform *:[svg]:duration-200",
+                "touch-target bg-secondary text-foreground grid size-[1.15rem] flex-none shrink-0 place-content-center rounded *:[svg]:size-3.5 *:[svg]:shrink-0 *:[svg]:transition-transform *:[svg]:duration-200",
                 values.isHovered ? "bg-secondary-foreground/10" : ""
               )}
             >
@@ -369,6 +367,8 @@ export function TableHeader<T extends object>({
           data-slot="table-column"
           width={32}
           minWidth={32}
+          focusMode="child"
+          allowsArrowNavigation
           style={{ width: 32 }}
           className={cn("first:ps-(--gutter,--spacing(2))", !bleed && "sm:last:pe-1 sm:first:ps-1")}
         >
@@ -423,13 +423,13 @@ export function TableRow<T extends object>({
               "bg-primary/5 outline-primary ring-3 ring-ring/20 hover:bg-primary/10",
             isDragging && "cursor-grabbing bg-primary/10 text-foreground outline-primary",
             isSelected &&
-              "bg-(--table-selected-bg) text-foreground hover:bg-(--table-selected-bg)/50",
+              "bg-(--table-selected-background) text-foreground hover:bg-(--table-selected-background)/50",
             striped && "even:bg-muted",
             (props.href || props.onAction || selectionMode === "multiple") &&
-              "hover:bg-(--table-selected-bg) hover:text-foreground",
+              "hover:bg-(--table-selected-background) hover:text-foreground",
             (props.href || props.onAction || selectionMode === "multiple") &&
               isFocusVisibleWithin &&
-              "bg-(--table-selected-bg)/50 selected:bg-(--table-selected-bg)/50 text-foreground",
+              "bg-(--table-selected-background)/50 selected:bg-(--table-selected-background)/50 text-foreground",
             isDisabled && "opacity-50",
             className
           )
@@ -437,9 +437,9 @@ export function TableRow<T extends object>({
     >
       {allowsDragging && (
         <TableCell className="px-0">
-          <Button
+          <PrimitiveButton
             slot="drag"
-            className="grid place-content-center rounded-xs px-[calc(var(--gutter)/2)] outline-hidden focus-visible:ring focus-visible:ring-ring"
+            className="focus-visible:ring-ring grid place-content-center rounded-xs px-[calc(var(--gutter)/2)] outline-hidden focus-visible:ring"
           >
             <svg
               aria-hidden
@@ -460,11 +460,11 @@ export function TableRow<T extends object>({
               <circle cx={15} cy={5} r={1} />
               <circle cx={15} cy={19} r={1} />
             </svg>
-          </Button>
+          </PrimitiveButton>
         </TableCell>
       )}
       {selectionBehavior === "toggle" && (
-        <TableCell className="px-0">
+        <TableCell focusMode="child" allowsArrowNavigation className="px-0">
           <CheckboxField className="gap-x-0" slot="selection">
             <Checkbox className="col-span-1" />
           </CheckboxField>
@@ -487,11 +487,11 @@ export function TableCell({ className, ref, ...props }: TableCellProps) {
       {...props}
       className={cx(
         twJoin(
-          "group px-4 py-(--gutter-y) align-middle outline-hidden first:ps-(--gutter,--spacing(2)) last:pe-(--gutter,--spacing(2)) group-has-data-focus-visible-within:text-foreground",
+          "group group-has-data-focus-visible-within:text-foreground px-4 py-(--gutter-y) align-middle outline-hidden first:ps-(--gutter,--spacing(2)) last:pe-(--gutter,--spacing(2))",
           !striped && "border-b",
           grid && "border-l first:border-l-0",
-          !bleed && "sm:last:pe-1 sm:first:ps-1",
-          allowResize && "overflow-hidden truncate"
+          !bleed && "sm:first:ps-1 sm:last:pe-1",
+          allowResize && "truncate overflow-hidden"
         ),
         className
       )}
@@ -506,11 +506,11 @@ export function TableCell({ className, ref, ...props }: TableCellProps) {
         (children, { hasChildItems, isTreeColumn, isExpanded, isDisabled }) => (
           <div className={isTreeColumn ? "flex items-center" : undefined}>
             {hasChildItems && isTreeColumn && (
-              <Button
+              <PrimitiveButton
                 slot="chevron"
                 className={twJoin(
                   isDisabled && "opacity-50",
-                  "mr-2 grid size-[1.15rem] flex-none shrink-0 place-content-center rounded text-foreground hover:bg-secondary"
+                  "text-foreground hover:bg-secondary mr-2 grid size-[1.15rem] flex-none shrink-0 place-content-center rounded"
                 )}
               >
                 <ChevronRightIcon
@@ -519,7 +519,7 @@ export function TableCell({ className, ref, ...props }: TableCellProps) {
                     isExpanded && "rotate-90"
                   )}
                 />
-              </Button>
+              </PrimitiveButton>
             )}
 
             {children}
