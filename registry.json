@@ -2237,7 +2237,6 @@
           "type": "registry:ui"
         }
       ],
-      "type": "registry:ui",
       "css": {
         "@utility touch-target": {
           "position": "relative",
@@ -2255,7 +2254,8 @@
             "z-index": "9999"
           }
         }
-      }
+      },
+      "type": "registry:ui"
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
