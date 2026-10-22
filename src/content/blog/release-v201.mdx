@@ -1,28 +1,31 @@
 ---
 title: Release 2.0.1
-description: This release resolves bugs in certain components and introduces a new autocomplete feature from React Aria components, now integrated into the command menu.
+description: Intent UI v2.0.1 adds React Aria Autocomplete to Command Menu and updates labels, menu components, and sidebar shortcuts.
 published: 2025-01-16
 author: irsyadadl
 ---
 
-### What's New
-- **React Aria Components v1.6.0**: Upgraded to the latest version, delivering enhanced features and improved stability.
-- **Command Menu Upgrade**: Now integrates Autocomplete from React Aria Components, offering a faster and more seamless experience.
-    - CommandMenuInput renamed to CommandMenuSearch
-    + (New) - CommandMenuLabel
+## What's new
 
-- **Enhanced Usability**: Dropdown items with icons or avatars now require labels for improved clarity and accessibility.
+- **Dependencies**: Upgraded React Aria Components to v1.6.0.
+- **Command Menu**: Integrated Autocomplete from React Aria Components.
+    - Renamed `CommandMenuInput` to `CommandMenuSearch`.
+    - Added `CommandMenuLabel`.
 
-- **Menu Improvements**:
-    - Added `MenuLabel` for a more authentic menu appearance.
-    - (-) MenuCheckbox
-    - (-) MenuRadio
+- **Dropdown labels**: Items with icons or avatars now require labels.
 
-- **Sidebar Improvements**:
-    - Added `Sidebar.Label` for a more authentic sidebar appearance.
-    - Introduced shortcut props for collapsing the sidebar.
+- **Menu**:
+    - Added `MenuLabel`.
+    - Removed `MenuCheckbox` and `MenuRadio`.
 
-## Changes From Contributors
+- **Sidebar**:
+    - Added `Sidebar.Label`.
+    - Added shortcut props for collapsing the sidebar.
+
+## Contributor changes
+
+The entries below preserve the original pull request titles and contributor credits.
+
 * rm ld from ui by @irsyadadl in https://github.com/irsyadadl/intentui/pull/265
 * sync by @irsyadadl in https://github.com/irsyadadl/intentui/pull/269
 * Get latest by @irsyadadl in https://github.com/irsyadadl/intentui/pull/272
@@ -49,10 +52,11 @@ author: irsyadadl
 * fix: Toolbar Popover Weird Padding by @HSp4m in https://github.com/irsyadadl/intentui/pull/304
 * add search speedup by @Makisuo in https://github.com/irsyadadl/intentui/pull/311
 
-## New Contributors
+## New contributors
+
 * @bozaci made their first contribution in https://github.com/irsyadadl/intentui/pull/292
 * @iranzithierry made their first contribution in https://github.com/irsyadadl/intentui/pull/298
 * @stormynight9 made their first contribution in https://github.com/irsyadadl/intentui/pull/302
 * @HSp4m made their first contribution in https://github.com/irsyadadl/intentui/pull/304
 
-**Full Changelog**: https://github.com/irsyadadl/intentui/compare/v2.0.0...v2.0.1
+[Full changelog](https://github.com/irsyadadl/intentui/compare/v2.0.0...v2.0.1)
