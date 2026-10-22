@@ -1,13 +1,13 @@
 ---
 title: Release 4.0.0
-description: Intent UI v4 introduces clearer overlay composition, new sheet positions, and explicit theme token names, along with Intent UI Editor. Here's what changed and how to migrate from v3.
+description: Migrate from Intent UI v3 to v4 with updated overlay wrappers, sheet positions, component names, and theme tokens. This release also introduces Intent UI Editor.
 published: 2026-10-13
 author: irsyadadl
 ---
 
 ## Introduction
 
-Intent UI v4 brings a more consistent way to compose overlays and menus. The trigger wrapper manages the interaction, a button opens it, and the component itself renders the content.
+Intent UI v4 uses trigger wrappers to manage overlay and menu interactions. A button opens the overlay, and the component renders its content.
 
 This release includes breaking changes. If you're moving from v3, update both your imports and JSX structure, along with your theme tokens and custom styles.
 
@@ -31,7 +31,7 @@ This release includes breaking changes. If you're moving from v3, update both yo
 
 `BarList` was deprecated in v3 and has been removed in v4. Use [Leaderboard](/docs/components/visualizations/leaderboard) instead. Update imports from `@/components/ui/bar-list` to `@/components/ui/leaderboard`, and use `@intentui/leaderboard` for CLI installation. Leaderboard uses composable items instead of the `BarList` `data` prop; map your data to `LeaderboardItem` with `LeaderboardStart` and `LeaderboardEnd`.
 
-### A consistent composition pattern
+### Trigger wrappers and content
 
 In v3, names like `Modal` and `Menu` referred to the wrapper, while `ModalContent` and `MenuContent` rendered the content. In v4, the wrapper uses the `Trigger` suffix, and the content uses the component name directly.
 
@@ -170,7 +170,7 @@ import {
 </SheetTrigger>
 ```
 
-Alongside `top`, `bottom`, `left`, and `right`, `position` now supports `start`, `end`, and `center`. The default is still `right`.
+In addition to `top`, `bottom`, `left`, and `right`, `position` supports `start`, `end`, and `center`. The default is `right`.
 
 - `start` opens on the left in LTR layouts and on the right in RTL layouts.
 - `end` opens on the right in LTR layouts and on the left in RTL layouts.
@@ -181,6 +181,7 @@ Use `start` or `end` when the sheet should follow the locale's reading direction
 Read the [Sheet documentation](/docs/components/overlays/sheet) for position and controlled examples.
 
 ### Popover
+
 `PopoverTrigger` wraps the opening button and `Popover`. Move state props such as `isOpen`, `defaultOpen`, and `onOpenChange` to `PopoverTrigger`, and move content props to `Popover`. Update the imports from `@/components/ui/popover` along with the JSX.
 
 **Popover: v3 → v4**
@@ -252,6 +253,7 @@ For custom menu styling and TypeScript imports, `menuContentStyles` becomes `men
 Read the [Menu documentation](/docs/components/collections/menu) for selection, sections, and submenus.
 
 ### Context menu
+
 Context menu uses `MenuTrigger` with `trigger="contextMenu"`. Import the components from `@/components/ui/menu`.
 
 **Context menu: v3 → v4**
@@ -348,7 +350,7 @@ Read the [Preview documentation](/docs/components/overlays/preview) for complete
 
 ### Card spacing
 
-Card now uses `--card-spacing` instead of `--gutter` for its padding and gaps. Rename custom spacing overrides on `Card` and styles that read the card's spacing.
+`Card` now uses `--card-spacing` instead of `--gutter` for its padding and gaps. Rename custom spacing overrides on `Card` and styles that read the card's spacing.
 
 ```tsx
 // Before (v3)
@@ -358,7 +360,7 @@ Card now uses `--card-spacing` instead of `--gutter` for its padding and gaps. R
 <Card className="[--card-spacing:--spacing(4)]" />
 ```
 
-The default remains `--spacing(6)`. Table still uses `--gutter`; when a table sits inside a card, set its gutter explicitly to the card spacing.
+The default remains `--spacing(6)`. `Table` still uses `--gutter`; when a table sits inside a card, set its gutter explicitly to the card spacing.
 
 ```tsx
 <Card>
@@ -469,17 +471,17 @@ Only the token names change here. Tailwind utility prefixes such as `bg-` stay t
 
 ## Intent UI Editor
 
-Intent UI v4 also introduces **Intent UI Editor**, created by [@htmujahid](https://x.com/htmujahid) and available at [**intentui.com/editor**](https://intentui.com/editor).
+Intent UI v4 introduces [Intent UI Editor](https://intentui.com/editor), created by [@htmujahid](https://x.com/htmujahid).
 
 Install it in your project with the shadcn CLI:
 
 <PackageCommand command="npx shadcn@latest add @intentui/editor"/>
 
-Read the [quick start guide](https://editor.intentui.com/docs/getting-started/quick-start) to get started.
+Follow the [quick start guide](https://editor.intentui.com/docs/getting-started/quick-start) for setup instructions.
 
-## Upgrade with Agent Skills
+## Upgrade with agent skills
 
-Intent UI now includes official Agent Skills to help you develop components, use premium resources, and upgrade an existing application. Install them from the main repository:
+Intent UI provides agent skills for component development, premium resources, and migration. Install them from the main repository:
 
 ```bash
 npx skills add irsyadadl/intentui

@@ -1,13 +1,13 @@
 ---
 title: Release 3.5.0
-description: Intent UI v3.5.0 adds new components, upgrades core dependencies, and introduces clearer, more consistent form APIs.
+description: Intent UI v3.5.0 adds Input, ButtonGroup, Text, Fieldset, and Legend, and moves form labels, descriptions, and errors to child elements.
 published: 2025-10-24
 author: irsyadadl
 ---
 
 ## Introduction
 
-Intent UI v3.5.0 is here. This release adds new components, refines form patterns, and upgrades key dependencies to improve speed, consistency, and accessibility.
+Intent UI v3.5.0 adds five components, updates dependencies, and changes how form fields compose labels, descriptions, and errors.
 
 ### New components
 
@@ -19,14 +19,14 @@ Intent UI v3.5.0 is here. This release adds new components, refines form pattern
 
 ### Highlights
 
-* Updated to the latest React Aria Components and Tailwind CSS.
+* Updated React Aria Components and Tailwind CSS.
 * `Input` provides a consistent, accessible primitive for form fields.
-* `ButtonGroup` lets you group related actions with a compact layout.
-* `Text` standardizes typography so content looks consistent across your app.
+* `ButtonGroup` groups related actions in a compact layout.
+* `Text` provides shared typography styles.
 
 ## Breaking changes
 
-Form components now use explicit child elements for labels, descriptions, and errors. This improves flexibility and composition.
+Replace form label, description, and error props with child elements as shown below.
 
 ### TextField
 
@@ -76,7 +76,7 @@ Form components now use explicit child elements for labels, descriptions, and er
 
 ### Checkbox
 
-`CheckboxLabel` replaces using `Label` inside `Checkbox`.
+Replace `Label` with `CheckboxLabel` inside `Checkbox`.
 
 ```tsx
 <Checkbox>
@@ -86,7 +86,7 @@ Form components now use explicit child elements for labels, descriptions, and er
 
 ### Switch
 
-`SwitchLabel` replaces using `Label` inside `Switch`.
+Replace `Label` with `SwitchLabel` inside `Switch`.
 
 **Before**
 
@@ -106,7 +106,7 @@ Form components now use explicit child elements for labels, descriptions, and er
 
 ### Select
 
-Props for `label`, `description`, and `errorMessage` are removed in favor of child elements.
+Replace the removed `label`, `description`, and `errorMessage` props with `Label`, `Description`, and `FieldError` children.
 
 **Before**
 
@@ -134,7 +134,7 @@ Props for `label`, `description`, and `errorMessage` are removed in favor of chi
 
 ### ComboBox
 
-Same pattern as Select and TextField.
+Replace the ComboBox `label`, `description`, and `errorMessage` props with `Label`, `Description`, and `FieldError` children.
 
 **Before**
 
@@ -161,17 +161,18 @@ Same pattern as Select and TextField.
 ```
 
 ## Additional changes
-Components that used dot notation like `Card.Header` and `Modal.Footer` are now flattened; use `CardHeader` and `ModalFooter` instead.
 
+Replace dot-notation component names such as `Card.Header` and `Modal.Footer` with `CardHeader` and `ModalFooter`.
 
 ## Migration notes
 
 * Replace removed props with `<Label>`, `<Description>`, and `<FieldError>` children.
 * Use `CheckboxLabel` and `SwitchLabel` for their respective components.
 
-
 ## Intent UI Design
-Intent UI Design has been updated to match the latest components and patterns in this release. Enjoy **[35% off](https://design.intentui.com/pricing)** all templates and design assets for a limited time. One-time purchase, no subscription.
+
+Intent UI Design has been updated to match the components and patterns in v3.5.0. At launch, templates and design assets were offered at 35% off as a one-time purchase. See [pricing](https://design.intentui.com/pricing) for available options.
 
 ## Support
+
 If you find this work useful, you can sponsor me on [GitHub](/sponsor).
