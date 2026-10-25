@@ -39,7 +39,7 @@ export default function Page() {
         <Blocks />
       </div>
       <>
-        <div className="border-page sm:border-x">
+        <div>
           <Components />
           <OtherResources />
 
