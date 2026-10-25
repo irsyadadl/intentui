@@ -413,7 +413,7 @@ const buildComponentItem = async (absPath: string) => {
     dependencies: deps.length ? deps : undefined,
     registryDependencies: regDeps.length ? regDeps : undefined,
     files,
-    ...(name === "button"
+    ...(["button", "toggle", "toggle-group"].includes(name)
       ? { css: { "@utility touch-target": customCSS["@utility touch-target"] } }
       : {}),
     ...(name === "sheet"
