@@ -47,7 +47,7 @@ export function StatsDisplay({ pageviews }: { pageviews: Record<Range, number | 
             <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>{" "}
-        pageviews
+        views
       </Text>
     </div>
   )
