@@ -1,5 +1,17 @@
 [
   {
+    "name": "Tree",
+    "component": "tree.tsx",
+    "url": "/tree",
+    "type": "component",
+    "category": "collections",
+    "kind": "improvement",
+    "description": null,
+    "additions": 1,
+    "deletions": 1,
+    "date": "2026-10-26"
+  },
+  {
     "name": "Bar list controlled example",
     "component": "bar-list-controlled-example.tsx",
     "url": null,

@@ -43,7 +43,7 @@ export function TreeItem<T extends object>({ className, ...props }: TreeItemProp
           "**:data-[slot=avatar]:*:size-6 **:data-[slot=avatar]:size-6 sm:**:data-[slot=avatar]:*:size-5 sm:**:data-[slot=avatar]:size-5",
           "**:[svg]:size-5 **:[svg]:shrink-0 sm:**:[svg]:size-4",
           "**:[svg:not([data-slot=check-indicator]):not([data-slot=chevron])]:me-1",
-          "disabled:opacity-50 forced-colors:[",
+          "disabled:opacity-50 forced-colors:text-[GrayText]",
           "href" in props ? "cursor-pointer" : "cursor-default",
         ],
         className
