@@ -27,7 +27,7 @@ export function StatsDisplay({ pageviews }: { pageviews: Record<Range, number | 
         <span className="relative mr-2 inline-block">
           <select
             aria-label="Pageviews date range"
-            className="field-sizing-content appearance-none rounded-full bg-muted py-1 pr-8 pl-2"
+            className="field-sizing-content appearance-none rounded-full bg-muted py-1 pr-7 pl-2"
             name="stats-range"
             value={range}
             onChange={(event) => setRange(event.target.value as Range)}
