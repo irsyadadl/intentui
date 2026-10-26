@@ -174,7 +174,7 @@
       },
       "css": {
         "@import \"tw-animate-css\"": {},
-        "@plugin tailwindcss-react-aria-components": {},
+        "@plugin \"tailwindcss-react-aria-components\"": {},
         "@layer base": {
           "*, ::after, ::before, ::backdrop, ::file-selector-button": {
             "border-color": "var(--border, currentColor)"
@@ -2098,7 +2098,7 @@
       "name": "area-chart",
       "title": "area-chart",
       "description": "area-chart",
-      "dependencies": ["recharts"],
+      "dependencies": ["recharts", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/chart"],
       "files": [
         {
@@ -2106,6 +2106,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2114,13 +2117,16 @@
       "name": "avatar",
       "title": "avatar",
       "description": "avatar",
-      "dependencies": ["cn"],
+      "dependencies": ["cn", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/avatar.tsx",
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2129,7 +2135,7 @@
       "name": "badge",
       "title": "badge",
       "description": "badge",
-      "dependencies": ["tailwind-variants"],
+      "dependencies": ["tailwind-variants", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/badge.tsx",
@@ -2174,6 +2180,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2182,7 +2191,7 @@
       "name": "bar-chart",
       "title": "bar-chart",
       "description": "bar-chart",
-      "dependencies": ["recharts"],
+      "dependencies": ["recharts", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/chart"],
       "files": [
         {
@@ -2190,6 +2199,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2198,7 +2210,12 @@
       "name": "breadcrumbs",
       "title": "breadcrumbs",
       "description": "breadcrumbs",
-      "dependencies": ["@heroicons/react", "react-aria-components", "cn"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": ["http://localhost:3000/r/primitive", "http://localhost:3000/r/link"],
       "files": [
         {
@@ -2206,6 +2223,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2214,13 +2234,16 @@
       "name": "button-group",
       "title": "button-group",
       "description": "button-group",
-      "dependencies": ["cn", "tailwind-variants"],
+      "dependencies": ["cn", "tailwind-variants", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/button-group.tsx",
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2229,7 +2252,11 @@
       "name": "button",
       "title": "button",
       "description": "button",
-      "dependencies": ["react-aria-components", "tailwind-variants"],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -2238,6 +2265,7 @@
         }
       ],
       "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {},
         "@utility touch-target": {
           "position": "relative",
           "&::before": {
@@ -2263,7 +2291,12 @@
       "name": "calendar",
       "title": "calendar",
       "description": "calendar",
-      "dependencies": ["@heroicons/react", "react-aria-components", "cn"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/select"],
       "files": [
         {
@@ -2271,6 +2304,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2279,13 +2315,16 @@
       "name": "card",
       "title": "card",
       "description": "card",
-      "dependencies": ["cn"],
+      "dependencies": ["cn", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/card.tsx",
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2294,7 +2333,12 @@
       "name": "carousel",
       "title": "carousel",
       "description": "carousel",
-      "dependencies": ["@heroicons/react", "embla-carousel-react", "cn"],
+      "dependencies": [
+        "@heroicons/react",
+        "embla-carousel-react",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/button"
@@ -2305,6 +2349,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2313,7 +2360,12 @@
       "name": "chart",
       "title": "chart",
       "description": "chart",
-      "dependencies": ["react-aria-components", "recharts", "cn"],
+      "dependencies": [
+        "react-aria-components",
+        "recharts",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/use-mobile",
         "http://localhost:3000/r/primitive"
@@ -2338,6 +2390,9 @@
           "overlay-foreground": "oklch(0.985 0 0)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2346,7 +2401,12 @@
       "name": "checkbox",
       "title": "checkbox",
       "description": "checkbox",
-      "dependencies": ["@heroicons/react", "react-aria-components", "cn"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/field"
@@ -2371,6 +2431,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2379,7 +2442,12 @@
       "name": "choice-box",
       "title": "choice-box",
       "description": "choice-box",
-      "dependencies": ["react-aria-components", "cn", "tailwind-variants"],
+      "dependencies": [
+        "react-aria-components",
+        "cn",
+        "tailwind-variants",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/checkbox"
@@ -2407,6 +2475,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2415,7 +2486,7 @@
       "name": "color-area",
       "title": "color-area",
       "description": "color-area",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/color-thumb"
@@ -2426,6 +2497,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2434,7 +2508,7 @@
       "name": "color-field",
       "title": "color-field",
       "description": "color-field",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/field"
@@ -2445,6 +2519,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2453,7 +2530,13 @@
       "name": "color-picker",
       "title": "color-picker",
       "description": "color-picker",
-      "dependencies": ["@heroicons/react", "@react-stately/color", "react-aria-components", "cn"],
+      "dependencies": [
+        "@heroicons/react",
+        "@react-stately/color",
+        "react-aria-components",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/field"],
       "files": [
         {
@@ -2461,6 +2544,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2469,7 +2555,7 @@
       "name": "color-slider",
       "title": "color-slider",
       "description": "color-slider",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/field",
         "http://localhost:3000/r/primitive"
@@ -2480,6 +2566,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2488,7 +2577,7 @@
       "name": "color-swatch-picker",
       "title": "color-swatch-picker",
       "description": "color-swatch-picker",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -2496,6 +2585,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2504,7 +2596,7 @@
       "name": "color-swatch",
       "title": "color-swatch",
       "description": "color-swatch",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -2512,6 +2604,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2520,7 +2615,7 @@
       "name": "color-thumb",
       "title": "color-thumb",
       "description": "color-thumb",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -2528,6 +2623,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2536,7 +2634,7 @@
       "name": "color-wheel",
       "title": "color-wheel",
       "description": "color-wheel",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/color-thumb"],
       "files": [
         {
@@ -2544,6 +2642,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2552,7 +2653,11 @@
       "name": "combo-box",
       "title": "combo-box",
       "description": "combo-box",
-      "dependencies": ["@heroicons/react", "react-aria-components"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/field",
         "http://localhost:3000/r/input",
@@ -2566,6 +2671,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2574,7 +2682,12 @@
       "name": "command-menu",
       "title": "command-menu",
       "description": "command-menu",
-      "dependencies": ["@heroicons/react", "react-aria-components", "cn"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/dropdown",
@@ -2601,6 +2714,9 @@
           "overlay-foreground": "oklch(0.985 0 0)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2609,13 +2725,16 @@
       "name": "container",
       "title": "container",
       "description": "container",
-      "dependencies": ["cn"],
+      "dependencies": ["cn", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/container.tsx",
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2624,7 +2743,7 @@
       "name": "date-field",
       "title": "date-field",
       "description": "date-field",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/field"
@@ -2655,6 +2774,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2667,7 +2789,8 @@
         "@heroicons/react",
         "@internationalized/date",
         "react-aria-components",
-        "cn"
+        "cn",
+        "tailwindcss-react-aria-components"
       ],
       "registryDependencies": [
         "http://localhost:3000/r/use-mobile",
@@ -2686,6 +2809,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2698,7 +2824,8 @@
         "@heroicons/react",
         "@internationalized/date",
         "react-aria-components",
-        "cn"
+        "cn",
+        "tailwindcss-react-aria-components"
       ],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
@@ -2730,6 +2857,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2738,13 +2868,16 @@
       "name": "description-list",
       "title": "description-list",
       "description": "description-list",
-      "dependencies": ["cn"],
+      "dependencies": ["cn", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/description-list.tsx",
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2753,7 +2886,12 @@
       "name": "dialog",
       "title": "dialog",
       "description": "dialog",
-      "dependencies": ["@heroicons/react", "react-aria-components", "cn"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/button"
@@ -2778,6 +2916,9 @@
           "overlay-foreground": "oklch(0.985 0 0)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2786,7 +2927,7 @@
       "name": "disclosure-group",
       "title": "disclosure-group",
       "description": "disclosure-group",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -2794,6 +2935,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2802,13 +2946,16 @@
       "name": "drop-zone",
       "title": "drop-zone",
       "description": "drop-zone",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/drop-zone.tsx",
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2817,7 +2964,13 @@
       "name": "dropdown",
       "title": "dropdown",
       "description": "dropdown",
-      "dependencies": ["@heroicons/react", "react-aria-components", "cn", "tailwind-variants"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "cn",
+        "tailwind-variants",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": ["http://localhost:3000/r/keyboard"],
       "files": [
         {
@@ -2845,6 +2998,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2853,7 +3009,12 @@
       "name": "field",
       "title": "field",
       "description": "field",
-      "dependencies": ["react-aria-components", "cn", "tailwind-variants"],
+      "dependencies": [
+        "react-aria-components",
+        "cn",
+        "tailwind-variants",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -2872,6 +3033,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2880,7 +3044,12 @@
       "name": "file-trigger",
       "title": "file-trigger",
       "description": "file-trigger",
-      "dependencies": ["@heroicons/react", "react-aria-components", "tailwind-variants"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "tailwind-variants",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/loader"],
       "files": [
         {
@@ -2888,6 +3057,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2896,7 +3068,7 @@
       "name": "grid-list",
       "title": "grid-list",
       "description": "grid-list",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/checkbox"
@@ -2907,6 +3079,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2915,13 +3090,16 @@
       "name": "heading",
       "title": "heading",
       "description": "heading",
-      "dependencies": ["cn"],
+      "dependencies": ["cn", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/heading.tsx",
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2930,7 +3108,7 @@
       "name": "input-otp",
       "title": "input-otp",
       "description": "input-otp",
-      "dependencies": ["@heroicons/react", "input-otp", "cn"],
+      "dependencies": ["@heroicons/react", "input-otp", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/field"],
       "files": [
         {
@@ -2952,6 +3130,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2960,7 +3141,7 @@
       "name": "input",
       "title": "input",
       "description": "input",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -2979,6 +3160,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -2987,13 +3171,16 @@
       "name": "keyboard",
       "title": "keyboard",
       "description": "keyboard",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/keyboard.tsx",
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3002,7 +3189,7 @@
       "name": "leaderboard",
       "title": "leaderboard",
       "description": "leaderboard",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -3010,6 +3197,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3018,7 +3208,7 @@
       "name": "line-chart",
       "title": "line-chart",
       "description": "line-chart",
-      "dependencies": ["recharts"],
+      "dependencies": ["recharts", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/chart"],
       "files": [
         {
@@ -3026,6 +3216,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3034,7 +3227,7 @@
       "name": "link",
       "title": "link",
       "description": "link",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -3042,6 +3235,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3050,7 +3246,12 @@
       "name": "list-box",
       "title": "list-box",
       "description": "list-box",
-      "dependencies": ["@heroicons/react", "react-aria-components", "cn"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/dropdown"
@@ -3061,6 +3262,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3069,13 +3273,16 @@
       "name": "loader",
       "title": "loader",
       "description": "loader",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/loader.tsx",
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3084,7 +3291,13 @@
       "name": "menu",
       "title": "menu",
       "description": "menu",
-      "dependencies": ["@heroicons/react", "react-aria-components", "cn", "tailwind-variants"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "cn",
+        "tailwind-variants",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/dropdown",
@@ -3116,6 +3329,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3124,7 +3340,7 @@
       "name": "meter",
       "title": "meter",
       "description": "meter",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -3132,6 +3348,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3140,7 +3359,7 @@
       "name": "multiple-select",
       "title": "multiple-select",
       "description": "multiple-select",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/button",
@@ -3156,6 +3375,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3164,7 +3386,7 @@
       "name": "native-select",
       "title": "native-select",
       "description": "native-select",
-      "dependencies": ["@heroicons/react", "cn"],
+      "dependencies": ["@heroicons/react", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/field"],
       "files": [
         {
@@ -3183,6 +3405,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3191,7 +3416,7 @@
       "name": "navbar",
       "title": "navbar",
       "description": "navbar",
-      "dependencies": ["@heroicons/react", "motion", "cn"],
+      "dependencies": ["@heroicons/react", "motion", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/link",
         "http://localhost:3000/r/use-mobile",
@@ -3206,6 +3431,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3214,7 +3442,7 @@
       "name": "note",
       "title": "note",
       "description": "note",
-      "dependencies": ["@heroicons/react", "cn"],
+      "dependencies": ["@heroicons/react", "cn", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/note.tsx",
@@ -3253,6 +3481,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3261,7 +3492,11 @@
       "name": "number-field",
       "title": "number-field",
       "description": "number-field",
-      "dependencies": ["@heroicons/react", "react-aria-components"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/input",
         "http://localhost:3000/r/primitive",
@@ -3273,6 +3508,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3281,7 +3519,7 @@
       "name": "pagination",
       "title": "pagination",
       "description": "pagination",
-      "dependencies": ["cn"],
+      "dependencies": ["cn", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/button",
         "http://localhost:3000/r/link",
@@ -3293,6 +3531,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3301,7 +3542,7 @@
       "name": "pie-chart",
       "title": "pie-chart",
       "description": "pie-chart",
-      "dependencies": ["recharts"],
+      "dependencies": ["recharts", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/chart"],
       "files": [
         {
@@ -3309,6 +3550,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3317,7 +3561,7 @@
       "name": "popover",
       "title": "popover",
       "description": "popover",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/dialog"
@@ -3342,6 +3586,9 @@
           "overlay-foreground": "oklch(0.985 0 0)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3350,7 +3597,7 @@
       "name": "preview",
       "title": "preview",
       "description": "preview",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/popover",
         "http://localhost:3000/r/primitive"
@@ -3361,6 +3608,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3369,7 +3619,7 @@
       "name": "progress-bar",
       "title": "progress-bar",
       "description": "progress-bar",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -3377,6 +3627,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3385,13 +3638,16 @@
       "name": "progress-circle",
       "title": "progress-circle",
       "description": "progress-circle",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/progress-circle.tsx",
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3400,7 +3656,7 @@
       "name": "radar-chart",
       "title": "radar-chart",
       "description": "radar-chart",
-      "dependencies": ["recharts"],
+      "dependencies": ["recharts", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/use-mobile",
         "http://localhost:3000/r/chart"
@@ -3411,6 +3667,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3419,7 +3678,7 @@
       "name": "radial-bar-chart",
       "title": "radial-bar-chart",
       "description": "radial-bar-chart",
-      "dependencies": ["recharts"],
+      "dependencies": ["recharts", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/chart"],
       "files": [
         {
@@ -3427,6 +3686,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3435,7 +3697,7 @@
       "name": "radio",
       "title": "radio",
       "description": "radio",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/field"
@@ -3460,6 +3722,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3468,7 +3733,7 @@
       "name": "range-calendar",
       "title": "range-calendar",
       "description": "range-calendar",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/calendar"],
       "files": [
         {
@@ -3496,6 +3761,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3504,13 +3772,16 @@
       "name": "scroll-area",
       "title": "scroll-area",
       "description": "scroll-area",
-      "dependencies": ["cn"],
+      "dependencies": ["cn", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/scroll-area.tsx",
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3519,7 +3790,12 @@
       "name": "search-field",
       "title": "search-field",
       "description": "search-field",
-      "dependencies": ["@heroicons/react", "react-aria-components", "cn"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/field",
         "http://localhost:3000/r/primitive",
@@ -3531,6 +3807,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3539,7 +3818,12 @@
       "name": "select",
       "title": "select",
       "description": "select",
-      "dependencies": ["@heroicons/react", "react-aria-components", "cn"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/dropdown",
@@ -3563,6 +3847,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3571,13 +3858,16 @@
       "name": "separator",
       "title": "separator",
       "description": "separator",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/separator.tsx",
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3586,7 +3876,7 @@
       "name": "sheet",
       "title": "sheet",
       "description": "sheet",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/dialog"
@@ -3614,6 +3904,7 @@
         }
       },
       "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {},
         "@keyframes sheet-backdrop": {
           "from": {
             "opacity": "0"
@@ -3641,7 +3932,11 @@
       "name": "show-more",
       "title": "show-more",
       "description": "show-more",
-      "dependencies": ["react-aria-components", "tailwind-variants"],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/text"],
       "files": [
         {
@@ -3649,6 +3944,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3657,7 +3955,12 @@
       "name": "sidebar",
       "title": "sidebar",
       "description": "sidebar",
-      "dependencies": ["@heroicons/react", "react-aria-components", "cn"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/dialog",
         "http://localhost:3000/r/sheet",
@@ -3674,6 +3977,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3682,13 +3988,16 @@
       "name": "skeleton",
       "title": "skeleton",
       "description": "skeleton",
-      "dependencies": ["cn"],
+      "dependencies": ["cn", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/skeleton.tsx",
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3697,7 +4006,7 @@
       "name": "slider",
       "title": "slider",
       "description": "slider",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -3705,6 +4014,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3713,7 +4025,7 @@
       "name": "snippet",
       "title": "snippet",
       "description": "snippet",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/button",
         "http://localhost:3000/r/tabs",
@@ -3726,6 +4038,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3734,7 +4049,7 @@
       "name": "switch",
       "title": "switch",
       "description": "switch",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/field",
         "http://localhost:3000/r/primitive"
@@ -3745,6 +4060,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3753,7 +4071,12 @@
       "name": "table",
       "title": "table",
       "description": "table",
-      "dependencies": ["@heroicons/react", "react-aria-components", "cn"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/card",
         "http://localhost:3000/r/primitive",
@@ -3765,6 +4088,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3773,7 +4099,7 @@
       "name": "tabs",
       "title": "tabs",
       "description": "tabs",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -3795,6 +4121,9 @@
           "primary-subtle-foreground": "oklch(0.707 0.165 254.624)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3803,7 +4132,7 @@
       "name": "tag-field",
       "title": "tag-field",
       "description": "tag-field",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/field",
         "http://localhost:3000/r/tag-group",
@@ -3815,6 +4144,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3823,7 +4155,12 @@
       "name": "tag-group",
       "title": "tag-group",
       "description": "tag-group",
-      "dependencies": ["@heroicons/react", "react-aria-components", "cn"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -3845,6 +4182,9 @@
           "primary-subtle-foreground": "oklch(0.707 0.165 254.624)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3853,7 +4193,7 @@
       "name": "text-field",
       "title": "text-field",
       "description": "text-field",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/field"
@@ -3864,6 +4204,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3872,7 +4215,7 @@
       "name": "text",
       "title": "text",
       "description": "text",
-      "dependencies": ["cn", "tailwind-variants"],
+      "dependencies": ["cn", "tailwind-variants", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/primitive", "http://localhost:3000/r/link"],
       "files": [
         {
@@ -3891,6 +4234,9 @@
           "primary-subtle-foreground": "oklch(0.707 0.165 254.624)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3899,7 +4245,7 @@
       "name": "textarea",
       "title": "textarea",
       "description": "textarea",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -3918,6 +4264,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3926,7 +4275,7 @@
       "name": "time-field",
       "title": "time-field",
       "description": "time-field",
-      "dependencies": ["react-aria-components"],
+      "dependencies": ["react-aria-components", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/date-field",
         "http://localhost:3000/r/primitive",
@@ -3938,6 +4287,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3946,7 +4298,7 @@
       "name": "toast",
       "title": "toast",
       "description": "toast",
-      "dependencies": ["sonner", "cn"],
+      "dependencies": ["sonner", "cn", "tailwindcss-react-aria-components"],
       "files": [
         {
           "path": "src/components/ui/toast.tsx",
@@ -3991,6 +4343,9 @@
           "danger-subtle-foreground": "oklch(0.704 0.191 22.216)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -3999,7 +4354,12 @@
       "name": "toggle-group",
       "title": "toggle-group",
       "description": "toggle-group",
-      "dependencies": ["react-aria-components", "cn", "tailwind-variants"],
+      "dependencies": [
+        "react-aria-components",
+        "cn",
+        "tailwind-variants",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": ["http://localhost:3000/r/primitive"],
       "files": [
         {
@@ -4008,6 +4368,7 @@
         }
       ],
       "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {},
         "@utility touch-target": {
           "position": "relative",
           "&::before": {
@@ -4033,7 +4394,12 @@
       "name": "toggle",
       "title": "toggle",
       "description": "toggle",
-      "dependencies": ["react-aria-components", "cn", "tailwind-variants"],
+      "dependencies": [
+        "react-aria-components",
+        "cn",
+        "tailwind-variants",
+        "tailwindcss-react-aria-components"
+      ],
       "files": [
         {
           "path": "src/components/ui/toggle.tsx",
@@ -4041,6 +4407,7 @@
         }
       ],
       "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {},
         "@utility touch-target": {
           "position": "relative",
           "&::before": {
@@ -4066,7 +4433,7 @@
       "name": "toolbar",
       "title": "toolbar",
       "description": "toolbar",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/separator",
@@ -4089,6 +4456,9 @@
           "overlay": "oklch(0.210 0.006 285.885)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -4097,7 +4467,12 @@
       "name": "tooltip",
       "title": "tooltip",
       "description": "tooltip",
-      "dependencies": ["react-aria-components", "cn", "tailwind-variants"],
+      "dependencies": [
+        "react-aria-components",
+        "cn",
+        "tailwind-variants",
+        "tailwindcss-react-aria-components"
+      ],
       "files": [
         {
           "path": "src/components/ui/tooltip.tsx",
@@ -4118,6 +4493,9 @@
           "overlay-foreground": "oklch(0.985 0 0)"
         }
       },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -4126,7 +4504,7 @@
       "name": "tracker",
       "title": "tracker",
       "description": "tracker",
-      "dependencies": ["react-aria-components", "cn"],
+      "dependencies": ["react-aria-components", "cn", "tailwindcss-react-aria-components"],
       "registryDependencies": ["http://localhost:3000/r/tooltip"],
       "files": [
         {
@@ -4134,6 +4512,9 @@
           "type": "registry:ui"
         }
       ],
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
+      },
       "type": "registry:ui"
     },
     {
@@ -4142,7 +4523,12 @@
       "name": "tree",
       "title": "tree",
       "description": "tree",
-      "dependencies": ["@heroicons/react", "react-aria-components", "cn"],
+      "dependencies": [
+        "@heroicons/react",
+        "react-aria-components",
+        "cn",
+        "tailwindcss-react-aria-components"
+      ],
       "registryDependencies": [
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/checkbox"
@@ -4166,6 +4552,9 @@
           "primary-subtle": "oklch(0.623 0.214 259.815 / 0.1)",
           "primary-subtle-foreground": "oklch(0.707 0.165 254.624)"
         }
+      },
+      "css": {
+        "@plugin \"tailwindcss-react-aria-components\"": {}
       },
       "type": "registry:ui"
     },
