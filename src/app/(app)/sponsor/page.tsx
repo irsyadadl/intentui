@@ -4,6 +4,8 @@ import { Header, HeaderDescription, HeaderInner, HeaderTitle } from "@/component
 import { JsonLd } from "@/components/json-ld"
 import { app } from "@/config/app"
 import { createMetadata } from "@/lib/metadata"
+import { Stats } from "@/app/(app)/sponsor/stats"
+import { PageContainer } from "@/components/page-container"
 
 export const metadata = createMetadata({
   title: "Sponsor",
@@ -43,6 +45,13 @@ export default function Page() {
           </HeaderDescription>
         </HeaderInner>
       </Header>
+      <div className="border-t border-page">
+        <PageContainer>
+          <div className="border-x p-6 border-page">
+            <Stats />
+          </div>
+        </PageContainer>
+      </div>
       <SponsorPlan />
       <DesignIntentui />
     </>
