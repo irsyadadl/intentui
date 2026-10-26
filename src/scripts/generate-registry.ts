@@ -45,9 +45,13 @@ const HOOKS_DIR = path.resolve(ROOT, "src/hooks")
 const BLOCKS_DIR = path.resolve(ROOT, "src/app/pre-blocks")
 const STAGE_DIR = path.resolve(ROOT, "registry")
 
+const reactAriaPluginCSS = {
+  '@plugin "tailwindcss-react-aria-components"': {},
+}
+
 const customCSS = {
   '@import "tw-animate-css"': {},
-  "@plugin tailwindcss-react-aria-components": {},
+  ...reactAriaPluginCSS,
 
   "@layer base": {
     "*, ::after, ::before, ::backdrop, ::file-selector-button": {
@@ -398,7 +402,7 @@ const buildComponentItem = async (absPath: string) => {
   const name = path.basename(absPath, path.extname(absPath))
   const code = await read(absPath)
   const specs = importSpecifiers(code)
-  const deps = topLevelPackages(specs)
+  const deps = [...new Set([...topLevelPackages(specs), "tailwindcss-react-aria-components"])]
   const regDeps = await findInternalDepsForFile(absPath, specs)
   const files: FileOut[] = [await fileEntryOther(absPath, "registry:ui")]
   const cssVars = componentCssVars(code).cssVars
@@ -447,7 +451,10 @@ const buildComponentItem = async (absPath: string) => {
         }
       : {}),
   }
-  return registryItemSchema.parse(raw)
+  return registryItemSchema.parse({
+    ...raw,
+    css: { ...reactAriaPluginCSS, ...raw.css },
+  })
 }
 
 const buildLibItem = async (absPath: string) => {
