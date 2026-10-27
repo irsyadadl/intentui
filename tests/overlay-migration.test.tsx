@@ -71,7 +71,7 @@ describe("overlay migration", () => {
   it("opens a custom avatar trigger by keyboard and closes with Escape", async () => {
     const user = userEvent.setup()
     render(<PopoverTriggerDemo />)
-    const trigger = screen.getByRole("button", { name: "Open account details" })
+    const trigger = screen.getByRole("button", { name: "cobain" })
     trigger.focus()
     await user.keyboard("{Enter}")
     expect(await screen.findByRole("dialog", { name: "Account details" })).toBeVisible()
