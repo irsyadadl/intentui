@@ -70,7 +70,7 @@ export function DocRefs({ references }: { references: string[] }) {
         {urls.map(
           (item: { url: string; title: string; icon: React.FC<React.SVGProps<SVGSVGElement>> }) => (
             <LinkButton
-              className="h-10 sm:h-auto dark:bg-secondary/50 dark:hover:bg-secondary"
+              className="h-10 max-w-30 sm:max-w-none sm:h-auto dark:bg-secondary/50 dark:hover:bg-secondary"
               key={item.url}
               target="_blank"
               size="sm"
@@ -83,8 +83,7 @@ export function DocRefs({ references }: { references: string[] }) {
                   data-slot="icon"
                 />
               )}
-
-              {item.title}
+              <span className="block truncate">{item.title}</span>
             </LinkButton>
           )
         )}
