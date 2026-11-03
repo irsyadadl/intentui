@@ -26,7 +26,7 @@ import { Heading } from "@/components/docs/heading"
 
 export const mdxComponents = {
   pre: (props: React.ComponentProps<typeof PlainCode>) => (
-    <PlainCode className="not-typeset bg-black" {...props}>
+    <PlainCode className="not-typeset" {...props}>
       <Pre>{props.children}</Pre>
     </PlainCode>
   ),

@@ -51,7 +51,7 @@ const frameworks = [
 export function FrameworkGuides() {
   return (
     <ChoiceBox
-      className="mt-6 not-typeset"
+      className="mt-6 not-typeset dark:inset-ring-muted-foreground/15 dark:bg-muted"
       selectionMode="single"
       aria-label="Framework guides"
       items={frameworks}

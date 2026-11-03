@@ -87,7 +87,7 @@ export function CodeBlock({ source }: Props) {
           </div>
           {Object.entries(contents).map(([key, value]) => (
             <TabPanel key={key} id={key}>
-              <div className="relative overflow-hidden rounded-lg border bg-shiki-bg">
+              <div className="relative overflow-hidden rounded-lg border border-border dark:border-muted-foreground/15 bg-background dark:bg-muted">
                 <CopyButton
                   className="absolute top-1 right-1 z-2 grid size-10 place-content-center"
                   onPress={() => handleCopy(key, value)}

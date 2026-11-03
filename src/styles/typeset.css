@@ -265,7 +265,7 @@
 
     /* Code blocks. */
     &:where(pre) {
-      background-color: var(--color-muted, color-mix(in oklab, currentColor 8%, transparent));
+      background-color: var(--color-shiki-bg);
       font-family: var(--typeset-font-mono);
       font-size: 0.875em;
       line-height: 1.5;

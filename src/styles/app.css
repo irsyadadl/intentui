@@ -186,7 +186,7 @@
 }
 
 .dark {
-  --shiki-background: #111114;
+  --shiki-background: var(--muted);
   --shiki-da--background: oklch(0.091 0.005 285.823);
 
   --background: var(--color-zinc-950);

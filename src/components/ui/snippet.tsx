@@ -11,7 +11,7 @@ export function Snippet({ className, ...props }: TabsProps) {
   return (
     <Tabs
       className={cx(
-        "not-typeset group w-full gap-0 overflow-hidden rounded-md border bg-background",
+        "not-typeset group w-full gap-0 overflow-hidden rounded-lg border border-border dark:border-muted-foreground/15 bg-background dark:bg-muted",
         className
       )}
       {...props}
@@ -24,7 +24,7 @@ export function SnippetTabsList<T extends object>({ className, ...props }: TabLi
   return (
     <TabList
       className={cx(
-        "bg-muted",
+        "border-border dark:border-muted-foreground/15 bg-background dark:bg-muted",
         orientation === "horizontal" &&
           "flex-row gap-x-(--tab-list-gutter) rounded-(--tab-list-rounded) border-b px-4 py-(--tab-list-gutter)",
         className
@@ -48,7 +48,10 @@ export function SnippetTabPanel({
 }: TabPanelProps & { onCopy?: (text: string) => void }) {
   const { copy, copied } = useClipboard()
   return (
-    <TabPanel className={cx("mt-0 px-4 py-2 text-sm dark:bg-secondary/70", className)} {...props}>
+    <TabPanel
+      className={cx("mt-0 bg-background px-4 py-2 text-sm dark:bg-muted", className)}
+      {...props}
+    >
       {(values) => (
         <>
           {typeof children === "function" ? (

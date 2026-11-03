@@ -111,7 +111,7 @@ export const DocHow = ({
             className={cn(
               "w-full overflow-y-auto",
               !withNoPadding
-                ? "relative gap-4 rounded-lg border px-4 py-8 *:w-full sm:p-8 dark:bg-muted/30"
+                ? "relative gap-4 rounded-lg border border-border dark:border-muted-foreground/15 px-4 py-8 *:w-full sm:p-8 dark:bg-muted/30"
                 : ""
             )}
           >
@@ -133,9 +133,10 @@ export const DocHow = ({
         ) : (
           <div>
             {processedSourceCode ? (
-              <div className={twJoin("group relative rounded-lg bg-shiki-bg border")}>
+              <div className="group relative rounded-lg border border-border dark:border-muted-foreground/15 bg-background dark:bg-muted">
                 <CodeHighlighter
-                  className="h-full rounded-[calc(var(--radius-lg)-1px)]"
+                  plain
+                  className="h-full rounded-lg bg-background dark:bg-muted px-4 py-2.5"
                   code={processedSourceCode}
                 />
               </div>
