@@ -27,8 +27,8 @@ export const app = {
   },
   shadcn: "npx shadcn@latest",
   editorThemes: {
-    light: "github-light",
-    dark: "github-dark",
+    light: "min-light",
+    dark: "poimandres",
   },
 }
 
