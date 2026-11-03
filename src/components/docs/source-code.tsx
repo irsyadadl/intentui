@@ -45,7 +45,6 @@ export const SourceCode = ({ toShow, ...props }: SourceCodeProps) => {
           </div>
           <CodeHighlighter
             className="**:[pre]:p-4"
-            removeLastLine
             plain
             code={processedSourceCode}
             lang={props.ext}

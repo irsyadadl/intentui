@@ -96,7 +96,6 @@ export function CodeBlock({ source }: Props) {
                 <CodeHighlighter
                   plain
                   className="px-4 py-3"
-                  removeLastLine
                   code={value || "No source code available"}
                 />
               </div>

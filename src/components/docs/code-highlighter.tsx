@@ -12,12 +12,10 @@ export interface CodeHighlighterProps {
   code: string
   max96?: boolean
   className?: string
-  removeLastLine?: boolean
 }
 
 export const CodeHighlighter = ({
   max96 = true,
-  removeLastLine = false,
   plain = false,
   lang = "tsx",
   code,
@@ -32,7 +30,7 @@ export const CodeHighlighter = ({
     setLoading(true)
     const processCode = async () => {
       try {
-        const file = await codeToHtml(code, {
+        const file = await codeToHtml(code.trimEnd(), {
           lang: lang,
           themes: app.editorThemes,
         })
@@ -58,8 +56,6 @@ export const CodeHighlighter = ({
         "not-typeset scrollbar-thin overflow-auto font-mono text-sm **:[pre]:outline-hidden **:[pre]:*:[code]:text-sm/8",
         max96 && "max-h-96",
         !plain && "rounded-lg bg-shiki-bg px-4 py-2.5 ring-1 ring-border",
-        removeLastLine &&
-          "**:data-rehype-pretty-code-figure:*:[pre]:*:[code]:*:data-line:last:hidden",
         className
       )}
       dangerouslySetInnerHTML={{ __html: formattedCode }}

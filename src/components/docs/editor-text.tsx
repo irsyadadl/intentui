@@ -123,12 +123,7 @@ export function EditorText({ source }: Props) {
                 isCopied={copiedStates[key] || false}
                 onPress={() => handleCopy(key, value)}
               />
-              <CodeHighlighter
-                plain
-                removeLastLine
-                className="p-4"
-                code={value || "No source code available"}
-              />
+              <CodeHighlighter plain className="p-4" code={value || "No source code available"} />
             </TabPanel>
           ))}
         </Tabs>
