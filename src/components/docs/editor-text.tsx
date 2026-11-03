@@ -79,7 +79,7 @@ export function EditorText({ source }: Props) {
     <>
       {rawSourceCode && Object.keys(rawSourceCode).length > 0 ? (
         <Tabs className="relative mt-6 gap-0">
-          <div className="flex items-center justify-between overflow-hidden rounded-t-lg border-x border-y">
+          <div className="flex items-center justify-between overflow-hidden rounded-t-lg border-x border-y border-border dark:border-muted-foreground/15 bg-background dark:bg-muted">
             <TabList className="gap-0 border-0 py-0">
               {Object.keys(rawSourceCode).map((key) => (
                 <Tab
@@ -88,8 +88,8 @@ export function EditorText({ source }: Props) {
                       "flex cursor-default items-center gap-x-1.5 whitespace-nowrap px-2 py-2.5 font-mono text-muted-foreground text-xs tracking-tight first:pl-3",
                       "border-transparent border-x outline-hidden first:border-l-0 **:data-[slot=icon]:-ml-0.5 **:data-[slot=icon]:size-4 **:data-[slot=icon]:shrink-0",
                       (values.isSelected || values.isFocused || values.isFocusVisible) &&
-                        "border-input bg-secondary/50 text-secondary-foreground dark:bg-muted",
-                      values.isHovered && "bg-secondary/70 text-secondary-foreground dark:bg-muted"
+                        "border-border dark:border-muted-foreground/15 bg-background text-secondary-foreground dark:bg-muted",
+                      values.isHovered && "bg-background text-secondary-foreground dark:bg-muted"
                     )
                   }
                   key={key}
@@ -115,7 +115,7 @@ export function EditorText({ source }: Props) {
             <TabPanel
               key={key}
               id={key}
-              className="overflow-hidden rounded-b-lg border-x border-b bg-shiki-bg"
+              className="overflow-hidden rounded-b-lg border-x border-b border-border dark:border-muted-foreground/15 bg-background dark:bg-muted"
             >
               <CopyButton
                 className="absolute top-0.5 -right-6"

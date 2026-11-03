@@ -43,13 +43,24 @@ export function McpTabs() {
   const [tab, setTab] = useState<Key>("codex")
   return (
     <div className="mt-6">
-      <Snippet onSelectionChange={setTab} selectedKey={tab}>
-        <SnippetTabsList items={commands}>
+      <Snippet
+        className="border-border dark:border-muted-foreground/15 bg-background dark:bg-muted"
+        onSelectionChange={setTab}
+        selectedKey={tab}
+      >
+        <SnippetTabsList
+          className="border-border dark:border-muted-foreground/15 bg-background dark:bg-muted"
+          items={commands}
+        >
           {(command) => <SnippetTab key={command.label}>{command.label}</SnippetTab>}
         </SnippetTabsList>
 
         <SnippetTabPanels items={commands}>
-          {(command) => <SnippetTabPanel>{command.code}</SnippetTabPanel>}
+          {(command) => (
+            <SnippetTabPanel className="bg-background dark:bg-muted">
+              {command.code}
+            </SnippetTabPanel>
+          )}
         </SnippetTabPanels>
       </Snippet>
       <>

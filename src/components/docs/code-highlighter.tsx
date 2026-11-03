@@ -53,9 +53,10 @@ export const CodeHighlighter = ({
     <div
       {...props}
       className={cn(
-        "not-typeset scrollbar-thin overflow-auto font-mono text-sm **:[pre]:outline-hidden **:[pre]:*:[code]:text-sm/8",
+        "not-typeset scrollbar-thin overflow-auto font-mono **:[pre]:outline-hidden **:[pre]:*:[code]:text-sm/9",
         max96 && "max-h-96",
-        !plain && "rounded-lg bg-shiki-bg px-4 py-2.5 ring-1 ring-border",
+        !plain &&
+          "rounded-lg border border-border dark:border-muted-foreground/15 bg-background dark:bg-muted px-4 py-2.5",
         className
       )}
       dangerouslySetInnerHTML={{ __html: formattedCode }}

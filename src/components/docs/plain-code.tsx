@@ -67,12 +67,12 @@ export const PlainCode = ({
       ref={ref}
       {...props}
       className={cn(
-        "not-typeset group relative my-6 max-w-4xl overflow-hidden rounded-lg border bg-secondary/50 text-sm/6",
+        "not-typeset group relative my-6 max-w-4xl overflow-hidden rounded-lg border border-border dark:border-muted-foreground/15 bg-background dark:bg-muted text-sm/6",
         className
       )}
     >
       {title ? (
-        <div className="flex w-full flex-row items-center gap-2 border-b px-4 py-1.5">
+        <div className="flex w-full flex-row items-center gap-2 border-b border-border dark:border-muted-foreground/15 px-4 py-1.5">
           {icon ? (
             <div
               className="text-muted-foreground [&_svg]:size-3.5"

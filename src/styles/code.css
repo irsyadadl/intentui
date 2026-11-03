@@ -1,5 +1,13 @@
+:root {
+  --color-shiki-bg: var(--background);
+}
+
+html.dark {
+  --color-shiki-bg: var(--muted);
+}
+
 .shiki {
-  background-color: var(--shiki-light-bg);
+  background-color: var(--color-shiki-bg) !important;
 }
 
 .shiki span {

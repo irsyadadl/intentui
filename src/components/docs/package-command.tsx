@@ -146,11 +146,14 @@ export default function PackageCommand({ command, mode = "auto" }: PackageComman
 
   return (
     <Snippet
-      className="mt-6 not-typeset"
+      className="mt-6 bg-background dark:bg-muted not-typeset border-border dark:border-muted-foreground/15"
       selectedKey={selectedPM}
       onSelectionChange={handleSelectionChange}
     >
-      <SnippetTabsList className="bg-shiki-bg" items={items}>
+      <SnippetTabsList
+        className="bg-background dark:bg-muted border-b-border dark:border-b-muted-foreground/15"
+        items={items}
+      >
         {(cmd) => (
           <SnippetTab id={cmd.id} key={cmd.id}>
             {cmd.id}
@@ -159,7 +162,7 @@ export default function PackageCommand({ command, mode = "auto" }: PackageComman
       </SnippetTabsList>
       <SnippetTabPanels items={items}>
         {(cmd) => (
-          <SnippetTabPanel className="dark:bg-shiki-bg" id={cmd.id} onCopy={handleCopy}>
+          <SnippetTabPanel className="bg-background dark:bg-muted" id={cmd.id} onCopy={handleCopy}>
             {cmd.command}
           </SnippetTabPanel>
         )}
