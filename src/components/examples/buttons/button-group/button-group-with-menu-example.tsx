@@ -20,7 +20,7 @@ export default function ButtonGroupWithMenuDemo() {
         Deploy
       </Button>
       <MenuTrigger>
-        <Button intent="secondary">
+        <Button aria-label="Deployment actions" intent="secondary">
           <EllipsisHorizontalIcon />
         </Button>
         <Menu placement="bottom end">

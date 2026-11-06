@@ -6,7 +6,7 @@ export default function ToggleGroupSizeDemo() {
   return (
     <div className="flex flex-col gap-y-6">
       <div>
-        <ToggleGroup size="xs">
+        <ToggleGroup aria-label="Date range" size="xs">
           <ToggleGroupItem id="1d">1d</ToggleGroupItem>
           <ToggleGroupItem id="3d">3d</ToggleGroupItem>
           <ToggleGroupItem id="7d">7d</ToggleGroupItem>
@@ -15,7 +15,7 @@ export default function ToggleGroupSizeDemo() {
         </ToggleGroup>
       </div>
       <div>
-        <ToggleGroup size="sm">
+        <ToggleGroup aria-label="Date range" size="sm">
           <ToggleGroupItem id="1d">1d</ToggleGroupItem>
           <ToggleGroupItem id="3d">3d</ToggleGroupItem>
           <ToggleGroupItem id="7d">7d</ToggleGroupItem>
@@ -24,7 +24,7 @@ export default function ToggleGroupSizeDemo() {
         </ToggleGroup>
       </div>
       <div>
-        <ToggleGroup size="md">
+        <ToggleGroup aria-label="Date range" size="md">
           <ToggleGroupItem id="1d">1d</ToggleGroupItem>
           <ToggleGroupItem id="3d">3d</ToggleGroupItem>
           <ToggleGroupItem id="7d">7d</ToggleGroupItem>
@@ -33,7 +33,7 @@ export default function ToggleGroupSizeDemo() {
         </ToggleGroup>
       </div>
       <div>
-        <ToggleGroup size="lg">
+        <ToggleGroup aria-label="Date range" size="lg">
           <ToggleGroupItem id="1d">1d</ToggleGroupItem>
           <ToggleGroupItem id="3d">3d</ToggleGroupItem>
           <ToggleGroupItem id="7d">7d</ToggleGroupItem>

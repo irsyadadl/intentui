@@ -9,11 +9,11 @@ export default function InputGroupDemo() {
     <div className="space-y-6">
       <InputGroup>
         <EnvelopeIcon />
-        <Input type="email" />
+        <Input aria-label="Email address" type="email" />
       </InputGroup>
       <InputGroup className="[--input-gutter-end:--spacing(12)] [--input-gutter-start:--spacing(16)]">
         <Text>https://</Text>
-        <Input />
+        <Input aria-label="Domain name" />
         <Text>.com</Text>
       </InputGroup>
     </div>

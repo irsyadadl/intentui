@@ -13,7 +13,12 @@ export default function BreadcrumbsMenuDemo() {
 
       <BreadcrumbsItem>
         <MenuTrigger>
-          <Button intent="plain" size="sq-sm" className="-mx-1 h-6">
+          <Button
+            aria-label="Show hidden breadcrumbs"
+            intent="plain"
+            size="sq-sm"
+            className="-mx-1 h-6"
+          >
             <EllipsisHorizontalIcon />
           </Button>
           <Menu popover={{ placement: "bottom" }}>

@@ -31,7 +31,7 @@ export default function LeaderboardHeaderDemo() {
         <LeaderboardTitle>Top revenue sources</LeaderboardTitle>
         <Text>Revenue by location for the last month</Text>
         <LeaderboardAction>
-          <Button intent="secondary" size="sq-sm" isCircle>
+          <Button aria-label="Refresh leaderboard" intent="secondary" size="sq-sm" isCircle>
             <ArrowPathIcon />
           </Button>
         </LeaderboardAction>

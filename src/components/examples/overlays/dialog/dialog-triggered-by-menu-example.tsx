@@ -90,6 +90,7 @@ export default function DialogTriggeredByMenuDemo() {
         <DialogFooter>
           <DialogClose>Cancel</DialogClose>
           <Button
+            aria-label={actionType(state)?.confirmText}
             autoFocus
             intent={state === "ban" ? "danger" : "primary"}
             className="min-w-24"

@@ -35,13 +35,14 @@ export default function PieChartAudienceSegmentDemo() {
         <CardDescription>Engagement metrics by type</CardDescription>
         <CardAction>
           <ToggleGroup
+            aria-label="Audience metric"
             selectedKeys={selected}
             onSelectionChange={setSelected}
             selectionMode="single"
             size="sm"
           >
             {data.map((d) => (
-              <ToggleGroupItem key={d.code} id={d.code}>
+              <ToggleGroupItem key={d.code} id={d.code} aria-label={d.name}>
                 {d.code}
               </ToggleGroupItem>
             ))}

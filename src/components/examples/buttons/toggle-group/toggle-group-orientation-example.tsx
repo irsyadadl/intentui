@@ -11,7 +11,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 export default function ToggleGroupOrientationDemo() {
   return (
     <div>
-      <ToggleGroup orientation="vertical">
+      <ToggleGroup aria-label="Preferences" orientation="vertical">
         <ToggleGroupItem id="dm">
           {({ isSelected }) => (
             <>
