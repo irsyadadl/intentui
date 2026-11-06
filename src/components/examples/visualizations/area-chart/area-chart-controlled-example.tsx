@@ -57,7 +57,12 @@ export default function AreaChartControlledSmart() {
         <CardTitle>Engagement</CardTitle>
         <CardDescription>Likes, comments, and shares over a dynamic time range.</CardDescription>
         <CardAction>
-          <ToggleGroup size="sm" selectedKeys={selected} onSelectionChange={setSelected}>
+          <ToggleGroup
+            aria-label="Chart date range"
+            size="sm"
+            selectedKeys={selected}
+            onSelectionChange={setSelected}
+          >
             <ToggleGroupItem id="3d">3d</ToggleGroupItem>
             <ToggleGroupItem id="7d">7d</ToggleGroupItem>
             <ToggleGroupItem id="2w">2w</ToggleGroupItem>

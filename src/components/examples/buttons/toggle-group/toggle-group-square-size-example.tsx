@@ -24,65 +24,65 @@ export default function ToggleGroupSquareSizeDemo() {
   return (
     <div className="flex flex-col gap-y-6">
       <div>
-        <ToggleGroup size="sq-xs">
-          <ToggleGroupItem id="bell">
+        <ToggleGroup aria-label="Notification options" size="sq-xs">
+          <ToggleGroupItem id="bell" aria-label="Bell">
             <BellIcon />
           </ToggleGroupItem>
-          <ToggleGroupItem id="alarm">
+          <ToggleGroupItem id="alarm" aria-label="Alarm">
             <BellAlertIcon />
           </ToggleGroupItem>
-          <ToggleGroupItem id="notification">
+          <ToggleGroupItem id="notification" aria-label="Notifications">
             <EnvelopeOpenIcon />
           </ToggleGroupItem>
-          <ToggleGroupItem id="alert">
+          <ToggleGroupItem id="alert" aria-label="Alerts">
             <ExclamationTriangleIcon />
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
       <div>
-        <ToggleGroup size="sq-sm">
-          <ToggleGroupItem id="code">
+        <ToggleGroup aria-label="Developer tools" size="sq-sm">
+          <ToggleGroupItem id="code" aria-label="Code">
             <CodeBracketIcon />
           </ToggleGroupItem>
-          <ToggleGroupItem id="terminal">
+          <ToggleGroupItem id="terminal" aria-label="Terminal">
             <CommandLineIcon />
           </ToggleGroupItem>
-          <ToggleGroupItem id="bug">
+          <ToggleGroupItem id="bug" aria-label="Bug">
             <BugAntIcon />
           </ToggleGroupItem>
-          <ToggleGroupItem id="settings">
+          <ToggleGroupItem id="settings" aria-label="Settings">
             <Cog6ToothIcon />
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
       <div>
-        <ToggleGroup size="sq-md">
-          <ToggleGroupItem id="image">
+        <ToggleGroup aria-label="Media types" size="sq-md">
+          <ToggleGroupItem id="image" aria-label="Images">
             <PhotoIcon />
           </ToggleGroupItem>
-          <ToggleGroupItem id="camera">
+          <ToggleGroupItem id="camera" aria-label="Camera">
             <CameraIcon />
           </ToggleGroupItem>
-          <ToggleGroupItem id="video">
+          <ToggleGroupItem id="video" aria-label="Video">
             <VideoCameraIcon />
           </ToggleGroupItem>
-          <ToggleGroupItem id="music">
+          <ToggleGroupItem id="music" aria-label="Music">
             <MusicalNoteIcon />
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
       <div>
-        <ToggleGroup size="sq-lg">
-          <ToggleGroupItem id="file">
+        <ToggleGroup aria-label="File types" size="sq-lg">
+          <ToggleGroupItem id="file" aria-label="Files">
             <DocumentIcon />
           </ToggleGroupItem>
-          <ToggleGroupItem id="doc">
+          <ToggleGroupItem id="doc" aria-label="Documents">
             <DocumentTextIcon />
           </ToggleGroupItem>
-          <ToggleGroupItem id="pdf">
+          <ToggleGroupItem id="pdf" aria-label="PDFs">
             <CloudIcon />
           </ToggleGroupItem>
-          <ToggleGroupItem id="archive">
+          <ToggleGroupItem id="archive" aria-label="Archive">
             <ArchiveBoxIcon />
           </ToggleGroupItem>
         </ToggleGroup>

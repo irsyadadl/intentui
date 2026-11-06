@@ -7,10 +7,10 @@ import { ButtonGroup } from "@/components/ui/button-group"
 export default function ButtonGroupOrientationDemo() {
   return (
     <ButtonGroup orientation="vertical">
-      <Button intent="secondary">
+      <Button aria-label="Unmute" intent="secondary">
         <SpeakerWaveIcon />
       </Button>
-      <Button intent="secondary">
+      <Button aria-label="Mute" intent="secondary">
         <SpeakerXMarkIcon />
       </Button>
     </ButtonGroup>

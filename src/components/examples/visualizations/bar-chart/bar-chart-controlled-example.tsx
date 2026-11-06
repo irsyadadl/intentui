@@ -58,6 +58,7 @@ export default function BarChartControlledSmart() {
         <CardDescription>Likes, comments, and shares over a dynamic time range.</CardDescription>
         <CardAction>
           <ToggleGroup
+            aria-label="Chart date range"
             size="sm"
             selectionMode="single"
             selectedKeys={selected}

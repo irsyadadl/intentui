@@ -9,7 +9,12 @@ export default function ToggleGroupControlledDemo() {
 
   return (
     <div className="space-y-6">
-      <ToggleGroup selectionMode="multiple" selectedKeys={selected} onSelectionChange={setSelected}>
+      <ToggleGroup
+        aria-label="Text formatting"
+        selectionMode="multiple"
+        selectedKeys={selected}
+        onSelectionChange={setSelected}
+      >
         <ToggleGroupItem id="bold">Bold</ToggleGroupItem>
         <ToggleGroupItem id="italic">Italic</ToggleGroupItem>
         <ToggleGroupItem id="underline">Underline</ToggleGroupItem>

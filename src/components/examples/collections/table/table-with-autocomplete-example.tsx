@@ -66,7 +66,12 @@ export default function TableDemo() {
                 <TableCell>
                   <div className="flex justify-end">
                     <MenuTrigger>
-                      <Button intent="plain" size="sq-sm" className="sm:w-6">
+                      <Button
+                        aria-label={`Actions for ${item.name}`}
+                        intent="plain"
+                        size="sq-sm"
+                        className="sm:w-6"
+                      >
                         <EllipsisVerticalIcon />
                       </Button>
                       <Menu aria-label="Actions" placement="left top">
