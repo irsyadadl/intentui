@@ -65,6 +65,6 @@ export function tissueButton() {
     size: "lg",
     isCircle: true,
     className:
-      "dark:border-white/10 bg-foreground dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:text-white hover:bg-foreground/90 text-background",
+      "dark:border-white/10 bg-foreground dark:bg-zinc-700 dark:pressed:bg-zinc-600 dark:hover:bg-zinc-600 dark:text-white hover:bg-foreground/90 pressed:bg-foreground/80 text-background",
   })
 }
