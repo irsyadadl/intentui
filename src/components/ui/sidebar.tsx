@@ -2,7 +2,7 @@
 
 import { DialogCloseIcon } from "./dialog"
 
-import { ChevronDownIcon } from "@heroicons/react/20/solid"
+import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/20/solid"
 import { createContext, use, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { type ButtonProps, Button as PrimitiveButton } from "react-aria-components/Button"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
@@ -18,6 +18,7 @@ import { Heading } from "react-aria-components/Heading"
 import { type LinkProps, type LinkRenderProps } from "react-aria-components/Link"
 import {
   type NavigationTreeItemContentProps,
+  type NavigationTreeItemContentRenderProps,
   type NavigationTreeItemProps,
   type NavigationTreeProps,
   NavigationTree,
@@ -25,9 +26,8 @@ import {
   NavigationTreeItemContent,
 } from "react-aria-components/NavigationTree"
 import { Separator, type SeparatorProps } from "react-aria-components/Separator"
-import { cn } from "cn"
+import { cn, twJoin } from "cn"
 import { Sheet } from "@/components/ui/sheet"
-import { TreeIndicator } from "@/components/ui/tree"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { cx } from "@/lib/primitive"
 import { Button } from "./button"
@@ -859,19 +859,37 @@ export function SidebarTreeContent({ className, isCurrent, children }: SidebarTr
               className
             )}
           >
-            {values.hasChildItems && (
-              <TreeIndicator
-                values={{
-                  isDisabled: values.isDisabled,
-                  isExpanded: values.isExpanded,
-                }}
-              />
-            )}
+            {values.hasChildItems && <SidebarTreeIndicator values={values} />}
             {typeof children === "function" ? children(values) : children}
           </div>
         </div>
       )}
     </NavigationTreeItemContent>
+  )
+}
+
+function SidebarTreeIndicator({
+  values: { isDisabled, isExpanded },
+}: {
+  values: Pick<NavigationTreeItemContentRenderProps, "isDisabled" | "isExpanded">
+}) {
+  return (
+    <PrimitiveButton
+      slot="chevron"
+      isDisabled={isDisabled}
+      className={twJoin(
+        "text-muted-foreground hover:text-foreground shrink-0 content-center",
+        isExpanded && "text-foreground"
+      )}
+    >
+      <ChevronRightIcon
+        data-slot="chevron"
+        className={twJoin(
+          "size-5 transition-transform duration-200 ease-in-out sm:size-4",
+          isExpanded && "rotate-90"
+        )}
+      />
+    </PrimitiveButton>
   )
 }
 

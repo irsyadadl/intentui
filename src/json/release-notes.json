@@ -1,5 +1,41 @@
 [
   {
+    "name": "Field",
+    "component": "field.tsx",
+    "url": "/field",
+    "type": "component",
+    "category": "forms",
+    "kind": "improvement",
+    "description": null,
+    "additions": 7,
+    "deletions": 13,
+    "date": "2026-11-08"
+  },
+  {
+    "name": "Number field",
+    "component": "number-field.tsx",
+    "url": "/number-field",
+    "type": "component",
+    "category": "forms",
+    "kind": "improvement",
+    "description": null,
+    "additions": 8,
+    "deletions": 14,
+    "date": "2026-11-08"
+  },
+  {
+    "name": "Sidebar",
+    "component": "sidebar.tsx",
+    "url": "/sidebar",
+    "type": "component",
+    "category": "layouts",
+    "kind": "improvement",
+    "description": null,
+    "additions": 29,
+    "deletions": 11,
+    "date": "2026-11-08"
+  },
+  {
     "name": "Button group orientation example",
     "component": "button-group-orientation-example.tsx",
     "url": "/button-group",
