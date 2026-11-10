@@ -1,27 +1,19 @@
 "use client"
 
+import { useSelectedLayoutSegment } from "next/navigation"
 import { useEffect } from "react"
 import { toast } from "sonner"
-import { Button } from "@/components/ui/button"
-import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button, buttonStyles } from "@/components/ui/button"
 import { Note } from "@/components/ui/note"
-import { Code, Strong } from "@/components/ui/text"
+import { Code } from "@/components/ui/text"
 
-const DISCOUNT_TOAST_DELAY_MS = 3_000
+const PRICING_URL =
+  "https://design.intentui.com/pricing?utm_source=intentui.com&utm_medium=referral&utm_campaign=black_friday"
+const DISCOUNT_CODE = "UI2026"
+const DISCOUNT_COPY = "Get 40% off all licenses with code"
+const DISCOUNT_TOAST_ID = "intentui-design-discount"
+const DISCOUNT_DISMISSED_UNTIL_KEY = "intentui-black-friday-dismissed-until"
 const DISCOUNT_DISMISS_DURATION_MS = 5 * 24 * 60 * 60 * 1000
-const DISCOUNT_DISMISSED_UNTIL_KEY = "discount-toast-dismissed-until:v2"
-
-function hasActiveDiscountDismissal() {
-  try {
-    const dismissedUntil = Number(window.localStorage.getItem(DISCOUNT_DISMISSED_UNTIL_KEY))
-
-    if (Number.isFinite(dismissedUntil) && dismissedUntil > Date.now()) return true
-
-    window.localStorage.removeItem(DISCOUNT_DISMISSED_UNTIL_KEY)
-  } catch {}
-
-  return false
-}
 
 function dismissDiscountToast() {
   try {
@@ -30,58 +22,71 @@ function dismissDiscountToast() {
       String(Date.now() + DISCOUNT_DISMISS_DURATION_MS)
     )
   } catch {}
+
+  toast.dismiss(DISCOUNT_TOAST_ID)
 }
 
-export function Discount() {
+export function DiscountBanner() {
+  const isBlockPreview = useSelectedLayoutSegment() === "pre-blocks"
+
   useEffect(() => {
-    if (hasActiveDiscountDismissal()) return
+    if (isBlockPreview) return
 
     const timeout = window.setTimeout(() => {
+      try {
+        const dismissedUntil = Number(window.localStorage.getItem(DISCOUNT_DISMISSED_UNTIL_KEY))
+        if (Date.now() < dismissedUntil) return
+      } catch {}
+
       toast.custom(
-        (toastId) => (
-          <Note intent="default" className="bg-background">
-            <CardHeader>
-              <CardTitle>🔥 Get 20% off Intent UI Design</CardTitle>
-              <CardDescription className="*:[strong]:text-foreground">
-                Use code <Code className="text-foreground">TVGCGSAU</Code> to get{" "}
-                <Strong>20% off</Strong>. Includes instant access to all <Strong>templates</Strong>,{" "}
-                <Strong>blocks</Strong>, and <Strong>patterns</Strong>.
-              </CardDescription>
-            </CardHeader>
-            <div className="mt-3 flex items-center justify-end gap-x-2">
-              <Button
-                intent="plain"
-                size="sm"
-                onPress={() => {
-                  dismissDiscountToast()
-                  toast.dismiss(toastId)
-                }}
+        () => (
+          <Note className="rounded-xl bg-background">
+            <strong>Black Friday</strong>
+            <p>
+              {DISCOUNT_COPY} <Code className="text-foreground">{DISCOUNT_CODE}</Code>.
+            </p>
+            <div className="mt-4 flex items-center gap-x-1">
+              <a
+                href={`${PRICING_URL}&utm_content=popup`}
+                className={buttonStyles({
+                  intent: "primary",
+                  size: "sm",
+                  isCircle: true,
+                  className:
+                    "dark:border-white/10 bg-foreground dark:bg-zinc-700 dark:pressed:bg-zinc-600 dark:hover:bg-zinc-600 dark:text-white hover:bg-foreground/90 pressed:bg-foreground/80 text-background",
+                })}
+                onClick={dismissDiscountToast}
               >
+                Upgrade now
+              </a>
+              <Button isCircle intent="plain" size="sm" onPress={dismissDiscountToast}>
                 Dismiss
-              </Button>
-              <Button
-                size="sm"
-                onPress={() => {
-                  toast.dismiss(toastId)
-                  window.location.href =
-                    "https://design.intentui.com/pricing?utm_source=intentui&utm_medium=toast&utm_campaign=limited_time_discount&utm_content=pricing_cta"
-                }}
-              >
-                Get the deal
               </Button>
             </div>
           </Note>
         ),
-        {
-          className: "bg-transparent",
-          id: "intentui-design-discount",
-          duration: Infinity,
-        }
+        { id: DISCOUNT_TOAST_ID, duration: Infinity, position: "bottom-center" }
       )
-    }, DISCOUNT_TOAST_DELAY_MS)
+    }, 2_000)
 
-    return () => window.clearTimeout(timeout)
-  }, [])
+    return () => {
+      window.clearTimeout(timeout)
+      toast.dismiss(DISCOUNT_TOAST_ID)
+    }
+  }, [isBlockPreview])
 
-  return null
+  if (isBlockPreview) return null
+
+  return (
+    <a
+      href={`${PRICING_URL}&utm_content=top_banner`}
+      className="block w-full border-muted-foreground/10 border-b bg-muted px-3 py-2 text-center text-sm/6 text-pretty hover:underline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring sm:py-3"
+      onClick={dismissDiscountToast}
+    >
+      Black Friday is here! {DISCOUNT_COPY}{" "}
+      <span className="whitespace-nowrap">
+        <code className="font-bold">{DISCOUNT_CODE}</code>.
+      </span>
+    </a>
+  )
 }
