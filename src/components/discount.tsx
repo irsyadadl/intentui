@@ -92,7 +92,7 @@ export function DiscountBanner() {
     <a
       ref={bannerRef}
       href={`${PRICING_URL}&utm_content=top_banner`}
-      className="text-center text-pretty md:flex md:items-center md:justify-center md:gap-x-2 w-full border-muted-foreground/10 border-b bg-background px-3 py-2 text-sm/6 hover:underline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring sm:py-3"
+      className="text-center text-pretty block md:flex md:items-center md:justify-center md:gap-x-2 w-full border-muted-foreground/10 border-b bg-background px-3 py-2 text-sm/6 hover:underline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring sm:py-3"
       onClick={dismissDiscountToast}
     >
       <AppDiscountIcon className="hidden size-5 rotate-6 md:block" />
