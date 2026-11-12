@@ -10,7 +10,7 @@ import { Code } from "@/components/ui/text"
 const PRICING_URL =
   "https://design.intentui.com/pricing?utm_source=intentui.com&utm_medium=referral&utm_campaign=black_friday"
 const DISCOUNT_CODE = "UI2026"
-const DISCOUNT_COPY = "Get 40% off all licenses with code"
+const DISCOUNT_COPY = "Save 40% on Intent UI Design licenses with code"
 const DISCOUNT_TOAST_ID = "intentui-design-discount"
 const DISCOUNT_DISMISSED_UNTIL_KEY = "intentui-black-friday-dismissed-until"
 const DISCOUNT_DISMISS_DURATION_MS = 5 * 24 * 60 * 60 * 1000
@@ -50,7 +50,7 @@ export function DiscountBanner() {
           <Note className="rounded-xl bg-background">
             <div className="mb-2 flex items-center gap-x-1">
               <AppDiscountIcon className="size-4 shrink-0 rotate-6" />
-              <strong>Black friday</strong>
+              <strong>Black Friday</strong>
             </div>
             <p>
               {DISCOUNT_COPY} <Code className="text-foreground">{DISCOUNT_CODE}</Code>.
@@ -67,7 +67,7 @@ export function DiscountBanner() {
                 })}
                 onClick={dismissDiscountToast}
               >
-                Upgrade now
+                View offer
               </a>
               <Button isCircle intent="plain" size="sm" onPress={dismissDiscountToast}>
                 Dismiss
@@ -96,7 +96,7 @@ export function DiscountBanner() {
       onClick={dismissDiscountToast}
     >
       <AppDiscountIcon className="hidden size-5 rotate-6 md:block" />
-      Black Friday is here! {DISCOUNT_COPY}{" "}
+      Black Friday · {DISCOUNT_COPY}{" "}
       <span className="whitespace-nowrap">
         <code className="font-bold">{DISCOUNT_CODE}</code>.
       </span>
