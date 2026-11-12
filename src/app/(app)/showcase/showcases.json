@@ -1,5 +1,11 @@
 [
   {
+    "name": "Waypoint",
+    "description": "Documentation website",
+    "slug": "waypoint",
+    "url": "https://waypoint.justui.com"
+  },
+  {
     "name": "Gridlines",
     "description": "Documentation website",
     "slug": "gridlines",
