@@ -3964,7 +3964,6 @@
       "registryDependencies": [
         "http://localhost:3000/r/dialog",
         "http://localhost:3000/r/sheet",
-        "http://localhost:3000/r/tree",
         "http://localhost:3000/r/use-mobile",
         "http://localhost:3000/r/primitive",
         "http://localhost:3000/r/button",
@@ -12747,6 +12746,7 @@
       "name": "button-size-example",
       "title": "Button Size",
       "description": "button-size-example",
+      "dependencies": ["@heroicons/react"],
       "registryDependencies": [
         "http://localhost:3000/r/button",
         "http://localhost:3000/r/separator"
