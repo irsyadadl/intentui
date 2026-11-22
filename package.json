@@ -99,9 +99,8 @@
   },
   "overrides": {
     "cn": "$cn",
-    "shadcn": {
-      "zod": "3.25.76"
-    }
+    "minimatch": "^11.0.9",
+    "zod": "^4.6.7"
   },
   "lint-staged": {
     "./**/*.{ts,tsx}": [
