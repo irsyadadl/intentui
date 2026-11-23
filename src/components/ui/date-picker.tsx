@@ -63,7 +63,7 @@ export function DatePickerOverlay({
   const isMobile = useIsMobile()
 
   return isMobile ? (
-    <Dialog closeButton={false}>
+    <Dialog closeButton={false} style={{ zIndex: 100001 }}>
       <div className="flex justify-center p-6">
         {range ? (
           <RangeCalendar pageBehavior={pageBehavior} visibleDuration={visibleDuration} />
