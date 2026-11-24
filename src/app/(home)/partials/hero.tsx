@@ -15,10 +15,11 @@ export function Hero() {
       <div className="border-page py-6 sm:border-x sm:p-6 sm:py-24 bg-background">
         <div className="text-left">
           <Link
-            href="/blog/release-v4"
+            href="https://design.intentui.com/pricing?utm_source=intentui.com&utm_medium=hero&utm_campaign=black_friday_2026"
+            target="_blank"
             className="group bg-background font-medium hover:bg-secondary relative isolate mb-2 rounded-full border px-2 py-1 text-sm shadow-xs inline-flex items-center gap-x-1.5"
           >
-            Introducing Intent UI v4
+            🔥 Black Friday 40% off
             <RotatingGradientBorder />
             <ChevronRightIcon className="size-3.5 group-hover:translate-x-0.5 duration-300" />
           </Link>

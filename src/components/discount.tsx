@@ -92,12 +92,12 @@ export function DiscountBanner() {
     <a
       ref={bannerRef}
       href={`${PRICING_URL}&utm_content=top_banner`}
-      className="text-center text-pretty block md:flex md:items-center md:justify-center md:gap-x-2 w-full border-page border-b bg-background px-3 py-2 text-sm/6 hover:underline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring sm:py-3"
-      onClick={dismissDiscountToast}
+      className="text-center hover:bg-muted/40 group text-pretty block md:flex md:items-center md:justify-center md:gap-x-2 w-full border-page border-b bg-background px-3 py-2 text-sm/6 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring sm:py-3"
+      target="_blank"
     >
       <AppDiscountIcon className="hidden size-5 rotate-6 md:block" />
       Black Friday · {DISCOUNT_COPY}{" "}
-      <span className="whitespace-nowrap">
+      <span className="bg-muted-foreground/40 group-hover:bg-muted-foreground/50 px-1 rounded-md whitespace-nowrap">
         <code className="font-bold">{DISCOUNT_CODE}</code>.
       </span>
     </a>

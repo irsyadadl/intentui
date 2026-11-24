@@ -18,9 +18,17 @@ import { BrandDiscordIcon } from "@/components/icons/brand-discord-icon"
 import { BrandGithubIcon } from "@/components/icons/brand-github-icon"
 import { BrandXIcon } from "@/components/icons/brand-x-icon"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import {
+  Sheet,
+  SheetClose,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 import { app } from "@/config/app"
 import { Logo } from "@/components/logo"
+import { XMarkIcon } from "@heroicons/react/16/solid"
 
 export const menus = [
   {
@@ -101,17 +109,19 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
             </span>
           </Button>
           <Sheet
-            isFloat
             position="right"
-            className="w-[min(22rem,90vw)] sm:max-w-88 **:data-[slot=dialog]:h-full **:data-[slot=dialog]:max-h-full [--visual-viewport-vertical-padding:0px]"
+            className="w-[min(22rem,90vw)] bg-background sm:max-w-88 **:data-[slot=dialog]:h-full **:data-[slot=dialog]:max-h-full [--visual-viewport-vertical-padding:0px]"
           >
-            <SheetHeader>
+            <SheetHeader className="flex justify-between gap-x-2">
               <SheetTitle className="flex items-center gap-x-3">
                 <Logo />{" "}
                 <span>
                   Intent <span className="text-muted-foreground">UI</span>
                 </span>
               </SheetTitle>
+              <SheetClose isCircle size="sq-sm" className="-mr-4">
+                <XMarkIcon />
+              </SheetClose>
             </SheetHeader>
             <Aside
               onNavigate={() => setOpen(false)}
@@ -135,8 +145,8 @@ export function ResponsiveNavigation({ className }: ResponsiveNavigationProps) {
                   </AsideLink>
                 ))}
             </Aside>
-            <SheetFooter className="p-2 border-t bg-background/60">
-              <ul className="rounded-sm p-2 bg-overlay border">
+            <SheetFooter className="px-4 border-t border-page">
+              <ul>
                 <AsideLink href={app.links.twitter} target="_blank" onPress={() => setOpen(false)}>
                   <BrandXIcon /> Twitter
                 </AsideLink>
