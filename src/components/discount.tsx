@@ -36,7 +36,7 @@ function DiscountDaysLeft() {
   if (daysLeft === null) return null
 
   return (
-    <span className="text-muted-fg whitespace-nowrap tabular-nums">
+    <span className="text-warning-subtle-foreground whitespace-nowrap tabular-nums">
       · {formatDaysLeft(daysLeft)}
     </span>
   )
