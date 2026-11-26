@@ -1,7 +1,8 @@
 "use client"
 
 import { useSelectedLayoutSegment } from "next/navigation"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import { formatDaysLeft, getCalendarDaysUntil } from "@/lib/date"
 import { toast } from "sonner"
 import { Button, buttonStyles } from "@/components/ui/button"
 import { Note } from "@/components/ui/note"
@@ -14,6 +15,32 @@ const DISCOUNT_COPY = "Save 40% on Intent UI Design licenses with code"
 const DISCOUNT_TOAST_ID = "intentui-design-discount"
 const DISCOUNT_DISMISSED_UNTIL_KEY = "intentui-black-friday-dismissed-until"
 const DISCOUNT_DISMISS_DURATION_MS = 5 * 24 * 60 * 60 * 1000
+/** Offer ends at local midnight on this date */
+const DISCOUNT_ENDS_AT = new Date(2026, 10, 30, 0, 0, 0, 0)
+
+function useDaysLeftUntil(deadline: Date): number | null {
+  const [daysLeft, setDaysLeft] = useState<number | null>(() => getCalendarDaysUntil(deadline))
+
+  useEffect(() => {
+    const tick = () => setDaysLeft(getCalendarDaysUntil(deadline))
+    tick()
+    const id = window.setInterval(tick, 60_000)
+    return () => window.clearInterval(id)
+  }, [deadline])
+
+  return daysLeft
+}
+
+function DiscountDaysLeft() {
+  const daysLeft = useDaysLeftUntil(DISCOUNT_ENDS_AT)
+  if (daysLeft === null) return null
+
+  return (
+    <span className="text-muted-fg whitespace-nowrap tabular-nums">
+      · {formatDaysLeft(daysLeft)}
+    </span>
+  )
+}
 
 function dismissDiscountToast() {
   try {
@@ -100,6 +127,7 @@ export function DiscountBanner() {
       <span className="bg-muted-foreground/40 group-hover:bg-muted-foreground/50 px-1 rounded-md whitespace-nowrap">
         <code className="font-bold">{DISCOUNT_CODE}</code>.
       </span>
+      <DiscountDaysLeft />
     </a>
   )
 }
