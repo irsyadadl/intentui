@@ -2,12 +2,7 @@
 
 import { BrandLaravelIcon } from "@/components/icons/brand-laravel-icon"
 import { BrandNextjsIcon } from "@/components/icons/brand-nextjs-icon"
-import {
-  ChoiceBox,
-  ChoiceBoxDescription,
-  ChoiceBoxItem,
-  ChoiceBoxLabel,
-} from "@/components/ui/choice-box"
+import { Strong, Text } from "@/components/ui/text"
 
 export const IconBrandTanstack = (props: React.ComponentProps<"svg">) => (
   <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -24,25 +19,25 @@ export const IconBrandVite = (props: React.ComponentProps<"svg">) => (
 const frameworks = [
   {
     name: "Laravel",
-    description: "Laravel is a PHP framework for building web applications.",
+    description: "A PHP framework for building web apps.",
     logo: BrandLaravelIcon,
     href: "/docs/getting-started/laravel",
   },
   {
     name: "Next.js",
-    description: "Next.js is a React framework for building server-side rendered applications.",
+    description: "A React framework for building web apps.",
     logo: BrandNextjsIcon,
     href: "/docs/getting-started/nextjs",
   },
   {
     name: "Vite",
-    description: "Vite is a tool for building frontend applications in a fraction of the time.",
+    description: "A fast tool for building frontend apps.",
     logo: IconBrandVite,
     href: "/docs/getting-started/vite",
   },
   {
     name: "TanStack Router",
-    description: "TanStack Router is a framework for building server-side rendered applications.",
+    description: "A type-safe router for React apps.",
     logo: IconBrandTanstack,
     href: "/docs/getting-started/tanstack-router",
   },
@@ -50,19 +45,25 @@ const frameworks = [
 
 export function FrameworkGuides() {
   return (
-    <ChoiceBox
-      className="mt-6 not-typeset dark:inset-ring-muted-foreground/15 dark:bg-muted"
-      selectionMode="single"
-      aria-label="Framework guides"
-      items={frameworks}
-    >
-      {(item) => (
-        <ChoiceBoxItem href={item.href} id={item.name} textValue={item.name}>
-          <item.logo />
-          <ChoiceBoxLabel>{item.name}</ChoiceBoxLabel>
-          <ChoiceBoxDescription>{item.description}</ChoiceBoxDescription>
-        </ChoiceBoxItem>
-      )}
-    </ChoiceBox>
+    <div className="lg:-mx-10 mt-6 not-typeset">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        {frameworks.map((item) => (
+          <li key={item.name}>
+            <a
+              href={item.href}
+              className="bg-muted/50 inset-ring inset-ring-page flex flex-col hover:bg-secondary rounded-md"
+            >
+              <div className="p-4 h-32 sm:h-40">
+                <item.logo className="size-6" />
+              </div>
+              <div className="border-t p-4 border-page sm:h-26">
+                <Strong>{item.name}</Strong>
+                <Text>{item.description}</Text>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
